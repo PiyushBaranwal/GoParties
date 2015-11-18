@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,10 +15,47 @@
 
 @implementation AppDelegate
 
+@synthesize objHome,navigationController;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //return YES;
+    
+    
+    self.objHome = [[HomeViewController alloc] init];
+    MenuViewController *rearViewController = [[MenuViewController alloc] init];
+    
+    //To set teh navigation bar color - .106,27,154
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0 green:27.0 blue:154.0 alpha:1.00]];
+    //to set teh navigation bar color
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    
+    UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:self.objHome];
+    UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
+    
+    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
+    revealController.delegate = self;
+    
+    //revealController.bounceBackOnOverdraw=NO;
+    //revealController.stableDragOnOverdraw=YES;
+    
+    self.navigationController.navigationBarHidden = NO;
+    
+    self.viewController = revealController;
+    
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
+    
+//     self.objHome = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] ;
+//     self.navigationController =[[UINavigationController alloc] initWithRootViewController:self.objHome];
+//        self.window.rootViewController = self.navigationController;
+//        [self.window makeKeyAndVisible];
+//        return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
