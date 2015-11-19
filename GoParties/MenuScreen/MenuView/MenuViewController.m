@@ -300,7 +300,7 @@
     if (indexPath.row==3)
     {
         textLbl.text = @"Trending Parties";
-        logoImgView.image=[UIImage imageNamed:@"message_menu_icon.png"];
+        logoImgView.image=[UIImage imageNamed:@"trending.png"];
         // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
     }
     
@@ -313,25 +313,25 @@
     if (indexPath.row==5)
     {
         textLbl.text = @"Parties Master Calendar";
-        logoImgView.image=[UIImage imageNamed:@"message_menu_icon.png"];
+        logoImgView.image=[UIImage imageNamed:@"calendar.png"];
         // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
     }
     if (indexPath.row==6)
     {
         textLbl.text = @"Create Parties";
-        logoImgView.image=[UIImage imageNamed:@"message_menu_icon.png"];
+        logoImgView.image=[UIImage imageNamed:@"add_cross_new_plus.png"];
         // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
     }
     if (indexPath.row==7)
     {
         textLbl.text = @"Invite Freinds to GoParties";
-        logoImgView.image=[UIImage imageNamed:@"message_menu_icon.png"];
+        logoImgView.image=[UIImage imageNamed:@"share.png"];
         // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
     }
     if (indexPath.row==8)
     {
         textLbl.text = @"Notification frequency";
-        logoImgView.image=[UIImage imageNamed:@"message_menu_icon.png"];
+        logoImgView.image=[UIImage imageNamed:@"Notification_Bell.png"];
         // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
     }
     
@@ -339,14 +339,14 @@
     if (indexPath.row==9)
     {
         textLbl.text = @"Settings";
-        logoImgView.image=[UIImage imageNamed:@"linkl_menu_icon.png"];
+        logoImgView.image=[UIImage imageNamed:@"setting.png"];
 
     }
     
     if (indexPath.row==10)
     {
         textLbl.text = @"Logout";
-        logoImgView.image=[UIImage imageNamed:@"linkl_menu_icon.png"];
+        logoImgView.image=[UIImage imageNamed:@"log_out.png"];
         
     }
 	return cell;

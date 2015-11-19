@@ -156,6 +156,23 @@
 		FCC8C3DE1BFC9E2C006056EA /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC8C3C01BFC9E2C006056EA /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCC8C3E61BFCA3BA006056EA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC8C3E41BFCA3BA006056EA /* LoginViewController.m */; };
 		FCC8C3E71BFCA3BA006056EA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC8C3E51BFCA3BA006056EA /* LoginViewController.xib */; };
+		FCEF43141BFDA4130013B1E5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43121BFDA4130013B1E5 /* Default@2x.png */; };
+		FCEF43151BFDA4130013B1E5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43131BFDA4130013B1E5 /* Default.png */; };
+		FCEF431A1BFDAB980013B1E5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCEF43181BFDAB980013B1E5 /* MainViewController.m */; };
+		FCEF431B1BFDAB980013B1E5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43191BFDAB980013B1E5 /* MainViewController.xib */; };
+		FCEF431E1BFDF00A0013B1E5 /* Notification_Bell_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF431C1BFDF00A0013B1E5 /* Notification_Bell_main.png */; };
+		FCEF431F1BFDF00A0013B1E5 /* search-icon_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF431D1BFDF00A0013B1E5 /* search-icon_main.png */; };
+		FCEF43231BFDF1C50013B1E5 /* Toggle_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43221BFDF1C50013B1E5 /* Toggle_main.png */; };
+		FCEF43271BFDF5D50013B1E5 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43261BFDF5D50013B1E5 /* User.png */; };
+		FCEF43291BFDF62C0013B1E5 /* Lock1.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43281BFDF62C0013B1E5 /* Lock1.png */; };
+		FCEF432B1BFDF6610013B1E5 /* facebook_circle_color_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF432A1BFDF6610013B1E5 /* facebook_circle_color_main.png */; };
+		FCEF432D1BFDF6660013B1E5 /* Google_Plus_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF432C1BFDF6660013B1E5 /* Google_Plus_main.png */; };
+		FCEF43321BFDF6D50013B1E5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCEF43301BFDF6D50013B1E5 /* RegisterViewController.m */; };
+		FCEF43331BFDF6D50013B1E5 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43311BFDF6D50013B1E5 /* RegisterViewController.xib */; };
+		FCEF43351BFDFAB20013B1E5 /* Mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43341BFDFAB20013B1E5 /* Mobile.png */; };
+		FCEF43371BFDFAD10013B1E5 /* List1.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43361BFDFAD10013B1E5 /* List1.png */; };
+		FCEF433A1BFDFB4B0013B1E5 /* First1.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43381BFDFB4B0013B1E5 /* First1.png */; };
+		FCEF433B1BFDFB4B0013B1E5 /* Second1.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43391BFDFB4B0013B1E5 /* Second1.png */; };
 		FCFA190E1BF9A23A00FAAD99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA190D1BF9A23A00FAAD99 /* main.m */; };
 		FCFA19111BF9A23A00FAAD99 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA19101BF9A23A00FAAD99 /* AppDelegate.m */; };
 		FCFA19141BF9A23A00FAAD99 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA19131BF9A23A00FAAD99 /* ViewController.m */; };
@@ -374,6 +391,25 @@
 		FCC8C3E31BFCA3BA006056EA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FCC8C3E41BFCA3BA006056EA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FCC8C3E51BFCA3BA006056EA /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		FCEF43121BFDA4130013B1E5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FCEF43131BFDA4130013B1E5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FCEF43171BFDAB980013B1E5 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		FCEF43181BFDAB980013B1E5 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		FCEF43191BFDAB980013B1E5 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		FCEF431C1BFDF00A0013B1E5 /* Notification_Bell_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Notification_Bell_main.png; sourceTree = "<group>"; };
+		FCEF431D1BFDF00A0013B1E5 /* search-icon_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon_main.png"; sourceTree = "<group>"; };
+		FCEF43221BFDF1C50013B1E5 /* Toggle_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Toggle_main.png; sourceTree = "<group>"; };
+		FCEF43261BFDF5D50013B1E5 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
+		FCEF43281BFDF62C0013B1E5 /* Lock1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lock1.png; sourceTree = "<group>"; };
+		FCEF432A1BFDF6610013B1E5 /* facebook_circle_color_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_circle_color_main.png; sourceTree = "<group>"; };
+		FCEF432C1BFDF6660013B1E5 /* Google_Plus_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Google_Plus_main.png; sourceTree = "<group>"; };
+		FCEF432F1BFDF6D50013B1E5 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		FCEF43301BFDF6D50013B1E5 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		FCEF43311BFDF6D50013B1E5 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		FCEF43341BFDFAB20013B1E5 /* Mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mobile.png; sourceTree = "<group>"; };
+		FCEF43361BFDFAD10013B1E5 /* List1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = List1.png; sourceTree = "<group>"; };
+		FCEF43381BFDFB4B0013B1E5 /* First1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = First1.png; sourceTree = "<group>"; };
+		FCEF43391BFDFB4B0013B1E5 /* Second1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Second1.png; sourceTree = "<group>"; };
 		FCFA19091BF9A23A00FAAD99 /* GoParties.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoParties.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFA190D1BF9A23A00FAAD99 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FCFA190F1BF9A23A00FAAD99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -554,6 +590,17 @@
 		FCC8C2C21BFC62DA006056EA /* App Icons */ = {
 			isa = PBXGroup;
 			children = (
+				FCEF43381BFDFB4B0013B1E5 /* First1.png */,
+				FCEF43391BFDFB4B0013B1E5 /* Second1.png */,
+				FCEF43361BFDFAD10013B1E5 /* List1.png */,
+				FCEF43341BFDFAB20013B1E5 /* Mobile.png */,
+				FCEF432A1BFDF6610013B1E5 /* facebook_circle_color_main.png */,
+				FCEF432C1BFDF6660013B1E5 /* Google_Plus_main.png */,
+				FCEF43281BFDF62C0013B1E5 /* Lock1.png */,
+				FCEF43261BFDF5D50013B1E5 /* User.png */,
+				FCEF43221BFDF1C50013B1E5 /* Toggle_main.png */,
+				FCEF431C1BFDF00A0013B1E5 /* Notification_Bell_main.png */,
+				FCEF431D1BFDF00A0013B1E5 /* search-icon_main.png */,
 				FCC8C37F1BFC9892006056EA /* Welcome_bg.png */,
 				FCC8C3801BFC9892006056EA /* welcome_logo.png */,
 				FCC8C2C31BFC62DA006056EA /* add.png */,
@@ -743,6 +790,26 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		FCEF43161BFDAB800013B1E5 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				FCEF43171BFDAB980013B1E5 /* MainViewController.h */,
+				FCEF43181BFDAB980013B1E5 /* MainViewController.m */,
+				FCEF43191BFDAB980013B1E5 /* MainViewController.xib */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
+		FCEF432E1BFDF6BA0013B1E5 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				FCEF432F1BFDF6D50013B1E5 /* RegisterViewController.h */,
+				FCEF43301BFDF6D50013B1E5 /* RegisterViewController.m */,
+				FCEF43311BFDF6D50013B1E5 /* RegisterViewController.xib */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		FCFA19001BF9A23900FAAD99 = {
 			isa = PBXGroup;
 			children = (
@@ -766,9 +833,13 @@
 		FCFA190B1BF9A23A00FAAD99 /* GoParties */ = {
 			isa = PBXGroup;
 			children = (
+				FCEF43121BFDA4130013B1E5 /* Default@2x.png */,
+				FCEF43131BFDA4130013B1E5 /* Default.png */,
 				FCFA190F1BF9A23A00FAAD99 /* AppDelegate.h */,
 				FCFA19101BF9A23A00FAAD99 /* AppDelegate.m */,
 				FCB74BA31BFB34D30035BE0C /* MenuScreen */,
+				FCEF43161BFDAB800013B1E5 /* MainView */,
+				FCC8C3E21BFCA39E006056EA /* Login */,
 				FCFA19441BF9A2F400FAAD99 /* Home */,
 				FCB74BA41BFB37830035BE0C /* SearchParties */,
 				FCB74BAA1BFB37C20035BE0C /* PartiesNearYou */,
@@ -824,11 +895,11 @@
 		FCFA19441BF9A2F400FAAD99 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				FCEF432E1BFDF6BA0013B1E5 /* Register */,
 				FCC8C3851BFC9C79006056EA /* KASlideShow */,
 				FCFA193F1BF9A2E100FAAD99 /* HomeViewController.h */,
 				FCFA19401BF9A2E100FAAD99 /* HomeViewController.m */,
 				FCFA19411BF9A2E100FAAD99 /* HomeViewController.xib */,
-				FCC8C3E21BFCA39E006056EA /* Login */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -945,6 +1016,7 @@
 				FCC8C3341BFC62DB006056EA /* comment.png in Resources */,
 				FCC8C3721BFC62DB006056EA /* trending.png in Resources */,
 				FCC8C3441BFC62DB006056EA /* gps-fixed.png in Resources */,
+				FCEF43151BFDA4130013B1E5 /* Default.png in Resources */,
 				FCC8C3581BFC62DB006056EA /* Lock 2.png in Resources */,
 				FCC8C3241BFC62DB006056EA /* Alcohol.png in Resources */,
 				FCC8C3551BFC62DB006056EA /* Locate.png in Resources */,
@@ -959,13 +1031,16 @@
 				FCB74B951BFB346C0035BE0C /* SlideCustomCell.xib in Resources */,
 				FCC8C34F1BFC62DB006056EA /* icon-share.png in Resources */,
 				FCC8C3761BFC62DB006056EA /* user_male.png in Resources */,
+				FCEF43271BFDF5D50013B1E5 /* User.png in Resources */,
 				FCFA191C1BF9A23A00FAAD99 /* LaunchScreen.storyboard in Resources */,
 				FCC8C34E1BFC62DB006056EA /* icon-search.png in Resources */,
 				FCB74BD31BFB393E0035BE0C /* NotificationViewController.xib in Resources */,
 				FCC8C32B1BFC62DB006056EA /* calendar.png in Resources */,
 				FCC8C36A1BFC62DB006056EA /* Settings.png in Resources */,
+				FCEF43291BFDF62C0013B1E5 /* Lock1.png in Resources */,
 				FCC8C3351BFC62DB006056EA /* contacts.png in Resources */,
 				FCC8C3391BFC62DB006056EA /* facebook.png in Resources */,
+				FCEF43141BFDA4130013B1E5 /* Default@2x.png in Resources */,
 				FCC8C3541BFC62DB006056EA /* list.png in Resources */,
 				FCC8C3291BFC62DB006056EA /* bookmark-outline.png in Resources */,
 				FCC8C3E71BFCA3BA006056EA /* LoginViewController.xib in Resources */,
@@ -977,10 +1052,12 @@
 				FCC8C3501BFC62DB006056EA /* image.png in Resources */,
 				FCC8C3791BFC62DB006056EA /* view.png in Resources */,
 				FCC8C35E1BFC62DB006056EA /* Map-marker.png in Resources */,
+				FCEF43371BFDFAD10013B1E5 /* List1.png in Resources */,
 				FCC8C36E1BFC62DB006056EA /* tag_icon.png in Resources */,
 				FCC8C37A1BFC62DB006056EA /* view1.png in Resources */,
 				FCC8C3311BFC62DB006056EA /* Christmas_Gift.png in Resources */,
 				FCC8C36C1BFC62DB006056EA /* share_icon.png in Resources */,
+				FCEF433B1BFDFB4B0013B1E5 /* Second1.png in Resources */,
 				FCC8C36F1BFC62DB006056EA /* text.png in Resources */,
 				FCC8C3671BFC62DB006056EA /* search.png in Resources */,
 				FCFA19191BF9A23A00FAAD99 /* Assets.xcassets in Resources */,
@@ -991,15 +1068,18 @@
 				FCFA19171BF9A23A00FAAD99 /* Main.storyboard in Resources */,
 				FCC8C3741BFC62DB006056EA /* twitter_circle_color.png in Resources */,
 				FCC8C3641BFC62DB006056EA /* Pencil.png in Resources */,
+				FCEF432B1BFDF6610013B1E5 /* facebook_circle_color_main.png in Resources */,
 				FCC8C3751BFC62DB006056EA /* Uncheck.png in Resources */,
 				FCC8C37B1BFC62DB006056EA /* Welcome-bg.png in Resources */,
 				FCC8C3481BFC62DB006056EA /* home_48px.png in Resources */,
 				FCC8C3601BFC62DB006056EA /* Music.png in Resources */,
 				FCC8C3711BFC62DB006056EA /* Toggle.png in Resources */,
+				FCEF431E1BFDF00A0013B1E5 /* Notification_Bell_main.png in Resources */,
 				FCC8C33B1BFC62DB006056EA /* filter.png in Resources */,
 				FCC8C3681BFC62DB006056EA /* Seprator.png in Resources */,
 				FCC8C3701BFC62DB006056EA /* thumbnails.png in Resources */,
 				FCB74BD91BFB39660035BE0C /* SettingsViewController.xib in Resources */,
+				FCEF431F1BFDF00A0013B1E5 /* search-icon_main.png in Resources */,
 				FCC8C33D1BFC62DB006056EA /* FOLLOW.png in Resources */,
 				FCC8C36D1BFC62DB006056EA /* tag.png in Resources */,
 				FCC8C3781BFC62DB006056EA /* video-youtube.png in Resources */,
@@ -1013,6 +1093,8 @@
 				FCC8C32D1BFC62DB006056EA /* cascade_display.png in Resources */,
 				FCC8C34B1BFC62DB006056EA /* Home_Icon.png in Resources */,
 				FCC8C37E1BFC62DB006056EA /* whatsup.png in Resources */,
+				FCEF43331BFDF6D50013B1E5 /* RegisterViewController.xib in Resources */,
+				FCEF43351BFDFAB20013B1E5 /* Mobile.png in Resources */,
 				FCC8C32E1BFC62DB006056EA /* CD-Music.png in Resources */,
 				FCC8C3841BFC99AC006056EA /* continue_as_guest.png in Resources */,
 				FCC8C33F1BFC62DB006056EA /* FOLLOWED.png in Resources */,
@@ -1024,7 +1106,9 @@
 				FCC8C3631BFC62DB006056EA /* Notification_Bell.png in Resources */,
 				FCC8C37C1BFC62DB006056EA /* WhatsApp-icon.png in Resources */,
 				FCC8C3271BFC62DB006056EA /* Bell.png in Resources */,
+				FCEF43231BFDF1C50013B1E5 /* Toggle_main.png in Resources */,
 				FCC8C36B1BFC62DB006056EA /* share.png in Resources */,
+				FCEF433A1BFDFB4B0013B1E5 /* First1.png in Resources */,
 				FCC8C3381BFC62DB006056EA /* Email.png in Resources */,
 				FCC8C37D1BFC62DB006056EA /* WhatsApp.png in Resources */,
 				FCC8C3261BFC62DB006056EA /* beer.png in Resources */,
@@ -1041,6 +1125,7 @@
 				FCC8C3471BFC62DB006056EA /* home.png in Resources */,
 				FCC8C3251BFC62DB006056EA /* balloon.png in Resources */,
 				FCC8C3691BFC62DB006056EA /* setting.png in Resources */,
+				FCEF432D1BFDF6660013B1E5 /* Google_Plus_main.png in Resources */,
 				FCC8C3561BFC62DB006056EA /* location_pin.png in Resources */,
 				FCC8C3361BFC62DB006056EA /* Couple.png in Resources */,
 				FCFA19431BF9A2E100FAAD99 /* HomeViewController.xib in Resources */,
@@ -1051,6 +1136,7 @@
 				FCC8C3571BFC62DB006056EA /* LocationArrow.png in Resources */,
 				FCC8C3451BFC62DB006056EA /* Hands-One-Finger-icon.png in Resources */,
 				FCC8C3401BFC62DB006056EA /* full_bell.png in Resources */,
+				FCEF431B1BFDAB980013B1E5 /* MainViewController.xib in Resources */,
 				FCC8C3811BFC9892006056EA /* Welcome_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1081,6 +1167,7 @@
 				FCB74B981BFB34920035BE0C /* SWRevealViewController.m in Sources */,
 				FCC8C3D01BFC9E2C006056EA /* SDWebImageManager.m in Sources */,
 				FCC8C3CC1BFC9E2C006056EA /* SDWebImageCompat.m in Sources */,
+				FCEF43321BFDF6D50013B1E5 /* RegisterViewController.m in Sources */,
 				FCC8C3D11BFC9E2C006056EA /* SDWebImagePrefetcher.m in Sources */,
 				FCB74BC61BFB38C70035BE0C /* CreatePartiesViewController.m in Sources */,
 				FCC8C3DE1BFC9E2C006056EA /* SBJsonWriter.m in Sources */,
@@ -1101,6 +1188,7 @@
 				FCC8C3D41BFC9E2C006056EA /* UIImage+MultiFormat.m in Sources */,
 				FCC8C3CD1BFC9E2C006056EA /* SDWebImageDecoder.m in Sources */,
 				FCC8C3CA1BFC9E2C006056EA /* NSData+ImageContentType.m in Sources */,
+				FCEF431A1BFDAB980013B1E5 /* MainViewController.m in Sources */,
 				FCB74BD21BFB393E0035BE0C /* NotificationViewController.m in Sources */,
 				FCC8C3CF1BFC9E2C006056EA /* SDWebImageDownloaderOperation.m in Sources */,
 				FCC8C3C91BFC9E2C006056EA /* MKAnnotationView+WebCache.m in Sources */,

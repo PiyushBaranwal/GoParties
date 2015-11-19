@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="nameTextField" destination="TAk-aY-u8k" id="FTJ-kB-oz0"/>
+                <outlet property="passTextField" destination="RlP-fl-jin" id="AAi-Kq-IWD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,14 +35,20 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDF-FG-w5a">
                     <rect key="frame" x="99" y="429" width="50" height="50"/>
-                    <state key="normal" backgroundImage="facebook_circle_color.png"/>
+                    <state key="normal" backgroundImage="facebook_circle_color_main.png"/>
+                    <connections>
+                        <action selector="fbBtnClick:" destination="-1" eventType="touchUpInside" id="lET-yY-9Et"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgj-cY-yP3">
                     <rect key="frame" x="172" y="429" width="50" height="50"/>
-                    <state key="normal" backgroundImage="Google_Plus.png"/>
+                    <state key="normal" backgroundImage="Google_Plus_main.png"/>
+                    <connections>
+                        <action selector="gpBtnClick:" destination="-1" eventType="touchUpInside" id="ahM-tw-8l3"/>
+                    </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RlP-fl-jin">
-                    <rect key="frame" x="28" y="221" width="271" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RlP-fl-jin">
+                    <rect key="frame" x="69" y="228" width="230" height="38"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -51,6 +59,9 @@
                     <state key="normal" title="Feeling Forgetful?">
                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </state>
+                    <connections>
+                        <action selector="feelForgetBtnClick:" destination="-1" eventType="touchUpInside" id="afQ-NT-yMu"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnZ-gF-fKH">
                     <rect key="frame" x="161" y="524" width="159" height="44"/>
@@ -59,22 +70,28 @@
                     <state key="normal" title="Register a  Account">
                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </state>
+                    <connections>
+                        <action selector="regBtnClick:" destination="-1" eventType="touchUpInside" id="x0G-bm-yOT"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-aO-b8T">
-                    <rect key="frame" x="28" y="58" width="265" height="81"/>
+                    <rect key="frame" x="28" y="78" width="265" height="81"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TAk-aY-u8k">
-                    <rect key="frame" x="28" y="170" width="271" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email or Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TAk-aY-u8k">
+                    <rect key="frame" x="69" y="179" width="230" height="38"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzw-bP-TGj">
-                    <rect key="frame" x="28" y="277" width="271" height="30"/>
+                    <rect key="frame" x="28" y="277" width="271" height="38"/>
                     <color key="backgroundColor" red="0.6853361278223411" green="0.53478927933175036" blue="0.29765998891950801" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="LOGIN">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="loginBtnClick:" destination="-1" eventType="touchUpInside" id="u3p-jh-X17"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3x-Cp-gpt">
                     <rect key="frame" x="143" y="331" width="42" height="21"/>
@@ -89,15 +106,23 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="User.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZCF-OI-K1V">
+                    <rect key="frame" x="29" y="179" width="40" height="38"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lock1.png" translatesAutoresizingMaskIntoConstraints="NO" id="ILt-0O-kIo">
+                    <rect key="frame" x="29" y="228" width="40" height="38"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="237" y="359"/>
         </view>
     </objects>
     <resources>
-        <image name="Google_Plus.png" width="72" height="72"/>
+        <image name="Google_Plus_main.png" width="72" height="72"/>
+        <image name="Lock1.png" width="72" height="72"/>
+        <image name="User.png" width="72" height="72"/>
         <image name="Welcome_bg.png" width="720" height="614"/>
-        <image name="facebook_circle_color.png" width="72" height="72"/>
+        <image name="facebook_circle_color_main.png" width="72" height="72"/>
         <image name="welcome_logo.png" width="510" height="133"/>
     </resources>
 </document>

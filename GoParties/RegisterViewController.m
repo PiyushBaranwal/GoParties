@@ -1,19 +1,18 @@
 //
-//  LoginViewController.m
+//  RegisterViewController.m
 //  GoParties
 //
-//  Created by GoParties on 18/11/15.
+//  Created by GoParties on 19/11/15.
 //  Copyright © 2015 GoParties. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import "MainViewController.h"
+#import "RegisterViewController.h"
 
-@interface LoginViewController ()
+@interface RegisterViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation RegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,21 +34,4 @@
 }
 */
 
-- (IBAction)loginBtnClick:(id)sender {
-    
-    MainViewController *objLog=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
-    [self.navigationController pushViewController:objLog animated:YES];
-}
-
-- (IBAction)fbBtnClick:(id)sender {
-}
-
-- (IBAction)gpBtnClick:(id)sender {
-}
-
-- (IBAction)feelForgetBtnClick:(id)sender {
-}
-
-- (IBAction)regBtnClick:(id)sender {
-}
 @end

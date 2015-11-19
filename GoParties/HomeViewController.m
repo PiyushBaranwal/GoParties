@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "LoginViewController.h"
+#import "MainViewController.h"
 
 @interface HomeViewController ()
 
@@ -21,26 +22,23 @@
 
 - (void)viewDidLoad {
     
-   // self.title = NSLocalizedString(@"Home", nil);
     [super viewDidLoad];
     
-    
-    
     //To change the navigation title bar color
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName]];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
     //    // To add the functionality of left menu bar button
     
     self.title = NSLocalizedString(@"Home", nil);
     NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIColor blackColor],NSForegroundColorAttributeName,
-                                    [UIColor blackColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"Open Sans" size:20],NSFontAttributeName,nil];
+                                    [UIColor whiteColor],NSForegroundColorAttributeName,
+                                    [UIColor whiteColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"Open Sans" size:20],NSFontAttributeName,nil];
     self.navigationController.navigationBar.titleTextAttributes = textAttributes;
     
     SWRevealViewController *revealController = [self revealViewController];
     // [revealController panGestureRecognizer];
     [revealController tapGestureRecognizer];
     
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"]
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Toggle_main.png"]
                                                                          style:UIBarButtonItemStylePlain target:revealController action:@selector(revealToggle:)];
     
     
@@ -49,22 +47,11 @@
     
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
+    //To set the left BarButton background color
+    self.navigationItem.leftBarButtonItem.tintColor = [ UIColor whiteColor];
     
     // to add right bar buttons
-    UIBarButtonItem *searchButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"]
-                                                                         style:UIBarButtonItemStylePlain target:revealController action:@selector(search)];
-    self.navigationItem.rightBarButtonItem = searchButtonItem;
-    
-    
-    //To set the left BarButton background color
-    self.navigationItem.leftBarButtonItem.tintColor = [ UIColor blackColor];
-    // Do any additional setup after loading the view from its nib.
-    
-
-//   self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.loginBtn setBackgroundColor:[UIColor colorWithRed:96.0 green:3.0 blue:125.0 alpha:1.0]];
-    //self.loginBtn.backgroundColor=[UIColor colorWithRed:96.0 green:3.0 blue:125.0 alpha:1.0];
-    
+    [self AddRightBarButtonItems];
     
         // KASlideshow
         slideshow.delegate = self;
@@ -85,6 +72,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+-(void)AddRightBarButtonItems
+{
+    //To add searchButton on the right navbar
+    UIButton *Button1 = [[UIButton alloc] initWithFrame:CGRectMake(100, 10, 25, 25)];
+    [Button1 setImage:[UIImage imageNamed:@"search-icon_main.png"] forState:UIControlStateNormal];
+    [Button1 addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *searchButton= [[UIBarButtonItem alloc]initWithCustomView:Button1];
+    
+    
+    UIButton *Button = [[UIButton alloc] initWithFrame:CGRectMake(100, 10, 25, 25)];
+    [Button setImage:[UIImage imageNamed:@"Notification_Bell_main.png"] forState:UIControlStateNormal];
+    [Button addTarget:self action:@selector(bell) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *bellButton= [[UIBarButtonItem alloc]initWithCustomView:Button];
+    
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:searchButton, bellButton, nil]];
+
+}
+
+-(void)search
+{
+    
+}
+
+-(void)bell
+{
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -102,6 +119,10 @@
     LoginViewController *objLog=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
     [self.navigationController pushViewController:objLog animated:YES];
     
+    
+   
+
+    
 }
 
 - (IBAction)signUpBtnClick:(id)sender {
@@ -114,5 +135,7 @@
 }
 
 - (IBAction)continueAsGuestBtnClick:(id)sender {
+    MainViewController *objLog=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+    [self.navigationController pushViewController:objLog animated:YES];
 }
 @end

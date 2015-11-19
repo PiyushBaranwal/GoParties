@@ -27,9 +27,9 @@
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
     
     //To set teh navigation bar color - .106,27,154
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0 green:27.0 blue:154.0 alpha:1.00]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00]];
     //to set teh navigation bar color
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+   // self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     
     UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:self.objHome];
