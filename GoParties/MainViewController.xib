@@ -27,7 +27,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDl-rR-9hh">
                     <rect key="frame" x="0.0" y="525" width="320" height="44"/>
                     <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="ACCESS GOPARTIES SOCIAL NETWORK">
+                    <state key="normal" title="ACCESS GOPARTIES SOCIAL NETWORK" backgroundImage="Footer_singlebtn.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -36,4 +36,7 @@
             <point key="canvasLocation" x="245" y="311"/>
         </view>
     </objects>
+    <resources>
+        <image name="Footer_singlebtn.png" width="720" height="170"/>
+    </resources>
 </document>

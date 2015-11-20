@@ -18,10 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoC-HT-w2o">
+                    <rect key="frame" x="137" y="524" width="46" height="44"/>
+                    <state key="normal" backgroundImage="yello backgroundbtn.png"/>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SJ-dK-p1j">
                     <rect key="frame" x="0.0" y="524" width="160" height="44"/>
                     <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="LOGIN">
+                    <state key="normal" title="LOGIN" backgroundImage="Footer_singlebtn.png">
                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </state>
                     <connections>
@@ -31,7 +35,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cv0-Mw-IX5">
                     <rect key="frame" x="161" y="524" width="159" height="44"/>
                     <color key="backgroundColor" red="0.43859640472494954" green="0.17975661635094553" blue="0.71174544152626262" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="SIGNUP">
+                    <state key="normal" title="SIGNUP" backgroundImage="Footer_singlebtn.png">
                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </state>
                     <connections>
@@ -86,13 +90,15 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="281" y="306"/>
+            <point key="canvasLocation" x="42" y="272"/>
         </view>
     </objects>
     <resources>
+        <image name="Footer_singlebtn.png" width="720" height="170"/>
         <image name="Google_Plus.png" width="72" height="72"/>
         <image name="Welcome_bg.png" width="720" height="614"/>
         <image name="continue_as_guest.png" width="229" height="54"/>
         <image name="facebook_circle_color.png" width="72" height="72"/>
+        <image name="yello backgroundbtn.png" width="438" height="64"/>
     </resources>
 </document>

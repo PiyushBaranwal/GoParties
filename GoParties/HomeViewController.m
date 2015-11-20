@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "LoginViewController.h"
 #import "MainViewController.h"
+#import "RegisterViewController.h"
 
 @interface HomeViewController ()
 
@@ -126,6 +127,9 @@
 }
 
 - (IBAction)signUpBtnClick:(id)sender {
+    
+    RegisterViewController *objLog=[[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
+    [self.navigationController pushViewController:objLog animated:YES];
 }
 
 - (IBAction)fbBtnClick:(id)sender {

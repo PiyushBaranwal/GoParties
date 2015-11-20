@@ -56,7 +56,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-NN-feW">
                     <rect key="frame" x="0.0" y="524" width="160" height="44"/>
                     <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Feeling Forgetful?">
+                    <state key="normal" title="Feeling Forgetful?" backgroundImage="Footer_singlebtn.png">
                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </state>
                     <connections>
@@ -67,7 +67,7 @@
                     <rect key="frame" x="161" y="524" width="159" height="44"/>
                     <color key="backgroundColor" red="0.4385964047" green="0.17975661640000001" blue="0.71174544149999996" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="Register a  Account">
+                    <state key="normal" title="Register a  Account" backgroundImage="Footer_singlebtn.png">
                         <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </state>
                     <connections>
@@ -86,7 +86,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzw-bP-TGj">
                     <rect key="frame" x="28" y="277" width="271" height="38"/>
                     <color key="backgroundColor" red="0.6853361278223411" green="0.53478927933175036" blue="0.29765998891950801" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="LOGIN">
+                    <state key="normal" title="LOGIN" backgroundImage="yello backgroundbtn.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -112,17 +112,23 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lock1.png" translatesAutoresizingMaskIntoConstraints="NO" id="ILt-0O-kIo">
                     <rect key="frame" x="29" y="228" width="40" height="38"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2f-K4-Ilg">
+                    <rect key="frame" x="137" y="524" width="46" height="44"/>
+                    <state key="normal" backgroundImage="yello backgroundbtn.png"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="237" y="359"/>
         </view>
     </objects>
     <resources>
+        <image name="Footer_singlebtn.png" width="720" height="170"/>
         <image name="Google_Plus_main.png" width="72" height="72"/>
         <image name="Lock1.png" width="72" height="72"/>
         <image name="User.png" width="72" height="72"/>
         <image name="Welcome_bg.png" width="720" height="614"/>
         <image name="facebook_circle_color_main.png" width="72" height="72"/>
         <image name="welcome_logo.png" width="510" height="133"/>
+        <image name="yello backgroundbtn.png" width="438" height="64"/>
     </resources>
 </document>

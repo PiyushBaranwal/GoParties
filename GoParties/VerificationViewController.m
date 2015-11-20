@@ -1,26 +1,25 @@
 //
-//  RegisterViewController.m
+//  VerificationViewController.m
 //  GoParties
 //
-//  Created by GoParties on 19/11/15.
+//  Created by GoParties on 20/11/15.
 //  Copyright © 2015 GoParties. All rights reserved.
 //
 
+#import "VerificationViewController.h"
+#import "LoginViewController.h"
 #import "RegisterViewController.h"
 
-@interface RegisterViewController ()
+@interface VerificationViewController ()
 
 @end
 
-@implementation RegisterViewController
+@implementation VerificationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    verificationTextField.delegate=self;
     
-    usertextField.delegate=self;
-    passTextField.delegate=self;
-    mobileTextFiled.delegate=self;
-    typeTextField.delegate=self;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -39,11 +38,26 @@
 }
 */
 
+- (IBAction)submitBtnClick:(id)sender {
+}
+
+- (IBAction)loginBtnClick:(id)sender {
+    
+    LoginViewController *objLog=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    [self.navigationController pushViewController:objLog animated:YES];
+}
+
+- (IBAction)signupBtnClick:(id)sender {
+    
+    RegisterViewController *objLog=[[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
+    [self.navigationController pushViewController:objLog animated:YES];
+}
+
 
 //To remove virtual keyboard from screen
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //[self.view endEditing:YES];
+    [self.view endEditing:YES];
 }
 
 
@@ -72,44 +86,15 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     
-    if (textField==usertextField || textField==passTextField)
-    {
-        // added this line on 02.07.15
-        // [textField resignFirstResponder];
-    }
     
-    else if(textField==mobileTextFiled || textField==typeTextField)
-    {
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.35f];
         CGRect frame = self.view.frame; frame.origin.y = -150;
         [self.view setFrame:frame];
         [UIView commitAnimations];
-    }
-    else
-    {
-        // added this line on 02.07.15
-        // [textField resignFirstResponder];
-    }
+
     
 }
 
 
-- (IBAction)typeBtnClick:(id)sender {
-}
-
-- (IBAction)regBtnClick:(id)sender {
-}
-
-- (IBAction)fbBtnClick:(id)sender {
-}
-
-- (IBAction)gpBtnClick:(id)sender {
-}
-
-- (IBAction)contAsGuestBtnClick:(id)sender {
-}
-
-- (IBAction)haveAccBtnClick:(id)sender {
-}
 @end

@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 #import "KASlideShow.h"
 
-@interface MainViewController : UIViewController<SWRevealViewControllerDelegate,KASlideShowDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface MainViewController : UIViewController<SWRevealViewControllerDelegate,KASlideShowDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 {
     IBOutlet UITableView *listTableView;
@@ -18,6 +18,11 @@
     NSMutableArray *iconImgArray;
     NSMutableArray *titleArray;
     NSMutableArray *descArray;
+    
+    UIView *popUpView;
+    UITextField  *locTextField;
+    UITextField  *catTextField;
+    UITextField  *typeTextField;
 }
 
 
