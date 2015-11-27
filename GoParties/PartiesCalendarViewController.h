@@ -10,9 +10,25 @@
 #import "SWRevealViewController.h"
 
 
-@interface PartiesCalendarViewController : UIViewController<SWRevealViewControllerDelegate>
+@interface PartiesCalendarViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
+    UIView *popUpView;
+    UITextField  *locTextField;
+    UITextField  *catTextField;
+    UITextField  *typeTextField;
     
+    UIImageView *locIcon;
+    UIImageView *catIcon;
+    UIImageView *typeIcon;
+    
+    
+    
+    UIButton *clickedBtn;
+    UIPickerView *pickerView;
+    
+    NSMutableArray *locationArray;
+    NSMutableArray *categoryArray;
+    NSMutableArray *typeArray;
 }
 @property (strong, nonatomic) SWRevealViewController *viewController;
 

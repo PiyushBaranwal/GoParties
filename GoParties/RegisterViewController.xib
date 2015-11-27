@@ -77,8 +77,9 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-Le-5xt">
                     <rect key="frame" x="0.0" y="524" width="160" height="44"/>
                     <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Continue as Guest" backgroundImage="Footer_singlebtn.png">
-                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="CONTINUE AS GUEST" backgroundImage="Footer_singlebtn.png">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="contAsGuestBtnClick:" destination="-1" eventType="touchUpInside" id="4sO-1W-OoP"/>
@@ -87,12 +88,12 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3F-LM-bUY">
                     <rect key="frame" x="161" y="524" width="159" height="44"/>
                     <color key="backgroundColor" red="0.4385964047" green="0.17975661640000001" blue="0.71174544149999996" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="Already have Acc" backgroundImage="Footer_singlebtn.png">
-                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="LOGIN" backgroundImage="Footer_singlebtn.png">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="haveAccBtnClick:" destination="-1" eventType="touchUpInside" id="QWZ-lp-UTp"/>
+                        <action selector="loginBtnClick:" destination="-1" eventType="touchUpInside" id="msO-od-vD5"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="oST-YN-cts">

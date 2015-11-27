@@ -53,11 +53,16 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2f-K4-Ilg">
+                    <rect key="frame" x="137" y="524" width="46" height="44"/>
+                    <state key="normal" backgroundImage="yello backgroundbtn.png"/>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-NN-feW">
                     <rect key="frame" x="0.0" y="524" width="160" height="44"/>
                     <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Feeling Forgetful?" backgroundImage="Footer_singlebtn.png">
-                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="FEELING FORGETFUL?" backgroundImage="Footer_singlebtn.png">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="feelForgetBtnClick:" destination="-1" eventType="touchUpInside" id="afQ-NT-yMu"/>
@@ -66,12 +71,12 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnZ-gF-fKH">
                     <rect key="frame" x="161" y="524" width="159" height="44"/>
                     <color key="backgroundColor" red="0.4385964047" green="0.17975661640000001" blue="0.71174544149999996" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="Register a  Account" backgroundImage="Footer_singlebtn.png">
-                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="SIGN UP" backgroundImage="Footer_singlebtn.png">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="regBtnClick:" destination="-1" eventType="touchUpInside" id="x0G-bm-yOT"/>
+                        <action selector="signupBtnClick:" destination="-1" eventType="touchUpInside" id="ndf-ZA-dPi"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-aO-b8T">
@@ -94,7 +99,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3x-Cp-gpt">
-                    <rect key="frame" x="143" y="331" width="42" height="21"/>
+                    <rect key="frame" x="143" y="341" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -112,10 +117,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lock1.png" translatesAutoresizingMaskIntoConstraints="NO" id="ILt-0O-kIo">
                     <rect key="frame" x="29" y="228" width="40" height="38"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2f-K4-Ilg">
-                    <rect key="frame" x="137" y="524" width="46" height="44"/>
-                    <state key="normal" backgroundImage="yello backgroundbtn.png"/>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="237" y="359"/>

@@ -23,5 +23,6 @@
 - (IBAction)fbBtnClick:(id)sender;
 - (IBAction)gpBtnClick:(id)sender;
 - (IBAction)contAsGuestBtnClick:(id)sender;
-- (IBAction)haveAccBtnClick:(id)sender;
+//- (IBAction)haveAccBtnClick:(id)sender;
+- (IBAction)loginBtnClick:(id)sender;
 @end

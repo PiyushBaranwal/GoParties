@@ -7,6 +7,8 @@
 //
 
 #import "RegisterViewController.h"
+#import "MainViewController.h"
+#import "LoginViewController.h"
 
 @interface RegisterViewController ()
 
@@ -108,8 +110,16 @@
 }
 
 - (IBAction)contAsGuestBtnClick:(id)sender {
+    
+    MainViewController *objMain=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+    [self.navigationController pushViewController:objMain animated:YES];
 }
 
-- (IBAction)haveAccBtnClick:(id)sender {
+//- (IBAction)haveAccBtnClick:(id)sender {
+//}
+
+- (IBAction)loginBtnClick:(id)sender {
+    LoginViewController *objLog=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    [self.navigationController pushViewController:objLog animated:YES];
 }
 @end

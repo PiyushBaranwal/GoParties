@@ -9,9 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 
-@interface CreatePartiesViewController : UIViewController<SWRevealViewControllerDelegate>
+@interface CreatePartiesViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 {
+    UIView *popUpView;
+    UITextField  *locTextField;
+    UITextField  *catTextField;
+    UITextField  *typeTextField;
     
+    UIImageView *locIcon;
+    UIImageView *catIcon;
+    UIImageView *typeIcon;
+    
+    
+    
+    UIButton *clickedBtn;
+    UIPickerView *pickerView;
+    
+    NSMutableArray *locationArray;
+    NSMutableArray *categoryArray;
+    NSMutableArray *typeArray;
 }
 
 

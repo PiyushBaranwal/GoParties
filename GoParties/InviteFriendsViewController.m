@@ -17,20 +17,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //To change the navigation title bar color
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName]];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
     //    // To add the functionality of left menu bar button
     
     self.title = NSLocalizedString(@"Invite Friends", nil);
     NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIColor blackColor],NSForegroundColorAttributeName,
-                                    [UIColor blackColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"Open Sans" size:20],NSFontAttributeName,nil];
+                                    [UIColor whiteColor],NSForegroundColorAttributeName,
+                                    [UIColor whiteColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"Open Sans" size:20],NSFontAttributeName,nil];
     self.navigationController.navigationBar.titleTextAttributes = textAttributes;
     
     SWRevealViewController *revealController = [self revealViewController];
     // [revealController panGestureRecognizer];
     [revealController tapGestureRecognizer];
     
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"]
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Toggle_main.png"]
                                                                          style:UIBarButtonItemStylePlain target:revealController action:@selector(revealToggle:)];
     
     
@@ -41,7 +41,7 @@
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
     //To set the left BarButton background color
-    self.navigationItem.leftBarButtonItem.tintColor = [ UIColor blackColor];
+    self.navigationItem.leftBarButtonItem.tintColor = [ UIColor whiteColor];
     // Do any additional setup after loading the view from its nib.
 }
 

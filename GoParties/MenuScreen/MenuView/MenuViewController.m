@@ -21,6 +21,7 @@
 #import "InviteFriendsViewController.h"
 #import "NotificationViewController.h"
 #import "SettingsViewController.h"
+#import "LoginViewController.h"
 
 
 
@@ -151,7 +152,7 @@
     
     //For circular Profile ButtonImage.
     iconBtn.layer.cornerRadius = userImgView.frame.size.width / 2;
-    iconBtn.layer.borderWidth = 3.0f;
+    //iconBtn.layer.borderWidth = 3.0f;
     iconBtn.layer.borderColor = [UIColor colorWithRed:205.0/255.0 green:205.0/255.0 blue:205.0/255.0 alpha:1.0].CGColor;
     iconBtn.clipsToBounds = YES;
     
@@ -251,102 +252,108 @@
         cell=[nib objectAtIndex:0];
     }
     cell.backgroundColor=[UIColor whiteColor];
-    // cell.textLabel.textColor=[UIColor whiteColor];
-    // cell.contentView.backgroundColor = [UIColor blackColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    // to change the cell color on click.
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor whiteColor];
+    [cell setSelectedBackgroundView:bgColorView];
     
-    textLbl.textColor=[UIColor blackColor];
+    //to change the textcolor on cell selection
+    textLbl.highlightedTextColor = [UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];
+    textLbl.font=[UIFont fontWithName:@"ClementePDag" size:14];//16
+
 
     if (indexPath.row==0)
     {
-       //textLbl.text = @"Home/MyMemberShips";
-        textLbl.text = @"Home";
-        logoImgView.image=[UIImage imageNamed:@"home.png"];
-        //To set the image on run time
-        UIImageView *locIndImage=[[UIImageView alloc] initWithFrame:CGRectMake(10, 4, 6, 54)];
-        locIndImage.image=[UIImage imageNamed:@"home_left_divider.png"];
-         [cell.contentView addSubview:locIndImage];
-        indeImgView.hidden=YES;
         
-//        //to change the logo image on cell selection
-//        logoImgView.highlightedImage=[UIImage imageNamed:@"home_xxhd_hover_05.png"];
-//        textLbl.text = @"My Programs";
-//        logoImgView.image=[UIImage imageNamed:@"home_xxhd_03.png"];
-//        indeImgView.hidden=YES;
+        //to change the logo image on cell selection
+        logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_house.png"];
+        textLbl.text = @"Home";
+        logoImgView.image=[UIImage imageNamed:@"home_house.png"];
+        indeImgView.hidden=YES;
 
     }
     if (indexPath.row==1)
     {
-        
+        logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_search_parties.png"];
         textLbl.text = @"Search Parties";
-        logoImgView.image=[UIImage imageNamed:@"search.png"];
-        
-        
-//        //to change the logo image on cell selection
-//        logoImgView.highlightedImage=[UIImage imageNamed:@"resort_xxhd_hover_05.png"];
-//        
-//        textLbl.text = @"Add a Program";
-//        // textLbl.font=[UIFont fontWithName:@"ClementePDag" size:18];
-//        logoImgView.image=[UIImage imageNamed:@"resort_xxhd_03.png"];
+        logoImgView.image=[UIImage imageNamed:@"home_search_parties.png"];
+        indeImgView.hidden=YES;
 
     }
     if (indexPath.row==2)
     {
+    logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_parties_near_you.png"];
         textLbl.text = @"Parties Near You";
-        logoImgView.image=[UIImage imageNamed:@"LocationArrow.png"];
-        // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+         logoImgView.image=[UIImage imageNamed:@"home_parties_near_you.png"];
+        indeImgView.hidden=YES;
     }
     
     if (indexPath.row==3)
     {
-        textLbl.text = @"Trending Parties";
-        logoImgView.image=[UIImage imageNamed:@"trending.png"];
-        // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+    logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_trending_parties.png"];
+       textLbl.text = @"Trending Parties";
+        logoImgView.image=[UIImage imageNamed:@"home_trending_parties.png"];
+        indeImgView.hidden=YES;
     }
     
     if (indexPath.row==4)
     {
-        textLbl.text = @"Special Deals";
-        logoImgView.image=[UIImage imageNamed:@"message_menu_icon.png"];
-        // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+       
+        logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_special_deals.png"];
+         textLbl.text = @"Special Deals";
+        logoImgView.image=[UIImage imageNamed:@"home_special_deals.png"];
+        indeImgView.hidden=YES;
     }
     if (indexPath.row==5)
     {
+        logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_calendar.png"];
         textLbl.text = @"Parties Master Calendar";
-        logoImgView.image=[UIImage imageNamed:@"calendar.png"];
-        // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+         logoImgView.image=[UIImage imageNamed:@"home_calendar.png"];
+        indeImgView.hidden=YES;
+
     }
     if (indexPath.row==6)
     {
-        textLbl.text = @"Create Parties";
-        logoImgView.image=[UIImage imageNamed:@"add_cross_new_plus.png"];
-        // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+        logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_create_parties.png"];
+       textLbl.text = @"Create Parties";
+         logoImgView.image=[UIImage imageNamed:@"home_create_parties.png"];
+        indeImgView.hidden=YES;
     }
     if (indexPath.row==7)
     {
+    logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_invite_friend.png"];
         textLbl.text = @"Invite Freinds to GoParties";
-        logoImgView.image=[UIImage imageNamed:@"share.png"];
-        // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+         logoImgView.image=[UIImage imageNamed:@"home_invite_friend.png"];
+        indeImgView.hidden=YES;
     }
     if (indexPath.row==8)
     {
+        logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_notification_frequency.png"];
         textLbl.text = @"Notification frequency";
-        logoImgView.image=[UIImage imageNamed:@"Notification_Bell.png"];
-        // [logoImgView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+        logoImgView.image=[UIImage imageNamed:@"home_notification_frequency.png"];
+        indeImgView.hidden=YES;
     }
     
     
     if (indexPath.row==9)
     {
-        textLbl.text = @"Settings";
-        logoImgView.image=[UIImage imageNamed:@"setting.png"];
+        
+    logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_setting.png"];
+       textLbl.text = @"Settings";
+        logoImgView.image=[UIImage imageNamed:@"home_setting.png"];
+        indeImgView.hidden=YES;
 
     }
     
     if (indexPath.row==10)
     {
-        textLbl.text = @"Logout";
-        logoImgView.image=[UIImage imageNamed:@"log_out.png"];
+       
+        
+        logoImgView.highlightedImage=[UIImage imageNamed:@"actve_home_logout.png"];
+         textLbl.text = @"Logout";
+        logoImgView.image=[UIImage imageNamed:@"home_logout.png"];
+        indeImgView.hidden=YES;
+
         
     }
 	return cell;
@@ -451,6 +458,9 @@
     else
     {
        // exit(0);
+        
+        LoginViewController *frontViewController = [[LoginViewController alloc] init];
+        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
     }
     
     [revealController pushFrontViewController:newFrontController animated:YES];
@@ -477,23 +487,23 @@
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   // NSLog(@"indexPath.row in didhighlight=%ld",indexPath.row);
-    // Add your Colour.
-        SlideCustomCell *cell1 = (SlideCustomCell *)[tableView cellForRowAtIndexPath:indexPath];
-        [self setCellColor:[UIColor colorWithRed:75.0f/255.0f green:193.0f/255.0f blue:210.0f/255.0f alpha:1] ForCell:cell1];
-    //highlight colour
-   // [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//   // NSLog(@"indexPath.row in didhighlight=%ld",indexPath.row);
+//    // Add your Colour.
+//        SlideCustomCell *cell1 = (SlideCustomCell *)[tableView cellForRowAtIndexPath:indexPath];
+//        [self setCellColor:[UIColor colorWithRed:106.0f/255.0f green:27.0f/255.0f blue:154.0f/255.0f alpha:1] ForCell:cell1];
+//    //highlight colour
+//   // [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-     NSLog(@"indexPath.row in didunhighlight=%ld",indexPath.row);
-    // Reset Colour.
-    SlideCustomCell *cell1 = (SlideCustomCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [self setCellColor:[UIColor colorWithRed:75.0f/255.0f green:193.0f/255.0f blue:210.0f/255.0f alpha:1] ForCell:cell1];
-    //normal color
+//     NSLog(@"indexPath.row in didunhighlight=%ld",indexPath.row);
+//    // Reset Colour.
+//    SlideCustomCell *cell1 = (SlideCustomCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    [self setCellColor:[UIColor colorWithRed:106.0f/255.0f green:27.0f/255.0f blue:154.0f/255.0f alpha:1] ForCell:cell1];
+//    //normal color
     
 }
 

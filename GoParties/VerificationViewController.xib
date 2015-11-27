@@ -32,7 +32,7 @@
                     <rect key="frame" x="0.0" y="524" width="160" height="44"/>
                     <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="LOGIN " backgroundImage="Footer_singlebtn.png">
-                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="loginBtnClick:" destination="-1" eventType="touchUpInside" id="kuP-tm-qcz"/>
@@ -43,7 +43,7 @@
                     <color key="backgroundColor" red="0.4385964047" green="0.17975661640000001" blue="0.71174544149999996" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="SIGN UP" backgroundImage="Footer_singlebtn.png">
-                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="signupBtnClick:" destination="-1" eventType="touchUpInside" id="KWD-uz-uEN"/>
@@ -52,7 +52,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Osz-8B-iwx">
                     <rect key="frame" x="28" y="78" width="265" height="81"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email or Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q0s-2h-zCX">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Verification Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q0s-2h-zCX">
                     <rect key="frame" x="69" y="240" width="230" height="38"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -68,7 +68,7 @@
                         <action selector="submitBtnClick:" destination="-1" eventType="touchUpInside" id="gRN-rJ-XZe"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="User.png" translatesAutoresizingMaskIntoConstraints="NO" id="A4O-l8-iND">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Verify.png" translatesAutoresizingMaskIntoConstraints="NO" id="A4O-l8-iND">
                     <rect key="frame" x="29" y="240" width="40" height="38"/>
                 </imageView>
             </subviews>
@@ -78,7 +78,7 @@
     </objects>
     <resources>
         <image name="Footer_singlebtn.png" width="720" height="170"/>
-        <image name="User.png" width="72" height="72"/>
+        <image name="Verify.png" width="72" height="72"/>
         <image name="Welcome_bg.png" width="720" height="614"/>
         <image name="welcome_logo.png" width="510" height="133"/>
         <image name="yello backgroundbtn.png" width="438" height="64"/>

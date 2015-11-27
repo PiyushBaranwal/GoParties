@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 #import "KASlideShow.h"
 
-@interface MainViewController : UIViewController<SWRevealViewControllerDelegate,KASlideShowDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface MainViewController : UIViewController<SWRevealViewControllerDelegate,KASlideShowDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 {
     IBOutlet UITableView *listTableView;
@@ -23,6 +23,21 @@
     UITextField  *locTextField;
     UITextField  *catTextField;
     UITextField  *typeTextField;
+    
+    UIImageView *locIcon;
+    UIImageView *catIcon;
+    UIImageView *typeIcon;
+    
+    
+    
+    UIButton *clickedBtn;
+    UIPickerView *pickerView;
+    
+    NSMutableArray *locationArray;
+    NSMutableArray *categoryArray;
+    NSMutableArray *typeArray;
+    
+    UIButton *btn;
 }
 
 
