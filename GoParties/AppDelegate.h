@@ -9,10 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 #import "HomeViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "SVGeocoder.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,SWRevealViewControllerDelegate>
+
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate,SWRevealViewControllerDelegate,CLLocationManagerDelegate>
 {
      HomeViewController *objHome;
+    CLLocationManager *locManager;
+    float curLat;
+    float curLong;
+
 }
 
 @property (strong, nonatomic) UIWindow *window;

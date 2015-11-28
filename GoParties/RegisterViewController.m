@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "MainViewController.h"
 #import "LoginViewController.h"
+#import "Singleton.h"
 
 @interface RegisterViewController ()
 
@@ -23,6 +24,16 @@
     passTextField.delegate=self;
     mobileTextFiled.delegate=self;
     typeTextField.delegate=self;
+    
+    
+    typeArray=[[NSMutableArray alloc]initWithObjects:@"individual",@"party place",@"concert",@"dj", @"artist",@"band",nil];
+    
+    //to set teh background image
+    typeBtn.backgroundColor=[UIColor clearColor];
+    [typeBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
+    [typeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    typeBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -98,9 +109,22 @@
 
 
 - (IBAction)typeBtnClick:(id)sender {
+    clickedBtn=(UIButton*)sender;
+    
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(106.0f, 315.0f, 270.0f, 150.0f)];
+    pickerView.delegate=self;
+    pickerView.dataSource=self;
+    pickerView.showsSelectionIndicator = YES;
+    [self.view addSubview:pickerView];
+    pickerView.backgroundColor=[UIColor whiteColor];
+
 }
 
 - (IBAction)regBtnClick:(id)sender {
+    
+    
+    [self CallingWebServiceForRegister];
+   
 }
 
 - (IBAction)fbBtnClick:(id)sender {
@@ -122,4 +146,132 @@
     LoginViewController *objLog=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
     [self.navigationController pushViewController:objLog animated:YES];
 }
+
+
+#pragma -mark
+#pragma  mark Picker view DelegateMethods
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    
+   
+        return typeArray.count;
+   
+    //    return adultArray.count;
+    
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    
+            return typeArray[row];
+   
+    //    return adultArray[row];
+}
+
+
+- (void)pickerView:(UIPickerView *)pickerView1 didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+            //to set the text
+        [typeTextField setText:[NSString stringWithFormat:@"  %@",[typeArray objectAtIndex:[pickerView selectedRowInComponent:0]]]];
+        typeTextField.font=[UIFont fontWithName:@"Source Sans Pro" size:15];
+    
+    pickerView.hidden=YES;
+    
+    //    [salutationTextField setText:[NSString stringWithFormat:@"%@",[countryArray objectAtIndex:[pickerView selectedRowInComponent:0]]]];
+    //    salutationPickerView.hidden=YES;
+}
+
+
+
+
+
+-(void)CallingWebServiceForRegister
+{
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        
+        //To get the userLat long from local database    ///  LinkInUSerCurLat
+        NSUserDefaults *userDef=  [NSUserDefaults standardUserDefaults];
+        double userLat=[[userDef objectForKey:@"UserCurLat"] doubleValue];
+        double userLong=[[userDef objectForKey:@"UserCurLong"] doubleValue];
+        NSLog(@"userLat=%f",userLat);
+        NSLog(@"userLong=%f",userLong);
+        
+        
+        NSString *post = [NSString stringWithFormat:@"email=%@&phone=%@&profile_type=%@&password=%@&latitude=%f&longitude=%f&access_token=%@",usertextField.text,mobileTextFiled.text,typeTextField.text,passTextField.text,userLat,userLong,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:@"http://api.startup-designer.com/register"]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:postData];
+        NSURLResponse *requestResponse;
+        NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
+        
+        NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+        NSLog(@"requestReply: %@", requestReply);
+        
+        if ([requestReply isEqualToString:@"[\"Success\"]"])
+        {
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"~info~"
+                                          message:@"You have successfully registered"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* okButton = [UIAlertAction
+                                        actionWithTitle:@"OK"
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction * action)
+                                        {
+                                            //Handel your yes please button action here
+                                            [alert dismissViewControllerAnimated:YES completion:nil];
+                                            
+                                        }];
+//            UIAlertAction* noButton = [UIAlertAction
+//                                       actionWithTitle:@"No, thanks"
+//                                       style:UIAlertActionStyleDefault
+//                                       handler:^(UIAlertAction * action)
+//                                       {
+//                                           [alert dismissViewControllerAnimated:YES completion:nil];
+//                                           
+//                                       }];
+        
+            [alert addAction:okButton];
+            //[alert addAction:noButton];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        
+        else
+            
+        {
+            //            [Utils showAlertView:nil message:@"Error" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok"];
+        }
+        
+        
+        
+        
+    }
+    else
+    {
+        //To show error no internet connection
+        [Singleton connectionErrorMsg];
+    }
+    
+}
+
+
+
 @end

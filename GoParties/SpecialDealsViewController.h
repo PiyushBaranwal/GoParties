@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 
-@interface SpecialDealsViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
+@interface SpecialDealsViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
 {
+    IBOutlet UITableView *dealsTableView;
+    
+    
     UIView *popUpView;
     UITextField  *locTextField;
     UITextField  *catTextField;
@@ -29,6 +32,8 @@
     NSMutableArray *categoryArray;
     NSMutableArray *typeArray;
 }
+
+@property (nonatomic,retain)IBOutlet UITableView *dealsTableView;
 
 @property (strong, nonatomic) SWRevealViewController *viewController;
 @end

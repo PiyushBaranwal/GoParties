@@ -14,6 +14,8 @@
 
 @implementation SpecialDealsViewController
 
+@synthesize dealsTableView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -288,6 +290,212 @@
     
     //[adultTextField resignFirstResponder];
     
+}
+
+
+
+#pragma -mark
+#pragma mark TableView delegate methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    if (titleArray.count==0)
+    //    {
+    //        return 200;
+    //    }
+    //    else
+    //    {
+    //        return 200*(titleArray.count+1);
+    //    }
+    
+    
+    return 125*5;
+    
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    
+}
+// to set the row background color
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor lightGrayColor];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+    // [cell1 setBackgroundColor:[UIColor lightGrayColor]];
+    //    [cell1 setBackgroundColor:[UIColor lightGrayColor]];
+    //    [self.view setBackgroundColor:[UIColor lightGrayColor]];
+    
+    
+    
+    if (cell1 == nil) {
+        cell1 = [[UITableViewCell alloc]
+                 initWithStyle:UITableViewCellStyleSubtitle
+                 reuseIdentifier:CellIdentifier];
+        
+    }
+    if (indexPath.row==0)
+    {
+        
+      // To set the segmented control.
+        UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Parties",@"Profiles"]];
+        [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+        segmentControl.frame = CGRectMake(10, 10, 300, 30);
+        [segmentControl addTarget:self action:@selector(segmentedControlValueDidChange:) forControlEvents:UIControlEventValueChanged];
+        [segmentControl setSelectedSegmentIndex:0];
+        [cell1.contentView addSubview:segmentControl];
+        
+        //To create the card view.
+        UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 50, 310, 200)];
+        cardView.backgroundColor=[UIColor yellowColor];
+        [cell1.contentView addSubview:cardView];
+        
+        
+        
+        // To set the name and location name on banner
+        //name label
+        UILabel *nameLbl=[[UILabel alloc]initWithFrame:CGRectMake(15, 130, 160, 30)];
+        nameLbl.backgroundColor=[UIColor whiteColor];
+        nameLbl.text=@"  Ladies Night ";
+        [cardView addSubview:nameLbl];
+        // location label
+        UILabel *locLbl=[[UILabel alloc]initWithFrame:CGRectMake(15, 160, 160, 30)];
+        locLbl.backgroundColor=[UIColor whiteColor];
+        locLbl.textColor=[UIColor grayColor];
+        locLbl.text=@"  New Delhi,India";
+        [cardView addSubview:locLbl];
+        
+        
+        
+        
+        NSInteger a=0;
+        for(int i=0; i<5; i++)// (int i=0; i<titleArray.count; i++)
+        {
+            //For First Cell
+            UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(9, 225+a, 298, 65)];
+            cellView.backgroundColor=[UIColor whiteColor];
+            [dealsTableView addSubview:cellView];
+            
+            
+            //for Icon back Image
+            UIImageView *iconBackImg=[[UIImageView alloc]initWithFrame:CGRectMake(7, 8, 50, 50)];
+            iconBackImg.layer.cornerRadius = iconBackImg.frame.size.width / 2;
+            iconBackImg.backgroundColor=[UIColor colorWithRed:96.0/255 green:3.0/255 blue:125.0/255 alpha:1.0];
+            iconBackImg.clipsToBounds = YES;
+            
+            
+            //for icon image
+            UIImageView *iconImg=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
+            //For Title Lable
+            UILabel *titleLbl=[[UILabel alloc]initWithFrame:CGRectMake(68, 5, 190, 25)];
+            titleLbl.textColor=[UIColor colorWithRed:96.0/255 green:3.0/255 blue:125.0/255 alpha:1.0];
+            [titleLbl setFont: [titleLbl.font fontWithSize: 15]];
+            //For detail Label
+            UILabel *detailLbl=[[UILabel alloc]initWithFrame:CGRectMake(68, 15, 190, 50)];
+            [detailLbl setFont: [detailLbl.font fontWithSize: 10]];
+            detailLbl.numberOfLines=4;
+            if (i==0)
+            {
+                iconImg.image=[UIImage imageNamed:@"search-icon_main2.png" ];
+                titleLbl.text=@"Search Parties";
+                detailLbl.text=@"Search parties that you like by using filters like party, places, DJs etc.";
+            }
+            else if (i==1)
+            {
+                iconImg.image=[UIImage imageNamed:@"LocationArrow_main.png" ];
+                titleLbl.text=@"Parties Near You";
+                detailLbl.text=@"Explore what is happening around you in the party circle.";
+            }
+            else if (i==2)
+            {
+                iconImg.image=[UIImage imageNamed:@"trending_main.png" ];
+                titleLbl.text=@"Trending Parties";
+                detailLbl.text=@"Discover trending parties in town and be where the world is.";
+            }
+            else if(i==3)
+            {
+                iconImg.image=[UIImage imageNamed:@"percent_main.png" ];
+                titleLbl.text=@"Special Deals";
+                detailLbl.text=@"Avail deals on the parties and go party with offers.";
+            }
+            else if(i==4)
+            {
+                iconImg.image=[UIImage imageNamed:@"calendar_main.png" ];
+                titleLbl.text=@"Parties Master Calendar";
+                detailLbl.text=@"Look for parties schedule in the days to come.";
+            }
+            
+            [iconBackImg addSubview:iconImg];
+            [cellView addSubview:iconBackImg];
+            
+            //For Title Lable
+            // UILabel *titleLbl=[[UILabel alloc]initWithFrame:CGRectMake(78, 20, 142, 25)];
+            //            titleLbl.text=[titleArray objectAtIndex:i];
+            // titleLbl.font=[UIFont fontWithName:@"Open Sans" size:15];
+            //detailLbl.font=[UIFont fontWithName:@"Open Sans" size:12];
+            [cellView addSubview:titleLbl];
+            [cellView addSubview:detailLbl];
+            
+            //For Select Button
+            UIButton *selectBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 235+a, 295, 45)];//6,8,283,50 //250, 245+b, 25, 25
+            selectBtn.backgroundColor=[UIColor clearColor];
+            //[selectBtn setImage:[UIImage imageNamed:@"Arrow_main.png"] forState:UIControlStateNormal];
+            selectBtn.tag=i;
+            [selectBtn setTitle:@">" forState:UIControlStateNormal];
+            [selectBtn.titleLabel setFont:[UIFont systemFontOfSize:35]];
+            [selectBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            selectBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            [selectBtn addTarget:self action:@selector(nextBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+            [dealsTableView addSubview:selectBtn];
+            
+            a=a+80;
+        }
+        
+    }
+    
+    
+    
+    // }
+    return cell1;
+    
+    
+}
+
+
+-(void)segmentedControlValueDidChange:(UISegmentedControl *)segment
+{
+    switch (segment.selectedSegmentIndex) {
+        case 0:{
+            //action for the first button (Current)
+            break;}
+        case 1:{
+            //action for the first button (Current)
+            break;}
+    }
 }
 
 

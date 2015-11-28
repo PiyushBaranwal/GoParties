@@ -13,6 +13,7 @@
 
 #import "Singleton.h"
 //#import "Utils.h"
+#import "SVGeocoder.h"
 
 
 @interface LoginViewController ()
@@ -51,12 +52,37 @@
     self.navigationItem.leftBarButtonItem.tintColor = [ UIColor whiteColor];
     
     
-    
+    // to set the delegates of textfields
     nameTextField.delegate=self;
     passTextField.delegate=self;
     // Do any additional setup after loading the view from its nib.
     
-    [self CallingWebServiceForLogin];
+    //to get the current lat and long
+//    self.locManager = [[CLLocationManager alloc] init];
+//    self.locManager.delegate = self;
+//    self.locManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+//    self.locManager.desiredAccuracy = kCLLocationAccuracyBest;//kCLLocationAccuracyHundredMeters; // 100 m
+//    //To start updating location.
+//    [self.locManager startUpdatingLocation];
+    
+//    if ([self.locManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+//        [self.locManager requestWhenInUseAuthorization];
+//    }
+//    [self.locManager startUpdatingLocation];
+    
+    
+    
+//    locManager = [[CLLocationManager alloc] init];
+//    locManager.delegate=self;
+//    locManager.desiredAccuracy=kCLLocationAccuracyBest;
+//    locManager.distanceFilter=kCLDistanceFilterNone;
+//   // [locManager requestWhenInUseAuthorization];
+//   // [locManager startMonitoringSignificantLocationChanges];
+//    [locManager startUpdatingLocation];
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,8 +102,18 @@
 
 - (IBAction)loginBtnClick:(id)sender {
     
-    MainViewController *objLog=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
-    [self.navigationController pushViewController:objLog animated:YES];
+//    MainViewController *objLog=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+//    [self.navigationController pushViewController:objLog animated:YES];
+    
+    if(nameTextField.text.length==0)
+    {
+        NSLog(@"Please fill the fields");
+    }
+    else
+    {
+    
+    [self CallingWebServiceForLogin];
+    }
 }
 
 - (IBAction)fbBtnClick:(id)sender {
@@ -170,28 +206,70 @@
     if(checkConn)
     {
         
-        NSString *urlAsString;
-        urlAsString=[NSString stringWithFormat:@"http://api.startup-designer.com"];
-        NSLog(@"%@", urlAsString);
-         NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
-        NSURL *url = [NSURL URLWithString:[urlAsString stringByAddingPercentEncodingWithAllowedCharacters:set]];
+        
+        //To get the userLat long from local database    ///  LinkInUSerCurLat
+        NSUserDefaults *userDef=  [NSUserDefaults standardUserDefaults];
+        double userLat=[[userDef objectForKey:@"UserCurLat"] doubleValue];
+        double userLong=[[userDef objectForKey:@"UserCurLong"] doubleValue];
+        NSLog(@"userLat=%f",userLat);
+        NSLog(@"userLong=%f",userLong);
         
         
+        NSString *post = [NSString stringWithFormat:@"username=%@&phone=%@&email=%@&password=%@&latitude=%f&longitude=%f",@"GP",@"1234567891",nameTextField.text,passTextField.text,userLat,userLong ];
         
-//        NSString *str = ...; // some URL
-//        NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
-//        NSString *result = [str stringByAddingPercentEncodingWithAllowedCharacters:set];
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:@"http://api.startup-designer.com/login"]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:postData];
+        NSURLResponse *requestResponse;
+        NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
         
-        
-        
-        
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
-        if (conn)
+        NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+        NSLog(@"requestReply: %@", requestReply);
+
+        if ([requestReply isEqualToString:@"[\"Success\"]"])
         {
-            // webData=[NSMutableData data];
-            webData=[[NSMutableData alloc]init];
+//            [Utils showAlertView:nil message:@"Thank you for taking the time to fill out this form, we will get in touch with you shortly." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok"];
+//            
+//            
+//            submitBtn.enabled=YES;
+//            salutationTextField.text=@"";
+//            fNameTextField.text=@"";
+//            lNameTextField.text=@"";
+//            cityTextField.text=@"";
+//            countryNameTextField.text=@"";
+//            emailNameTextField.text=@"";
+//            mobNameTextField.text=@"";
+//            [queryNameTextView setText:@""];
+//            
+//            
+//            salutationTextField.text=@"Select";
+//            countryNameTextField.text=@"Select";
+            
+            
+            
+            
         }
+        
+        else
+            
+        {
+//            [Utils showAlertView:nil message:@"Error" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok"];
+        }
+
+        
+        
+        
+//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+//        if (conn)
+//        {
+//            // webData=[NSMutableData data];
+//            webData=[[NSMutableData alloc]init];
+//        }
     }
     else
     {
@@ -350,6 +428,77 @@
     
     
 }
+
+
+//#pragma mark- delegate method of CLLOcationManager
+//
+//- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+//{
+//    NSLog(@"didFailWithError: %@", error);
+//    UIAlertView *errorAlert = [[UIAlertView alloc]
+//                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [errorAlert show];
+//}
+//
+//
+//
+//
+//- (void)locationManager:(CLLocationManager *)manager
+//    didUpdateToLocation:(CLLocation *)newLocation
+//           fromLocation:(CLLocation *)oldLocation
+//{
+//    curLat=newLocation.coordinate.latitude;
+//    curLong=newLocation.coordinate.longitude;
+//    
+//    
+//    NSLog(@"curLatStr=%f and curLongStr=%f",curLat,curLong);
+//    
+//    
+//    //to save the curlat and long in localdatabase
+//    //To save profile image in the app locally.
+////    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%.4f", curLat] forKey:@"LinkInUSerCurLat"];
+////    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%.4f", curLong] forKey:@"LinkInUSerCurLongt"];
+//    
+//    
+//    
+//    
+//    //To get the Location Name from Lat And Long
+//    
+//    [SVGeocoder reverseGeocode:CLLocationCoordinate2DMake(curLat, curLong)
+//                    completion:^(NSArray *placemarks, NSHTTPURLResponse *urlResponse, NSError *error) {
+//                        // NSLog(@"placemarks = %@", placemarks);
+//                        NSMutableArray *subAdministrativeArea=[placemarks valueForKey:@"formattedAddress"];
+//                        
+//                        // NSLog(@"formattedAddress=%@",subAdministrativeArea);
+//                        NSString *locationStr=[subAdministrativeArea objectAtIndex:6];
+//                         NSLog(@"locStr=%@",locationStr);
+//                        //To save teh current loction in local database
+//                       // [[NSUserDefaults standardUserDefaults] setObject:locationStr forKey:@"LinkdeInUserLocationName"];
+//                        
+//                        
+//                    }];
+//    
+//    /*
+//     formattedAddress=(
+//     "E-66, E Block, Sector 6, Noida, Uttar Pradesh 110096, India",
+//     "E Block, Sector 6, Noida, Uttar Pradesh 110096, India",
+//     "Sector 6, Noida, Uttar Pradesh, India",
+//     "110096, India",
+//     "Noida, Uttar Pradesh, India",
+//     "Gautam Buddh Nagar, Uttar Pradesh, India",
+//     "Uttar Pradesh, India",
+//     India
+//     )
+//     
+//     */
+//    
+//    
+//    
+//    
+//    //To stop updating location
+//    [locManager stopUpdatingLocation];
+//}
+
 
 
 

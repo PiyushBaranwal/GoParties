@@ -22,6 +22,18 @@
     // Override point for customization after application launch.
     //return YES;
     
+//    ///to get the current lat and long
+//    locManager = [[CLLocationManager alloc] init];
+//    locManager.delegate=self;
+//    locManager.desiredAccuracy=kCLLocationAccuracyBest;
+//    locManager.distanceFilter=kCLDistanceFilterNone;
+//    // [locManager requestWhenInUseAuthorization];
+//    // [locManager startMonitoringSignificantLocationChanges];
+//    [locManager startUpdatingLocation];
+    
+    
+    
+    
     
     self.objHome = [[HomeViewController alloc] init];
     MenuViewController *rearViewController = [[MenuViewController alloc] init];
@@ -79,5 +91,74 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark- delegate method of CLLOcationManager
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    curLat=newLocation.coordinate.latitude;
+    curLong=newLocation.coordinate.longitude;
+    
+    
+    NSLog(@"curLatStr=%f and curLongStr=%f",curLat,curLong);
+    
+    
+    //to save the curlat and long in localdatabase
+    //To save profile image in the app locally.
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%.4f", curLat] forKey:@"UserCurLat"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%.4f", curLong] forKey:@"UserCurLong"];
+    
+    
+    
+    
+    //To get the Location Name from Lat And Long
+    
+    [SVGeocoder reverseGeocode:CLLocationCoordinate2DMake(curLat, curLong)
+                    completion:^(NSArray *placemarks, NSHTTPURLResponse *urlResponse, NSError *error) {
+                        // NSLog(@"placemarks = %@", placemarks);
+                        NSMutableArray *subAdministrativeArea=[placemarks valueForKey:@"formattedAddress"];
+                        
+                        // NSLog(@"formattedAddress=%@",subAdministrativeArea);
+                        NSString *locationStr=[subAdministrativeArea objectAtIndex:6];
+                        NSLog(@"locStr=%@",locationStr);
+                        //To save teh current loction in local database
+                        // [[NSUserDefaults standardUserDefaults] setObject:locationStr forKey:@"LinkdeInUserLocationName"];
+                        
+                        
+                    }];
+    
+    /*
+     formattedAddress=(
+     "E-66, E Block, Sector 6, Noida, Uttar Pradesh 110096, India",
+     "E Block, Sector 6, Noida, Uttar Pradesh 110096, India",
+     "Sector 6, Noida, Uttar Pradesh, India",
+     "110096, India",
+     "Noida, Uttar Pradesh, India",
+     "Gautam Buddh Nagar, Uttar Pradesh, India",
+     "Uttar Pradesh, India",
+     India
+     )
+     
+     */
+    
+    
+    
+    
+    //To stop updating location
+    [locManager stopUpdatingLocation];
+}
+
 
 @end

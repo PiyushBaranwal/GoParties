@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate,NSURLConnectionDelegate>
+
+@interface LoginViewController : UIViewController<UITextFieldDelegate,NSURLConnectionDelegate,CLLocationManagerDelegate>
 {
     IBOutlet UITextField *nameTextField;
     IBOutlet UITextField *passTextField;
@@ -24,7 +26,17 @@
     
     
     
+//    CLLocationManager *locManager;
+//    float curLat;
+//    float curLong;
+    
+    
+    
 }
+
+//@property(nonatomic,strong)CLLocationManager *locManager;
+
+
 - (IBAction)loginBtnClick:(id)sender;
 - (IBAction)fbBtnClick:(id)sender;
 - (IBAction)gpBtnClick:(id)sender;

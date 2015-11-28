@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC5CAC461C09738F0009489F /* SVGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAC431C09738F0009489F /* SVGeocoder.m */; };
+		FC5CAC471C09738F0009489F /* SVPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAC451C09738F0009489F /* SVPlacemark.m */; };
+		FC5CAC491C0979410009489F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5CAC481C0979410009489F /* CoreLocation.framework */; };
 		FC73A3961C08226400567306 /* Verify.png in Resources */ = {isa = PBXBuildFile; fileRef = FC73A3951C08226400567306 /* Verify.png */; };
 		FC73A3981C08269100567306 /* location_pin40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = FC73A3971C08269100567306 /* location_pin40x40.png */; };
 		FC73A3A51C082D5000567306 /* home_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = FC73A39A1C082D5000567306 /* home_calendar.png */; };
@@ -246,6 +249,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC5CAC421C09738F0009489F /* SVGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGeocoder.h; sourceTree = "<group>"; };
+		FC5CAC431C09738F0009489F /* SVGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGeocoder.m; sourceTree = "<group>"; };
+		FC5CAC441C09738F0009489F /* SVPlacemark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPlacemark.h; sourceTree = "<group>"; };
+		FC5CAC451C09738F0009489F /* SVPlacemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPlacemark.m; sourceTree = "<group>"; };
+		FC5CAC481C0979410009489F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FC73A3951C08226400567306 /* Verify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verify.png; sourceTree = "<group>"; };
 		FC73A3971C08269100567306 /* location_pin40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_pin40x40.png; sourceTree = "<group>"; };
 		FC73A39A1C082D5000567306 /* home_calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_calendar.png; sourceTree = "<group>"; };
@@ -526,6 +534,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5CAC491C0979410009489F /* CoreLocation.framework in Frameworks */,
 				FC73A3E71C08805E00567306 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +556,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC5CAC411C09738F0009489F /* SVGeocoder */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CAC421C09738F0009489F /* SVGeocoder.h */,
+				FC5CAC431C09738F0009489F /* SVGeocoder.m */,
+				FC5CAC441C09738F0009489F /* SVPlacemark.h */,
+				FC5CAC451C09738F0009489F /* SVPlacemark.m */,
+			);
+			path = SVGeocoder;
+			sourceTree = "<group>";
+		};
 		FC73A3991C082D5000567306 /* Not Active Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +977,7 @@
 		FCC8C3E21BFCA39E006056EA /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FC5CAC411C09738F0009489F /* SVGeocoder */,
 				FCC8C3E31BFCA3BA006056EA /* LoginViewController.h */,
 				FCC8C3E41BFCA3BA006056EA /* LoginViewController.m */,
 				FCC8C3E51BFCA3BA006056EA /* LoginViewController.xib */,
@@ -987,6 +1008,7 @@
 		FCFA19001BF9A23900FAAD99 = {
 			isa = PBXGroup;
 			children = (
+				FC5CAC481C0979410009489F /* CoreLocation.framework */,
 				FC73A3E61C08805E00567306 /* CFNetwork.framework */,
 				FCFA190B1BF9A23A00FAAD99 /* GoParties */,
 				FCFA19251BF9A23A00FAAD99 /* GoPartiesTests */,
@@ -1385,6 +1407,7 @@
 				FCC8C3CC1BFC9E2C006056EA /* SDWebImageCompat.m in Sources */,
 				FCEF43321BFDF6D50013B1E5 /* RegisterViewController.m in Sources */,
 				FCC8C3D11BFC9E2C006056EA /* SDWebImagePrefetcher.m in Sources */,
+				FC5CAC471C09738F0009489F /* SVPlacemark.m in Sources */,
 				FCA6D6DA1BFF1C000097BF9C /* FogetPassViewController.m in Sources */,
 				FCB74BC61BFB38C70035BE0C /* CreatePartiesViewController.m in Sources */,
 				FCC8C3DE1BFC9E2C006056EA /* SBJsonWriter.m in Sources */,
@@ -1402,6 +1425,7 @@
 				FCA6D6E21BFF22F50097BF9C /* VerificationViewController.m in Sources */,
 				FCC8C3E61BFCA3BA006056EA /* LoginViewController.m in Sources */,
 				FCC8C3D81BFC9E2C006056EA /* UIView+WebCacheOperation.m in Sources */,
+				FC5CAC461C09738F0009489F /* SVGeocoder.m in Sources */,
 				FCB74BCC1BFB39090035BE0C /* InviteFriendsViewController.m in Sources */,
 				FCC8C3D41BFC9E2C006056EA /* UIImage+MultiFormat.m in Sources */,
 				FCC8C3CD1BFC9E2C006056EA /* SDWebImageDecoder.m in Sources */,
