@@ -7,6 +7,7 @@
 //
 
 #import "SpecialDealsViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SpecialDealsViewController ()
 
@@ -325,7 +326,7 @@
     //    }
     
     
-    return 125*5;
+    return 225*5;
     
     
 }
@@ -360,8 +361,9 @@
     }
     if (indexPath.row==0)
     {
-        
-      // To set the segmented control.
+      
+       
+        // To set the segmented control.
         UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Parties",@"Profiles"]];
         [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
         segmentControl.frame = CGRectMake(10, 10, 300, 30);
@@ -369,110 +371,148 @@
         [segmentControl setSelectedSegmentIndex:0];
         [cell1.contentView addSubview:segmentControl];
         
-        //To create the card view.
-        UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 50, 310, 200)];
-        cardView.backgroundColor=[UIColor yellowColor];
-        [cell1.contentView addSubview:cardView];
-        
-        
-        
-        // To set the name and location name on banner
-        //name label
-        UILabel *nameLbl=[[UILabel alloc]initWithFrame:CGRectMake(15, 130, 160, 30)];
-        nameLbl.backgroundColor=[UIColor whiteColor];
-        nameLbl.text=@"  Ladies Night ";
-        [cardView addSubview:nameLbl];
-        // location label
-        UILabel *locLbl=[[UILabel alloc]initWithFrame:CGRectMake(15, 160, 160, 30)];
-        locLbl.backgroundColor=[UIColor whiteColor];
-        locLbl.textColor=[UIColor grayColor];
-        locLbl.text=@"  New Delhi,India";
-        [cardView addSubview:locLbl];
-        
-        
         
         
         NSInteger a=0;
         for(int i=0; i<5; i++)// (int i=0; i<titleArray.count; i++)
         {
-            //For First Cell
-            UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(9, 225+a, 298, 65)];
-            cellView.backgroundColor=[UIColor whiteColor];
-            [dealsTableView addSubview:cellView];
             
-            
-            //for Icon back Image
-            UIImageView *iconBackImg=[[UIImageView alloc]initWithFrame:CGRectMake(7, 8, 50, 50)];
-            iconBackImg.layer.cornerRadius = iconBackImg.frame.size.width / 2;
-            iconBackImg.backgroundColor=[UIColor colorWithRed:96.0/255 green:3.0/255 blue:125.0/255 alpha:1.0];
-            iconBackImg.clipsToBounds = YES;
-            
-            
-            //for icon image
-            UIImageView *iconImg=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
-            //For Title Lable
-            UILabel *titleLbl=[[UILabel alloc]initWithFrame:CGRectMake(68, 5, 190, 25)];
-            titleLbl.textColor=[UIColor colorWithRed:96.0/255 green:3.0/255 blue:125.0/255 alpha:1.0];
-            [titleLbl setFont: [titleLbl.font fontWithSize: 15]];
-            //For detail Label
-            UILabel *detailLbl=[[UILabel alloc]initWithFrame:CGRectMake(68, 15, 190, 50)];
-            [detailLbl setFont: [detailLbl.font fontWithSize: 10]];
-            detailLbl.numberOfLines=4;
-            if (i==0)
+            //To create the card view.
+            UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 50+a, 310, 200)];
+            if(i%2==0)
             {
-                iconImg.image=[UIImage imageNamed:@"search-icon_main2.png" ];
-                titleLbl.text=@"Search Parties";
-                detailLbl.text=@"Search parties that you like by using filters like party, places, DJs etc.";
+           cardView.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];// 255,153,0
             }
-            else if (i==1)
+            else
             {
-                iconImg.image=[UIImage imageNamed:@"LocationArrow_main.png" ];
-                titleLbl.text=@"Parties Near You";
-                detailLbl.text=@"Explore what is happening around you in the party circle.";
+              cardView.backgroundColor=[UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];// 106,27,154
             }
-            else if (i==2)
+
+        
+            //To make the top left and right corner rounded
+            UIBezierPath *maskPath;
+            maskPath = [UIBezierPath bezierPathWithRoundedRect:cardView.bounds
+                                             byRoundingCorners:(UIRectCornerTopLeft|UIRectCornerTopRight)
+                                                   cornerRadii:CGSizeMake(8.0, 8.0)];
+            
+            CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+            maskLayer.frame = self.view.bounds;
+            maskLayer.path = maskPath.CGPath;
+            cardView.layer.mask = maskLayer;
+            [cell1.contentView addSubview:cardView];
+            
+            
+            // to set the banner backgroung image
+            UIImageView *bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 310, 170)];
+            bannerImg.image=[UIImage imageNamed:@"First1.png"];
+            bannerImg.alpha=0.90;
+            // to make the rounded corner
+            UIBezierPath *maskPath1;
+            maskPath1 = [UIBezierPath bezierPathWithRoundedRect:bannerImg.bounds
+                                             byRoundingCorners:(UIRectCornerTopLeft|UIRectCornerTopRight)
+                                                   cornerRadii:CGSizeMake(0.0, 0.0)];
+            
+            CAShapeLayer *maskLayer1 = [[CAShapeLayer alloc] init];
+            maskLayer1.frame = self.view.bounds;
+            maskLayer1.path = maskPath.CGPath;
+            bannerImg.layer.mask = maskLayer;
+            [cardView addSubview:bannerImg];
+            
+            
+            //For the Free Entry
+            UILabel *freeEntryLbl=[[UILabel alloc]initWithFrame:CGRectMake(100, 10, 150, 30)];
+            freeEntryLbl.backgroundColor=[UIColor clearColor];
+            freeEntryLbl.text=@"FREEE ENTRY";
+            freeEntryLbl.textColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
+            [cardView addSubview:freeEntryLbl];
+            
+            
+            //For the Detail Lbl1
+            UILabel *detailLbl1=[[UILabel alloc]initWithFrame:CGRectMake(30, 40, 280, 30)];
+            detailLbl1.backgroundColor=[UIColor clearColor];
+            detailLbl1.text=@"Get a FREE shot and FREE entry to";
+            detailLbl1.textColor=[UIColor whiteColor];
+            [cardView addSubview:detailLbl1];
+            
+            
+            //For the Detail Lbl2
+            UILabel *detailLbl2=[[UILabel alloc]initWithFrame:CGRectMake(10, 60, 300, 30)];
+            detailLbl2.backgroundColor=[UIColor clearColor];
+            //detailLbl2.font=[UIFont fontWithName:@"Sans" size:12.0];
+            detailLbl2.font=[detailLbl2.font fontWithSize:15];
+            detailLbl2.text=@"The club on 25th September for our event";
+            detailLbl2.textColor=[UIColor whiteColor];
+            [cardView addSubview:detailLbl2];
+
+            
+            //For ProfileImg
+            UIImageView *profileImg=[[UIImageView alloc]initWithFrame:CGRectMake(10, 100, 50, 50)];
+            //profileImg.image=[UIImage imageNamed:@"First1.png"];
+            profileImg.backgroundColor=[UIColor whiteColor];
+            [bannerImg addSubview:profileImg];
+            
+            //for profile title label
+            UILabel *profileLbl=[[UILabel alloc]initWithFrame:CGRectMake(70, 90, 300, 30)];
+            profileLbl.backgroundColor=[UIColor clearColor];
+            //detailLbl2.font=[UIFont fontWithName:@"Sans" size:12.0];
+            profileLbl.font=[profileLbl.font fontWithSize:15];
+            profileLbl.text=@"The Underdoggs";
+            profileLbl.textColor=[UIColor whiteColor];
+            [cardView addSubview:profileLbl];
+            
+            
+            //for place label
+            UILabel *placeLbl=[[UILabel alloc]initWithFrame:CGRectMake(70, 110, 100, 30)];
+            placeLbl.backgroundColor=[UIColor clearColor];
+            placeLbl.font=[placeLbl.font fontWithSize:15];
+            placeLbl.text=@"Party Place";
+            placeLbl.textColor=[UIColor whiteColor];
+            [cardView addSubview:placeLbl];
+            
+            
+            
+            
+            // for rating
+            NSInteger b=0;
+            for (int j=0; j<5; j++)
             {
-                iconImg.image=[UIImage imageNamed:@"trending_main.png" ];
-                titleLbl.text=@"Trending Parties";
-                detailLbl.text=@"Discover trending parties in town and be where the world is.";
-            }
-            else if(i==3)
-            {
-                iconImg.image=[UIImage imageNamed:@"percent_main.png" ];
-                titleLbl.text=@"Special Deals";
-                detailLbl.text=@"Avail deals on the parties and go party with offers.";
-            }
-            else if(i==4)
-            {
-                iconImg.image=[UIImage imageNamed:@"calendar_main.png" ];
-                titleLbl.text=@"Parties Master Calendar";
-                detailLbl.text=@"Look for parties schedule in the days to come.";
+                 UIImageView *strImg1=[[UIImageView alloc]initWithFrame:CGRectMake(70+b, 135 , 15, 15)];
+                strImg1.image=[UIImage imageNamed:@"star_white.png"];
+                [cardView addSubview:strImg1];
+                b=b+15;
             }
             
-            [iconBackImg addSubview:iconImg];
-            [cellView addSubview:iconBackImg];
             
-            //For Title Lable
-            // UILabel *titleLbl=[[UILabel alloc]initWithFrame:CGRectMake(78, 20, 142, 25)];
-            //            titleLbl.text=[titleArray objectAtIndex:i];
-            // titleLbl.font=[UIFont fontWithName:@"Open Sans" size:15];
-            //detailLbl.font=[UIFont fontWithName:@"Open Sans" size:12];
-            [cellView addSubview:titleLbl];
-            [cellView addSubview:detailLbl];
             
-            //For Select Button
-            UIButton *selectBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 235+a, 295, 45)];//6,8,283,50 //250, 245+b, 25, 25
-            selectBtn.backgroundColor=[UIColor clearColor];
-            //[selectBtn setImage:[UIImage imageNamed:@"Arrow_main.png"] forState:UIControlStateNormal];
-            selectBtn.tag=i;
-            [selectBtn setTitle:@">" forState:UIControlStateNormal];
-            [selectBtn.titleLabel setFont:[UIFont systemFontOfSize:35]];
-            [selectBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            selectBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-            [selectBtn addTarget:self action:@selector(nextBtnClick:)forControlEvents:UIControlEventTouchUpInside];
-            [dealsTableView addSubview:selectBtn];
             
-            a=a+80;
+            // for follow Button
+            UIButton *followBtn=[[UIButton alloc]initWithFrame:CGRectMake(160, 120, 25, 25)];
+            [followBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
+            followBtn.tag=i;
+            [followBtn addTarget:self action:@selector(followBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+            [cardView addSubview:followBtn];
+            
+            
+            
+            //for Show Parties with this Deals Label
+            UILabel *showDealsLbl=[[UILabel alloc]initWithFrame:CGRectMake(30, 170, 280, 30)];
+            showDealsLbl.backgroundColor=[UIColor clearColor];
+            showDealsLbl.font=[placeLbl.font fontWithSize:15];
+            showDealsLbl.text=@"SHOW PARTIES WITH THIS DEAL";
+            showDealsLbl.textColor=[UIColor whiteColor];
+            [cardView addSubview:showDealsLbl];
+            
+            //for Add DealBtn
+            UIButton *addDealBtn=[[UIButton alloc]initWithFrame:CGRectMake(270, 175, 20, 20)];//10,175,280,20
+            addDealBtn.backgroundColor=[UIColor clearColor];
+            [addDealBtn setImage:[UIImage imageNamed:@"deal_main.png"] forState:UIControlStateNormal];
+             addDealBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            addDealBtn.tag=i;
+            [addDealBtn addTarget:self action:@selector(addDealBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+            [cardView addSubview:addDealBtn];
+
+            
+            a=a+210;
         }
         
     }
@@ -485,12 +525,23 @@
     
 }
 
+-(IBAction)followBtnClick:(id)sender
+{
+    NSLog(@"Follow Btn Clicked");
+}
+
+-(IBAction)addDealBtnClick:(id)sender
+{
+    NSLog(@"Add Deal Btn Clicked");
+}
+
 
 -(void)segmentedControlValueDidChange:(UISegmentedControl *)segment
 {
     switch (segment.selectedSegmentIndex) {
         case 0:{
             //action for the first button (Current)
+           // [[segment.selectedSegmentIndex objectAtIndex:0] setTintColor:[UIColor whiteColor]];
             break;}
         case 1:{
             //action for the first button (Current)

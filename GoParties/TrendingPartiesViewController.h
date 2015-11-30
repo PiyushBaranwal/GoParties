@@ -11,6 +11,7 @@
 
 @interface TrendingPartiesViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
+    IBOutlet UITableView *partiesTableView;
     UIView *popUpView;
     UITextField  *locTextField;
     UITextField  *catTextField;
@@ -20,6 +21,8 @@
     UIImageView *catIcon;
     UIImageView *typeIcon;
     
+    UIImageView *bannerImg;
+    UIScrollView *scrollView;
     
     
     UIButton *clickedBtn;
@@ -29,6 +32,11 @@
     NSMutableArray *categoryArray;
     NSMutableArray *typeArray;
 }
+
+@property (nonatomic,retain) UIScrollView *scrollView;
+
+
+@property (nonatomic,retain)IBOutlet UITableView *partiesTableView;
 
 @property (strong, nonatomic) SWRevealViewController *viewController;
 

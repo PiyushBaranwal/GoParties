@@ -22,6 +22,7 @@
 #import "NotificationViewController.h"
 #import "SettingsViewController.h"
 #import "LoginViewController.h"
+#import "UserProfileViewController.h"
 
 
 
@@ -145,7 +146,7 @@
     
     //To make circular userImage View.
     userImgView.layer.cornerRadius = userImgView.frame.size.width / 2;
-    userImgView.layer.borderWidth = 3.0f;
+   // userImgView.layer.borderWidth = 3.0f;
     userImgView.layer.borderColor=[UIColor colorWithRed:205.0/255.0 green:205.0/255.0 blue:205.0/255.0 alpha:1.0].CGColor;
     userImgView.clipsToBounds = YES;
    // userImgView.backgroundColor=[UIColor whiteColor];
@@ -519,11 +520,11 @@
 
 - (IBAction)iconBtnClick:(id)sender
 {
-//     SWRevealViewController *revealController = self.revealViewController;
-//      UIViewController *newFrontController = nil;
-//    MyProfileVC *frontViewController = [[MyProfileVC alloc] init];
-//    newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-//    [revealController pushFrontViewController:newFrontController animated:YES];
+     SWRevealViewController *revealController = self.revealViewController;
+      UIViewController *newFrontController = nil;
+    UserProfileViewController *frontViewController = [[UserProfileViewController alloc] init];
+    newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+    [revealController pushFrontViewController:newFrontController animated:YES];
 }
 
 

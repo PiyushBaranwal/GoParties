@@ -1,17 +1,17 @@
 //
-//  PartiesNearYouViewController.h
+//  UserProfileViewController.h
 //  GoParties
 //
-//  Created by GoParties on 17/11/15.
+//  Created by GoParties on 30/11/15.
 //  Copyright © 2015 GoParties. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 
-@interface PartiesNearYouViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
+@interface UserProfileViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
 {
-    IBOutlet UITableView *partiesTableView;
+    IBOutlet UITableView *userTableView;
     
     UIView *popUpView;
     UITextField  *locTextField;
@@ -22,7 +22,7 @@
     UIImageView *catIcon;
     UIImageView *typeIcon;
     
-    
+    UIView *cardView;
     UIImageView *bannerImg;
     UIScrollView *scrollView;
     
@@ -37,7 +37,8 @@
 @property (nonatomic,retain) UIScrollView *scrollView;
 
 
-@property (nonatomic,retain)IBOutlet UITableView *partiesTableView;
+@property (nonatomic,retain)IBOutlet UITableView *userTableView;
 
 @property (strong, nonatomic) SWRevealViewController *viewController;
+
 @end

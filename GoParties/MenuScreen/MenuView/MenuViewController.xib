@@ -32,12 +32,12 @@
                         <outlet property="delegate" destination="-1" id="zDy-3V-V7R"/>
                     </connections>
                 </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="NY9-zG-Z3Z">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AppIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="NY9-zG-Z3Z">
                     <rect key="frame" x="5" y="27" width="70" height="70"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUB-hN-es2">
-                    <rect key="frame" x="5" y="27" width="70" height="70"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="5" y="27" width="307" height="70"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -71,6 +71,6 @@
         </view>
     </objects>
     <resources>
-        <image name="images1.jpg" width="300" height="168"/>
+        <image name="AppIcon.png" width="60" height="60"/>
     </resources>
 </document>

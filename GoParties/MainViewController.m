@@ -278,6 +278,9 @@
 -(void)searchBtnClick
 {
     NSLog(@"Search Button Clicked");
+    // before navigation hit service with filled strings on the search popupview
+//    PartiesNearYouViewController *objParties=[[PartiesNearYouViewController alloc]initWithNibName:@"PartiesNearYouViewController" bundle:nil];
+//    [self.navigationController pushViewController:objParties animated:YES];
 }
 
 -(IBAction)locBtnClick:(id)sender
@@ -468,7 +471,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell1.selectionStyle = UITableViewCellSelectionStyleNone;
    // [cell1 setBackgroundColor:[UIColor lightGrayColor]];
 //    [cell1 setBackgroundColor:[UIColor lightGrayColor]];
 //    [self.view setBackgroundColor:[UIColor lightGrayColor]];
@@ -483,6 +486,8 @@
     }
     if (indexPath.row==0)
     {
+        cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell1 setBackgroundColor:[UIColor whiteColor]];
 //        if (banImgArray.count)
 //        {
             // KASlideshow
@@ -621,8 +626,10 @@
     
     if (btn.tag==0)
     {
-        SearchPartiesViewController *objHome=[[SearchPartiesViewController alloc]initWithNibName:@"SearchPartiesViewController" bundle:nil];
-        [self.navigationController pushViewController:objHome animated:YES];
+        [self search];
+        
+//        SearchPartiesViewController *objHome=[[SearchPartiesViewController alloc]initWithNibName:@"SearchPartiesViewController" bundle:nil];
+//        [self.navigationController pushViewController:objHome animated:YES];
     }
     if (btn.tag==1)
     {
