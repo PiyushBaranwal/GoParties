@@ -8,10 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import "ViewPagerController.h"
+
 
 @interface UserProfileViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
 {
     IBOutlet UITableView *userTableView;
+    
+    
+    IBOutlet UIButton *homeBtn;
+    IBOutlet UIButton *myProfBtn;
+    IBOutlet UIButton *myPartiesbtn;
+    IBOutlet UIButton *myDealsBtn;
+    
+    IBOutlet UIButton *accessBtn;
+    
+    
     
     UIView *popUpView;
     UITextField  *locTextField;
@@ -32,6 +44,9 @@
     NSMutableArray *locationArray;
     NSMutableArray *categoryArray;
     NSMutableArray *typeArray;
+    
+    
+    ViewPagerController *viewPager;
 }
 
 @property (nonatomic,retain) UIScrollView *scrollView;
@@ -40,5 +55,17 @@
 @property (nonatomic,retain)IBOutlet UITableView *userTableView;
 
 @property (strong, nonatomic) SWRevealViewController *viewController;
+
+
+//@property (nonatomic) NSUInteger numberOfTabs;
+
+
+- (IBAction)homeBtnClick:(id)sender;
+- (IBAction)myProfileBtnClick:(id)sender;
+- (IBAction)myPartiesBtnClick:(id)sender;
+- (IBAction)myDealsBtnClick:(id)sender;
+- (IBAction)accessBtnClick:(id)sender;
+
+
 
 @end

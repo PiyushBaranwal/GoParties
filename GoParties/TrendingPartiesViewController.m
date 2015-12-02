@@ -493,6 +493,49 @@
             [cardView addSubview:timeImg];
             
             
+            
+            
+            
+            //for outer circle
+            UIView *circularView = [[UIView alloc] initWithFrame:CGRectMake(240,110,60,60)];
+            //circularView.alpha = 0.5;
+            //circularView.backgroundColor=[UIColor whiteColor];
+            circularView.layer.cornerRadius = 30;
+            circularView.layer.borderWidth = 3.0f;
+            circularView.layer.borderColor = [UIColor whiteColor].CGColor;
+            
+            [cardView addSubview:circularView];
+            
+            
+            // for inner circle
+            UIView *innercircularView = [[UIView alloc] initWithFrame:CGRectMake(3,3,54,54)];
+            //circularView.alpha = 0.5;
+            innercircularView.backgroundColor=[UIColor clearColor];
+            innercircularView.layer.cornerRadius = 27;
+            [circularView addSubview:innercircularView];
+            
+            // for no of days
+            UILabel *noLbl=[[UILabel alloc]initWithFrame:CGRectMake(15, 5, 40, 30)];
+            noLbl.backgroundColor=[UIColor clearColor];
+            noLbl.text=@"30";
+            noLbl.textColor=[UIColor whiteColor];
+            //noLbl.font=[UIFont fontWithName:@"Sans" size:12.0];
+            [innercircularView addSubview:noLbl];
+            
+            // for days
+            UILabel *dayLbl=[[UILabel alloc]initWithFrame:CGRectMake(10, 20, 40, 30)];
+            dayLbl.backgroundColor=[UIColor clearColor];
+            dayLbl.text=@"Days";
+            dayLbl.textColor=[UIColor whiteColor];
+            //noLbl.font=[UIFont fontWithName:@"Sans" size:12.0];
+            [innercircularView addSubview:dayLbl];
+
+            
+            
+            
+            
+            
+            
             //for Time Label
             UILabel *timeLbl=[[UILabel alloc]initWithFrame:CGRectMake(140, 120, 150, 30)];
             timeLbl.backgroundColor=[UIColor clearColor];

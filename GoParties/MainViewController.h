@@ -15,6 +15,17 @@
 {
     IBOutlet UITableView *listTableView;
     
+    
+    IBOutlet UIButton *homeBtn;
+    IBOutlet UIButton *myProfBtn;
+    IBOutlet UIButton *myPartiesbtn;
+    IBOutlet UIButton *myDealsBtn;
+    
+    IBOutlet UIButton *accessBtn;
+    
+    
+    
+    
     NSMutableArray *iconImgArray;
     NSMutableArray *titleArray;
     NSMutableArray *descArray;
@@ -38,12 +49,23 @@
     NSMutableArray *typeArray;
     
     UIButton *btn;
+    
+    BOOL loggedIn;
+    
 }
 
 
 @property (nonatomic,retain)IBOutlet UITableView *listTableView;
 @property (strong, nonatomic) SWRevealViewController *viewController;
 @property (strong,nonatomic) IBOutlet KASlideShow * slideshow;
+
+
+@property (nonatomic,assign) BOOL loggedIn;
+- (IBAction)homeBtnClick:(id)sender;
+- (IBAction)myProfileBtnClick:(id)sender;
+- (IBAction)myPartiesBtnClick:(id)sender;
+- (IBAction)myDealsBtnClick:(id)sender;
+- (IBAction)accessBtnClick:(id)sender;
 
 @end
 

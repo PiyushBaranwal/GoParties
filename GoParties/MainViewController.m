@@ -18,6 +18,7 @@
 #import "InviteFriendsViewController.h"
 #import "NotificationViewController.h"
 #import "SettingsViewController.h"
+#import "UserProfileViewController.h"
 
 
 
@@ -26,7 +27,7 @@
 @end
 
 @implementation MainViewController
-@synthesize slideshow,listTableView;
+@synthesize slideshow,listTableView,loggedIn;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,6 +108,25 @@
     categoryArray=[[NSMutableArray alloc]initWithObjects:@"All",@"Parties",@"Events",@"Bands",@"Djs", nil];
     typeArray=[[NSMutableArray alloc]initWithObjects:@"Delhi NCR",@"Mumbai",@"Chandigarh",@"Banglore", nil];
     
+    
+    
+    if (loggedIn==YES)
+    {
+        homeBtn.hidden=NO;
+        myProfBtn.hidden=NO;
+        myPartiesbtn.hidden=NO;
+        myDealsBtn.hidden=NO;
+        accessBtn.hidden=YES;
+    }
+    else
+    {
+        accessBtn.hidden=NO;
+        homeBtn.hidden=YES;
+        myProfBtn.hidden=YES;
+        myPartiesbtn.hidden=YES;
+        myDealsBtn.hidden=YES;
+        
+    }
 
 }
 
@@ -715,4 +735,89 @@
 }
 
 
+- (IBAction)homeBtnClick:(id)sender {
+
+    if([homeBtn currentImage]==[UIImage imageNamed:@"active_home.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [homeBtn setImage:[UIImage imageNamed: @"active_home.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"home btn clicked");
+}
+
+- (IBAction)myProfileBtnClick:(id)sender {
+    
+    if([myProfBtn currentImage]==[UIImage imageNamed:@"active_profile.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myProfBtn setImage:[UIImage imageNamed: @"active_profile.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myProfBtn btn clicked");
+
+    
+//    UserProfileViewController *objU=[[UserProfileViewController alloc]initWithNibName:@"UserProfileViewController" bundle:nil];
+//    [self.navigationController pushViewController:objU animated:YES];
+}
+
+- (IBAction)myPartiesBtnClick:(id)sender {
+    
+    if([myPartiesbtn currentImage]==[UIImage imageNamed:@"active_parties.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myPartiesbtn setImage:[UIImage imageNamed: @"active_parties.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myPartiesbtn btn clicked");
+}
+
+- (IBAction)myDealsBtnClick:(id)sender {
+    
+    if([myDealsBtn currentImage]==[UIImage imageNamed:@"active_deals.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myDealsBtn setImage:[UIImage imageNamed: @"active_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myDealsBtn btn clicked");
+
+}
+
+- (IBAction)accessBtnClick:(id)sender {
+    HomeViewController *objH=[[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
+    [self.navigationController pushViewController:objH animated:YES];
+}
 @end

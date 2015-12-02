@@ -7,7 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="accessBtn" destination="WDl-rR-9hh" id="C83-Ca-rLM"/>
+                <outlet property="homeBtn" destination="tzZ-c8-JwK" id="IVw-qg-Ryz"/>
                 <outlet property="listTableView" destination="SdM-hy-4Jn" id="xFC-FO-RUO"/>
+                <outlet property="myDealsBtn" destination="CAL-Qv-CB4" id="OUA-mv-GJg"/>
+                <outlet property="myPartiesbtn" destination="dgK-4i-9uO" id="U1l-Px-hsU"/>
+                <outlet property="myProfBtn" destination="PCE-gK-LJ6" id="ZZc-Dg-f6L"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,6 +37,45 @@
                     <state key="normal" title="ACCESS GOPARTIES SOCIAL NETWORK" backgroundImage="Footer_singlebtn.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accessBtnClick:" destination="-1" eventType="touchUpInside" id="fEa-0X-X1C"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAL-Qv-CB4">
+                    <rect key="frame" x="240" y="525" width="80" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_deals.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="myDealsBtnClick:" destination="-1" eventType="touchUpInside" id="gsh-9X-ocH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgK-4i-9uO">
+                    <rect key="frame" x="160" y="525" width="80" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_parties.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="myPartiesBtnClick:" destination="-1" eventType="touchUpInside" id="ZoN-YV-DN2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCE-gK-LJ6">
+                    <rect key="frame" x="80" y="525" width="80" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_profile.png"/>
+                    <connections>
+                        <action selector="myProfileBtnClick:" destination="-1" eventType="touchUpInside" id="CaS-7P-QsH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzZ-c8-JwK">
+                    <rect key="frame" x="0.0" y="525" width="80" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_home.png"/>
+                    <connections>
+                        <action selector="homeBtnClick:" destination="-1" eventType="touchUpInside" id="HB9-Ow-znO"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -40,5 +84,9 @@
     </objects>
     <resources>
         <image name="Footer_singlebtn.png" width="720" height="170"/>
+        <image name="footer_deals.png" width="240" height="132"/>
+        <image name="footer_home.png" width="240" height="132"/>
+        <image name="footer_parties.png" width="240" height="132"/>
+        <image name="footer_profile.png" width="240" height="132"/>
     </resources>
 </document>

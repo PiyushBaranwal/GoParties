@@ -9,6 +9,7 @@
 #import "FogetPassViewController.h"
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "Singleton.h"
 
 
 @interface FogetPassViewController ()
@@ -42,6 +43,9 @@
 */
 
 - (IBAction)submitBtnClick:(id)sender {
+    
+    
+    [self CallingWebServiceforforgot];
 }
 
 - (IBAction)loginBtnClick:(id)sender {
@@ -111,5 +115,41 @@
     }
     
 }
+
+
+-(void)CallingWebServiceforforgot
+{
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        
+        NSString *post = [NSString stringWithFormat:@"email=%@&username=%@&phone=%@&access_token=%@",userTextField.text,userTextField.text,mobileTextField.text,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:@"http://api.startup-designer.com/forgot"]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:postData];
+        NSURLResponse *requestResponse;
+        NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
+        
+        NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
+                                                                        options:kNilOptions
+                                                                          error:nil];
+        NSLog(@"jsonDict:%@",jsonDict);
+        
+        
+    }
+    else
+    {
+        //To show error no internet connection
+        [Singleton connectionErrorMsg];
+    }
+    
+}
+
 
 @end

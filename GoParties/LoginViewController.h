@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+//#import "MBProgressHUD.h"
+
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate,NSURLConnectionDelegate,CLLocationManagerDelegate>
 {
+    
+   
+    
+    
     IBOutlet UITextField *nameTextField;
     IBOutlet UITextField *passTextField;
     
@@ -24,6 +30,44 @@
     
      NSMutableArray *json1;
     
+    //fro parsing
+    NSDictionary *json;
+    NSMutableDictionary *mainDataDict;
+    NSMutableDictionary *userDict;
+    
+    // variables used to store the user information
+    NSString *userAddress;
+    NSString *userCityId;
+    NSString *userContactEmail;
+    NSString *userContactPerson;
+    NSString *userContactPhone;
+    NSString *userCoverImg;
+    NSString *userCreatedAt;
+    NSString *userDeleatedAt;
+    NSString *userEmail;
+    NSString *userFBId;
+    NSString *userFBPageId;
+    NSMutableArray *userFollowdataArray;
+    NSString *userGPId;
+    NSString *userId;
+    BOOL userIsActive;
+    NSString *userLat1;
+    NSString *userLong1;
+    NSMutableArray *userPartyData;
+    NSString *name;
+    NSString *userOTP;
+    NSString *userPassword;
+    NSString *userPhone;
+    NSString *userProfilePic;
+    NSString *userProfileType;
+    NSString *userRating;
+    NSString *userReportCount;
+    NSString *userName;
+    NSString *userValidEmail;
+    NSString *userValidPhone;
+    NSString *userWebSite;
+   
+    BOOL logged;
     
     
 //    CLLocationManager *locManager;

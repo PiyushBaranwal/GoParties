@@ -23,6 +23,9 @@
     IBOutlet UIButton *typeBtn;
     
     
+    NSMutableDictionary *mainDataDict;
+    
+    
 }
 - (IBAction)typeBtnClick:(id)sender;
 - (IBAction)regBtnClick:(id)sender;

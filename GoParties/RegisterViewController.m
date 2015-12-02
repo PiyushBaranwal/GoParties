@@ -11,6 +11,9 @@
 #import "LoginViewController.h"
 #import "Singleton.h"
 
+
+#import "VerificationViewController.h"
+
 @interface RegisterViewController ()
 
 @end
@@ -111,7 +114,7 @@
 - (IBAction)typeBtnClick:(id)sender {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(106.0f, 315.0f, 270.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(66.0f, 315.0f, 230.0f, 150.0f)];
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -220,46 +223,33 @@
         NSURLResponse *requestResponse;
         NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
         
-        NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
-        NSLog(@"requestReply: %@", requestReply);
         
-        if ([requestReply isEqualToString:@"[\"Success\"]"])
-        {
-            UIAlertController * alert=   [UIAlertController
-                                          alertControllerWithTitle:@"~info~"
-                                          message:@"You have successfully registered"
-                                          preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* okButton = [UIAlertAction
-                                        actionWithTitle:@"OK"
-                                        style:UIAlertActionStyleDefault
-                                        handler:^(UIAlertAction * action)
-                                        {
-                                            //Handel your yes please button action here
-                                            [alert dismissViewControllerAnimated:YES completion:nil];
-                                            
-                                        }];
-//            UIAlertAction* noButton = [UIAlertAction
-//                                       actionWithTitle:@"No, thanks"
-//                                       style:UIAlertActionStyleDefault
-//                                       handler:^(UIAlertAction * action)
-//                                       {
-//                                           [alert dismissViewControllerAnimated:YES completion:nil];
-//                                           
-//                                       }];
+       // NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
         
-            [alert addAction:okButton];
-            //[alert addAction:noButton];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-        }
         
-        else
-            
-        {
-            //            [Utils showAlertView:nil message:@"Error" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok"];
-        }
+        NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
+                                                                        options:kNilOptions
+                                                                          error:nil];
+        NSLog(@"jsonDict:%@",jsonDict);
         
+//        mainDataDict=[jsonDict objectForKey:@"data"];
+//        
+//        NSString *message=[mainDataDict valueForKey:@"message"];
+//        if ([message isEqualToString:@"OTP sent"])
+//        {
+//            VerificationViewController *objV=[[VerificationViewController alloc]initWithNibName:@"VerificationViewController" bundle:nil];
+//        objV.mailId=usertextField.text;
+//            [self.navigationController pushViewController:objV animated:YES];
+//        }
+//        
+//        else if ([message isEqualToString:@"Your account is not verified"])
+//        {
+            [self CallingWebServiceForResendOTP];
+//        }
+//        else
+//        {
+//            
+//        }
         
         
         
@@ -274,4 +264,47 @@
 
 
 
+
+-(void)CallingWebServiceForResendOTP
+{
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        
+        //To get the userLat long from local database    ///  LinkInUSerCurLat
+        NSUserDefaults *userDef=  [NSUserDefaults standardUserDefaults];
+        double userLat=[[userDef objectForKey:@"UserCurLat"] doubleValue];
+        double userLong=[[userDef objectForKey:@"UserCurLong"] doubleValue];
+        NSLog(@"userLat=%f",userLat);
+        NSLog(@"userLong=%f",userLong);
+        
+        
+        NSString *post = [NSString stringWithFormat:@"email=%@&access_token=%@",usertextField.text,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:@"http://api.startup-designer.com/resendOtp"]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:postData];
+        NSURLResponse *requestResponse;
+        NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
+        
+        
+        // NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+        
+        
+        NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
+                                                                        options:kNilOptions
+                                                                          error:nil];
+        NSLog(@"jsonDict:%@",jsonDict);
+        
+        
+        VerificationViewController *objV=[[VerificationViewController alloc]initWithNibName:@"VerificationViewController" bundle:nil];
+                objV.mailId=usertextField.text;
+                    [self.navigationController pushViewController:objV animated:YES];
+    }
+}
 @end

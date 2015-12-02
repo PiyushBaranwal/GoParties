@@ -494,6 +494,74 @@
             [cardView addSubview:timeImg];
             
             
+            
+            //for outer circle
+            UIView *circularView = [[UIView alloc] initWithFrame:CGRectMake(240,110,60,60)];
+            //circularView.alpha = 0.5;
+            //circularView.backgroundColor=[UIColor whiteColor];
+            circularView.layer.cornerRadius = 30;
+            circularView.layer.borderWidth = 3.0f;
+            circularView.layer.borderColor = [UIColor whiteColor].CGColor;
+            [cardView addSubview:circularView];
+            
+            
+            
+            CAShapeLayer *circle=[CAShapeLayer layer];
+            // here set the starting point as zero and ending point as the no of days
+            circle.path=[UIBezierPath bezierPathWithArcCenter:CGPointMake(30, 30) radius:27 startAngle:2*M_PI*0-M_PI_2 endAngle:2*M_PI*1-M_PI_2*100/30 clockwise:NO].CGPath;
+            circle.fillColor=[UIColor clearColor].CGColor;
+            circle.strokeColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0].CGColor;
+            circle.lineWidth=4;//4
+            
+//            // to set the animation
+//            CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+//            animation.duration=10;
+//            animation.removedOnCompletion=NO;
+//            animation.fromValue=@(0);
+//            animation.toValue=@(1);
+//            animation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+//            [circle addAnimation:animation forKey:@"drawCircleAnimation"];
+            
+            [circularView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+            [circularView.layer addSublayer:circle];
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            // for inner circle
+            UIView *innercircularView = [[UIView alloc] initWithFrame:CGRectMake(3,3,54,54)];
+            //circularView.alpha = 0.5;
+            innercircularView.backgroundColor=[UIColor clearColor];
+            innercircularView.layer.cornerRadius = 27;
+            [circularView addSubview:innercircularView];
+            
+            // for no of days
+            UILabel *noLbl=[[UILabel alloc]initWithFrame:CGRectMake(15, 5, 40, 30)];
+            noLbl.backgroundColor=[UIColor clearColor];
+            noLbl.text=@"30";
+            noLbl.textColor=[UIColor whiteColor];
+            //noLbl.font=[UIFont fontWithName:@"Sans" size:12.0];
+            [innercircularView addSubview:noLbl];
+            
+            // for days
+            UILabel *dayLbl=[[UILabel alloc]initWithFrame:CGRectMake(10, 20, 40, 30)];
+            dayLbl.backgroundColor=[UIColor clearColor];
+            dayLbl.text=@"Days";
+            dayLbl.textColor=[UIColor whiteColor];
+            //noLbl.font=[UIFont fontWithName:@"Sans" size:12.0];
+            [innercircularView addSubview:dayLbl];
+            
+            
+            
+            
+            
             //for Time Label
             UILabel *timeLbl=[[UILabel alloc]initWithFrame:CGRectMake(140, 120, 150, 30)];
             timeLbl.backgroundColor=[UIColor clearColor];

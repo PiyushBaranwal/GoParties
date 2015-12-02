@@ -7,9 +7,12 @@
 //
 
 #import "UserProfileViewController.h"
+#import "HomeViewController.h"
 
-@interface UserProfileViewController ()
 
+
+@interface UserProfileViewController ()<ViewPagerDataSource, ViewPagerDelegate>
+@property (nonatomic) NSUInteger numberOfTabs;
 @end
 
 @implementation UserProfileViewController
@@ -76,12 +79,147 @@
     categoryArray=[[NSMutableArray alloc]initWithObjects:@"All",@"Parties",@"Events",@"Bands",@"Djs", nil];
     typeArray=[[NSMutableArray alloc]initWithObjects:@"Delhi NCR",@"Mumbai",@"Chandigarh",@"Banglore", nil];
     // Do any additional setup after loading the view from its nib.
+    //to check whether user is logged in or not
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"userLoggedIn"])
+    {
+        homeBtn.hidden=NO;
+        myProfBtn.hidden=NO;
+        myPartiesbtn.hidden=NO;
+        myDealsBtn.hidden=NO;
+        accessBtn.hidden=YES;
+    }
+    else
+    {
+        accessBtn.hidden=NO;
+        homeBtn.hidden=YES;
+        myProfBtn.hidden=YES;
+        myPartiesbtn.hidden=YES;
+        myDealsBtn.hidden=YES;
+        
+    }
+
+    
+    
+    ////////////
+    viewPager.dataSource = self;
+    viewPager.delegate = self;
+    /////////////////
+        
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+/////////////////////////////////////////////////////////////
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    [self performSelector:@selector(loadContent) withObject:nil afterDelay:3.0];
+    
+}
+
+#pragma mark - Setters
+- (void)setNumberOfTabs:(NSUInteger)numberOfTabs {
+    
+    // Set numberOfTabs
+    _numberOfTabs = numberOfTabs;
+    
+    // Reload data
+    [viewPager reloadData];
+    
+}
+
+#pragma mark - Helpers
+- (void)selectTabWithNumberFive {
+    [viewPager selectTabAtIndex:5];
+}
+- (void)loadContent {
+    self.numberOfTabs = 10;
+}
+
+#pragma mark - Interface Orientation Changes
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    // Update changes after screen rotates
+    [self performSelector:@selector(setNeedsReloadOptions) withObject:nil afterDelay:duration];
+}
+
+#pragma mark - ViewPagerDataSource
+- (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
+    return self.numberOfTabs;
+}
+- (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
+    
+    UILabel *label = [UILabel new];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont systemFontOfSize:12.0];
+    label.text = [NSString stringWithFormat:@"Tab #%i", index];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor blackColor];
+    [label sizeToFit];
+    
+    return label;
+}
+
+- (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
+    
+    UIView *contentView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 , 320, 568)];
+    contentView.backgroundColor=[UIColor grayColor];
+    
+    [userTableView addSubview:contentView];
+    
+//    ContentViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
+    
+    //contentView.labelString = [NSString stringWithFormat:@"Content View #%i", index];
+    
+    return contentView;
+}
+
+#pragma mark - ViewPagerDelegate
+- (CGFloat)viewPager:(ViewPagerController *)viewPager valueForOption:(ViewPagerOption)option withDefault:(CGFloat)value {
+    
+    switch (option) {
+        case ViewPagerOptionStartFromSecondTab:
+            return 0.0;
+        case ViewPagerOptionCenterCurrentTab:
+            return 1.0;
+        case ViewPagerOptionTabLocation:
+            return 0.0;
+        case ViewPagerOptionTabHeight:
+            return 49.0;
+        case ViewPagerOptionTabOffset:
+            return 36.0;
+        case ViewPagerOptionTabWidth:
+            return UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? 128.0 : 96.0;
+        case ViewPagerOptionFixFormerTabsPositions:
+            return 1.0;
+        case ViewPagerOptionFixLatterTabsPositions:
+            return 1.0;
+        default:
+            return value;
+    }
+}
+- (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
+    
+    switch (component) {
+        case ViewPagerIndicator:
+            return [[UIColor redColor] colorWithAlphaComponent:0.64];
+        case ViewPagerTabsView:
+            return [[UIColor lightGrayColor] colorWithAlphaComponent:0.32];
+        case ViewPagerContent:
+            return [[UIColor darkGrayColor] colorWithAlphaComponent:0.32];
+        default:
+            return color;
+    }
+}
+
+
+//////////////////////////////////////////////////////////
+
 
 -(void)AddRightBarButtonItems
 {
@@ -421,6 +559,15 @@
                 b=b+15;
             }
         
+        
+        
+        NSInteger a=0;
+        //
+        //For First Cell, for user comment cell
+        UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(10, 220+a, 300, 65)];
+        cellView.backgroundColor=[UIColor whiteColor];
+        [userTableView addSubview:cellView];
+        
     }
     
     
@@ -569,5 +716,90 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+- (IBAction)homeBtnClick:(id)sender {
+    if([homeBtn currentImage]==[UIImage imageNamed:@"active_home.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [homeBtn setImage:[UIImage imageNamed: @"active_home.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"home btn clicked");
+}
+
+- (IBAction)myProfileBtnClick:(id)sender {
+    if([myProfBtn currentImage]==[UIImage imageNamed:@"active_profile.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myProfBtn setImage:[UIImage imageNamed: @"active_profile.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myProfBtn btn clicked");
+    
+//    UserProfileViewController *objU=[[UserProfileViewController alloc]initWithNibName:@"UserProfileViewController" bundle:nil];
+//    [self.navigationController pushViewController:objU animated:YES];
+}
+
+- (IBAction)myPartiesBtnClick:(id)sender {
+    
+    if([myPartiesbtn currentImage]==[UIImage imageNamed:@"active_parties.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myPartiesbtn setImage:[UIImage imageNamed: @"active_parties.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myPartiesbtn btn clicked");
+
+}
+
+- (IBAction)myDealsBtnClick:(id)sender {
+    
+    if([myDealsBtn currentImage]==[UIImage imageNamed:@"active_deals.png"])
+    {
+         [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myDealsBtn setImage:[UIImage imageNamed: @"active_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myDealsBtn btn clicked");
+
+}
+
+- (IBAction)accessBtnClick:(id)sender {
+    HomeViewController *objH=[[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
+    [self.navigationController pushViewController:objH animated:YES];
+}
+
 
 @end

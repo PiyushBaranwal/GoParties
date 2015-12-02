@@ -10,11 +10,17 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 
+#import "MainViewController.h"
+
+#import "Singleton.h"
+
 @interface VerificationViewController ()
 
 @end
 
 @implementation VerificationViewController
+
+@synthesize mailId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +45,12 @@
 */
 
 - (IBAction)submitBtnClick:(id)sender {
+    
+    
+    
+    
+    [self CallingWebServiceToverifyOTP];
+    
 }
 
 - (IBAction)loginBtnClick:(id)sender {
@@ -95,6 +107,59 @@
 
     
 }
+
+
+
+-(void)CallingWebServiceToverifyOTP
+{
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        
+        NSString *post = [NSString stringWithFormat:@"email=%@&verifOtp=%@&access_token=%@",mailId,verificationTextField.text,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:@"http://api.startup-designer.com/verifyOtp"]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:postData];
+        NSURLResponse *requestResponse;
+        NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
+        
+        NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
+                                                                        options:kNilOptions
+                                                                          error:nil];
+        NSLog(@"jsonDict:%@",jsonDict);
+        
+        
+        
+        mainDataDict=[jsonDict objectForKey:@"data"];
+                if ([mainDataDict objectForKey:@"user"])
+                {
+                    logged=YES;
+                    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:logged] forKey:@"userLoggedIn"];
+                    
+                    MainViewController *objM=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+                    objM.loggedIn=logged;
+                    [self.navigationController pushViewController:objM animated:YES];
+
+                }
+        
+        
+        
+    }
+    else
+    {
+        //To show error no internet connection
+        [Singleton connectionErrorMsg];
+    }
+    
+}
+
+
 
 
 @end

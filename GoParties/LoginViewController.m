@@ -12,8 +12,11 @@
 #import "FogetPassViewController.h"
 
 #import "Singleton.h"
-//#import "Utils.h"
+#import "Utils.h"
 #import "SVGeocoder.h"
+
+
+
 
 
 @interface LoginViewController ()
@@ -21,6 +24,9 @@
 @end
 
 @implementation LoginViewController
+
+////--------------------------------------------
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,9 +87,24 @@
 //    [locManager startUpdatingLocation];
     
     
+   
     
     
+//    CGFloat r = 150;
+//    
+//    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0,0,1.5*r,1.5*r)];
+//    lbl.text = @"●";
+//    lbl.transform = CGAffineTransformMakeTranslation(0.0f, -r/6);
+//    lbl.textAlignment = UITextAlignmentCenter;
+//    lbl.backgroundColor = [UIColor clearColor];
+//    lbl.textColor = [UIColor redColor];
+//    lbl.font = [UIFont systemFontOfSize:2*r];
+//    lbl.alpha = 0.5;
+//    lbl.center = self.view.center;
+//    [self.view addSubview:lbl];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -111,7 +132,8 @@
     }
     else
     {
-    
+       [Utils startActivityIndicatorInView:self.view withMessage:@"Loading"];
+        
     [self CallingWebServiceForLogin];
     }
 }
@@ -215,7 +237,8 @@
         NSLog(@"userLong=%f",userLong);
         
         
-        NSString *post = [NSString stringWithFormat:@"username=%@&phone=%@&email=%@&password=%@&latitude=%f&longitude=%f",@"GP",@"1234567891",nameTextField.text,passTextField.text,userLat,userLong ];
+        
+        NSString *post = [NSString stringWithFormat:@"email=%@&password=%@&latitude=%f&longitude=%f&access_token=%@",nameTextField.text,passTextField.text,userLat,userLong,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
         
         NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
@@ -227,55 +250,116 @@
         NSURLResponse *requestResponse;
         NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
         
-        NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
-        NSLog(@"requestReply: %@", requestReply);
-
-        if ([requestReply isEqualToString:@"[\"Success\"]"])
-        {
-//            [Utils showAlertView:nil message:@"Thank you for taking the time to fill out this form, we will get in touch with you shortly." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok"];
-//            
-//            
-//            submitBtn.enabled=YES;
-//            salutationTextField.text=@"";
-//            fNameTextField.text=@"";
-//            lNameTextField.text=@"";
-//            cityTextField.text=@"";
-//            countryNameTextField.text=@"";
-//            emailNameTextField.text=@"";
-//            mobNameTextField.text=@"";
-//            [queryNameTextView setText:@""];
-//            
-//            
-//            salutationTextField.text=@"Select";
-//            countryNameTextField.text=@"Select";
-            
-            
-            
-            
-        }
         
+       // NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+        
+        
+        NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
+                                                   options:kNilOptions
+                                                     error:nil];
+        NSLog(@"jsonDict:%@",jsonDict);
+        
+        mainDataDict=[jsonDict objectForKey:@"data"];
+        NSLog(@"mainDataDict=%@",mainDataDict);
+        userDict=[mainDataDict objectForKey:@"user"];
+        NSLog(@"userDict=%@",userDict);
+        
+        userAddress=[userDict valueForKey:@"address"];
+        userCityId=[userDict valueForKey:@"city_id"];
+        userContactEmail=[userDict valueForKey:@"contact_email"];
+        userContactPerson=[userDict valueForKey:@"contact_person"];
+        userContactPhone=[userDict valueForKey:@"contact_phone"];
+        userCoverImg=[userDict valueForKey:@"cover"];
+        userCreatedAt=[userDict valueForKey:@"created_at"];
+        userDeleatedAt=[userDict valueForKey:@"deleted_at"];
+        userEmail=[userDict valueForKey:@"email"];
+        userFBId=[userDict valueForKey:@"facebook_id"];
+        userFBPageId=[userDict valueForKey:@"facebook_page_id"];
+        userFollowdataArray=[userDict valueForKey:@"followData"];
+        userGPId=[userDict valueForKey:@"google_id"];
+        userId=[userDict valueForKey:@"id"];
+        userIsActive=[userDict valueForKey:@"is_active"];
+        userLat1=[userDict valueForKey:@"latitude"];
+        userLong1=[userDict valueForKey:@"longitude"];
+        userPartyData=[userDict valueForKey:@"myPartyData"];
+        name=[userDict valueForKey:@"name"];
+        userOTP=[userDict valueForKey:@"otp"];
+        userPassword=[userDict valueForKey:@"password"];
+        userPhone=[userDict valueForKey:@"phone"];
+        userProfilePic=[userDict valueForKey:@"profile_pic"];
+        userProfileType=[userDict valueForKey:@"profile_type"];
+        userRating=[userDict valueForKey:@"rating"];
+        userReportCount=[userDict valueForKey:@"report_count"];
+        userName=[userDict valueForKey:@"username"];
+        userValidEmail=[userDict valueForKey:@"valid_email"];
+        userValidPhone=[userDict valueForKey:@"valid_phone"];
+        userWebSite=[userDict valueForKey:@"website"];
+        
+        // to save the data in locallly in the app.
+        //            [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userCityId forKey:@"userCityId"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userContactEmail forKey:@"userContactEmail"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userContactPerson forKey:@"userContactPerson"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userContactPhone forKey:@"userContactPhone"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userCoverImg forKey:@"userCoverImg"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userCreatedAt forKey:@"userCreatedAt"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userDeleatedAt forKey:@"userDeleatedAt"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userEmail forKey:@"userEmail"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userFBId forKey:@"userFBId"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userFBPageId forKey:@"userFBPageId"];
+        //            // for array
+        //            [[NSUserDefaults standardUserDefaults] setObject:userFollowdataArray forKey:@"userFollowdataArray"];
+        //            [[NSUserDefaults standardUserDefaults] synchronize];
+        //
+        //
+        //            [[NSUserDefaults standardUserDefaults] setObject:userGPId forKey:@"userGPId"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userId forKey:@"userId"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:userIsActive] forKey:@"userIsActive"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userLat1 forKey:@"userLat1"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userLong1 forKey:@"userLong1"];
+        //            // for array
+        //            [[NSUserDefaults standardUserDefaults] setObject:userPartyData forKey:@"userPartyData"];
+        //            [[NSUserDefaults standardUserDefaults] synchronize];
+        //
+        //            [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userOTP forKey:@"userOTP"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userPassword forKey:@"userPassword"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userPhone forKey:@"userPhone"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userProfilePic forKey:@"userProfilePic"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userProfileType forKey:@"userProfileType"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userRating forKey:@"userRating"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userReportCount forKey:@"userReportCount"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"userName"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userValidEmail forKey:@"userValidEmail"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userValidPhone forKey:@"userValidPhone"];
+        //            [[NSUserDefaults standardUserDefaults] setObject:userWebSite forKey:@"userWebSite"];
+        
+        
+        if (userEmail)
+        {
+            logged=YES;
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:logged] forKey:@"userLoggedIn"];
+            
+            MainViewController *objM=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+            objM.loggedIn=logged;
+            [self.navigationController pushViewController:objM animated:YES];
+            
+            [Utils stopActivityIndicatorInView:self.view];
+          
+        }
         else
-            
         {
-//            [Utils showAlertView:nil message:@"Error" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok"];
+            
         }
-
         
-        
-        
-//        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
-//        if (conn)
-//        {
-//            // webData=[NSMutableData data];
-//            webData=[[NSMutableData alloc]init];
-//        }
     }
     else
     {
         //To show error no internet connection
         [Singleton connectionErrorMsg];
     }
+    
+    [Utils stopActivityIndicatorInView:self.view];
     
 }
 

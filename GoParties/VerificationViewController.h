@@ -13,7 +13,17 @@
 {
     IBOutlet UITextField *verificationTextField;
     
+    NSMutableDictionary *mainDataDict;
+    
+    NSString *mailId;
+    BOOL logged;
+    
 }
+
+
+@property (nonatomic,retain) NSString *mailId;
+
+
 - (IBAction)submitBtnClick:(id)sender;
 - (IBAction)loginBtnClick:(id)sender;
 - (IBAction)signupBtnClick:(id)sender;
