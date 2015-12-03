@@ -23,6 +23,14 @@
     
     
     
+    
+    IBOutlet UIButton *homeBtn;
+    IBOutlet UIButton *myProfBtn;
+    IBOutlet UIButton *myPartiesbtn;
+    IBOutlet UIButton *myDealsBtn;
+    
+    
+    
     UIButton *clickedBtn;
     UIPickerView *pickerView;
     
@@ -31,5 +39,20 @@
     NSMutableArray *typeArray;
 }
 @property (strong, nonatomic) SWRevealViewController *viewController;
+
+
+
+
+
+
+- (IBAction)homeBtnClick:(id)sender;
+- (IBAction)myProfileBtnClick:(id)sender;
+- (IBAction)myPartiesBtnClick:(id)sender;
+- (IBAction)myDealsBtnClick:(id)sender;
+//- (IBAction)accessBtnClick:(id)sender;
+
+
+
+
 
 @end

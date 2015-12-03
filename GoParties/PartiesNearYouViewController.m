@@ -497,9 +497,7 @@
             
             //for outer circle
             UIView *circularView = [[UIView alloc] initWithFrame:CGRectMake(240,110,60,60)];
-            //circularView.alpha = 0.5;
-            //circularView.backgroundColor=[UIColor whiteColor];
-            circularView.layer.cornerRadius = 30;
+            circularView.layer.cornerRadius = 30;// half of the height or width of the view
             circularView.layer.borderWidth = 3.0f;
             circularView.layer.borderColor = [UIColor whiteColor].CGColor;
             [cardView addSubview:circularView];
@@ -525,15 +523,7 @@
             [circularView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
             [circularView.layer addSublayer:circle];
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
+                        
             
             // for inner circle
             UIView *innercircularView = [[UIView alloc] initWithFrame:CGRectMake(3,3,54,54)];

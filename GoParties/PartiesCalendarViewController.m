@@ -8,11 +8,56 @@
 
 #import "PartiesCalendarViewController.h"
 
-@interface PartiesCalendarViewController ()
+#import <EventKit/EventKit.h>
+
+#import "CKCalendarView.h"
+
+@interface PartiesCalendarViewController () <CKCalendarDelegate>
+
+@property(nonatomic, weak) CKCalendarView *calendar;
+@property(nonatomic, strong) UILabel *dateLabel;
+@property(nonatomic, strong) NSDateFormatter *dateFormatter;
+@property(nonatomic, strong) NSDate *minimumDate;
+@property(nonatomic, strong) NSArray *disabledDates;
 
 @end
 
 @implementation PartiesCalendarViewController
+
+
+//- (id)init {
+//    self = [super init];
+//    if (self) {
+//        CKCalendarView *calendar = [[CKCalendarView alloc] initWithStartDay:startMonday];
+//        self.calendar = calendar;
+//        calendar.delegate = self;
+//        
+//        self.dateFormatter = [[NSDateFormatter alloc] init];
+//        [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
+//        self.minimumDate = [self.dateFormatter dateFromString:@"20/09/2012"];
+//        
+//        self.disabledDates = @[
+//                               [self.dateFormatter dateFromString:@"05/01/2013"],
+//                               [self.dateFormatter dateFromString:@"06/01/2013"],
+//                               [self.dateFormatter dateFromString:@"07/01/2013"]
+//                               ];
+//        
+//        calendar.onlyShowCurrentMonth = NO;
+//        calendar.adaptHeightToNumberOfWeeksInMonth = YES;
+//        
+//        calendar.frame = CGRectMake(10, 10, 300, 520);
+//        [self.view addSubview:calendar];
+//        
+//        self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calendar.frame) + 4, self.view.bounds.size.width, 24)];
+//        [self.view addSubview:self.dateLabel];
+//        
+//        self.view.backgroundColor = [UIColor whiteColor];
+//        
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
+//    }
+//    return self;
+//}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,7 +120,9 @@
     categoryArray=[[NSMutableArray alloc]initWithObjects:@"All",@"Parties",@"Events",@"Bands",@"Djs", nil];
     typeArray=[[NSMutableArray alloc]initWithObjects:@"Delhi NCR",@"Mumbai",@"Chandigarh",@"Banglore", nil];
     
+   // self.navigationController.navigationBarHidden = YES;
     
+    [self calendar];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -83,6 +130,103 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+-(id)calendar
+{
+   
+    CKCalendarView *calendar = [[CKCalendarView alloc] initWithStartDay:startMonday];
+    self.calendar = calendar;
+    calendar.delegate = self;
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    self.minimumDate = [self.dateFormatter dateFromString:@"20/09/2012"];
+    
+    self.disabledDates = @[
+                           [self.dateFormatter dateFromString:@"05/01/2013"],
+                           [self.dateFormatter dateFromString:@"06/01/2013"],
+                           [self.dateFormatter dateFromString:@"07/01/2013"]
+                           ];
+    
+    calendar.onlyShowCurrentMonth = NO;
+    calendar.adaptHeightToNumberOfWeeksInMonth = YES;
+    
+    calendar.frame = CGRectMake(10, 70, 300, 320);//10, 10, 300, 320
+    [self.view addSubview:calendar];
+    
+    self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calendar.frame) + 4, self.view.bounds.size.width, 24)];
+    [self.view addSubview:self.dateLabel];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
+    
+    return self;
+}
+
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)localeDidChange {
+    [self.calendar setLocale:[NSLocale currentLocale]];
+}
+
+- (BOOL)dateIsDisabled:(NSDate *)date {
+    for (NSDate *disabledDate in self.disabledDates) {
+        if ([disabledDate isEqualToDate:date]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+#pragma mark -
+#pragma mark - CKCalendarDelegate
+
+- (void)calendar:(CKCalendarView *)calendar configureDateItem:(CKDateItem *)dateItem forDate:(NSDate *)date {
+    // TODO: play with the coloring if we want to...
+    if ([self dateIsDisabled:date]) {
+        dateItem.backgroundColor = [UIColor redColor];
+        dateItem.textColor = [UIColor whiteColor];
+    }
+}
+
+- (BOOL)calendar:(CKCalendarView *)calendar willSelectDate:(NSDate *)date {
+    return ![self dateIsDisabled:date];
+}
+
+- (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
+    self.dateLabel.text = [self.dateFormatter stringFromDate:date];
+}
+
+- (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
+    if ([date laterDate:self.minimumDate] == date) {
+        //self.calendar.backgroundColor = [UIColor blueColor];
+        return YES;
+    } else {
+        //self.calendar.backgroundColor = [UIColor redColor];
+        return NO;
+    }
+}
+
+- (void)calendar:(CKCalendarView *)calendar didLayoutInRect:(CGRect)frame {
+    NSLog(@"calendar layout: %@", NSStringFromCGRect(frame));
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 -(void)AddRightBarButtonItems
@@ -133,7 +277,7 @@
     
     
     // to set the drop down button for location
-    UIButton *locBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 70, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *locBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 50, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
     locBtn.backgroundColor=[UIColor clearColor];
     [locBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     locBtn.tag=100;
@@ -376,6 +520,92 @@
     //    [salutationTextField setText:[NSString stringWithFormat:@"%@",[countryArray objectAtIndex:[pickerView selectedRowInComponent:0]]]];
     //    salutationPickerView.hidden=YES;
 }
+
+
+
+
+- (IBAction)homeBtnClick:(id)sender {
+    
+    if([homeBtn currentImage]==[UIImage imageNamed:@"active_home.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [homeBtn setImage:[UIImage imageNamed: @"active_home.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"home btn clicked");
+}
+
+- (IBAction)myProfileBtnClick:(id)sender {
+    
+    if([myProfBtn currentImage]==[UIImage imageNamed:@"active_profile.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myProfBtn setImage:[UIImage imageNamed: @"active_profile.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myProfBtn btn clicked");
+    
+    
+    //    UserProfileViewController *objU=[[UserProfileViewController alloc]initWithNibName:@"UserProfileViewController" bundle:nil];
+    //    [self.navigationController pushViewController:objU animated:YES];
+}
+
+- (IBAction)myPartiesBtnClick:(id)sender {
+    
+    if([myPartiesbtn currentImage]==[UIImage imageNamed:@"active_parties.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myPartiesbtn setImage:[UIImage imageNamed: @"active_parties.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myPartiesbtn btn clicked");
+}
+
+- (IBAction)myDealsBtnClick:(id)sender {
+    
+    if([myDealsBtn currentImage]==[UIImage imageNamed:@"active_deals.png"])
+    {
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [myDealsBtn setImage:[UIImage imageNamed: @"active_deals.png"] forState:UIControlStateNormal];
+        [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
+        [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
+        [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
+    }
+    NSLog(@"myDealsBtn btn clicked");
+    
+}
+
+
 
 
 /*

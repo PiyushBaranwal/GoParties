@@ -59,6 +59,12 @@
 		FC73A3E41C08771100567306 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FC73A3E11C08771100567306 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FC73A3E51C08771100567306 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC73A3E31C08771100567306 /* Singleton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FC73A3E71C08805E00567306 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC73A3E61C08805E00567306 /* CFNetwork.framework */; };
+		FC75510D1C1019A5009A976A /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC75510C1C1019A5009A976A /* CKCalendarView.m */; };
+		FC7551131C10418C009A976A /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC75510F1C10418C009A976A /* right_arrow.png */; };
+		FC7551141C10418C009A976A /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7551101C10418C009A976A /* left_arrow@2x.png */; };
+		FC7551151C10418C009A976A /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7551111C10418C009A976A /* left_arrow.png */; };
+		FC7551161C10418C009A976A /* right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7551121C10418C009A976A /* right_arrow@2x.png */; };
+		FC7551191C10641E009A976A /* calendar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7551181C10641E009A976A /* calendar_bg.png */; };
 		FCA6D6DA1BFF1C000097BF9C /* FogetPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6D6D81BFF1BFF0097BF9C /* FogetPassViewController.m */; };
 		FCA6D6DB1BFF1C000097BF9C /* FogetPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA6D6D91BFF1BFF0097BF9C /* FogetPassViewController.xib */; };
 		FCA6D6DD1BFF1F800097BF9C /* Footer_singlebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA6D6DC1BFF1F800097BF9C /* Footer_singlebtn.png */; };
@@ -329,6 +335,13 @@
 		FC73A3E21C08771100567306 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		FC73A3E31C08771100567306 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 		FC73A3E61C08805E00567306 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FC75510B1C1019A5009A976A /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
+		FC75510C1C1019A5009A976A /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
+		FC75510F1C10418C009A976A /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
+		FC7551101C10418C009A976A /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
+		FC7551111C10418C009A976A /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
+		FC7551121C10418C009A976A /* right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_arrow@2x.png"; sourceTree = "<group>"; };
+		FC7551181C10641E009A976A /* calendar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_bg.png; sourceTree = "<group>"; };
 		FCA6D6D71BFF1BFF0097BF9C /* FogetPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FogetPassViewController.h; sourceTree = "<group>"; };
 		FCA6D6D81BFF1BFF0097BF9C /* FogetPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FogetPassViewController.m; sourceTree = "<group>"; };
 		FCA6D6D91BFF1BFF0097BF9C /* FogetPassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FogetPassViewController.xib; sourceTree = "<group>"; };
@@ -687,6 +700,28 @@
 			path = Singleton;
 			sourceTree = "<group>";
 		};
+		FC75510A1C1019A5009A976A /* CKCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				FC75510E1C104166009A976A /* CalendarIcons */,
+				FC75510B1C1019A5009A976A /* CKCalendarView.h */,
+				FC75510C1C1019A5009A976A /* CKCalendarView.m */,
+			);
+			path = CKCalendar;
+			sourceTree = "<group>";
+		};
+		FC75510E1C104166009A976A /* CalendarIcons */ = {
+			isa = PBXGroup;
+			children = (
+				FC7551181C10641E009A976A /* calendar_bg.png */,
+				FC75510F1C10418C009A976A /* right_arrow.png */,
+				FC7551101C10418C009A976A /* left_arrow@2x.png */,
+				FC7551111C10418C009A976A /* left_arrow.png */,
+				FC7551121C10418C009A976A /* right_arrow@2x.png */,
+			);
+			name = CalendarIcons;
+			sourceTree = "<group>";
+		};
 		FCA6D6D61BFF1BE20097BF9C /* ForgetPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +826,7 @@
 		FCB74BBC1BFB38680035BE0C /* PartiesMasterCalender */ = {
 			isa = PBXGroup;
 			children = (
+				FC75510A1C1019A5009A976A /* CKCalendar */,
 				FCB74BBD1BFB38910035BE0C /* PartiesCalendarViewController.h */,
 				FCB74BBE1BFB38910035BE0C /* PartiesCalendarViewController.m */,
 				FCB74BBF1BFB38910035BE0C /* PartiesCalendarViewController.xib */,
@@ -1339,7 +1375,9 @@
 				FCC8C3551BFC62DB006056EA /* Locate.png in Resources */,
 				FCC8C3411BFC62DB006056EA /* g_plus.png in Resources */,
 				FCC8C33C1BFC62DB006056EA /* fitler_drop.png in Resources */,
+				FC7551161C10418C009A976A /* right_arrow@2x.png in Resources */,
 				FCE9F2831C0ED8BE0009EF8D /* active_home.png in Resources */,
+				FC7551151C10418C009A976A /* left_arrow.png in Resources */,
 				FCC8C3611BFC62DB006056EA /* my-parties.png in Resources */,
 				FC73A3A61C082D5000567306 /* home_create_parties.png in Resources */,
 				FCC8C2C11BFC614A006056EA /* menu.png in Resources */,
@@ -1363,6 +1401,7 @@
 				FCC8C36A1BFC62DB006056EA /* Settings.png in Resources */,
 				FC73A3A81C082D5000567306 /* home_invite_friend.png in Resources */,
 				FCEF43291BFDF62C0013B1E5 /* Lock1.png in Resources */,
+				FC7551131C10418C009A976A /* right_arrow.png in Resources */,
 				FCC8C3351BFC62DB006056EA /* contacts.png in Resources */,
 				FCE9F2821C0ED8BE0009EF8D /* active_deals.png in Resources */,
 				FC73A3AA1C082D5000567306 /* home_notification_frequency.png in Resources */,
@@ -1373,6 +1412,7 @@
 				FCE9F2871C0ED8BE0009EF8D /* footer_home.png in Resources */,
 				FCC8C3291BFC62DB006056EA /* bookmark-outline.png in Resources */,
 				FCC8C3E71BFCA3BA006056EA /* LoginViewController.xib in Resources */,
+				FC7551191C10641E009A976A /* calendar_bg.png in Resources */,
 				FCC8C32C1BFC62DB006056EA /* call.png in Resources */,
 				FCC8C35F1BFC62DB006056EA /* map.png in Resources */,
 				FCC8C3771BFC62DB006056EA /* verify_black.png in Resources */,
@@ -1380,6 +1420,7 @@
 				FC73A3D81C0870F000567306 /* Search1.png in Resources */,
 				FC73A3AE1C082D5000567306 /* home_special_deals.png in Resources */,
 				FCC8C3521BFC62DB006056EA /* like.png in Resources */,
+				FC7551141C10418C009A976A /* left_arrow@2x.png in Resources */,
 				FC73A3AD1C082D5000567306 /* home_setting.png in Resources */,
 				FC73A3BD1C082D5700567306 /* actve_home_create_parties.png in Resources */,
 				FCC8C3501BFC62DB006056EA /* image.png in Resources */,
@@ -1552,6 +1593,7 @@
 				FCC8C3D31BFC9E2C006056EA /* UIImage+GIF.m in Sources */,
 				FCC8C3DC1BFC9E2C006056EA /* SBJsonBase.m in Sources */,
 				FCA6D6E21BFF22F50097BF9C /* VerificationViewController.m in Sources */,
+				FC75510D1C1019A5009A976A /* CKCalendarView.m in Sources */,
 				FCC8C3E61BFCA3BA006056EA /* LoginViewController.m in Sources */,
 				FCC8C3D81BFC9E2C006056EA /* UIView+WebCacheOperation.m in Sources */,
 				FC5CAC461C09738F0009489F /* SVGeocoder.m in Sources */,

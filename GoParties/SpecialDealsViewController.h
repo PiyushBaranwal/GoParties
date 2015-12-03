@@ -14,6 +14,13 @@
     IBOutlet UITableView *dealsTableView;
     
     
+    IBOutlet UIButton *homeBtn;
+    IBOutlet UIButton *myProfBtn;
+    IBOutlet UIButton *myPartiesbtn;
+    IBOutlet UIButton *myDealsBtn;
+    
+    
+    
     UIView *popUpView;
     UITextField  *locTextField;
     UITextField  *catTextField;
@@ -36,4 +43,15 @@
 @property (nonatomic,retain)IBOutlet UITableView *dealsTableView;
 
 @property (strong, nonatomic) SWRevealViewController *viewController;
+
+
+
+- (IBAction)homeBtnClick:(id)sender;
+- (IBAction)myProfileBtnClick:(id)sender;
+- (IBAction)myPartiesBtnClick:(id)sender;
+- (IBAction)myDealsBtnClick:(id)sender;
+- (IBAction)accessBtnClick:(id)sender;
+
+
+
 @end
