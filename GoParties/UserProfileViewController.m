@@ -11,8 +11,8 @@
 
 
 
-@interface UserProfileViewController ()<ViewPagerDataSource, ViewPagerDelegate>
-@property (nonatomic) NSUInteger numberOfTabs;
+@interface UserProfileViewController ()
+@property (nonatomic) CAPSPageMenu *pageMenu;
 @end
 
 @implementation UserProfileViewController
@@ -98,13 +98,18 @@
         
     }
 
-    
+   // self.navigationController.navigationBarHidden = YES;
     
     ////////////
-    viewPager.dataSource = self;
-    viewPager.delegate = self;
+//    viewPager.dataSource = self;
+//    viewPager.delegate = self;
     /////////////////
-        
+    
+    
+    
+    
+    
+    
     
 }
 
@@ -113,112 +118,112 @@
     // Dispose of any resources that can be recreated.
 }
 
-/////////////////////////////////////////////////////////////
-- (void)viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:animated];
-    
-    [self performSelector:@selector(loadContent) withObject:nil afterDelay:3.0];
-    
-}
-
-#pragma mark - Setters
-- (void)setNumberOfTabs:(NSUInteger)numberOfTabs {
-    
-    // Set numberOfTabs
-    _numberOfTabs = numberOfTabs;
-    
-    // Reload data
-    [viewPager reloadData];
-    
-}
-
-#pragma mark - Helpers
-- (void)selectTabWithNumberFive {
-    [viewPager selectTabAtIndex:5];
-}
-- (void)loadContent {
-    self.numberOfTabs = 10;
-}
-
-#pragma mark - Interface Orientation Changes
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
-    // Update changes after screen rotates
-    [self performSelector:@selector(setNeedsReloadOptions) withObject:nil afterDelay:duration];
-}
-
-#pragma mark - ViewPagerDataSource
-- (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
-    return self.numberOfTabs;
-}
-- (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
-    
-    UILabel *label = [UILabel new];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont systemFontOfSize:12.0];
-    label.text = [NSString stringWithFormat:@"Tab #%i", index];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor blackColor];
-    [label sizeToFit];
-    
-    return label;
-}
-
-- (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
-    
-    UIView *contentView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 , 320, 568)];
-    contentView.backgroundColor=[UIColor grayColor];
-    
-    [userTableView addSubview:contentView];
-    
-//    ContentViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
-    
-    //contentView.labelString = [NSString stringWithFormat:@"Content View #%i", index];
-    
-    return contentView;
-}
-
-#pragma mark - ViewPagerDelegate
-- (CGFloat)viewPager:(ViewPagerController *)viewPager valueForOption:(ViewPagerOption)option withDefault:(CGFloat)value {
-    
-    switch (option) {
-        case ViewPagerOptionStartFromSecondTab:
-            return 0.0;
-        case ViewPagerOptionCenterCurrentTab:
-            return 1.0;
-        case ViewPagerOptionTabLocation:
-            return 0.0;
-        case ViewPagerOptionTabHeight:
-            return 49.0;
-        case ViewPagerOptionTabOffset:
-            return 36.0;
-        case ViewPagerOptionTabWidth:
-            return UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? 128.0 : 96.0;
-        case ViewPagerOptionFixFormerTabsPositions:
-            return 1.0;
-        case ViewPagerOptionFixLatterTabsPositions:
-            return 1.0;
-        default:
-            return value;
-    }
-}
-- (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
-    
-    switch (component) {
-        case ViewPagerIndicator:
-            return [[UIColor redColor] colorWithAlphaComponent:0.64];
-        case ViewPagerTabsView:
-            return [[UIColor lightGrayColor] colorWithAlphaComponent:0.32];
-        case ViewPagerContent:
-            return [[UIColor darkGrayColor] colorWithAlphaComponent:0.32];
-        default:
-            return color;
-    }
-}
-
-
-//////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+//- (void)viewDidAppear:(BOOL)animated {
+//    
+//    [super viewDidAppear:animated];
+//    
+//    [self performSelector:@selector(loadContent) withObject:nil afterDelay:3.0];
+//    
+//}
+//
+//#pragma mark - Setters
+//- (void)setNumberOfTabs:(NSUInteger)numberOfTabs {
+//    
+//    // Set numberOfTabs
+//    _numberOfTabs = numberOfTabs;
+//    
+//    // Reload data
+//    [viewPager reloadData];
+//    
+//}
+//
+//#pragma mark - Helpers
+//- (void)selectTabWithNumberFive {
+//    [viewPager selectTabAtIndex:5];
+//}
+//- (void)loadContent {
+//    self.numberOfTabs = 10;
+//}
+//
+//#pragma mark - Interface Orientation Changes
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//    
+//    // Update changes after screen rotates
+//    [self performSelector:@selector(setNeedsReloadOptions) withObject:nil afterDelay:duration];
+//}
+//
+//#pragma mark - ViewPagerDataSource
+//- (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
+//    return self.numberOfTabs;
+//}
+//- (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
+//    
+//    UILabel *label = [UILabel new];
+//    label.backgroundColor = [UIColor clearColor];
+//    label.font = [UIFont systemFontOfSize:12.0];
+//    label.text = [NSString stringWithFormat:@"Tab #%i", index];
+//    label.textAlignment = NSTextAlignmentCenter;
+//    label.textColor = [UIColor blackColor];
+//    [label sizeToFit];
+//    
+//    return label;
+//}
+//
+//- (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
+//    
+//    UIView *contentView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 , 320, 568)];
+//    contentView.backgroundColor=[UIColor grayColor];
+//    
+//    [userTableView addSubview:contentView];
+//    
+////    ContentViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
+//    
+//    //contentView.labelString = [NSString stringWithFormat:@"Content View #%i", index];
+//    
+//    return contentView;
+//}
+//
+//#pragma mark - ViewPagerDelegate
+//- (CGFloat)viewPager:(ViewPagerController *)viewPager valueForOption:(ViewPagerOption)option withDefault:(CGFloat)value {
+//    
+//    switch (option) {
+//        case ViewPagerOptionStartFromSecondTab:
+//            return 0.0;
+//        case ViewPagerOptionCenterCurrentTab:
+//            return 1.0;
+//        case ViewPagerOptionTabLocation:
+//            return 0.0;
+//        case ViewPagerOptionTabHeight:
+//            return 49.0;
+//        case ViewPagerOptionTabOffset:
+//            return 36.0;
+//        case ViewPagerOptionTabWidth:
+//            return UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? 128.0 : 96.0;
+//        case ViewPagerOptionFixFormerTabsPositions:
+//            return 1.0;
+//        case ViewPagerOptionFixLatterTabsPositions:
+//            return 1.0;
+//        default:
+//            return value;
+//    }
+//}
+//- (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
+//    
+//    switch (component) {
+//        case ViewPagerIndicator:
+//            return [[UIColor redColor] colorWithAlphaComponent:0.64];
+//        case ViewPagerTabsView:
+//            return [[UIColor lightGrayColor] colorWithAlphaComponent:0.32];
+//        case ViewPagerContent:
+//            return [[UIColor darkGrayColor] colorWithAlphaComponent:0.32];
+//        default:
+//            return color;
+//    }
+//}
+//
+//
+////////////////////////////////////////////////////////////
 
 
 -(void)AddRightBarButtonItems
@@ -497,6 +502,7 @@
     if (indexPath.row==0)
     {
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell1.contentView.backgroundColor=[UIColor lightGrayColor];
             //To create the card view.
            cardView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 210)];
             cardView.backgroundColor=[UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];// 106,27,154
@@ -561,14 +567,47 @@
         
         
         
-        NSInteger a=0;
-        //
-        //For First Cell, for user comment cell
-        UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(10, 220+a, 300, 65)];
-        cellView.backgroundColor=[UIColor whiteColor];
-        [userTableView addSubview:cellView];
+        
+        ////////// for the view Pager using CAPS PageMenu  //////////////////////////////////
+        MyFeedViewController *controller1 = [[MyFeedViewController alloc]initWithNibName:@"MyFeedViewController" bundle:nil];
+        controller1.title = @"My Feed";
+        MyPartiesViewController *controller2 = [[MyPartiesViewController alloc]initWithNibName:@"MyPartiesViewController" bundle:nil];
+        controller2.title = @"My Parties";
+        CreatePartiesViewController *controller3 = [[CreatePartiesViewController alloc] initWithNibName:@"CreatePartiesViewController" bundle:nil];
+        controller3.title = @"Create Parties";
+        PromoteViewController *controller4 = [[PromoteViewController alloc] initWithNibName:@"PromoteViewController" bundle:nil];
+        controller4.title = @"Promote";
+        
+        NSArray *controllerArray = @[controller1, controller2, controller3, controller4];
+        NSDictionary *parameters = @{
+                                     CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00],
+                                     CAPSPageMenuOptionViewBackgroundColor: [UIColor colorWithRed:20.0/255.0 green:20.0/255.0 blue:20.0/255.0 alpha:1.0],
+                                     CAPSPageMenuOptionSelectionIndicatorColor: [UIColor orangeColor],
+                                     CAPSPageMenuOptionBottomMenuHairlineColor: [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0],
+                                     CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:15.0],
+                                     CAPSPageMenuOptionMenuHeight: @(40.0),
+                                     CAPSPageMenuOptionMenuItemWidth: @(100.0),
+                                     CAPSPageMenuOptionCenterMenuItems: @(YES)
+                                     };
+        
+        _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(-0.0, 160.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
+        [userTableView addSubview:_pageMenu.view];
+        ///////////////////////////////////////////////////
+
+        
+        
+        
+        
+//        NSInteger a=0;
+//        //
+//        //For First Cell, for user comment cell
+//        UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(10, 220+a, 300, 65)];
+//        cellView.backgroundColor=[UIColor whiteColor];
+//        [userTableView addSubview:cellView];
         
     }
+    
+    
     
     
     

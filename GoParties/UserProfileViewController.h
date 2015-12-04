@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
-#import "ViewPagerController.h"
+//#import "ViewPagerController.h"
+
+
+#import "CAPSPageMenu.h"
+
+#import "PromoteViewController.h"
+#import "CreatePartiesViewController.h"
+#import "MyPartiesViewController.h"
+#import "MyFeedViewController.h"
 
 
 @interface UserProfileViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
@@ -46,7 +54,7 @@
     NSMutableArray *typeArray;
     
     
-    ViewPagerController *viewPager;
+    //ViewPagerController *viewPager;
 }
 
 @property (nonatomic,retain) UIScrollView *scrollView;
