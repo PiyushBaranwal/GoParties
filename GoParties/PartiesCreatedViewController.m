@@ -1,20 +1,18 @@
 //
-//  MyPartiesViewController.m
+//  PartiesCreatedViewController.m
 //  GoParties
 //
-//  Created by GoParties on 04/12/15.
+//  Created by GoParties on 05/12/15.
 //  Copyright © 2015 GoParties. All rights reserved.
 //
 
-#import "MyPartiesViewController.h"
+#import "PartiesCreatedViewController.h"
 
-@interface MyPartiesViewController ()
+@interface PartiesCreatedViewController ()
 
 @end
 
-@implementation MyPartiesViewController
-
-@synthesize myPartiesTableView,scrollView;
+@implementation PartiesCreatedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,8 +33,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
 #pragma -mark
 #pragma mark TableView delegate methods
 

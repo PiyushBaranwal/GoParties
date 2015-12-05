@@ -7,6 +7,7 @@
 //
 
 #import "PartiesNearYouViewController.h"
+#import "ProfileViewController.h"
 
 @interface PartiesNearYouViewController ()
 
@@ -372,7 +373,9 @@
         [segmentControl setSelectedSegmentIndex:0];
         [[segmentControl.subviews objectAtIndex:0] setTintColor: [UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0]];
         
-         [[segmentControl.subviews objectAtIndex:1] setTintColor: [UIColor whiteColor]];
+        [[segmentControl.subviews objectAtIndex:1] setTintColor: [UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0]];
+        
+        [[segmentControl.subviews objectAtIndex:1] setBackgroundColor:[UIColor whiteColor]];
         
         
 //        for (id subview in [segmentControl subviews]) {
@@ -420,6 +423,16 @@
             bannerImg.image=[UIImage imageNamed:@"First1.png"];
             bannerImg.alpha=0.90;
             [cardView addSubview:bannerImg];
+            
+            //for bannerClickBtn
+            UIButton *bannerClickBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 40, 310, 140)];//
+            bannerClickBtn.backgroundColor=[UIColor clearColor];
+           // [bannerClickBtn setImage:[UIImage imageNamed:@"bookmark_main.png"] forState:UIControlStateNormal];
+           // bannerClickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            bannerClickBtn.tag=i;
+            [bannerClickBtn addTarget:self action:@selector(bannerBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+            [cardView addSubview:bannerClickBtn];
+            
             
             
             
@@ -578,6 +591,10 @@
             locationLbl.textColor=[UIColor whiteColor];
             [cardView addSubview:locationLbl];
             
+            
+            
+            /////-----------------------------------------------------
+            
             //For ProfileImg
             UIImageView *profileImg=[[UIImageView alloc]initWithFrame:CGRectMake(10, 150, 50, 50)];
             //profileImg.image=[UIImage imageNamed:@"First1.png"];
@@ -617,6 +634,16 @@
                 b=b+15;
             }
             
+            // for Party Profile btn
+            UIButton *profileBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 180, 225, 70)];
+            profileBtn.backgroundColor=[UIColor clearColor];
+            //[profileBtn setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+            profileBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            profileBtn.tag=i;
+            [profileBtn addTarget:self action:@selector(profileBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+            [cardView addSubview:profileBtn];
+          
+            /////-----------------------------------------------------
             
             // for saperator
             UIImageView *saperatorImg=[[UIImageView alloc]initWithFrame:CGRectMake(230, 180 , 5, 70)];
@@ -657,6 +684,19 @@
     return cell1;
     
     
+}
+-(IBAction)bannerBtnClick:(id)sender
+{
+  NSLog(@"bannerBtnClick");
+}
+
+
+-(IBAction)profileBtnClick:(id)sender
+{
+    
+   NSLog(@"profileBtnClick");
+    ProfileViewController *objP=[[ProfileViewController alloc]initWithNibName:@"ProfileViewController" bundle:nil];
+    [self.navigationController pushViewController:objP animated:YES];
 }
 
 -(IBAction)followBtnClick:(id)sender
@@ -737,8 +777,12 @@
         if ([[segment.subviews objectAtIndex:i]isSelected] )
         {
             [[segment.subviews objectAtIndex:i] setTintColor: [UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0]];
-        }else{
-            [[segment.subviews objectAtIndex:i] setTintColor:[UIColor whiteColor]];
+            
+        }
+        else
+        {
+            [[segment.subviews objectAtIndex:i] setTintColor:[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0]];
+            [[segment.subviews objectAtIndex:1] setBackgroundColor:[UIColor whiteColor]];
         }
     }
     
@@ -746,7 +790,7 @@
     switch (segment.selectedSegmentIndex) {
         case 0:{
             
-           
+            
             //action for the first button (Current)
             // [[segment.selectedSegmentIndex objectAtIndex:0] setTintColor:[UIColor whiteColor]];
             break;

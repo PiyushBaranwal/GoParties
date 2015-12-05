@@ -1,25 +1,26 @@
 //
-//  UserProfileViewController.m
+//  ProfileViewController.m
 //  GoParties
 //
-//  Created by GoParties on 30/11/15.
+//  Created by GoParties on 05/12/15.
 //  Copyright © 2015 GoParties. All rights reserved.
 //
 
-#import "UserProfileViewController.h"
+#import "ProfileViewController.h"
 #import "HomeViewController.h"
 
 
-
-@interface UserProfileViewController ()
+@interface ProfileViewController ()
 @property (nonatomic) CAPSPageMenu *pageMenu;
+
 @end
 
-@implementation UserProfileViewController
-@synthesize userTableView,scrollView;
+@implementation ProfileViewController
+@synthesize profileTableView,scrollView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     //To get the country name from device
     NSLocale *locale = [NSLocale currentLocale];
@@ -33,7 +34,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
     //    // To add the functionality of left menu bar button
     
-    self.title = NSLocalizedString(@"User Profile", nil);
+    self.title = NSLocalizedString(@"Profile", nil);
     NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [UIColor whiteColor],NSForegroundColorAttributeName,
                                     [UIColor whiteColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"Open Sans" size:20],NSFontAttributeName,nil];
@@ -97,20 +98,7 @@
         myDealsBtn.hidden=YES;
         
     }
-
-   // self.navigationController.navigationBarHidden = YES;
-    
-    ////////////
-//    viewPager.dataSource = self;
-//    viewPager.delegate = self;
-    /////////////////
-    
-    
-    
-    
-    
-    
-    
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,113 +106,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-///////////////////////////////////////////////////////////////
-//- (void)viewDidAppear:(BOOL)animated {
-//    
-//    [super viewDidAppear:animated];
-//    
-//    [self performSelector:@selector(loadContent) withObject:nil afterDelay:3.0];
-//    
-//}
-//
-//#pragma mark - Setters
-//- (void)setNumberOfTabs:(NSUInteger)numberOfTabs {
-//    
-//    // Set numberOfTabs
-//    _numberOfTabs = numberOfTabs;
-//    
-//    // Reload data
-//    [viewPager reloadData];
-//    
-//}
-//
-//#pragma mark - Helpers
-//- (void)selectTabWithNumberFive {
-//    [viewPager selectTabAtIndex:5];
-//}
-//- (void)loadContent {
-//    self.numberOfTabs = 10;
-//}
-//
-//#pragma mark - Interface Orientation Changes
-//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-//    
-//    // Update changes after screen rotates
-//    [self performSelector:@selector(setNeedsReloadOptions) withObject:nil afterDelay:duration];
-//}
-//
-//#pragma mark - ViewPagerDataSource
-//- (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
-//    return self.numberOfTabs;
-//}
-//- (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
-//    
-//    UILabel *label = [UILabel new];
-//    label.backgroundColor = [UIColor clearColor];
-//    label.font = [UIFont systemFontOfSize:12.0];
-//    label.text = [NSString stringWithFormat:@"Tab #%i", index];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.textColor = [UIColor blackColor];
-//    [label sizeToFit];
-//    
-//    return label;
-//}
-//
-//- (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
-//    
-//    UIView *contentView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 , 320, 568)];
-//    contentView.backgroundColor=[UIColor grayColor];
-//    
-//    [userTableView addSubview:contentView];
-//    
-////    ContentViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
-//    
-//    //contentView.labelString = [NSString stringWithFormat:@"Content View #%i", index];
-//    
-//    return contentView;
-//}
-//
-//#pragma mark - ViewPagerDelegate
-//- (CGFloat)viewPager:(ViewPagerController *)viewPager valueForOption:(ViewPagerOption)option withDefault:(CGFloat)value {
-//    
-//    switch (option) {
-//        case ViewPagerOptionStartFromSecondTab:
-//            return 0.0;
-//        case ViewPagerOptionCenterCurrentTab:
-//            return 1.0;
-//        case ViewPagerOptionTabLocation:
-//            return 0.0;
-//        case ViewPagerOptionTabHeight:
-//            return 49.0;
-//        case ViewPagerOptionTabOffset:
-//            return 36.0;
-//        case ViewPagerOptionTabWidth:
-//            return UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? 128.0 : 96.0;
-//        case ViewPagerOptionFixFormerTabsPositions:
-//            return 1.0;
-//        case ViewPagerOptionFixLatterTabsPositions:
-//            return 1.0;
-//        default:
-//            return value;
-//    }
-//}
-//- (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
-//    
-//    switch (component) {
-//        case ViewPagerIndicator:
-//            return [[UIColor redColor] colorWithAlphaComponent:0.64];
-//        case ViewPagerTabsView:
-//            return [[UIColor lightGrayColor] colorWithAlphaComponent:0.32];
-//        case ViewPagerContent:
-//            return [[UIColor darkGrayColor] colorWithAlphaComponent:0.32];
-//        default:
-//            return color;
-//    }
-//}
-//
-//
-////////////////////////////////////////////////////////////
-
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 -(void)AddRightBarButtonItems
 {
@@ -503,82 +393,106 @@
     {
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
         cell1.contentView.backgroundColor=[UIColor whiteColor];
-            //To create the card view.
-           cardView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 210)];
-            cardView.backgroundColor=[UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];// 106,27,154
-            [cell1.contentView addSubview:cardView];
-            
-            
-            // to set the banner backgroung image
-            bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
-            bannerImg.image=[UIImage imageNamed:@"First1.png"];
-            bannerImg.alpha=0.90;
-            [cardView addSubview:bannerImg];
-            
-            
-            
-            //For type
-            [self baseScrollView ];
-            
+        //To create the card view.
+        cardView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 210)];
+        cardView.backgroundColor=[UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];// 106,27,154
+        [cell1.contentView addSubview:cardView];
         
-            //For ProfileImg
-            UIImageView *profileImg=[[UIImageView alloc]initWithFrame:CGRectMake(130, 30, 60, 60)];
-            profileImg.image=[UIImage imageNamed:@"AppIcon.png"];
-            profileImg.layer.cornerRadius = profileImg.frame.size.width / 2;
-            profileImg.layer.borderWidth = 2.0f;
-           profileImg.layer.borderColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0].CGColor;
-            profileImg.layer.masksToBounds = YES;
-            profileImg.backgroundColor=[UIColor whiteColor];
+        
+        // to set the banner backgroung image
+        bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
+        bannerImg.image=[UIImage imageNamed:@"First1.png"];
+        bannerImg.alpha=0.90;
+        [cardView addSubview:bannerImg];
         
         
         
-            [bannerImg addSubview:profileImg];
-            
-            //for profile title label
-            UILabel *profileLbl=[[UILabel alloc]initWithFrame:CGRectMake(100, 85, 300, 30)];
-            profileLbl.backgroundColor=[UIColor clearColor];
-            //detailLbl2.font=[UIFont fontWithName:@"Sans" size:12.0];
-            profileLbl.font=[profileLbl.font fontWithSize:15];
-            profileLbl.text=@"The Underdoggs";
-            profileLbl.textColor=[UIColor whiteColor];
-            [cardView addSubview:profileLbl];
-            
-            
-            //for place label
-            UILabel *placeLbl=[[UILabel alloc]initWithFrame:CGRectMake(140, 100, 100, 30)];
-            placeLbl.backgroundColor=[UIColor clearColor];
-            placeLbl.font=[placeLbl.font fontWithSize:15];
-            placeLbl.text=@"Club";
-            placeLbl.textColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
-            [cardView addSubview:placeLbl];
-            
-            
-            
-            
-            // for rating
-            NSInteger b=0;
-            for (int j=0; j<5; j++)
-            {
-                UIImageView *strImg1=[[UIImageView alloc]initWithFrame:CGRectMake(120+b, 125 , 15, 15)];
-                strImg1.image=[UIImage imageNamed:@"star_orange.png"];
-                [cardView addSubview:strImg1];
-                b=b+15;
-            }
+        //For type
+        [self baseScrollView ];
         
         
+        //For ProfileImg
+        UIImageView *profileImg=[[UIImageView alloc]initWithFrame:CGRectMake(130, 30, 60, 60)];
+        profileImg.image=[UIImage imageNamed:@"AppIcon.png"];
+        profileImg.layer.cornerRadius = profileImg.frame.size.width / 2;
+        profileImg.layer.borderWidth = 2.0f;
+        profileImg.layer.borderColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0].CGColor;
+        profileImg.layer.masksToBounds = YES;
+        profileImg.backgroundColor=[UIColor whiteColor];
+        
+        
+        
+        [bannerImg addSubview:profileImg];
+        
+        //for profile title label
+        UILabel *profileLbl=[[UILabel alloc]initWithFrame:CGRectMake(100, 85, 300, 30)];
+        profileLbl.backgroundColor=[UIColor clearColor];
+        //detailLbl2.font=[UIFont fontWithName:@"Sans" size:12.0];
+        profileLbl.font=[profileLbl.font fontWithSize:15];
+        profileLbl.text=@"The Underdoggs";
+        profileLbl.textColor=[UIColor whiteColor];
+        [cardView addSubview:profileLbl];
+        
+        
+        //for place label
+        UILabel *placeLbl=[[UILabel alloc]initWithFrame:CGRectMake(140, 100, 100, 30)];
+        placeLbl.backgroundColor=[UIColor clearColor];
+        placeLbl.font=[placeLbl.font fontWithSize:15];
+        placeLbl.text=@"Club";
+        placeLbl.textColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
+        [cardView addSubview:placeLbl];
+        
+        
+        
+        
+        // for rating
+        NSInteger b=0;
+        for (int j=0; j<5; j++)
+        {
+            UIImageView *strImg1=[[UIImageView alloc]initWithFrame:CGRectMake(120+b, 125 , 15, 15)];
+            strImg1.image=[UIImage imageNamed:@"star_orange.png"];
+            [cardView addSubview:strImg1];
+            b=b+15;
+        }
+        
+        //for follow button on banner image
+        UIButton *followBtn=[[UIButton alloc]initWithFrame:CGRectMake(280, 120, 30, 30)];//10,175,280,20
+        followBtn.backgroundColor=[UIColor clearColor];
+        [followBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
+        followBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        //followBtn.tag=i;
+        [followBtn addTarget:self action:@selector(followBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+        [cardView addSubview:followBtn];
+        
+        //for FOLLOW Label
+        UILabel *followLbl=[[UILabel alloc]initWithFrame:CGRectMake(240, 220, 70, 30)];
+        followLbl.backgroundColor=[UIColor clearColor];
+        followLbl.font=[placeLbl.font fontWithSize:15];
+        followLbl.text=@"FOLLOW";
+        followLbl.textColor=[UIColor whiteColor];
+        [cardView addSubview:followLbl];
+
         
         
         ////////// for the view Pager using CAPS PageMenu  //////////////////////////////////
-        MyFeedViewController *controller1 = [[MyFeedViewController alloc]initWithNibName:@"MyFeedViewController" bundle:nil];
-        controller1.title = @"My Feed";
-        MyPartiesViewController *controller2 = [[MyPartiesViewController alloc]initWithNibName:@"MyPartiesViewController" bundle:nil];
-        controller2.title = @"My Parties";
-        CreatePartiesViewController *controller3 = [[CreatePartiesViewController alloc] initWithNibName:@"CreatePartiesViewController" bundle:nil];
-        controller3.title = @"Create Parties";
-        PromoteViewController *controller4 = [[PromoteViewController alloc] initWithNibName:@"PromoteViewController" bundle:nil];
-        controller4.title = @"Promote";
+        FeedViewController *controller1 = [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+        controller1.title = @"Feed";
+        AboutViewController *controller2 = [[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
+        controller2.title = @"About";
+        PartiesCreatedViewController *controller3 = [[PartiesCreatedViewController alloc] initWithNibName:@"PartiesCreatedViewController" bundle:nil];
+        controller3.title = @"Parties Create";
+        ReviewsViewController *controller4 = [[ReviewsViewController alloc] initWithNibName:@"ReviewsViewController" bundle:nil];
+        controller4.title = @"Reviews";
+        FollowingViewController *controller5 = [[FollowingViewController alloc] initWithNibName:@"FollowingViewController" bundle:nil];
+        controller5.title = @"Following";
+
+        FollowersViewController *controller6 = [[FollowersViewController alloc] initWithNibName:@"FollowersViewController" bundle:nil];
+        controller6.title = @"Followers";
+
         
-        NSArray *controllerArray = @[controller1, controller2, controller3, controller4];
+        
+        
+        NSArray *controllerArray = @[controller1, controller2, controller3, controller4,controller5,controller6];
         NSDictionary *parameters = @{
                                      CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00],
                                      CAPSPageMenuOptionViewBackgroundColor: [UIColor colorWithRed:20.0/255.0 green:20.0/255.0 blue:20.0/255.0 alpha:1.0],
@@ -591,19 +505,19 @@
                                      };
         
         _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(-0.0, 160.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
-        [userTableView addSubview:_pageMenu.view];
+        [profileTableView addSubview:_pageMenu.view];
         ///////////////////////////////////////////////////
-
         
         
         
         
-//        NSInteger a=0;
-//        //
-//        //For First Cell, for user comment cell
-//        UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(10, 220+a, 300, 65)];
-//        cellView.backgroundColor=[UIColor whiteColor];
-//        [userTableView addSubview:cellView];
+        
+        //        NSInteger a=0;
+        //        //
+        //        //For First Cell, for user comment cell
+        //        UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(10, 220+a, 300, 65)];
+        //        cellView.backgroundColor=[UIColor whiteColor];
+        //        [userTableView addSubview:cellView];
         
     }
     
@@ -643,8 +557,8 @@
             UIButton * locBtn = [[UIButton alloc]init];
             locBtn.frame = CGRectMake(xPos, 0,50 ,30);//xpos,5,60,60
             locBtn.tag=j ;
-           // [locBtn addTarget:self action:@selector(ViewProfile1:) forControlEvents:UIControlEventTouchUpInside];
-           // [locBtn setBackgroundImage:[UIImage imageNamed:@"Tab_bg.png"] forState:UIControlStateNormal];
+            // [locBtn addTarget:self action:@selector(ViewProfile1:) forControlEvents:UIControlEventTouchUpInside];
+            // [locBtn setBackgroundImage:[UIImage imageNamed:@"Tab_bg.png"] forState:UIControlStateNormal];
             [locBtn setBackgroundColor:[UIColor clearColor]];
             [locBtn setTitle:@"Book" forState:UIControlStateNormal];
             
@@ -756,6 +670,15 @@
  }
  */
 
+
+
+-(IBAction)followBtnClick:(id)sender
+{
+    NSLog(@"followBtnClick");
+}
+
+
+
 - (IBAction)homeBtnClick:(id)sender {
     if([homeBtn currentImage]==[UIImage imageNamed:@"active_home.png"])
     {
@@ -791,8 +714,8 @@
     }
     NSLog(@"myProfBtn btn clicked");
     
-//    UserProfileViewController *objU=[[UserProfileViewController alloc]initWithNibName:@"UserProfileViewController" bundle:nil];
-//    [self.navigationController pushViewController:objU animated:YES];
+    //    UserProfileViewController *objU=[[UserProfileViewController alloc]initWithNibName:@"UserProfileViewController" bundle:nil];
+    //    [self.navigationController pushViewController:objU animated:YES];
 }
 
 - (IBAction)myPartiesBtnClick:(id)sender {
@@ -812,14 +735,14 @@
         [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
     }
     NSLog(@"myPartiesbtn btn clicked");
-
+    
 }
 
 - (IBAction)myDealsBtnClick:(id)sender {
     
     if([myDealsBtn currentImage]==[UIImage imageNamed:@"active_deals.png"])
     {
-         [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
+        [myDealsBtn setImage:[UIImage imageNamed:@"footer_deals.png"] forState:UIControlStateNormal];
         [myProfBtn setImage:[UIImage imageNamed:@"footer_profile.png"] forState:UIControlStateNormal];
         [myPartiesbtn setImage:[UIImage imageNamed:@"footer_parties.png"] forState:UIControlStateNormal];
         [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
@@ -832,7 +755,7 @@
         [homeBtn setImage:[UIImage imageNamed:@"footer_home.png"] forState:UIControlStateNormal];
     }
     NSLog(@"myDealsBtn btn clicked");
-
+    
 }
 
 - (IBAction)accessBtnClick:(id)sender {
@@ -842,3 +765,4 @@
 
 
 @end
+

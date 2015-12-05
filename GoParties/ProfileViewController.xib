@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
+            <connections>
+                <outlet property="accessBtn" destination="qr0-Ww-Std" id="CF0-l1-2a0"/>
+                <outlet property="homeBtn" destination="xJO-iX-5Cf" id="Mhu-SF-T5W"/>
+                <outlet property="myDealsBtn" destination="5F8-fY-AGi" id="sNf-hq-eeQ"/>
+                <outlet property="myPartiesbtn" destination="NYN-zl-1Pn" id="aST-GX-TL7"/>
+                <outlet property="myProfBtn" destination="7th-6q-Jqg" id="KPj-ba-weE"/>
+                <outlet property="profileTableView" destination="pWT-RD-nyw" id="y9g-nn-fBV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pWT-RD-nyw">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="525"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexTrackingBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="lpY-FU-k9h"/>
+                        <outlet property="delegate" destination="-1" id="DvF-5j-YDL"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-Ww-Std">
+                    <rect key="frame" x="0.0" y="525" width="320" height="44"/>
+                    <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="ACCESS GOPARTIES SOCIAL NETWORK" backgroundImage="Footer_singlebtn.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="accessBtnClick:" destination="-1" eventType="touchUpInside" id="6ax-Ca-o8g"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5F8-fY-AGi">
+                    <rect key="frame" x="240" y="525" width="80" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_deals.png"/>
+                    <connections>
+                        <action selector="myDealsBtnClick:" destination="-1" eventType="touchUpInside" id="eRc-xd-plZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYN-zl-1Pn">
+                    <rect key="frame" x="160" y="525" width="80" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_parties.png"/>
+                    <connections>
+                        <action selector="myPartiesBtnClick:" destination="-1" eventType="touchUpInside" id="vIb-0v-UHe"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7th-6q-Jqg">
+                    <rect key="frame" x="80" y="525" width="80" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_profile.png"/>
+                    <connections>
+                        <action selector="myProfileBtnClick:" destination="-1" eventType="touchUpInside" id="ahu-g2-VyN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJO-iX-5Cf">
+                    <rect key="frame" x="0.0" y="525" width="80" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_home.png"/>
+                    <connections>
+                        <action selector="homeBtnClick:" destination="-1" eventType="touchUpInside" id="4GX-Cy-Mhg"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <point key="canvasLocation" x="230" y="306"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Footer_singlebtn.png" width="720" height="170"/>
+        <image name="footer_deals.png" width="240" height="132"/>
+        <image name="footer_home.png" width="240" height="132"/>
+        <image name="footer_parties.png" width="240" height="132"/>
+        <image name="footer_profile.png" width="240" height="132"/>
+    </resources>
+</document>

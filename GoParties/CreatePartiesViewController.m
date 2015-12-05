@@ -105,7 +105,7 @@
     {
         
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
-        //cell1.contentView.backgroundColor=[UIColor whiteColor];
+        cell1.contentView.backgroundColor=[UIColor whiteColor];
         
        //for Title
         //Title label

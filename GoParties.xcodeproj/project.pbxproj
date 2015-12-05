@@ -12,6 +12,22 @@
 		FC5CAC491C0979410009489F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5CAC481C0979410009489F /* CoreLocation.framework */; };
 		FC60D44F1C11A51E00545EB4 /* radio_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FC60D44D1C11A51E00545EB4 /* radio_checked.png */; };
 		FC60D4501C11A51E00545EB4 /* radio1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC60D44E1C11A51E00545EB4 /* radio1.png */; };
+		FC652BB81C12F3A000CF9284 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC652BB61C12F3A000CF9284 /* ProfileViewController.m */; };
+		FC652BB91C12F3A000CF9284 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC652BB71C12F3A000CF9284 /* ProfileViewController.xib */; };
+		FC652BBB1C12F41400CF9284 /* call_back.png in Resources */ = {isa = PBXBuildFile; fileRef = FC652BBA1C12F41400CF9284 /* call_back.png */; };
+		FC652BC01C12F6F200CF9284 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC652BBE1C12F6F200CF9284 /* FeedViewController.m */; };
+		FC652BC11C12F6F200CF9284 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC652BBF1C12F6F200CF9284 /* FeedViewController.xib */; };
+		FC652BC61C12F70800CF9284 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC652BC41C12F70800CF9284 /* AboutViewController.m */; };
+		FC652BC71C12F70800CF9284 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC652BC51C12F70800CF9284 /* AboutViewController.xib */; };
+		FC652BCC1C12F72A00CF9284 /* PartiesCreatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC652BCA1C12F72A00CF9284 /* PartiesCreatedViewController.m */; };
+		FC652BCD1C12F72A00CF9284 /* PartiesCreatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC652BCB1C12F72A00CF9284 /* PartiesCreatedViewController.xib */; };
+		FC652BD21C12F75000CF9284 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC652BD01C12F75000CF9284 /* ReviewsViewController.m */; };
+		FC652BD31C12F75000CF9284 /* ReviewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC652BD11C12F75000CF9284 /* ReviewsViewController.xib */; };
+		FC652BD81C12F76A00CF9284 /* FollowingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC652BD61C12F76A00CF9284 /* FollowingViewController.m */; };
+		FC652BD91C12F76A00CF9284 /* FollowingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC652BD71C12F76A00CF9284 /* FollowingViewController.xib */; };
+		FC652BDE1C12F78500CF9284 /* FollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC652BDC1C12F78500CF9284 /* FollowersViewController.m */; };
+		FC652BDF1C12F78500CF9284 /* FollowersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC652BDD1C12F78500CF9284 /* FollowersViewController.xib */; };
+		FC652BE11C13108900CF9284 /* callPhone_TextField.png in Resources */ = {isa = PBXBuildFile; fileRef = FC652BE01C13108900CF9284 /* callPhone_TextField.png */; };
 		FC673A7E1C0C2C4E0069B89D /* FOLLOW_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FC673A7D1C0C2C4E0069B89D /* FOLLOW_main.png */; };
 		FC673A801C0C2CA00069B89D /* deal_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FC673A7F1C0C2CA00069B89D /* deal_main.png */; };
 		FC673A821C0C2EB70069B89D /* star_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = FC673A811C0C2EB70069B89D /* star_orange.png */; };
@@ -293,6 +309,29 @@
 		FC5CAC481C0979410009489F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FC60D44D1C11A51E00545EB4 /* radio_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_checked.png; sourceTree = "<group>"; };
 		FC60D44E1C11A51E00545EB4 /* radio1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio1.png; sourceTree = "<group>"; };
+		FC652BB51C12F3A000CF9284 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		FC652BB61C12F3A000CF9284 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		FC652BB71C12F3A000CF9284 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		FC652BBA1C12F41400CF9284 /* call_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = call_back.png; sourceTree = "<group>"; };
+		FC652BBD1C12F6F200CF9284 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		FC652BBE1C12F6F200CF9284 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		FC652BBF1C12F6F200CF9284 /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
+		FC652BC31C12F70800CF9284 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		FC652BC41C12F70800CF9284 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		FC652BC51C12F70800CF9284 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		FC652BC91C12F72A00CF9284 /* PartiesCreatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartiesCreatedViewController.h; sourceTree = "<group>"; };
+		FC652BCA1C12F72A00CF9284 /* PartiesCreatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartiesCreatedViewController.m; sourceTree = "<group>"; };
+		FC652BCB1C12F72A00CF9284 /* PartiesCreatedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PartiesCreatedViewController.xib; sourceTree = "<group>"; };
+		FC652BCF1C12F75000CF9284 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
+		FC652BD01C12F75000CF9284 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
+		FC652BD11C12F75000CF9284 /* ReviewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewsViewController.xib; sourceTree = "<group>"; };
+		FC652BD51C12F76A00CF9284 /* FollowingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowingViewController.h; sourceTree = "<group>"; };
+		FC652BD61C12F76A00CF9284 /* FollowingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowingViewController.m; sourceTree = "<group>"; };
+		FC652BD71C12F76A00CF9284 /* FollowingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowingViewController.xib; sourceTree = "<group>"; };
+		FC652BDB1C12F78500CF9284 /* FollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowersViewController.h; sourceTree = "<group>"; };
+		FC652BDC1C12F78500CF9284 /* FollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowersViewController.m; sourceTree = "<group>"; };
+		FC652BDD1C12F78500CF9284 /* FollowersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowersViewController.xib; sourceTree = "<group>"; };
+		FC652BE01C13108900CF9284 /* callPhone_TextField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = callPhone_TextField.png; sourceTree = "<group>"; };
 		FC673A7D1C0C2C4E0069B89D /* FOLLOW_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FOLLOW_main.png; sourceTree = "<group>"; };
 		FC673A7F1C0C2CA00069B89D /* deal_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deal_main.png; sourceTree = "<group>"; };
 		FC673A811C0C2EB70069B89D /* star_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_orange.png; sourceTree = "<group>"; };
@@ -649,6 +688,82 @@
 			path = SVGeocoder;
 			sourceTree = "<group>";
 		};
+		FC652BB41C12F37900CF9284 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FC652BB51C12F3A000CF9284 /* ProfileViewController.h */,
+				FC652BB61C12F3A000CF9284 /* ProfileViewController.m */,
+				FC652BB71C12F3A000CF9284 /* ProfileViewController.xib */,
+				FC652BBC1C12F6DA00CF9284 /* Feed */,
+				FC652BC21C12F6F700CF9284 /* About */,
+				FC652BC81C12F71200CF9284 /* PartiesCreated */,
+				FC652BCE1C12F73900CF9284 /* Reviews */,
+				FC652BD41C12F75500CF9284 /* Following */,
+				FC652BDA1C12F77100CF9284 /* Followers */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		FC652BBC1C12F6DA00CF9284 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				FC652BBD1C12F6F200CF9284 /* FeedViewController.h */,
+				FC652BBE1C12F6F200CF9284 /* FeedViewController.m */,
+				FC652BBF1C12F6F200CF9284 /* FeedViewController.xib */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		FC652BC21C12F6F700CF9284 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				FC652BC31C12F70800CF9284 /* AboutViewController.h */,
+				FC652BC41C12F70800CF9284 /* AboutViewController.m */,
+				FC652BC51C12F70800CF9284 /* AboutViewController.xib */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		FC652BC81C12F71200CF9284 /* PartiesCreated */ = {
+			isa = PBXGroup;
+			children = (
+				FC652BC91C12F72A00CF9284 /* PartiesCreatedViewController.h */,
+				FC652BCA1C12F72A00CF9284 /* PartiesCreatedViewController.m */,
+				FC652BCB1C12F72A00CF9284 /* PartiesCreatedViewController.xib */,
+			);
+			name = PartiesCreated;
+			sourceTree = "<group>";
+		};
+		FC652BCE1C12F73900CF9284 /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				FC652BCF1C12F75000CF9284 /* ReviewsViewController.h */,
+				FC652BD01C12F75000CF9284 /* ReviewsViewController.m */,
+				FC652BD11C12F75000CF9284 /* ReviewsViewController.xib */,
+			);
+			name = Reviews;
+			sourceTree = "<group>";
+		};
+		FC652BD41C12F75500CF9284 /* Following */ = {
+			isa = PBXGroup;
+			children = (
+				FC652BD51C12F76A00CF9284 /* FollowingViewController.h */,
+				FC652BD61C12F76A00CF9284 /* FollowingViewController.m */,
+				FC652BD71C12F76A00CF9284 /* FollowingViewController.xib */,
+			);
+			name = Following;
+			sourceTree = "<group>";
+		};
+		FC652BDA1C12F77100CF9284 /* Followers */ = {
+			isa = PBXGroup;
+			children = (
+				FC652BDB1C12F78500CF9284 /* FollowersViewController.h */,
+				FC652BDC1C12F78500CF9284 /* FollowersViewController.m */,
+				FC652BDD1C12F78500CF9284 /* FollowersViewController.xib */,
+			);
+			name = Followers;
+			sourceTree = "<group>";
+		};
 		FC673A8F1C0C66E20069B89D /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -941,6 +1056,8 @@
 		FCC8C2C21BFC62DA006056EA /* App Icons */ = {
 			isa = PBXGroup;
 			children = (
+				FC652BE01C13108900CF9284 /* callPhone_TextField.png */,
+				FC652BBA1C12F41400CF9284 /* call_back.png */,
 				FCE9F2791C0ED8BE0009EF8D /* footericons */,
 				FC73A3B01C082D5700567306 /* Active Icons */,
 				FC73A3991C082D5000567306 /* Not Active Icons */,
@@ -1242,6 +1359,7 @@
 				FCB74BA41BFB37830035BE0C /* SearchParties */,
 				FCB74BAA1BFB37C20035BE0C /* PartiesNearYou */,
 				FCB74BB01BFB38090035BE0C /* TrendingParties */,
+				FC652BB41C12F37900CF9284 /* Profile */,
 				FC673A8F1C0C66E20069B89D /* UserProfile */,
 				FCB74BB61BFB38390035BE0C /* SpecialDeals */,
 				FCB74BBC1BFB38680035BE0C /* PartiesMasterCalender */,
@@ -1418,6 +1536,7 @@
 				FC686FFF1C11605200A274EA /* MyPartiesViewController.xib in Resources */,
 				FC73A3D21C08625200567306 /* location_pin_main.png in Resources */,
 				FCC8C3341BFC62DB006056EA /* comment.png in Resources */,
+				FC652BBB1C12F41400CF9284 /* call_back.png in Resources */,
 				FCA6D6DB1BFF1C000097BF9C /* FogetPassViewController.xib in Resources */,
 				FCC8C3721BFC62DB006056EA /* trending.png in Resources */,
 				FCC8C3441BFC62DB006056EA /* gps-fixed.png in Resources */,
@@ -1441,6 +1560,7 @@
 				FCC8C3621BFC62DB006056EA /* notification.png in Resources */,
 				FC673A881C0C55DA0069B89D /* Tab_bg.png in Resources */,
 				FCC8C3511BFC62DB006056EA /* imoticon.png in Resources */,
+				FC652BC71C12F70800CF9284 /* AboutViewController.xib in Resources */,
 				FCB74BCD1BFB39090035BE0C /* InviteFriendsViewController.xib in Resources */,
 				FC673A801C0C2CA00069B89D /* deal_main.png in Resources */,
 				FCC8C32A1BFC62DB006056EA /* bookmark.png in Resources */,
@@ -1481,6 +1601,7 @@
 				FC73A3AD1C082D5000567306 /* home_setting.png in Resources */,
 				FC73A3BD1C082D5700567306 /* actve_home_create_parties.png in Resources */,
 				FCC8C3501BFC62DB006056EA /* image.png in Resources */,
+				FC652BC11C12F6F200CF9284 /* FeedViewController.xib in Resources */,
 				FCC8C3791BFC62DB006056EA /* view.png in Resources */,
 				FCC8C35E1BFC62DB006056EA /* Map-marker.png in Resources */,
 				FCEF43371BFDFAD10013B1E5 /* List1.png in Resources */,
@@ -1497,10 +1618,12 @@
 				FC73A3D61C0870D800567306 /* Arrow.png in Resources */,
 				FCC8C36F1BFC62DB006056EA /* text.png in Resources */,
 				FCC8C3671BFC62DB006056EA /* search.png in Resources */,
+				FC652BCD1C12F72A00CF9284 /* PartiesCreatedViewController.xib in Resources */,
 				FCFA19191BF9A23A00FAAD99 /* Assets.xcassets in Resources */,
 				FCC8C3431BFC62DB006056EA /* Google_Plus.png in Resources */,
 				FCE9F2891C0ED8BE0009EF8D /* footer_profile.png in Resources */,
 				FCC8C32F1BFC62DB006056EA /* chat.png in Resources */,
+				FC652BE11C13108900CF9284 /* callPhone_TextField.png in Resources */,
 				FCC8C3731BFC62DB006056EA /* Trending_icon.png in Resources */,
 				FCC8C34A1BFC62DB006056EA /* home_house.png in Resources */,
 				FC73A3D41C0870BB00567306 /* Location1.png in Resources */,
@@ -1512,6 +1635,7 @@
 				FCC8C3751BFC62DB006056EA /* Uncheck.png in Resources */,
 				FCC8C37B1BFC62DB006056EA /* Welcome-bg.png in Resources */,
 				FCC8C3481BFC62DB006056EA /* home_48px.png in Resources */,
+				FC652BDF1C12F78500CF9284 /* FollowersViewController.xib in Resources */,
 				FCC8C3601BFC62DB006056EA /* Music.png in Resources */,
 				FCC8C3711BFC62DB006056EA /* Toggle.png in Resources */,
 				FC73A3981C08269100567306 /* location_pin40x40.png in Resources */,
@@ -1540,6 +1664,7 @@
 				FCC8C35B1BFC62DB006056EA /* log_out.png in Resources */,
 				FCC8C32D1BFC62DB006056EA /* cascade_display.png in Resources */,
 				FCC8C34B1BFC62DB006056EA /* Home_Icon.png in Resources */,
+				FC652BD31C12F75000CF9284 /* ReviewsViewController.xib in Resources */,
 				FCC8C37E1BFC62DB006056EA /* whatsup.png in Resources */,
 				FCEF43331BFDF6D50013B1E5 /* RegisterViewController.xib in Resources */,
 				FCEF43351BFDFAB20013B1E5 /* Mobile.png in Resources */,
@@ -1564,6 +1689,7 @@
 				FCEF43231BFDF1C50013B1E5 /* Toggle_main.png in Resources */,
 				FCC8C36B1BFC62DB006056EA /* share.png in Resources */,
 				FCA6D6E31BFF22F50097BF9C /* VerificationViewController.xib in Resources */,
+				FC652BD91C12F76A00CF9284 /* FollowingViewController.xib in Resources */,
 				FCEF433A1BFDFB4B0013B1E5 /* First1.png in Resources */,
 				FC673A941C0C670F0069B89D /* UserProfileViewController.xib in Resources */,
 				FCC8C3381BFC62DB006056EA /* Email.png in Resources */,
@@ -1572,6 +1698,7 @@
 				FCC8C3261BFC62DB006056EA /* beer.png in Resources */,
 				FCB74BAF1BFB37FE0035BE0C /* PartiesNearYouViewController.xib in Resources */,
 				FCC8C35D1BFC62DB006056EA /* map 2.png in Resources */,
+				FC652BB91C12F3A000CF9284 /* ProfileViewController.xib in Resources */,
 				FCC8C3301BFC62DB006056EA /* Check.png in Resources */,
 				FCC8C3491BFC62DB006056EA /* home_fill.png in Resources */,
 				FCC8C34D1BFC62DB006056EA /* icon-camera.png in Resources */,
@@ -1629,11 +1756,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC8C3D61BFC9E2C006056EA /* UIImageView+HighlightedWebCache.m in Sources */,
+				FC652BD81C12F76A00CF9284 /* FollowingViewController.m in Sources */,
 				FCC8C3D91BFC9E2C006056EA /* NSObject+SBJSON.m in Sources */,
 				FCB74B981BFB34920035BE0C /* SWRevealViewController.m in Sources */,
 				FCC8C3D01BFC9E2C006056EA /* SDWebImageManager.m in Sources */,
 				FCC8C3CC1BFC9E2C006056EA /* SDWebImageCompat.m in Sources */,
 				FC673A931C0C670F0069B89D /* UserProfileViewController.m in Sources */,
+				FC652BC61C12F70800CF9284 /* AboutViewController.m in Sources */,
 				FCEF43321BFDF6D50013B1E5 /* RegisterViewController.m in Sources */,
 				FCC8C3D11BFC9E2C006056EA /* SDWebImagePrefetcher.m in Sources */,
 				FC5CAC471C09738F0009489F /* SVPlacemark.m in Sources */,
@@ -1643,11 +1772,13 @@
 				FCC8C3CB1BFC9E2C006056EA /* SDImageCache.m in Sources */,
 				FCB74BAE1BFB37FE0035BE0C /* PartiesNearYouViewController.m in Sources */,
 				FCC8C3D21BFC9E2C006056EA /* UIButton+WebCache.m in Sources */,
+				FC652BC01C12F6F200CF9284 /* FeedViewController.m in Sources */,
 				FCB74BD81BFB39660035BE0C /* SettingsViewController.m in Sources */,
 				FCB74BBA1BFB38570035BE0C /* SpecialDealsViewController.m in Sources */,
 				FCC8C3D51BFC9E2C006056EA /* UIImage+WebP.m in Sources */,
 				FCFA19141BF9A23A00FAAD99 /* ViewController.m in Sources */,
 				FCFA19111BF9A23A00FAAD99 /* AppDelegate.m in Sources */,
+				FC652BB81C12F3A000CF9284 /* ProfileViewController.m in Sources */,
 				FCB74B941BFB346C0035BE0C /* SlideCustomCell.m in Sources */,
 				FCC8C3D31BFC9E2C006056EA /* UIImage+GIF.m in Sources */,
 				FCC8C3DC1BFC9E2C006056EA /* SBJsonBase.m in Sources */,
@@ -1664,6 +1795,7 @@
 				FCEF431A1BFDAB980013B1E5 /* MainViewController.m in Sources */,
 				FCB74BD21BFB393E0035BE0C /* NotificationViewController.m in Sources */,
 				FCC8C3CF1BFC9E2C006056EA /* SDWebImageDownloaderOperation.m in Sources */,
+				FC652BCC1C12F72A00CF9284 /* PartiesCreatedViewController.m in Sources */,
 				FCC8C3C91BFC9E2C006056EA /* MKAnnotationView+WebCache.m in Sources */,
 				FCC8C3DA1BFC9E2C006056EA /* NSString+SBJSON.m in Sources */,
 				FC6870051C11611300A274EA /* PromoteViewController.m in Sources */,
@@ -1671,6 +1803,7 @@
 				FCB74BA11BFB34C70035BE0C /* MenuViewController.m in Sources */,
 				FCB74BC01BFB38910035BE0C /* PartiesCalendarViewController.m in Sources */,
 				FCC8C3DB1BFC9E2C006056EA /* SBJSON.m in Sources */,
+				FC652BDE1C12F78500CF9284 /* FollowersViewController.m in Sources */,
 				FC686FFE1C11605200A274EA /* MyPartiesViewController.m in Sources */,
 				FC73A3E51C08771100567306 /* Singleton.m in Sources */,
 				FCB74BA81BFB37AE0035BE0C /* SearchPartiesViewController.m in Sources */,
@@ -1682,6 +1815,7 @@
 				FC686FF81C11602D00A274EA /* MyFeedViewController.m in Sources */,
 				FCE9F29D1C0EFA4B0009EF8D /* Utils.m in Sources */,
 				FCE9F29C1C0EFA4B0009EF8D /* GSNSDataExtensions.m in Sources */,
+				FC652BD21C12F75000CF9284 /* ReviewsViewController.m in Sources */,
 				FCC8C3D71BFC9E2C006056EA /* UIImageView+WebCache.m in Sources */,
 				FCC8C3881BFC9C79006056EA /* KASlideShow.m in Sources */,
 				FCFA19421BF9A2E100FAAD99 /* HomeViewController.m in Sources */,
