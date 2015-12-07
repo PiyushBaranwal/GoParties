@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController
+@interface AboutViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
+{
+    IBOutlet UITableView *aboutTableView;
+    
+}
+
+@property(nonatomic,retain)IBOutlet UITableView *aboutTableView;
 
 @end
+

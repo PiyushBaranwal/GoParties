@@ -8,13 +8,15 @@
 
 #import "FeedViewController.h"
 
+
+
 @interface FeedViewController ()
 
 @end
 
 @implementation FeedViewController
 
-@synthesize feedTableView;
+@synthesize feedTableView,slideshow;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -113,22 +115,71 @@
         suggestedLbl.font=[UIFont systemFontOfSize:15];
         [cell1.contentView addSubview:suggestedLbl];
         
-//        // for user iconImage
-//        UIImageView *userIconImg=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 70, 70)];
-//        userIconImg.image=[UIImage imageNamed:@"AppIcon@2x.png"];
-//        userIconImg.layer.cornerRadius = 35;
-//        userIconImg.layer.borderWidth = 3.0f;
-//        userIconImg.layer.borderColor = [UIColor colorWithRed:205.0/255.0 green:205.0/255.0 blue:205.0/255.0 alpha:1.0].CGColor;
-//        userIconImg.clipsToBounds = YES;
-//        [myfeedBackView addSubview:userIconImg];
-//        
-//        
-//        // for my feed textview
-//        UITextView *userFeedText=[[UITextView alloc]initWithFrame:CGRectMake(75, 5, 170,70)];
-//        userFeedText.text=@"What`s on your party mind?";
-//        userFeedText.backgroundColor=[UIColor whiteColor];
-//        [myfeedBackView addSubview:userFeedText];
+        // for sliding part
+        // KASlideshow
         
+        //UIImageView *sliderImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 100)];
+        
+        slideshow  =[[KASlideShow alloc]initWithFrame:CGRectMake(10, 15, 300, 150)];//2,2,316,295//2, 2, 316, 255
+        slideshow.backgroundColor=[UIColor grayColor];
+        slideshow.delegate = self;
+        [slideshow setDelay:1]; // Delay between transitions
+        [slideshow setTransitionDuration:.5]; // Transition duration
+        [slideshow setTransitionType:KASlideShowTransitionSlide]; // Choose a transition type (fade or slide)
+        [slideshow setImagesContentMode:UIViewContentModeScaleAspectFill]; // Choose a content mode for images to display
+        //[slideshow addImagesFromURLs:headerImgArray];
+        [slideshow addImagesFromResources:@[@"welcome_logo.png",@"welcome_logo.png",@"welcome_logo.png"]];
+        [slideshow start];
+        [slideshow addGesture:KASlideShowGestureAll];
+        [cell1.contentView addSubview:slideshow];
+
+        
+        // for user iconImage
+        UIImageView *userIconImg=[[UIImageView alloc]initWithFrame:CGRectMake(10, 170, 70, 70)];
+        userIconImg.image=[UIImage imageNamed:@"AppIcon@2x.png"];
+        [cell1.contentView addSubview:userIconImg];
+        
+        
+        // for my feed Party name label
+       UILabel *partyNameLbl=[[UILabel alloc]initWithFrame:CGRectMake(80, 165, 170,25)];
+        partyNameLbl.text=@"By Underdoggs";
+        partyNameLbl.font=[UIFont systemFontOfSize:16];
+        partyNameLbl.backgroundColor=[UIColor whiteColor];
+        [myfeedBackView addSubview:partyNameLbl];
+        
+        //for suggested party place label
+        UILabel *partyPlaceLbl=[[UILabel alloc]initWithFrame:CGRectMake(80, 185, 170,25)];
+        partyPlaceLbl.text=@"Party Place";
+         partyPlaceLbl.font=[UIFont systemFontOfSize:10];
+        partyPlaceLbl.textColor=[UIColor grayColor];
+        partyPlaceLbl.backgroundColor=[UIColor whiteColor];
+        [myfeedBackView addSubview:partyPlaceLbl];
+        
+        // for suggested party`s liked no peoples
+        UILabel *noOFPplLbl=[[UILabel alloc]initWithFrame:CGRectMake(80, 205, 200,25)];
+        noOFPplLbl.text=@"6521 peoples follow this page.";
+        noOFPplLbl.font=[UIFont systemFontOfSize:10];
+        noOFPplLbl.textColor=[UIColor grayColor];
+
+        noOFPplLbl.backgroundColor=[UIColor whiteColor];
+        [myfeedBackView addSubview:noOFPplLbl];
+        
+        
+        
+        // for suggested party Follow btn
+        UIButton *partyFollowBtn=[[UIButton alloc]initWithFrame:CGRectMake(260, 175, 30, 30)];
+        partyFollowBtn.backgroundColor=[UIColor grayColor];
+        [partyFollowBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
+        partyFollowBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        //partyFollowBtn.tag=i;
+        [partyFollowBtn addTarget:self action:@selector(partyBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+        [myfeedBackView addSubview:partyFollowBtn];
+        
+        //for suggested party follow label
+        UILabel *followLbl=[[UILabel alloc]initWithFrame:CGRectMake(250, 200, 80, 30)];
+        followLbl.text=@"FOLLOW";
+        followLbl.font=[UIFont systemFontOfSize:13];
+        [myfeedBackView addSubview:followLbl];
         
         //////------------------------------------------------------------
         //// for feeds
@@ -237,5 +288,20 @@
     
 }
 
+
+-(IBAction)likeBtnClick:(id)sender
+{
+    
+}
+
+-(IBAction)commBtnClick:(id)sender
+{
+    
+}
+
+-(IBAction)shareBtnClick:(id)sender
+{
+    
+}
 
 @end

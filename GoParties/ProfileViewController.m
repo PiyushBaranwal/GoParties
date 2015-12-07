@@ -480,7 +480,7 @@
         AboutViewController *controller2 = [[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
         controller2.title = @"About";
         PartiesCreatedViewController *controller3 = [[PartiesCreatedViewController alloc] initWithNibName:@"PartiesCreatedViewController" bundle:nil];
-        controller3.title = @"Parties Create";
+        controller3.title = @"Parties Created";
         ReviewsViewController *controller4 = [[ReviewsViewController alloc] initWithNibName:@"ReviewsViewController" bundle:nil];
         controller4.title = @"Reviews";
         FollowingViewController *controller5 = [[FollowingViewController alloc] initWithNibName:@"FollowingViewController" bundle:nil];

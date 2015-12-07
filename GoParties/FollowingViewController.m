@@ -34,4 +34,52 @@
 }
 */
 
+
+#pragma -mark
+#pragma mark TableView delegate methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 75;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *cellIdentifier=@"FollowingTableViewCell";
+    cell=(FollowingTableViewCell *)[followingTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(cell==nil)
+    {
+        NSArray *nib=[[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
+        cell=[nib objectAtIndex:0];
+    }
+    
+
+    return cell;
+}
+
+
 @end

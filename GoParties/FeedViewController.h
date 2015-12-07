@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KASlideShow.h"
 
-@interface FeedViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@interface FeedViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,KASlideShowDelegate>
 {
     IBOutlet UITableView *feedTableView;
     
 }
 
 @property (nonatomic,retain)IBOutlet UITableView *feedTableView;
+@property (strong,nonatomic) IBOutlet KASlideShow * slideshow;
 
 
 @end
