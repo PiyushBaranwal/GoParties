@@ -16,66 +16,66 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Welcome_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="b4J-a0-yGI">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="525"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Welcome_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="HM0-HN-VLv">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="List1.png" translatesAutoresizingMaskIntoConstraints="NO" id="yk1-uS-2Y8">
-                    <rect key="frame" x="29" y="315" width="40" height="38"/>
+                    <rect key="frame" x="50" y="350" width="40" height="38"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="miB-4J-JOe">
-                    <rect key="frame" x="69" y="315" width="230" height="38"/>
+                    <rect key="frame" x="96" y="350" width="230" height="38"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mobile.png" translatesAutoresizingMaskIntoConstraints="NO" id="9XQ-sL-nQu">
-                    <rect key="frame" x="29" y="267" width="40" height="38"/>
+                    <rect key="frame" x="56" y="302" width="40" height="38"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lock1.png" translatesAutoresizingMaskIntoConstraints="NO" id="eZF-pQ-xOL">
-                    <rect key="frame" x="29" y="220" width="40" height="38"/>
+                    <rect key="frame" x="56" y="255" width="40" height="38"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-wD-aDg">
-                    <rect key="frame" x="219" y="441" width="74" height="1"/>
+                    <rect key="frame" x="246" y="476" width="74" height="1"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6K-bW-03v">
-                    <rect key="frame" x="100" y="433" width="122" height="21"/>
+                    <rect key="frame" x="127" y="468" width="122" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Spe-e6-gqN">
-                    <rect key="frame" x="99" y="464" width="50" height="50"/>
+                    <rect key="frame" x="128" y="499" width="50" height="50"/>
                     <state key="normal" backgroundImage="facebook_circle_color_main.png"/>
                     <connections>
                         <action selector="fbBtnClick:" destination="-1" eventType="touchUpInside" id="9gW-gu-2E6"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sj3-CB-fmX">
-                    <rect key="frame" x="172" y="464" width="50" height="50"/>
+                    <rect key="frame" x="201" y="499" width="50" height="50"/>
                     <state key="normal" backgroundImage="Google_Plus_main.png"/>
                     <connections>
                         <action selector="gpBtnClick:" destination="-1" eventType="touchUpInside" id="HXe-14-bpN"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wbF-qO-T1D">
-                    <rect key="frame" x="69" y="220" width="230" height="38"/>
+                    <rect key="frame" x="96" y="255" width="230" height="38"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJ9-lE-pkH">
-                    <rect key="frame" x="137" y="524" width="46" height="44"/>
+                    <rect key="frame" x="161" y="624" width="46" height="44"/>
                     <state key="normal" backgroundImage="yello backgroundbtn.png"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-Le-5xt">
-                    <rect key="frame" x="0.0" y="524" width="160" height="44"/>
+                    <rect key="frame" x="0.0" y="623" width="187" height="44"/>
                     <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="CONTINUE AS GUEST" backgroundImage="Footer_singlebtn.png">
@@ -86,7 +86,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3F-LM-bUY">
-                    <rect key="frame" x="161" y="524" width="159" height="44"/>
+                    <rect key="frame" x="188" y="623" width="188" height="44"/>
                     <color key="backgroundColor" red="0.4385964047" green="0.17975661640000001" blue="0.71174544149999996" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="LOGIN" backgroundImage="Footer_singlebtn.png">
@@ -97,16 +97,16 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="oST-YN-cts">
-                    <rect key="frame" x="28" y="78" width="265" height="81"/>
+                    <rect key="frame" x="55" y="113" width="265" height="81"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email or Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wQD-b6-www">
-                    <rect key="frame" x="69" y="174" width="230" height="38"/>
+                    <rect key="frame" x="96" y="209" width="230" height="38"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-tT-l1F">
-                    <rect key="frame" x="28" y="364" width="271" height="38"/>
+                    <rect key="frame" x="55" y="399" width="271" height="38"/>
                     <color key="backgroundColor" red="0.68533612779999997" green="0.53478927929999998" blue="0.29765998890000001" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="REGISTER" backgroundImage="yello backgroundbtn.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -116,36 +116,37 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-Dc-Dab">
-                    <rect key="frame" x="143" y="409" width="42" height="21"/>
+                    <rect key="frame" x="170" y="444" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PM7-RM-Uf6">
-                    <rect key="frame" x="29" y="441" width="74" height="1"/>
+                    <rect key="frame" x="56" y="476" width="74" height="1"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="User.png" translatesAutoresizingMaskIntoConstraints="NO" id="PQq-Po-RdI">
-                    <rect key="frame" x="29" y="174" width="40" height="38"/>
+                    <rect key="frame" x="56" y="209" width="40" height="38"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Mobile No. (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o9r-cY-dN5">
-                    <rect key="frame" x="69" y="267" width="230" height="38"/>
+                    <rect key="frame" x="96" y="302" width="230" height="38"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3V-nc-zKe">
-                    <rect key="frame" x="29" y="315" width="270" height="38"/>
+                    <rect key="frame" x="56" y="350" width="270" height="38"/>
                     <connections>
                         <action selector="typeBtnClick:" destination="-1" eventType="touchUpInside" id="TJA-pA-6IO"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="245" y="283"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="244.5" y="282.5"/>
         </view>
     </objects>
     <resources>

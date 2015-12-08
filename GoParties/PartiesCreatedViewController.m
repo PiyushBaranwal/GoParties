@@ -14,6 +14,8 @@
 
 @implementation PartiesCreatedViewController
 
+@synthesize scrollView,partiesTableView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -105,7 +107,7 @@
         // To set the segmented control.
         UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Parties",@"Profiles"]];
         // [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
-        segmentControl.frame = CGRectMake(10, 10, 300, 30);
+        segmentControl.frame = CGRectMake(10, 10, self.view.frame.size.width-20, 30);
         [segmentControl addTarget:self action:@selector(segmentedControlValueDidChange1:) forControlEvents:UIControlEventValueChanged];
         
         [segmentControl setSelectedSegmentIndex:0];
@@ -124,7 +126,7 @@
         {
             
             //To create the card view.
-            UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 50+a, 310, 250)];
+            UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 50+a, self.view.frame.size.width-10, 250)];
             if(i%2==0)
             {
                 cardView.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];// 255,153,0
@@ -149,7 +151,7 @@
             
             
             // to set the banner backgroung image
-            bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 40, 310, 140)];
+            bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 40, self.view.frame.size.width-10, 140)];
             bannerImg.image=[UIImage imageNamed:@"First1.png"];
             bannerImg.alpha=0.90;
             [cardView addSubview:bannerImg];
@@ -172,7 +174,7 @@
             
             
             //For friendInvite btn
-            UIButton *frndInvbtn=[[UIButton alloc]initWithFrame:CGRectMake(245, 10, 30, 25)];//
+            UIButton *frndInvbtn=[[UIButton alloc]initWithFrame:CGRectMake(300, 10, 30, 25)];//245, 10, 30, 25
             frndInvbtn.backgroundColor=[UIColor clearColor];
             [frndInvbtn setImage:[UIImage imageNamed:@"add_user_main.png"] forState:UIControlStateNormal];
             frndInvbtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -181,7 +183,7 @@
             [cardView addSubview:frndInvbtn];
             
             //For Share btn
-            UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(275, 10, 30, 25)];//
+            UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(330, 10, 30, 25)];//275, 10, 30, 25
             shareBtn.backgroundColor=[UIColor clearColor];
             [shareBtn setImage:[UIImage imageNamed:@"share_main.png"] forState:UIControlStateNormal];
             shareBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -191,7 +193,7 @@
             
             
             //For the Free Entry
-            UILabel *partyTitleLbl=[[UILabel alloc]initWithFrame:CGRectMake(100, 5, 150, 30)];
+            UILabel *partyTitleLbl=[[UILabel alloc]initWithFrame:CGRectMake(128, 5, 178, 30)];//100, 5, 150, 30
             partyTitleLbl.backgroundColor=[UIColor clearColor];
             partyTitleLbl.text=@"LADIES NIGHT";
             partyTitleLbl.textColor=[UIColor whiteColor];
@@ -229,7 +231,7 @@
             
             
             //for outer circle
-            UIView *circularView = [[UIView alloc] initWithFrame:CGRectMake(240,110,60,60)];
+            UIView *circularView = [[UIView alloc] initWithFrame:CGRectMake(295,110,60,60)];//240,110,60,60
             circularView.layer.cornerRadius = 30;// half of the height or width of the view
             circularView.layer.borderWidth = 3.0f;
             circularView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -352,7 +354,7 @@
             
             
             // for saperator
-            UIImageView *saperatorImg=[[UIImageView alloc]initWithFrame:CGRectMake(230, 180 , 5, 70)];
+            UIImageView *saperatorImg=[[UIImageView alloc]initWithFrame:CGRectMake(285, 180 , 5, 70)];//230, 180 , 5, 70
             saperatorImg.image=[UIImage imageNamed:@"Seprator.png"];
             [cardView addSubview:saperatorImg];
             
@@ -362,7 +364,7 @@
             
             
             //for Add DealBtn
-            UIButton *followBtn=[[UIButton alloc]initWithFrame:CGRectMake(260, 190, 30, 30)];//10,175,280,20
+            UIButton *followBtn=[[UIButton alloc]initWithFrame:CGRectMake(315, 190, 30, 30)];//10,175,280,20 //260, 190, 30, 30
             followBtn.backgroundColor=[UIColor clearColor];
             [followBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
             followBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -371,7 +373,7 @@
             [cardView addSubview:followBtn];
             
             //for FOLLOW Label
-            UILabel *followLbl=[[UILabel alloc]initWithFrame:CGRectMake(240, 220, 70, 30)];
+            UILabel *followLbl=[[UILabel alloc]initWithFrame:CGRectMake(295, 220, 70, 30)];//240, 220, 70, 30
             followLbl.backgroundColor=[UIColor clearColor];
             followLbl.font=[placeLbl.font fontWithSize:15];
             followLbl.text=@"FOLLOW";
@@ -426,9 +428,9 @@
 {
     
     //int numOfCount=6;
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0,10.0,320.0,40.0)];//0.0,0.0,480.0,960.0
+    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0,10.0,self.view.frame.size.width,40.0)];//0.0,0.0,480.0,960.0
     //    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width*(imgArray.count-2.5),self.scrollView.frame.size.height);
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width*(4-2.5),self.scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width*(4-2.5),self.scrollView.frame.size.height);
     self.scrollView.pagingEnabled = YES;
     self.scrollView.backgroundColor=[UIColor clearColor];
     

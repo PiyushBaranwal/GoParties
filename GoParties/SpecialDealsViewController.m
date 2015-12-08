@@ -108,25 +108,25 @@
 -(void)search
 {
     //for popup view
-    popUpView=[[UIView alloc]initWithFrame:CGRectMake(0,0,320,568)];
+    popUpView=[[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)];
     popUpView.backgroundColor=[UIColor colorWithRed:96.0/255 green:3.0/255 blue:125.0/255 alpha:1.0];
     self.navigationController.navigationBarHidden = YES;
     
     // for title label
-    UILabel *searchTtileLbl=[[UILabel alloc]initWithFrame:CGRectMake(120, 20, 80, 40)];
+    UILabel *searchTtileLbl=[[UILabel alloc]initWithFrame:CGRectMake(147, 20, 80, 40)];//(120, 20, 80, 40)
     searchTtileLbl.text=@"SEARCH";
     searchTtileLbl.textColor=[UIColor whiteColor];
     [popUpView addSubview:searchTtileLbl];
     
     //for location icon
-    locIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 70, 40, 40)];
+    locIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 70, 40, 40)];//10, 70, 40, 40
     locIcon.image=[UIImage imageNamed:@"Location1.png"];
     locIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:locIcon];
     
     
     // for location textField
-    locTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 70, 260, 40)];
+    locTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 70, 260, 40)];//50, 70, 260, 40
     locTextField.placeholder=@"  Location";
     locTextField.delegate=self;
     locTextField.backgroundColor=[UIColor whiteColor];
@@ -134,7 +134,7 @@
     
     
     // to set the drop down button for location
-    UIButton *locBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 70, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *locBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 70, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25 //10, 70, 290, 45
     locBtn.backgroundColor=[UIColor clearColor];
     [locBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     locBtn.tag=100;
@@ -151,20 +151,20 @@
     
     
     //for category icon
-    catIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 120, 40, 40)];
+    catIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 120, 40, 40)];//10, 120, 40, 40
     catIcon.image=[UIImage imageNamed:@"List1.png"];
     catIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:catIcon];
     
     // for category textfield
-    catTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 120, 260, 40)];
+    catTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 120, 260, 40)];//50, 120, 260, 40
     catTextField.placeholder=@"  Category";
     catTextField.delegate=self;
     catTextField.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:catTextField];
     
     // to set the drop down button for category
-    UIButton *catBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 120, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *catBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 120, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25//10, 120, 290, 45
     catBtn.backgroundColor=[UIColor clearColor];
     [catBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     catBtn.tag=101;
@@ -179,13 +179,13 @@
     
     
     //for type icon
-    typeIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 170, 40, 40)];
+    typeIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 170, 40, 40)];//10, 170, 40, 40
     typeIcon.image=[UIImage imageNamed:@"Search1.png"];
     typeIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:typeIcon];
     
     // for type textfield
-    typeTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 170, 260, 40)];
+    typeTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 170, 260, 40)];//50, 170, 260, 40
     typeTextField.placeholder=@"  Type";
     typeTextField.delegate=self;
     typeTextField.backgroundColor=[UIColor whiteColor];
@@ -193,7 +193,7 @@
     
     
     // to set the drop down button for type
-    UIButton *typeBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 170, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *typeBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 170, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25//10, 170, 290, 45
     typeBtn.backgroundColor=[UIColor clearColor];
     [typeBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     typeBtn.tag=102;
@@ -205,7 +205,7 @@
     [popUpView addSubview:typeBtn];
     
     // for search button
-    UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 220, 300, 45)];
+    UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 220, 300, 45)];//10, 220, 300, 45
     [searchBtn setBackgroundImage:[UIImage imageNamed:@"yello backgroundbtn.png"] forState:UIControlStateNormal];
     //searchBtn.tag=102;
     [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
@@ -213,6 +213,11 @@
     [searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(searchBtnClick)forControlEvents:UIControlEventTouchUpInside];
     [popUpView addSubview:searchBtn];
+    
+    
+    
+    
+    
     
     
     //for cancel button
@@ -230,7 +235,6 @@
 
 
 
-
 -(void)cancel
 {
     // to show the navigation bar
@@ -240,21 +244,26 @@
 }
 
 
+
 -(void)locListBtnClick
 {
     NSLog(@"Location list Button Clicked");
 }
 
+
 -(void)searchBtnClick
 {
     NSLog(@"Search Button Clicked");
+    // before navigation hit service with filled strings on the search popupview
+    //    PartiesNearYouViewController *objParties=[[PartiesNearYouViewController alloc]initWithNibName:@"PartiesNearYouViewController" bundle:nil];
+    //    [self.navigationController pushViewController:objParties animated:YES];
 }
 
 -(IBAction)locBtnClick:(id)sender
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 70.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 70.0f, 260.0f, 150.0f)];//50.0f, 70.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -266,7 +275,7 @@
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 120.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 120.0f, 260.0f, 150.0f)];//50.0f, 120.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -281,7 +290,7 @@
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 170.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 170.0f, 260.0f, 150.0f)];//50.0f, 170.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -383,7 +392,7 @@
         {
             
             //To create the card view.
-            UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 10+a, 310, 200)];
+            UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 10+a, self.view.frame.size.width-10, 200)];
             if(i%2==0)
             {
            cardView.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];// 255,153,0
@@ -408,7 +417,7 @@
             
             
             // to set the banner backgroung image
-            UIImageView *bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 310, 170)];
+            UIImageView *bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-10, 170)];
             bannerImg.image=[UIImage imageNamed:@"First1.png"];
             bannerImg.alpha=0.90;
             // to make the rounded corner
@@ -425,7 +434,7 @@
             
             
             //For the Free Entry
-            UILabel *freeEntryLbl=[[UILabel alloc]initWithFrame:CGRectMake(100, 10, 150, 30)];
+            UILabel *freeEntryLbl=[[UILabel alloc]initWithFrame:CGRectMake(128, 10, 150, 30)];//100, 10, 150, 30
             freeEntryLbl.backgroundColor=[UIColor clearColor];
             freeEntryLbl.text=@"FREEE ENTRY";
             freeEntryLbl.textColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
@@ -433,7 +442,7 @@
             
             
             //For the Detail Lbl1
-            UILabel *detailLbl1=[[UILabel alloc]initWithFrame:CGRectMake(30, 40, 280, 30)];
+            UILabel *detailLbl1=[[UILabel alloc]initWithFrame:CGRectMake(58, 40, 280, 30)];//30, 40, 280, 30
             detailLbl1.backgroundColor=[UIColor clearColor];
             detailLbl1.text=@"Get a FREE shot and FREE entry to";
             detailLbl1.textColor=[UIColor whiteColor];
@@ -441,7 +450,7 @@
             
             
             //For the Detail Lbl2
-            UILabel *detailLbl2=[[UILabel alloc]initWithFrame:CGRectMake(10, 60, 300, 30)];
+            UILabel *detailLbl2=[[UILabel alloc]initWithFrame:CGRectMake(38, 60, 300, 30)];//10, 60, 300, 30
             detailLbl2.backgroundColor=[UIColor clearColor];
             //detailLbl2.font=[UIFont fontWithName:@"Sans" size:12.0];
             detailLbl2.font=[detailLbl2.font fontWithSize:15];
@@ -491,7 +500,7 @@
             
             
             // for follow Button
-            UIButton *followBtn=[[UIButton alloc]initWithFrame:CGRectMake(160, 120, 25, 25)];
+            UIButton *followBtn=[[UIButton alloc]initWithFrame:CGRectMake(320, 120, 25, 25)];//160, 120, 25, 25
             [followBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
             followBtn.tag=i;
             [followBtn addTarget:self action:@selector(followBtnClick:)forControlEvents:UIControlEventTouchUpInside];
@@ -500,7 +509,7 @@
             
             
             //for Show Parties with this Deals Label
-            UILabel *showDealsLbl=[[UILabel alloc]initWithFrame:CGRectMake(30, 170, 280, 30)];
+            UILabel *showDealsLbl=[[UILabel alloc]initWithFrame:CGRectMake(58, 170, 280, 30)];//30, 170, 280, 30
             showDealsLbl.backgroundColor=[UIColor clearColor];
             showDealsLbl.font=[placeLbl.font fontWithSize:15];
             showDealsLbl.text=@"SHOW PARTIES WITH THIS DEAL";
@@ -508,7 +517,7 @@
             [cardView addSubview:showDealsLbl];
             
             //for Add DealBtn
-            UIButton *addDealBtn=[[UIButton alloc]initWithFrame:CGRectMake(270, 175, 20, 20)];//10,175,280,20
+            UIButton *addDealBtn=[[UIButton alloc]initWithFrame:CGRectMake(298, 175, 20, 20)];//10,175,280,20//270, 175, 20, 20
             addDealBtn.backgroundColor=[UIColor clearColor];
             [addDealBtn setImage:[UIImage imageNamed:@"deal_main.png"] forState:UIControlStateNormal];
              addDealBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;

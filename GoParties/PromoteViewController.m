@@ -101,7 +101,7 @@
         
         
                //For DesignationtextField
-        detailTextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, 290, 100)];
+        detailTextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-30, 100)];
         // detailTextView.placeholder=@"Max: 100 words";
         detailTextView.text=@"Promote your parties, club, band/s or yourself as an artist and reach your interested audience with this special 'promote' feature.Call us on +919711971244 oR share us your number we will be glad to call you soon Lets us connect via a call to understand and customize your promotions better";
         detailTextView.font=[UIFont systemFontOfSize:15];
@@ -113,7 +113,7 @@
         
         
         
-        detailTextView1=[[UITextView alloc]initWithFrame:CGRectMake(10, 110, 290, 60)];
+        detailTextView1=[[UITextView alloc]initWithFrame:CGRectMake(10, 110, self.view.frame.size.width-30, 60)];
         // detailTextView1.placeholder=@"Max: 100 words";
         detailTextView1.text=@"Lets us connect via a call to understand and customize your promotions better";
         detailTextView1.font=[UIFont systemFontOfSize:15];
@@ -126,7 +126,7 @@
         
         
         //For Special Deals textField
-        phoneTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 200, 200, 30)];
+        phoneTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 200, 255, 40)];//10, 200, 200, 30
         phoneTextField.placeholder=@"Your Phone Number";
         phoneTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed: @"callPhone_TextField.png"]];
         [phoneTextField setBackground:[UIImage imageNamed:@"callPhone_TextField.png"]];
@@ -136,7 +136,7 @@
         
         //For speacial deals Btn
         callBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        callBackBtn.frame=CGRectMake(200, 200, 100, 30);
+        callBackBtn.frame=CGRectMake(200, 200, 155, 40);//200, 200, 100, 30
         callBackBtn.tag=106;
         callBackBtn.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
         [callBackBtn setImage:[UIImage imageNamed:@"call_back.png"] forState:UIControlStateNormal];

@@ -107,7 +107,7 @@
         
         
         // for first back view ---------------------------------------------------
-        UIView *fBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 5, 310, 160)];
+        UIView *fBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 5, self.view.frame.size.width-10, 160)];
         fBackView.backgroundColor=[UIColor whiteColor];
         [cell1.contentView addSubview:fBackView];
         
@@ -124,7 +124,7 @@
         [fBackView addSubview:reviewsLbl];
         
         //for rating label
-        UILabel *ratingBackLbl=[[UILabel alloc]initWithFrame:CGRectMake(250, 10, 50, 30)];
+        UILabel *ratingBackLbl=[[UILabel alloc]initWithFrame:CGRectMake(305, 10, 50, 30)];//250, 10, 50, 30
         ratingBackLbl.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
         ratingBackLbl.layer.masksToBounds = YES;
         ratingBackLbl.layer.cornerRadius = 8.0;
@@ -147,14 +147,14 @@
         
         
         //for saperator line
-        UILabel *sepLbl=[[UILabel alloc]initWithFrame:CGRectMake(0, 50, 310, 1)];
+        UILabel *sepLbl=[[UILabel alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.width-10, 1)];
         sepLbl.backgroundColor=[UIColor lightGrayColor];
         [fBackView addSubview:sepLbl];
         
         
         
         // for type label
-        UILabel *yourRevLbl=[[UILabel alloc]initWithFrame:CGRectMake(5, 50, 290, 30)];
+        UILabel *yourRevLbl=[[UILabel alloc]initWithFrame:CGRectMake(5, 50, self.view.frame.size.width-30, 30)];
         yourRevLbl.text=@"YOUR REVIEW";
         yourRevLbl.font=[UIFont systemFontOfSize:14];
         [fBackView addSubview:yourRevLbl];
@@ -163,7 +163,7 @@
         NSInteger a=0;
         for (int i=0; i<5; i++)
         {
-            UIButton *strBtn=[[UIButton alloc]initWithFrame:CGRectMake(230+a, 60, 15, 15)];
+            UIButton *strBtn=[[UIButton alloc]initWithFrame:CGRectMake(285+a, 60, 15, 15)];//230+a, 60, 15, 15
             strBtn.backgroundColor=[UIColor lightGrayColor];
             [strBtn setImage:[UIImage imageNamed:@"star_white.png"] forState:UIControlStateNormal];
             strBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -188,7 +188,7 @@
         
         
         // for feeded back view
-        UIView *revHeaderBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 175, 310, 40)];
+        UIView *revHeaderBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 175, self.view.frame.size.width-10, 40)];
         revHeaderBackView.backgroundColor=[UIColor whiteColor];
         [cell1.contentView addSubview:revHeaderBackView];
         
@@ -203,7 +203,7 @@
         {
             
             // for feeded back view
-            UIView *feededBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 200+b, 310, 250)];
+            UIView *feededBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 200+b, self.view.frame.size.width-10, 250)];
             feededBackView.backgroundColor=[UIColor whiteColor];
             [cell1.contentView addSubview:feededBackView];
             //for userIconImg
@@ -222,7 +222,7 @@
             NSInteger c=0;
             for (int j=0; j<5; j++)
             {
-                UIImageView *feededStrImg=[[UIImageView alloc]initWithFrame:CGRectMake(230+c, 35, 15, 15)];
+                UIImageView *feededStrImg=[[UIImageView alloc]initWithFrame:CGRectMake(285+c, 35, 15, 15)];//230+c, 35, 15, 15
                 feededStrImg.backgroundColor=[UIColor clearColor];
                 feededStrImg.image=[UIImage imageNamed:@"star_orange.png"];
                 //strBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -282,12 +282,12 @@
             
             
             // for comments textView
-            UITextView *commTextView=[[UITextView alloc]initWithFrame:CGRectMake(60, 100, 250, 150)];
+            UITextView *commTextView=[[UITextView alloc]initWithFrame:CGRectMake(60, 100, 305, 150)];//60, 100, 250, 150
             commTextView.text=@"Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.";
             [feededBackView addSubview:commTextView];
             
             //for saperator line
-                   UILabel *sepLbl=[[UILabel alloc]initWithFrame:CGRectMake(0, 250, 310, 1)];
+                   UILabel *sepLbl=[[UILabel alloc]initWithFrame:CGRectMake(0, 250, self.view.frame.size.width-10, 1)];
                    sepLbl.backgroundColor=[UIColor lightGrayColor];
                    [feededBackView addSubview:sepLbl];
 

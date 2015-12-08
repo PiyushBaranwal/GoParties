@@ -75,57 +75,57 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    //    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    //    if (self) {
-    //        // Custom initialization
-    //    }
-    //    return self;
+        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+        if (self) {
+            // Custom initialization
+        }
+        return self;
     
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        if ([[UIScreen mainScreen] bounds].size.height == 568.0f)
-        {
-            //iphone 4.0 inch screen
-            self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-        }
-        else
-        {
-            //iphone 3.5 inch screen
-            NSString *_nibBundleOrNil = (NSString *)(nibBundleOrNil != nil ? [nibNameOrNil stringByAppendingString:@"_iPhone4s"] : [NSStringFromClass([self class]) stringByAppendingString:@"_iPhone4s"]);
-            self = [super initWithNibName:_nibBundleOrNil bundle:nibBundleOrNil];
-        }
-    }
-    else
-    {
-        //For iPad
-        NSString *_nibBundleOrNil = (NSString *)(nibBundleOrNil != nil ? [nibNameOrNil stringByAppendingString:@"_iPad"] : [NSStringFromClass([self class]) stringByAppendingString:@"_iPad"]);
-        self = [super initWithNibName:_nibBundleOrNil bundle:nibBundleOrNil];
-        
-        //To check which ipad according to the size.
-        if ([[UIScreen mainScreen] bounds].size.height == 1024.0f)
-        {
-            //ipad 7.9 inch screen(mini ipad)
-            // self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-            NSString *_nibBundleOrNil = (NSString *)(nibBundleOrNil != nil ? [nibNameOrNil stringByAppendingString:@"_iPad"] : [NSStringFromClass([self class]) stringByAppendingString:@"_iPad"]);
-            self = [super initWithNibName:_nibBundleOrNil bundle:nibBundleOrNil];
-            
-        }
-        else
-        {
-            //ipad 9.7s inch screen
-            NSString *_nibBundleOrNil = (NSString *)(nibBundleOrNil != nil ? [nibNameOrNil stringByAppendingString:@"_iPad"] : [NSStringFromClass([self class]) stringByAppendingString:@"_iPad"]);
-            self = [super initWithNibName:_nibBundleOrNil bundle:nibBundleOrNil];
-        }
-        
-        
-    }
-    
-    if (self)
-    {
-        // Custom initialization
-    }
-    return self;
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+//    {
+//        if ([[UIScreen mainScreen] bounds].size.height == 568.0f)
+//        {
+//            //iphone 4.0 inch screen
+//            self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//        }
+//        else
+//        {
+//            //iphone 3.5 inch screen
+//            NSString *_nibBundleOrNil = (NSString *)(nibBundleOrNil != nil ? [nibNameOrNil stringByAppendingString:@"_iPhone4s"] : [NSStringFromClass([self class]) stringByAppendingString:@"_iPhone4s"]);
+//            self = [super initWithNibName:_nibBundleOrNil bundle:nibBundleOrNil];
+//        }
+//    }
+//    else
+//    {
+//        //For iPad
+//        NSString *_nibBundleOrNil = (NSString *)(nibBundleOrNil != nil ? [nibNameOrNil stringByAppendingString:@"_iPad"] : [NSStringFromClass([self class]) stringByAppendingString:@"_iPad"]);
+//        self = [super initWithNibName:_nibBundleOrNil bundle:nibBundleOrNil];
+//        
+//        //To check which ipad according to the size.
+//        if ([[UIScreen mainScreen] bounds].size.height == 1024.0f)
+//        {
+//            //ipad 7.9 inch screen(mini ipad)
+//            // self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//            NSString *_nibBundleOrNil = (NSString *)(nibBundleOrNil != nil ? [nibNameOrNil stringByAppendingString:@"_iPad"] : [NSStringFromClass([self class]) stringByAppendingString:@"_iPad"]);
+//            self = [super initWithNibName:_nibBundleOrNil bundle:nibBundleOrNil];
+//            
+//        }
+//        else
+//        {
+//            //ipad 9.7s inch screen
+//            NSString *_nibBundleOrNil = (NSString *)(nibBundleOrNil != nil ? [nibNameOrNil stringByAppendingString:@"_iPad"] : [NSStringFromClass([self class]) stringByAppendingString:@"_iPad"]);
+//            self = [super initWithNibName:_nibBundleOrNil bundle:nibBundleOrNil];
+//        }
+//        
+//        
+//    }
+//    
+//    if (self)
+//    {
+//        // Custom initialization
+//    }
+//    return self;
     
     
     

@@ -114,7 +114,7 @@
         [cell1.contentView addSubview:titleLbl];
         
         //For Title textField
-        titletextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 10, 180, 30)];
+        titletextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 10, 235, 30)];//120, 10, 180, 30
         titletextField.placeholder=@"Title";
         titletextField.delegate=self;
         titletextField.backgroundColor=[UIColor whiteColor];
@@ -129,7 +129,7 @@
         [cell1.contentView addSubview:typeLbl];
         
         //For Type textField
-        typetextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 55, 180, 30)];
+        typetextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 55, 235, 30)];//120, 55, 180, 30
         typetextField.placeholder=@"Party Type";
         typetextField.delegate=self;
         typetextField.backgroundColor=[UIColor whiteColor];
@@ -137,7 +137,7 @@
         
         //For type Btn
         typeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        typeBtn.frame=CGRectMake(120, 55, 180, 30);
+        typeBtn.frame=CGRectMake(120, 55, 235, 30);//120, 55, 180, 30
         typeBtn.tag=100;
         typeBtn.backgroundColor=[UIColor clearColor];
         [typeBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
@@ -153,7 +153,7 @@
         [cell1.contentView addSubview:whenLbl];
         
         //For When textField
-        whentextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 100, 180, 30)];
+        whentextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 100, 235, 30)];//120, 100, 180, 30
         whentextField.placeholder=@"Party Time";
         whentextField.delegate=self;
         whentextField.backgroundColor=[UIColor whiteColor];
@@ -161,7 +161,7 @@
         
         //For when Btn
         whenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        whenBtn.frame=CGRectMake(120, 100, 180, 30);
+        whenBtn.frame=CGRectMake(120, 100, 235, 30);//120, 100, 180, 30
         whenBtn.tag=101;
         whenBtn.backgroundColor=[UIColor clearColor];
         [whenBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
@@ -177,7 +177,7 @@
         [cell1.contentView addSubview:whreLbl];
         
         //For When textField
-        wheretextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 145, 180, 30)];
+        wheretextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 145, 235, 30)];//120, 145, 180, 30
         wheretextField.placeholder=@"Location";
         wheretextField.delegate=self;
         wheretextField.backgroundColor=[UIColor whiteColor];
@@ -185,7 +185,7 @@
         
         //For where Btn
         whereBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        whereBtn.frame=CGRectMake(120, 145, 180, 30);
+        whereBtn.frame=CGRectMake(120, 145, 235, 30);//120, 145, 180, 30
         //whereBtn.tag=102;
         whereBtn.backgroundColor=[UIColor clearColor];
         [whereBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
@@ -202,7 +202,7 @@
         [cell1.contentView addSubview:uploadLbl];
         
         //For When textField
-        uploadtextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 190, 100, 30)];
+        uploadtextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 190, 155, 30)];//120, 190, 100, 30
         uploadtextField.placeholder=@"No Files Chosen";
         uploadtextField.delegate=self;
         uploadtextField.backgroundColor=[UIColor whiteColor];
@@ -210,7 +210,7 @@
         
         //For chose Btn
         choseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        choseBtn.frame=CGRectMake(220, 190, 80, 30);
+        choseBtn.frame=CGRectMake(275, 190, 80, 30);//220, 190, 80, 30
         choseBtn.tag=103;
         choseBtn.backgroundColor=[UIColor clearColor];
         // set the title of the button
@@ -298,12 +298,12 @@
         
         //for Entry
         // for entry terms Label
-        UILabel *entryLbl=[[UILabel alloc]initWithFrame:CGRectMake(10, 308, 120, 30)];
+        UILabel *entryLbl=[[UILabel alloc]initWithFrame:CGRectMake(10, 308, 120, 30)];//10, 308, 120, 30
         entryLbl.text=@"Entry Terms:";
         [cell1.contentView addSubview:entryLbl];
         
         //For Terms textField
-        termstextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 308, 180, 30)];
+        termstextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 308, 235, 30)];//120, 308, 180, 30
         termstextField.placeholder=@"Terms";
         termstextField.delegate=self;
         termstextField.backgroundColor=[UIColor whiteColor];
@@ -311,7 +311,7 @@
         
         //For entry Terms Btn
         termsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        termsBtn.frame=CGRectMake(120, 308, 180, 30);
+        termsBtn.frame=CGRectMake(120, 308, 235, 30);//120, 308, 180, 30
         termsBtn.tag=104;
         termsBtn.backgroundColor=[UIColor clearColor];
         [termsBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
@@ -332,7 +332,7 @@
         [cell1.contentView addSubview:nameLbl];
         
         //For name textField
-        nametextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 398, 180, 30)];
+        nametextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 398, 235, 30)];//120, 398, 180, 30
         nametextField.placeholder=@"Name";
         nametextField.delegate=self;
         nametextField.backgroundColor=[UIColor whiteColor];
@@ -345,7 +345,7 @@
         [cell1.contentView addSubview:designationLbl];
         
         //For DesignationtextField
-        desgntextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 443, 180, 30)];
+        desgntextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 443, 235, 30)];//120, 443, 180, 30
         desgntextField.placeholder=@"Designation";
         desgntextField.backgroundColor=[UIColor whiteColor];
         [cell1.contentView addSubview:desgntextField];
@@ -356,7 +356,7 @@
         [cell1.contentView addSubview:phoneLbl];
         
         //For DesignationtextField
-        phonetextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 488, 180, 30)];
+        phonetextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 488, 235, 30)];//120, 488, 180, 30
         phonetextField.placeholder=@"Phone";
         phonetextField.delegate=self;
         phonetextField.backgroundColor=[UIColor whiteColor];
@@ -370,7 +370,7 @@
         [cell1.contentView addSubview:partyThmLbl];
         
         //For DesignationtextField
-        partyThmtextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 533, 180, 30)];
+        partyThmtextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 533, 235, 30)];//120, 533, 180, 30
         partyThmtextField.placeholder=@"Bollywood Comercial";
         partyThmtextField.delegate=self;
         partyThmtextField.backgroundColor=[UIColor whiteColor];
@@ -378,7 +378,7 @@
         
         //For party theme Btn
         partyThemeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        partyThemeBtn.frame=CGRectMake(120, 533, 180, 30);
+        partyThemeBtn.frame=CGRectMake(120, 533, 235, 30);//120, 533, 180, 30
         partyThemeBtn.tag=105;
         partyThemeBtn.backgroundColor=[UIColor clearColor];
         [partyThemeBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
@@ -394,7 +394,7 @@
         [cell1.contentView addSubview:desLbl];
         
         //For DesignationtextField
-        destextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 613, 290, 80)];
+        destextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 613, 345, 80)];//10, 613, 290, 80
        // destextView.placeholder=@"Max: 100 words";
         destextView.delegate=self;
         destextView.backgroundColor=[UIColor whiteColor];
@@ -407,7 +407,7 @@
         [cell1.contentView addSubview:speDealsLbl];
         
         //For Special Deals textField
-        specialtextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 703, 180, 30)];
+        specialtextField=[[UITextField alloc]initWithFrame:CGRectMake(120, 703, 235, 30)];//120, 703, 180, 30
         specialtextField.placeholder=@"Deal Title";
         specialtextField.delegate=self;
         specialtextField.backgroundColor=[UIColor whiteColor];
@@ -415,7 +415,7 @@
         
         //For speacial deals Btn
         dealsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        dealsBtn.frame=CGRectMake(120, 703, 180, 30);
+        dealsBtn.frame=CGRectMake(120, 703, 235, 30);//120, 703, 180, 30
         dealsBtn.tag=106;
         dealsBtn.backgroundColor=[UIColor clearColor];
         [dealsBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
@@ -452,7 +452,7 @@
         
         
         //for card Preview Button
-        UIButton *prevBtn=[[UIButton alloc]initWithFrame:CGRectMake(50, 803, 200, 40)];
+        UIButton *prevBtn=[[UIButton alloc]initWithFrame:CGRectMake(50, 803, 255, 40)];//50, 803, 200, 40
         prevBtn.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
         [prevBtn setTitle: @"Card Preview" forState: UIControlStateNormal];
         [prevBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

@@ -158,25 +158,25 @@
 -(void)search
 {
     //for popup view
-    popUpView=[[UIView alloc]initWithFrame:CGRectMake(0,0,320,568)];
+    popUpView=[[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)];
     popUpView.backgroundColor=[UIColor colorWithRed:96.0/255 green:3.0/255 blue:125.0/255 alpha:1.0];
     self.navigationController.navigationBarHidden = YES;
     
     // for title label
-    UILabel *searchTtileLbl=[[UILabel alloc]initWithFrame:CGRectMake(120, 20, 80, 40)];
+    UILabel *searchTtileLbl=[[UILabel alloc]initWithFrame:CGRectMake(147, 20, 80, 40)];//(120, 20, 80, 40)
     searchTtileLbl.text=@"SEARCH";
     searchTtileLbl.textColor=[UIColor whiteColor];
     [popUpView addSubview:searchTtileLbl];
     
     //for location icon
-    locIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 70, 40, 40)];
+    locIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 70, 40, 40)];//10, 70, 40, 40
     locIcon.image=[UIImage imageNamed:@"Location1.png"];
     locIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:locIcon];
     
     
     // for location textField
-    locTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 70, 260, 40)];
+    locTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 70, 260, 40)];//50, 70, 260, 40
     locTextField.placeholder=@"  Location";
     locTextField.delegate=self;
     locTextField.backgroundColor=[UIColor whiteColor];
@@ -184,7 +184,7 @@
     
     
     // to set the drop down button for location
-    UIButton *locBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 70, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *locBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 70, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25 //10, 70, 290, 45
     locBtn.backgroundColor=[UIColor clearColor];
     [locBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     locBtn.tag=100;
@@ -201,20 +201,20 @@
     
     
     //for category icon
-    catIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 120, 40, 40)];
+    catIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 120, 40, 40)];//10, 120, 40, 40
     catIcon.image=[UIImage imageNamed:@"List1.png"];
     catIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:catIcon];
     
     // for category textfield
-    catTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 120, 260, 40)];
+    catTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 120, 260, 40)];//50, 120, 260, 40
     catTextField.placeholder=@"  Category";
     catTextField.delegate=self;
     catTextField.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:catTextField];
     
     // to set the drop down button for category
-    UIButton *catBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 120, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *catBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 120, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25//10, 120, 290, 45
     catBtn.backgroundColor=[UIColor clearColor];
     [catBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     catBtn.tag=101;
@@ -229,13 +229,13 @@
     
     
     //for type icon
-    typeIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 170, 40, 40)];
+    typeIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 170, 40, 40)];//10, 170, 40, 40
     typeIcon.image=[UIImage imageNamed:@"Search1.png"];
     typeIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:typeIcon];
     
     // for type textfield
-   typeTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 170, 260, 40)];
+   typeTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 170, 260, 40)];//50, 170, 260, 40
     typeTextField.placeholder=@"  Type";
     typeTextField.delegate=self;
     typeTextField.backgroundColor=[UIColor whiteColor];
@@ -243,7 +243,7 @@
     
     
     // to set the drop down button for type
-    UIButton *typeBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 170, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *typeBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 170, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25//10, 170, 290, 45
     typeBtn.backgroundColor=[UIColor clearColor];
     [typeBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     typeBtn.tag=102;
@@ -255,7 +255,7 @@
     [popUpView addSubview:typeBtn];
     
     // for search button
-    UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 220, 300, 45)];
+    UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 220, 300, 45)];//10, 220, 300, 45
     [searchBtn setBackgroundImage:[UIImage imageNamed:@"yello backgroundbtn.png"] forState:UIControlStateNormal];
     //searchBtn.tag=102;
     [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
@@ -307,7 +307,7 @@
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 70.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 70.0f, 260.0f, 150.0f)];//50.0f, 70.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -319,7 +319,7 @@
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 120.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 120.0f, 260.0f, 150.0f)];//50.0f, 120.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -334,7 +334,7 @@
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 170.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 170.0f, 260.0f, 150.0f)];//50.0f, 170.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -511,7 +511,7 @@
 //        if (banImgArray.count)
 //        {
             // KASlideshow
-            slideshow  =[[KASlideShow alloc]initWithFrame:CGRectMake(3, 3, 314, 205)];//3, 3, 314, 245
+            slideshow  =[[KASlideShow alloc]initWithFrame:CGRectMake(3, 3, self.view.frame.size.width-6, 205)];//3, 3, 314, 205
             //slideshow.backgroundColor=[UIColor grayColor];
             slideshow.backgroundColor=[UIColor whiteColor];
             slideshow.delegate = self;
@@ -548,7 +548,7 @@
         for(int i=0; i<5; i++)// (int i=0; i<titleArray.count; i++)
         {
             //For First Cell
-            UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(9, 225+a, 298, 65)];
+            UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(9, 225+a, self.view.frame.size.width-22, 65)];//9, 225+a, 298, 65
             cellView.backgroundColor=[UIColor whiteColor];
             [listTableView addSubview:cellView];
             
@@ -563,11 +563,11 @@
             //for icon image
             UIImageView *iconImg=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
             //For Title Lable
-            UILabel *titleLbl=[[UILabel alloc]initWithFrame:CGRectMake(68, 5, 190, 25)];
+            UILabel *titleLbl=[[UILabel alloc]initWithFrame:CGRectMake(68, 5, 245, 25)];//68, 5, 190, 25
             titleLbl.textColor=[UIColor colorWithRed:96.0/255 green:3.0/255 blue:125.0/255 alpha:1.0];
             [titleLbl setFont: [titleLbl.font fontWithSize: 15]];
             //For detail Label
-            UILabel *detailLbl=[[UILabel alloc]initWithFrame:CGRectMake(68, 15, 190, 50)];
+            UILabel *detailLbl=[[UILabel alloc]initWithFrame:CGRectMake(68, 15, 245, 50)];//68, 15, 190, 50
             [detailLbl setFont: [detailLbl.font fontWithSize: 10]];
             detailLbl.numberOfLines=4;
             if (i==0)
@@ -613,7 +613,7 @@
             [cellView addSubview:detailLbl];
             
             //For Select Button
-            UIButton *selectBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 235+a, 295, 45)];//6,8,283,50 //250, 245+b, 25, 25
+            UIButton *selectBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 235+a, self.view.frame.size.width-25, 45)];//6,8,283,50 //250, 245+b, 25, 25 //10, 235+a, 295, 45
             selectBtn.backgroundColor=[UIColor clearColor];
             //[selectBtn setImage:[UIImage imageNamed:@"Arrow_main.png"] forState:UIControlStateNormal];
             selectBtn.tag=i;

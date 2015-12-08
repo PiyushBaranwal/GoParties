@@ -247,25 +247,25 @@
 -(void)search
 {
     //for popup view
-    popUpView=[[UIView alloc]initWithFrame:CGRectMake(0,0,320,568)];
+    popUpView=[[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)];
     popUpView.backgroundColor=[UIColor colorWithRed:96.0/255 green:3.0/255 blue:125.0/255 alpha:1.0];
     self.navigationController.navigationBarHidden = YES;
     
     // for title label
-    UILabel *searchTtileLbl=[[UILabel alloc]initWithFrame:CGRectMake(120, 20, 80, 40)];
+    UILabel *searchTtileLbl=[[UILabel alloc]initWithFrame:CGRectMake(147, 20, 80, 40)];//(120, 20, 80, 40)
     searchTtileLbl.text=@"SEARCH";
     searchTtileLbl.textColor=[UIColor whiteColor];
     [popUpView addSubview:searchTtileLbl];
     
     //for location icon
-    locIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 70, 40, 40)];
+    locIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 70, 40, 40)];//10, 70, 40, 40
     locIcon.image=[UIImage imageNamed:@"Location1.png"];
     locIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:locIcon];
     
     
     // for location textField
-    locTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 70, 260, 40)];
+    locTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 70, 260, 40)];//50, 70, 260, 40
     locTextField.placeholder=@"  Location";
     locTextField.delegate=self;
     locTextField.backgroundColor=[UIColor whiteColor];
@@ -273,7 +273,7 @@
     
     
     // to set the drop down button for location
-    UIButton *locBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 70, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *locBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 70, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25 //10, 70, 290, 45
     locBtn.backgroundColor=[UIColor clearColor];
     [locBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     locBtn.tag=100;
@@ -290,20 +290,20 @@
     
     
     //for category icon
-    catIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 120, 40, 40)];
+    catIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 120, 40, 40)];//10, 120, 40, 40
     catIcon.image=[UIImage imageNamed:@"List1.png"];
     catIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:catIcon];
     
     // for category textfield
-    catTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 120, 260, 40)];
+    catTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 120, 260, 40)];//50, 120, 260, 40
     catTextField.placeholder=@"  Category";
     catTextField.delegate=self;
     catTextField.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:catTextField];
     
     // to set the drop down button for category
-    UIButton *catBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 120, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *catBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 120, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25//10, 120, 290, 45
     catBtn.backgroundColor=[UIColor clearColor];
     [catBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     catBtn.tag=101;
@@ -318,13 +318,13 @@
     
     
     //for type icon
-    typeIcon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 170, 40, 40)];
+    typeIcon=[[UIImageView alloc]initWithFrame:CGRectMake(38, 170, 40, 40)];//10, 170, 40, 40
     typeIcon.image=[UIImage imageNamed:@"Search1.png"];
     typeIcon.backgroundColor=[UIColor whiteColor];
     [popUpView addSubview:typeIcon];
     
     // for type textfield
-    typeTextField=[[UITextField alloc]initWithFrame:CGRectMake(50, 170, 260, 40)];
+    typeTextField=[[UITextField alloc]initWithFrame:CGRectMake(78, 170, 260, 40)];//50, 170, 260, 40
     typeTextField.placeholder=@"  Type";
     typeTextField.delegate=self;
     typeTextField.backgroundColor=[UIColor whiteColor];
@@ -332,7 +332,7 @@
     
     
     // to set the drop down button for type
-    UIButton *typeBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 170, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25
+    UIButton *typeBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 170, 290, 45)];//6,8,283,50 //250, 245+b, 25, 25//10, 170, 290, 45
     typeBtn.backgroundColor=[UIColor clearColor];
     [typeBtn setImage:[UIImage imageNamed:@"Arrow20x20.png"] forState:UIControlStateNormal];
     typeBtn.tag=102;
@@ -344,7 +344,7 @@
     [popUpView addSubview:typeBtn];
     
     // for search button
-    UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 220, 300, 45)];
+    UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(38, 220, 300, 45)];//10, 220, 300, 45
     [searchBtn setBackgroundImage:[UIImage imageNamed:@"yello backgroundbtn.png"] forState:UIControlStateNormal];
     //searchBtn.tag=102;
     [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
@@ -352,6 +352,11 @@
     [searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(searchBtnClick)forControlEvents:UIControlEventTouchUpInside];
     [popUpView addSubview:searchBtn];
+    
+    
+    
+    
+    
     
     
     //for cancel button
@@ -397,7 +402,7 @@
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 70.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 70.0f, 260.0f, 150.0f)];//50.0f, 70.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -409,7 +414,7 @@
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 120.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 120.0f, 260.0f, 150.0f)];//50.0f, 120.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -424,7 +429,7 @@
 {
     clickedBtn=(UIButton*)sender;
     
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(50.0f, 170.0f, 260.0f, 150.0f)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(78.0f, 170.0f, 260.0f, 150.0f)];//50.0f, 170.0f, 260.0f, 150.0f
     pickerView.delegate=self;
     pickerView.dataSource=self;
     pickerView.showsSelectionIndicator = YES;
@@ -504,13 +509,13 @@
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
         cell1.contentView.backgroundColor=[UIColor whiteColor];
             //To create the card view.
-           cardView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 210)];
+           cardView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 210)];
             cardView.backgroundColor=[UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];// 106,27,154
             [cell1.contentView addSubview:cardView];
             
             
             // to set the banner backgroung image
-            bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 160)];
+            bannerImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 160)];
             bannerImg.image=[UIImage imageNamed:@"First1.png"];
             bannerImg.alpha=0.90;
             [cardView addSubview:bannerImg];
@@ -522,7 +527,7 @@
             
         
             //For ProfileImg
-            UIImageView *profileImg=[[UIImageView alloc]initWithFrame:CGRectMake(130, 30, 60, 60)];
+            UIImageView *profileImg=[[UIImageView alloc]initWithFrame:CGRectMake(158, 30, 60, 60)];//130, 30, 60, 60
             profileImg.image=[UIImage imageNamed:@"AppIcon.png"];
             profileImg.layer.cornerRadius = profileImg.frame.size.width / 2;
             profileImg.layer.borderWidth = 2.0f;
@@ -535,7 +540,7 @@
             [bannerImg addSubview:profileImg];
             
             //for profile title label
-            UILabel *profileLbl=[[UILabel alloc]initWithFrame:CGRectMake(100, 85, 300, 30)];
+            UILabel *profileLbl=[[UILabel alloc]initWithFrame:CGRectMake(128, 85, self.view.frame.size.width-20, 30)];//100, 85, self.view.frame.size.width-20, 30
             profileLbl.backgroundColor=[UIColor clearColor];
             //detailLbl2.font=[UIFont fontWithName:@"Sans" size:12.0];
             profileLbl.font=[profileLbl.font fontWithSize:15];
@@ -545,7 +550,7 @@
             
             
             //for place label
-            UILabel *placeLbl=[[UILabel alloc]initWithFrame:CGRectMake(140, 100, 100, 30)];
+            UILabel *placeLbl=[[UILabel alloc]initWithFrame:CGRectMake(168, 100, 100, 30)];//140, 100, 100, 30
             placeLbl.backgroundColor=[UIColor clearColor];
             placeLbl.font=[placeLbl.font fontWithSize:15];
             placeLbl.text=@"Club";
@@ -559,7 +564,7 @@
             NSInteger b=0;
             for (int j=0; j<5; j++)
             {
-                UIImageView *strImg1=[[UIImageView alloc]initWithFrame:CGRectMake(120+b, 125 , 15, 15)];
+                UIImageView *strImg1=[[UIImageView alloc]initWithFrame:CGRectMake(148+b, 125 , 15, 15)];//120+b, 125 , 15, 15
                 strImg1.image=[UIImage imageNamed:@"star_orange.png"];
                 [cardView addSubview:strImg1];
                 b=b+15;
@@ -578,7 +583,14 @@
         PromoteViewController *controller4 = [[PromoteViewController alloc] initWithNibName:@"PromoteViewController" bundle:nil];
         controller4.title = @"Promote";
         
-        NSArray *controllerArray = @[controller1, controller2, controller3, controller4];
+        FollowingViewController *controller5 = [[FollowingViewController alloc] initWithNibName:@"FollowingViewController" bundle:nil];
+        controller5.title = @"Followings";
+        FollowersViewController *controller6 = [[FollowersViewController alloc] initWithNibName:@"FollowersViewController" bundle:nil];
+        controller6.title = @"Followers";
+        
+        
+        
+        NSArray *controllerArray = @[controller1, controller2, controller3, controller4,controller5,controller6];
         NSDictionary *parameters = @{
                                      CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00],
                                      CAPSPageMenuOptionViewBackgroundColor: [UIColor colorWithRed:20.0/255.0 green:20.0/255.0 blue:20.0/255.0 alpha:1.0],
@@ -623,7 +635,7 @@
 {
     
     //int numOfCount=6;
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0,170.0,320.0,40.0)];//0.0,0.0,480.0,960.0
+    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0,170.0,self.view.frame.size.width,40.0)];//0.0,0.0,480.0,960.0
     //    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width*(imgArray.count-2.5),self.scrollView.frame.size.height);
     self.scrollView.contentSize = CGSizeMake(640,self.scrollView.frame.size.height);
     self.scrollView.pagingEnabled = YES;

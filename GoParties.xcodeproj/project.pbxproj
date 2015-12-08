@@ -52,6 +52,7 @@
 		FC686FFF1C11605200A274EA /* MyPartiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC686FFD1C11605200A274EA /* MyPartiesViewController.xib */; };
 		FC6870051C11611300A274EA /* PromoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6870031C11611300A274EA /* PromoteViewController.m */; };
 		FC6870061C11611300A274EA /* PromoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC6870041C11611300A274EA /* PromoteViewController.xib */; };
+		FC6C3A011C16ADE6002B323C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6C3A001C16ADE6002B323C /* Default.png */; };
 		FC73A3961C08226400567306 /* Verify.png in Resources */ = {isa = PBXBuildFile; fileRef = FC73A3951C08226400567306 /* Verify.png */; };
 		FC73A3981C08269100567306 /* location_pin40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = FC73A3971C08269100567306 /* location_pin40x40.png */; };
 		FC73A3A51C082D5000567306 /* home_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = FC73A39A1C082D5000567306 /* home_calendar.png */; };
@@ -260,7 +261,6 @@
 		FCE9F29C1C0EFA4B0009EF8D /* GSNSDataExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F2991C0EFA4B0009EF8D /* GSNSDataExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCE9F29D1C0EFA4B0009EF8D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F29B1C0EFA4B0009EF8D /* Utils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCEF43141BFDA4130013B1E5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43121BFDA4130013B1E5 /* Default@2x.png */; };
-		FCEF43151BFDA4130013B1E5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43131BFDA4130013B1E5 /* Default.png */; };
 		FCEF431A1BFDAB980013B1E5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCEF43181BFDAB980013B1E5 /* MainViewController.m */; };
 		FCEF431B1BFDAB980013B1E5 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEF43191BFDAB980013B1E5 /* MainViewController.xib */; };
 		FCEF431E1BFDF00A0013B1E5 /* Notification_Bell_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FCEF431C1BFDF00A0013B1E5 /* Notification_Bell_main.png */; };
@@ -369,6 +369,7 @@
 		FC6870021C11611300A274EA /* PromoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoteViewController.h; sourceTree = "<group>"; };
 		FC6870031C11611300A274EA /* PromoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoteViewController.m; sourceTree = "<group>"; };
 		FC6870041C11611300A274EA /* PromoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoteViewController.xib; sourceTree = "<group>"; };
+		FC6C3A001C16ADE6002B323C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FC73A3951C08226400567306 /* Verify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verify.png; sourceTree = "<group>"; };
 		FC73A3971C08269100567306 /* location_pin40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_pin40x40.png; sourceTree = "<group>"; };
 		FC73A39A1C082D5000567306 /* home_calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_calendar.png; sourceTree = "<group>"; };
@@ -623,7 +624,6 @@
 		FCE9F29A1C0EFA4B0009EF8D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		FCE9F29B1C0EFA4B0009EF8D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		FCEF43121BFDA4130013B1E5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		FCEF43131BFDA4130013B1E5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FCEF43171BFDAB980013B1E5 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		FCEF43181BFDAB980013B1E5 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		FCEF43191BFDAB980013B1E5 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -1390,7 +1390,7 @@
 			children = (
 				FC673A951C0C69AF0069B89D /* AppIcon@2x.png */,
 				FCEF43121BFDA4130013B1E5 /* Default@2x.png */,
-				FCEF43131BFDA4130013B1E5 /* Default.png */,
+				FC6C3A001C16ADE6002B323C /* Default.png */,
 				FCFA190F1BF9A23A00FAAD99 /* AppDelegate.h */,
 				FCFA19101BF9A23A00FAAD99 /* AppDelegate.m */,
 				FCB74BA31BFB34D30035BE0C /* MenuScreen */,
@@ -1588,7 +1588,6 @@
 				FCC8C3441BFC62DB006056EA /* gps-fixed.png in Resources */,
 				FC73A3CC1C083D7400567306 /* percent_main.png in Resources */,
 				FCE9F2881C0ED8BE0009EF8D /* footer_parties.png in Resources */,
-				FCEF43151BFDA4130013B1E5 /* Default.png in Resources */,
 				FCC8C3581BFC62DB006056EA /* Lock 2.png in Resources */,
 				FCC8C3241BFC62DB006056EA /* Alcohol.png in Resources */,
 				FC73A3AB1C082D5000567306 /* home_parties_near_you.png in Resources */,
@@ -1657,6 +1656,7 @@
 				FC73A3D01C083DC500567306 /* calendar_main.png in Resources */,
 				FC60D4501C11A51E00545EB4 /* radio1.png in Resources */,
 				FCC8C37A1BFC62DB006056EA /* view1.png in Resources */,
+				FC6C3A011C16ADE6002B323C /* Default.png in Resources */,
 				FCC8C3311BFC62DB006056EA /* Christmas_Gift.png in Resources */,
 				FC673A841C0C2EBC0069B89D /* star_white.png in Resources */,
 				FCC8C36C1BFC62DB006056EA /* share_icon.png in Resources */,
@@ -1940,7 +1940,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shivaarti Bajaj (986SH2B859)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shivaarti Bajaj (986SH2B859)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1962,6 +1963,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "08080c0e-3d2c-423e-8087-176bbaabeb37";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1984,7 +1986,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shivaarti Bajaj (986SH2B859)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shivaarti Bajaj (986SH2B859)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1999,6 +2002,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "08080c0e-3d2c-423e-8087-176bbaabeb37";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2009,10 +2013,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shivaarti Bajaj (986SH2B859)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shivaarti Bajaj (986SH2B859)";
 				INFOPLIST_FILE = GoParties/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GP.GoParties;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goparties.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "08080c0e-3d2c-423e-8087-176bbaabeb37";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2020,10 +2028,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shivaarti Bajaj (986SH2B859)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shivaarti Bajaj (986SH2B859)";
 				INFOPLIST_FILE = GoParties/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GP.GoParties;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goparties.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "08080c0e-3d2c-423e-8087-176bbaabeb37";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

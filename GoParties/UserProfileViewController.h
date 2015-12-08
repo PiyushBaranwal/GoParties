@@ -18,6 +18,9 @@
 #import "MyPartiesViewController.h"
 #import "MyFeedViewController.h"
 
+#import "FollowersViewController.h"
+#import "FollowingViewController.h"
+
 
 @interface UserProfileViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
 {

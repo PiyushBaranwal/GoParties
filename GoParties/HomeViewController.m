@@ -66,6 +66,9 @@
          [slideshow start]; // Gesture to go previous/next directly on the image
        // [Utils stopActivityIndicatorInView:self.view];
     
+    
+    //[self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
 }
 
 - (void)didReceiveMemoryWarning {

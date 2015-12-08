@@ -104,13 +104,13 @@
         
         
         // for the myfeed comment box
-        UIView *myfeedBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 5, 310, 250)];
+        UIView *myfeedBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 5, self.view.frame.size.width-10, 250)];
         myfeedBackView.backgroundColor=[UIColor whiteColor];
         [cell1.contentView addSubview:myfeedBackView];
         
         
         // suggested label
-        UILabel *suggestedLbl=[[UILabel alloc]initWithFrame:CGRectMake(60, 10, 150, 30)];
+        UILabel *suggestedLbl=[[UILabel alloc]initWithFrame:CGRectMake(60, 10, (self.view.frame.size.width/2)-10, 30)];
         suggestedLbl.text=@"Suggested Profiles";
         suggestedLbl.font=[UIFont systemFontOfSize:15];
         [cell1.contentView addSubview:suggestedLbl];
@@ -120,7 +120,7 @@
         
         //UIImageView *sliderImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 100)];
         
-        slideshow  =[[KASlideShow alloc]initWithFrame:CGRectMake(10, 15, 300, 150)];//2,2,316,295//2, 2, 316, 255
+        slideshow  =[[KASlideShow alloc]initWithFrame:CGRectMake(10, 15, self.view.frame.size.width-20, 150)];//2,2,316,295//2, 2, 316, 255
         slideshow.backgroundColor=[UIColor grayColor];
         slideshow.delegate = self;
         [slideshow setDelay:1]; // Delay between transitions
@@ -167,7 +167,7 @@
         
         
         // for suggested party Follow btn
-        UIButton *partyFollowBtn=[[UIButton alloc]initWithFrame:CGRectMake(260, 175, 30, 30)];
+        UIButton *partyFollowBtn=[[UIButton alloc]initWithFrame:CGRectMake(315, 175, 30, 30)];//260, 175, 30, 30
         partyFollowBtn.backgroundColor=[UIColor grayColor];
         [partyFollowBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
         partyFollowBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -176,7 +176,7 @@
         [myfeedBackView addSubview:partyFollowBtn];
         
         //for suggested party follow label
-        UILabel *followLbl=[[UILabel alloc]initWithFrame:CGRectMake(250, 200, 80, 30)];
+        UILabel *followLbl=[[UILabel alloc]initWithFrame:CGRectMake(305, 200, 80, 30)];//250, 200, 80, 30
         followLbl.text=@"FOLLOW";
         followLbl.font=[UIFont systemFontOfSize:13];
         [myfeedBackView addSubview:followLbl];
@@ -187,7 +187,7 @@
         NSInteger a=0;
         for (int i=0; i<5; i++)
         {
-            UIView *feedBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 265+a, 310, 350)];//sets height according the feed data
+            UIView *feedBackView=[[UIView alloc]initWithFrame:CGRectMake(5, 265+a, self.view.frame.size.width-10, 350)];//sets height according the feed data
             feedBackView.backgroundColor=[UIColor whiteColor];
             [cell1.contentView addSubview:feedBackView];
             
@@ -216,19 +216,19 @@
             
             
             // for feeded image
-            UIImageView *feededImg=[[UIImageView alloc]initWithFrame:CGRectMake(5, 50, 300, 200)];
+            UIImageView *feededImg=[[UIImageView alloc]initWithFrame:CGRectMake(5, 50, self.view.frame.size.width-20, 200)];
             feededImg.backgroundColor=[UIColor clearColor];
             feededImg.image=[UIImage imageNamed:@"Verify.png"];
             [feedBackView addSubview:feededImg];
             
             // for feededtext
-            UITextView *feededTextView=[[UITextView alloc]initWithFrame:CGRectMake(5, 200, 300, 100)];
+            UITextView *feededTextView=[[UITextView alloc]initWithFrame:CGRectMake(5, 200, self.view.frame.size.width-20, 100)];
             feededTextView.text=@"Hi there hw t r u?";
             feededTextView.backgroundColor=[UIColor grayColor];
             [feedBackView addSubview:feededTextView];
             
             //to set the seperator
-            UILabel *sepLbl=[[UILabel alloc]initWithFrame:CGRectMake(5, 305, 300, 1)];
+            UILabel *sepLbl=[[UILabel alloc]initWithFrame:CGRectMake(5, 305, self.view.frame.size.width-20, 1)];
             sepLbl.backgroundColor=[UIColor grayColor];
             [feedBackView addSubview:sepLbl];
             
@@ -248,7 +248,7 @@
             [feedBackView addSubview:likeLbl];
             
             // to set the comment btn
-            UIButton *commBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 315, 20, 20)];
+            UIButton *commBtn=[[UIButton alloc]initWithFrame:CGRectMake(128, 315, 20, 20)];//100, 315, 20, 20
             commBtn.backgroundColor=[UIColor clearColor];
             [commBtn setImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
             commBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -258,14 +258,14 @@
             
             
             // to set the cooment lbel
-            UILabel *commLbl=[[UILabel alloc]initWithFrame:CGRectMake(130, 310, 90, 30)];
+            UILabel *commLbl=[[UILabel alloc]initWithFrame:CGRectMake(158, 310, 90, 30)];//130, 310, 90, 30
             commLbl.text=@"Comments";
             commLbl.font=[UIFont systemFontOfSize:15];
             [feedBackView addSubview:commLbl];
             
             
             // to set the share btn
-            UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(225, 315, 20, 20)];
+            UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(253, 315, 20, 20)];//225, 315, 20, 20
             shareBtn.backgroundColor=[UIColor clearColor];
             [shareBtn setImage:[UIImage imageNamed:@"share_icon.png"] forState:UIControlStateNormal];
             shareBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -274,7 +274,7 @@
             [feedBackView addSubview:shareBtn];
             
             // to set the share label
-            UILabel *shareLbl=[[UILabel alloc]initWithFrame:CGRectMake(250, 310, 100, 30)];
+            UILabel *shareLbl=[[UILabel alloc]initWithFrame:CGRectMake(278, 310, 100, 30)];//250, 310, 100, 30
             shareLbl.text=@"Share";
             shareLbl.font=[UIFont systemFontOfSize:15];
             [feedBackView addSubview:shareLbl];
