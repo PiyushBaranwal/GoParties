@@ -14,8 +14,11 @@
     IBOutlet UITextField *verificationTextField;
     
     NSMutableDictionary *mainDataDict;
+    NSMutableDictionary *userDict;
     
     NSString *mailId;
+    
+    NSString *webURL;
     BOOL logged;
     
 }
@@ -27,4 +30,5 @@
 - (IBAction)submitBtnClick:(id)sender;
 - (IBAction)loginBtnClick:(id)sender;
 - (IBAction)signupBtnClick:(id)sender;
+- (IBAction)resendOTPBtnClick:(id)sender;
 @end

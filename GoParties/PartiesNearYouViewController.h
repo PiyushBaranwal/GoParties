@@ -13,6 +13,8 @@
 {
     IBOutlet UITableView *partiesTableView;
     
+    UIButton *bannerBtn;
+    
     UIView *popUpView;
     UITextField  *locTextField;
     UITextField  *catTextField;
@@ -32,6 +34,8 @@
     NSMutableArray *locationArray;
     NSMutableArray *categoryArray;
     NSMutableArray *typeArray;
+    
+    NSString *currentDateStr;
 }
 
 @property (nonatomic,retain) UIScrollView *scrollView;

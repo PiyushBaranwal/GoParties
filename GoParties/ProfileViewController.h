@@ -17,7 +17,8 @@
 #import "ReviewsViewController.h"
 #import "FollowingViewController.h"
 #import "FollowersViewController.h"
-
+#import "PhotosViewController.h"
+#import "VideosViewController.h"
 
 
 

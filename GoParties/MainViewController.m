@@ -110,23 +110,23 @@
     
     
     
-    if (loggedIn==YES)
-    {
-        homeBtn.hidden=NO;
-        myProfBtn.hidden=NO;
-        myPartiesbtn.hidden=NO;
-        myDealsBtn.hidden=NO;
-        accessBtn.hidden=YES;
-    }
-    else
-    {
-        accessBtn.hidden=NO;
-        homeBtn.hidden=YES;
-        myProfBtn.hidden=YES;
-        myPartiesbtn.hidden=YES;
-        myDealsBtn.hidden=YES;
-        
-    }
+//    if (loggedIn==YES)
+//    {
+//        homeBtn.hidden=NO;
+//        myProfBtn.hidden=NO;
+//        myPartiesbtn.hidden=NO;
+//        myDealsBtn.hidden=NO;
+//        accessBtn.hidden=YES;
+//    }
+//    else
+//    {
+//        accessBtn.hidden=NO;
+//        homeBtn.hidden=YES;
+//        myProfBtn.hidden=YES;
+//        myPartiesbtn.hidden=YES;
+//        myDealsBtn.hidden=YES;
+//        
+//    }
 
 }
 

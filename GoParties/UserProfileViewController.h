@@ -20,7 +20,8 @@
 
 #import "FollowersViewController.h"
 #import "FollowingViewController.h"
-
+#import "VideosViewController.h"
+#import "PhotosViewController.h"
 
 @interface UserProfileViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
 {

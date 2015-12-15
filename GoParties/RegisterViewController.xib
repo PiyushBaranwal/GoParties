@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="List1.png" translatesAutoresizingMaskIntoConstraints="NO" id="yk1-uS-2Y8">
-                    <rect key="frame" x="50" y="350" width="40" height="38"/>
+                    <rect key="frame" x="56" y="350" width="40" height="38"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="miB-4J-JOe">
                     <rect key="frame" x="96" y="350" width="230" height="38"/>
@@ -68,22 +68,11 @@
                     <rect key="frame" x="96" y="255" width="230" height="38"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJ9-lE-pkH">
                     <rect key="frame" x="161" y="624" width="46" height="44"/>
                     <state key="normal" backgroundImage="yello backgroundbtn.png"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-Le-5xt">
-                    <rect key="frame" x="0.0" y="623" width="187" height="44"/>
-                    <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="CONTINUE AS GUEST" backgroundImage="Footer_singlebtn.png">
-                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="contAsGuestBtnClick:" destination="-1" eventType="touchUpInside" id="4sO-1W-OoP"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3F-LM-bUY">
                     <rect key="frame" x="188" y="623" width="188" height="44"/>
@@ -141,6 +130,17 @@
                     <rect key="frame" x="56" y="350" width="270" height="38"/>
                     <connections>
                         <action selector="typeBtnClick:" destination="-1" eventType="touchUpInside" id="TJA-pA-6IO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-Le-5xt">
+                    <rect key="frame" x="0.0" y="623" width="187" height="44"/>
+                    <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="CONTINUE AS GUEST" backgroundImage="Footer_singlebtn.png">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="contAsGuestBtnClick:" destination="-1" eventType="touchUpInside" id="4sO-1W-OoP"/>
                     </connections>
                 </button>
             </subviews>

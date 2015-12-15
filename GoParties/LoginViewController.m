@@ -11,12 +11,27 @@
 #import "RegisterViewController.h"
 #import "FogetPassViewController.h"
 
+
+#import "VerificationViewController.h"
+
 #import "Singleton.h"
 #import "Utils.h"
 #import "SVGeocoder.h"
 
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+#import "JSONRepresentation.h"
+#import "NSObject+SBJSON.h"
+#import "SBJsonWriter.h"
+#import "Defines.h"
+
+#import "WebViewController.h"
+
+
+
+static NSString * const kClientId =@"586870525561-pds5h05mgck2gegqkd4av7kgs6tk6b0c.apps.googleusercontent.com"; //@"YOUR_CLIENT_ID";
 
 
 @interface LoginViewController ()
@@ -29,37 +44,71 @@
 
 
 - (void)viewDidLoad {
+    
+    ////////////-------------------------------
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    NSString *model = [currentDevice model];
+    NSString *systemVersion = [currentDevice systemVersion];
+    NSString *systemName=[currentDevice systemName];
+    NSLog(@"model=%@",model);
+    NSLog(@"systemVersion=%@",systemVersion);
+    NSLog(@"systemName=%@",systemName);
+    
+   NSLog(@"uniqueIdentifier: %@", [[UIDevice currentDevice] identifierForVendor].UUIDString);
+    NSLog(@"name: %@", [[UIDevice currentDevice] name]);
+    NSLog(@"systemName: %@", [[UIDevice currentDevice] systemName]);
+    NSLog(@"systemVersion: %@", [[UIDevice currentDevice] systemVersion]);
+    NSLog(@"model: %@", [[UIDevice currentDevice] model]);
+    NSLog(@"localizedModel: %@", [[UIDevice currentDevice] localizedModel]);
+    
+    
+    ///////////----------------------------------
+    
+    
     [super viewDidLoad];
     
     //To change the navigation title bar color
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
     //    // To add the functionality of left menu bar button
     
-    self.title = NSLocalizedString(@"Login", nil);
-    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIColor whiteColor],NSForegroundColorAttributeName,
-                                    [UIColor whiteColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"Open Sans" size:20],NSFontAttributeName,nil];
-    self.navigationController.navigationBar.titleTextAttributes = textAttributes;
-    
-    SWRevealViewController *revealController = [self revealViewController];
-    // [revealController panGestureRecognizer];
-    [revealController tapGestureRecognizer];
-    
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Toggle_main.png"]
-                                                                         style:UIBarButtonItemStylePlain target:revealController action:@selector(revealToggle:)];
+   // self.title = NSLocalizedString(@"Login", nil);
+    //to hide the back button on navigation bar
+   // [self.navigationItem setHidesBackButton:YES animated:YES];
+
     
     
-    // revealButtonItem.width=10;
-    // [self.navigationItem.leftBarButtonItem setWidth:10];
+    
+//    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                    [UIColor whiteColor],NSForegroundColorAttributeName,
+//                                    [UIColor whiteColor],NSBackgroundColorAttributeName,[UIFont fontWithName:@"Open Sans" size:20],NSFontAttributeName,nil];
+//    self.navigationController.navigationBar.titleTextAttributes = textAttributes;
+//    
+//    SWRevealViewController *revealController = [self revealViewController];
+//    // [revealController panGestureRecognizer];
+//    [revealController tapGestureRecognizer];
+//    
+//    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Toggle_main.png"]
+//                                                                         style:UIBarButtonItemStylePlain target:revealController action:@selector(revealToggle:)];
+//    
+//    
+//    // revealButtonItem.width=10;
+//    // [self.navigationItem.leftBarButtonItem setWidth:10];
+//    
+//    
+//    self.navigationItem.leftBarButtonItem = revealButtonItem;
     
     
-    self.navigationItem.leftBarButtonItem = revealButtonItem;
+    
+    
+    
+    
     //To set the left BarButton background color
     self.navigationItem.leftBarButtonItem.tintColor = [ UIColor whiteColor];
     
     
     // to set the delegates of textfields
     nameTextField.delegate=self;
+    nameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     passTextField.delegate=self;
     // Do any additional setup after loading the view from its nib.
     
@@ -102,6 +151,26 @@
 //    lbl.alpha = 0.5;
 //    lbl.center = self.view.center;
 //    [self.view addSubview:lbl];
+    
+    
+    
+    
+    
+    // for google
+    
+    [GIDSignIn sharedInstance].clientID = kClientId;
+    
+    [GIDSignInButton class];
+    [[GIDSignIn sharedInstance]signOut];
+    
+    GIDSignIn *signIn = [GIDSignIn sharedInstance];
+    signIn.shouldFetchBasicProfile = YES;
+    signIn.delegate = (id)self;
+    signIn.uiDelegate = (id)self;
+    
+    [GIDSignIn sharedInstance].allowsSignInWithWebView = YES;
+    
+    
 }
 
 
@@ -126,9 +195,9 @@
 //    MainViewController *objLog=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
 //    [self.navigationController pushViewController:objLog animated:YES];
     
-    if(nameTextField.text.length==0)
+    if(nameTextField.text.length==0 && (passTextField.text && passTextField.text.length>0))
     {
-        NSLog(@"Please fill the fields");
+        NSLog(@"Please fill the all the provided fields");
     }
     else
     {
@@ -139,10 +208,246 @@
 }
 
 - (IBAction)fbBtnClick:(id)sender {
+    
+    
+    FBSDKLoginManager *login=[[FBSDKLoginManager alloc]init];
+    [login logOut];   //ESSENTIAL LINE OF CODE
+    
+    [login logInWithReadPermissions:@[@"email",@"public_profile"]
+                 fromViewController:self
+                            handler:^(FBSDKLoginManagerLoginResult *result25, NSError *error)
+     {
+         NSLog(@"result %@", result25);
+         if (error)
+         {
+            // dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 NSLog(@"find error %@",error.localizedDescription);
+                 
+            // });
+         }
+         else if (result25.isCancelled)
+         {
+            // dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 [Utils stopActivityIndicatorInView:self.view];
+                 
+                 NSLog(@"facebook login canceled");
+                 
+            // });
+         }
+         else
+         {
+             if ([result25.grantedPermissions containsObject:@"email"])
+             {
+                 
+                 FBSDKProfile *profile=[FBSDKProfile currentProfile];
+                 
+                 
+                 if ([FBSDKAccessToken currentAccessToken])
+                 {
+                     NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
+                     
+                     facebookToken=[[FBSDKAccessToken currentAccessToken]tokenString];
+                     
+                     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+                     [parameters setValue:@"id, name, email, picture, first_name, last_name, gender, verified, locale" forKey:@"fields"];
+                     
+                     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error)
+                      {
+                          if (!error)
+                          {
+                              NSLog(@"Fetched user:%@", result);
+                              
+                              
+                              
+                              facebookId=[result valueForKey:@"email"];
+                              userFacebookMailId=[result valueForKey:@"email"];
+                              userFacebookId=[result valueForKey:@"id"];
+                              userFacebookName=[result valueForKey:@"name"];
+                              NSMutableDictionary *rootDict=[result objectForKey:@"picture"];
+                              NSMutableDictionary *dataDict=[rootDict objectForKey:@"data"];
+                              userFacebookPic=[dataDict objectForKey:@"url"];
+                              
+                              [[NSUserDefaults standardUserDefaults] setObject:userFacebookMailId forKey:@"userFacebookMailId"];
+                              [[NSUserDefaults standardUserDefaults] setObject:userFacebookId forKey:@"userFacebookId"];
+                              [[NSUserDefaults standardUserDefaults] setObject:userFacebookName forKey:@"userFacebookName"];
+                              [[NSUserDefaults standardUserDefaults] setObject:userFacebookPic forKey:@"userFacebookPic"];
+                              
+                              
+                             // to save the user data locally
+                              
+                              
+                              NSLog(@"Facebook User Email:%@", userFacebookMailId);
+                              NSLog(@"Facebook User ID:%@", userFacebookId);
+                              NSLog(@"Facebook User Name:%@", userFacebookName);
+                              NSLog(@"Facebook User Pic Url:%@", userFacebookPic);
+                              
+                              [self CallingWebServiceForFacebook];
+                             // NSLog(@"Facebook User Email:%@", facebookId);
+                              
+                              
+                             // [self checkEmailFacebookId];
+                          }
+                      }];
+                 }
+                 NSLog(@"Result1233 %@",profile);
+             }
+         }
+     }];
+
 }
 
-- (IBAction)gpBtnClick:(id)sender {
+
+
+-(void)CallingWebServiceForFacebook
+
+{
+
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+      {
+         // http://192.168.1.29/loyalty/service_center2/loyaltyprogramlisting
+          
+     // http://192.168.1.14/api.php/socialmediaregistration?access_token=133688745fb3253a0b4c3cbb3f67d444cf4b418a?facebook_id=&email=&name=&profile_pic=&profile_type=
+
+        
+         NSString *urlAsString;
+         urlAsString=[NSString stringWithFormat:@"%@/socialmediaregistration?access_token=133688745fb3253a0b4c3cbb3f67d444cf4b418a&facebook_id=%@&email=%@&name=%@&profile_pic=%@&profile_type=",BaseURL,userFacebookId,userFacebookMailId,userFacebookName,userFacebookPic];
+         NSLog(@"%@", urlAsString);
+        NSURL *url = [NSURL URLWithString:[urlAsString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if (conn)
+        {
+            
+        // webData=[NSMutableData data];
+            webData=[[NSMutableData alloc]init];
+ 
+        }
+ 
+    }
+
+    else
+   
+    {
+  //To show error no internet connection
+        [Singleton connectionErrorMsg];
+        
+    }
 }
+
+
+
+
+
+//////////////////////////////////////////////////////
+
+
+
+- (IBAction)gpBtnClick:(id)sender {
+
+    
+    
+    [Utils startActivityIndicatorInView:self.view withMessage:@"Loading..."];
+    [[GIDSignIn sharedInstance]signIn];
+
+    
+}
+
+-(void)CallingWebServiceForGoogle
+{
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        NSString *urlAsString;
+        urlAsString=[NSString stringWithFormat:@"%@/socialmediaregistration?access_token=133688745fb3253a0b4c3cbb3f67d444cf4b418a&google_id=%@&email=%@&name=%@&profile_pic=%@&profile_type=",BaseURL,userGoogleId,userGoogleMailId,userGoogleName,userGooglePic];
+        NSLog(@"%@", urlAsString);
+        NSURL *url = [NSURL URLWithString:[urlAsString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if (conn)
+        {
+            
+            // webData=[NSMutableData data];
+            webData=[[NSMutableData alloc]init];
+            
+        }
+        
+    }
+    
+    else
+        
+    {
+        //To show error no internet connection
+        [Singleton connectionErrorMsg];
+        
+    }
+
+}
+
+
+#pragma mark- Delegate methods og Google
+//- (void)finishedWithAuth:(GTMOAuth2Authentication *)auth
+//                   error:(NSError *)error
+//{
+//    if (error)
+//    {
+//        
+//    }
+//    else
+//    {
+//        
+//    }
+//}
+
+- (void)signIn:(GIDSignIn *)signIn
+didSignInForUser:(GIDGoogleUser *)user
+     withError:(NSError *)error {
+    if (error) {
+        
+        return;
+    }
+    if ([GIDSignIn sharedInstance].currentUser.authentication == nil ||! user)
+    {
+        
+    }
+    else
+    {
+        NSLog(@"nnnn %@ and %@, %@",[GIDSignIn sharedInstance].currentUser.profile.email,[GIDSignIn sharedInstance].currentUser.profile.name,[GIDSignIn sharedInstance].currentUser.authentication.accessToken
+              );
+        
+        
+        
+        //googleId=[GIDSignIn sharedInstance].currentUser.profile.email;
+        googleId=[GIDSignIn sharedInstance].currentUser.userID;
+        userGoogleMailId=[GIDSignIn sharedInstance].currentUser.profile.email;
+        googleToken=[GIDSignIn sharedInstance].currentUser.authentication.accessToken;
+        userGoogleName=[GIDSignIn sharedInstance].currentUser.profile.name;
+        //for google user pic we need to create url like below-
+        //https://plus.google.com/s2/photos/profile/GOOGLE-ID?sz=100
+        
+        
+        [[NSUserDefaults standardUserDefaults] setObject:googleId forKey:@"userGoogleId"];
+        [[NSUserDefaults standardUserDefaults] setObject:userGoogleMailId forKey:@"userGoogleMailId"];
+        [[NSUserDefaults standardUserDefaults] setObject:userGoogleName forKey:@"userGoogleName"];
+        
+        [self CallingWebServiceForGoogle];
+    }
+}
+
+- (void)signIn:(GIDSignIn *)signIn
+didDisconnectWithUser:(GIDGoogleUser *)user
+     withError:(NSError *)error
+{
+    //dismissHUD(self.navigationController.view);
+}
+
+
 
 - (IBAction)feelForgetBtnClick:(id)sender {
     FogetPassViewController *objReg=[[FogetPassViewController alloc]initWithNibName:@"FogetPassViewController" bundle:nil];
@@ -236,121 +541,280 @@
         NSLog(@"userLat=%f",userLat);
         NSLog(@"userLong=%f",userLong);
         
-        
-        
-        NSString *post = [NSString stringWithFormat:@"email=%@&password=%@&latitude=%f&longitude=%f&access_token=%@",nameTextField.text,passTextField.text,userLat,userLong,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
-        
-        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        [request setURL:[NSURL URLWithString:@"http://api.startup-designer.com/login"]];
-        [request setHTTPMethod:@"POST"];
-        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        [request setHTTPBody:postData];
-        NSURLResponse *requestResponse;
-        NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
-        
-        
-       // NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
-        
-        
-        NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
-                                                   options:kNilOptions
-                                                     error:nil];
-        NSLog(@"jsonDict:%@",jsonDict);
-        
-        mainDataDict=[jsonDict objectForKey:@"data"];
-        NSLog(@"mainDataDict=%@",mainDataDict);
-        userDict=[mainDataDict objectForKey:@"user"];
-        NSLog(@"userDict=%@",userDict);
-        
-        userAddress=[userDict valueForKey:@"address"];
-        userCityId=[userDict valueForKey:@"city_id"];
-        userContactEmail=[userDict valueForKey:@"contact_email"];
-        userContactPerson=[userDict valueForKey:@"contact_person"];
-        userContactPhone=[userDict valueForKey:@"contact_phone"];
-        userCoverImg=[userDict valueForKey:@"cover"];
-        userCreatedAt=[userDict valueForKey:@"created_at"];
-        userDeleatedAt=[userDict valueForKey:@"deleted_at"];
-        userEmail=[userDict valueForKey:@"email"];
-        userFBId=[userDict valueForKey:@"facebook_id"];
-        userFBPageId=[userDict valueForKey:@"facebook_page_id"];
-        userFollowdataArray=[userDict valueForKey:@"followData"];
-        userGPId=[userDict valueForKey:@"google_id"];
-        userId=[userDict valueForKey:@"id"];
-        userIsActive=[userDict valueForKey:@"is_active"];
-        userLat1=[userDict valueForKey:@"latitude"];
-        userLong1=[userDict valueForKey:@"longitude"];
-        userPartyData=[userDict valueForKey:@"myPartyData"];
-        name=[userDict valueForKey:@"name"];
-        userOTP=[userDict valueForKey:@"otp"];
-        userPassword=[userDict valueForKey:@"password"];
-        userPhone=[userDict valueForKey:@"phone"];
-        userProfilePic=[userDict valueForKey:@"profile_pic"];
-        userProfileType=[userDict valueForKey:@"profile_type"];
-        userRating=[userDict valueForKey:@"rating"];
-        userReportCount=[userDict valueForKey:@"report_count"];
-        userName=[userDict valueForKey:@"username"];
-        userValidEmail=[userDict valueForKey:@"valid_email"];
-        userValidPhone=[userDict valueForKey:@"valid_phone"];
-        userWebSite=[userDict valueForKey:@"website"];
-        
-        // to save the data in locallly in the app.
-        //            [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userCityId forKey:@"userCityId"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userContactEmail forKey:@"userContactEmail"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userContactPerson forKey:@"userContactPerson"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userContactPhone forKey:@"userContactPhone"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userCoverImg forKey:@"userCoverImg"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userCreatedAt forKey:@"userCreatedAt"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userDeleatedAt forKey:@"userDeleatedAt"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userEmail forKey:@"userEmail"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userFBId forKey:@"userFBId"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userFBPageId forKey:@"userFBPageId"];
-        //            // for array
-        //            [[NSUserDefaults standardUserDefaults] setObject:userFollowdataArray forKey:@"userFollowdataArray"];
-        //            [[NSUserDefaults standardUserDefaults] synchronize];
         //
-        //
-        //            [[NSUserDefaults standardUserDefaults] setObject:userGPId forKey:@"userGPId"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userId forKey:@"userId"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:userIsActive] forKey:@"userIsActive"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userLat1 forKey:@"userLat1"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userLong1 forKey:@"userLong1"];
-        //            // for array
-        //            [[NSUserDefaults standardUserDefaults] setObject:userPartyData forKey:@"userPartyData"];
-        //            [[NSUserDefaults standardUserDefaults] synchronize];
-        //
-        //            [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userOTP forKey:@"userOTP"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userPassword forKey:@"userPassword"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userPhone forKey:@"userPhone"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userProfilePic forKey:@"userProfilePic"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userProfileType forKey:@"userProfileType"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userRating forKey:@"userRating"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userReportCount forKey:@"userReportCount"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"userName"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userValidEmail forKey:@"userValidEmail"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userValidPhone forKey:@"userValidPhone"];
-        //            [[NSUserDefaults standardUserDefaults] setObject:userWebSite forKey:@"userWebSite"];
         
-        
-        if (userEmail)
+        if ((nameTextField.text && nameTextField.text.length>0)&&(passTextField.text && passTextField.text.length>0))
         {
-            logged=YES;
-            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:logged] forKey:@"userLoggedIn"];
+            NSString *post = [NSString stringWithFormat:@"email=%@&password=%@&latitude=%f&longitude=%f&access_token=%@",nameTextField.text,passTextField.text,userLat,userLong,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
             
-            MainViewController *objM=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
-            objM.loggedIn=logged;
-            [self.navigationController pushViewController:objM animated:YES];
+            NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+            NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+            //http://192.168.1.9/api.php
             
-            [Utils stopActivityIndicatorInView:self.view];
-          
+            NSString *urlAsString;
+            urlAsString=[NSString stringWithFormat:@"%@/login",BaseURL];
+            //[request setURL:[NSURL URLWithString:@"http://192.168.1.9/api.php/login"]];
+            [request setURL:[NSURL URLWithString:urlAsString]];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+            [request setHTTPBody:postData];
+            NSURLResponse *requestResponse;
+            NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
+            
+            
+            // NSString *requestReply = [[NSString alloc] initWithBytes:[requestHandler bytes] length:[requestHandler length] encoding:NSASCIIStringEncoding];
+            
+            NSError *err=nil;
+            NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
+                                                                            options:kNilOptions
+                                                                              error:&err];
+            NSLog(@"jsonDict:%@",jsonDict);
+            
+            NSMutableDictionary *rootDict=[jsonDict objectForKey:@"error"];
+            if (rootDict)
+            {
+                //code=;
+                if ([[[jsonDict objectForKey:@"error"] valueForKey:@"code"] integerValue] == 106)
+                {
+                    //Your account is not verified
+                    
+                    UIAlertController * alert=   [UIAlertController
+                                                  alertControllerWithTitle:@"Title"
+                                                  message:@"Your account is not verified"
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* okButton = [UIAlertAction
+                                               actionWithTitle:@"OK"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action)
+                                               {
+                                                   //Handel your yes please button action here
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   // to navigate on the verification view
+                                                   VerificationViewController *objV=[[VerificationViewController alloc]initWithNibName:@"VerificationViewController" bundle:nil];
+                                                   objV.mailId=nameTextField.text;
+                                                   [self.navigationController pushViewController:objV animated:YES];
+                                               }];
+                    
+                    [alert addAction:okButton];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    
+                    
+                }
+                else if ([[[jsonDict objectForKey:@"error"] valueForKey:@"code"] integerValue]==104)
+                {
+                    NSLog(@"Error code 104");
+                    UIAlertController * alert=   [UIAlertController
+                                                  alertControllerWithTitle:@"Title"
+                                                  message:[[jsonDict objectForKey:@"error"] valueForKey:@"message"]
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* okButton = [UIAlertAction
+                                               actionWithTitle:@"OK"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action)
+                                               {
+                                                   //Handel your yes please button action here
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   
+                                               }];
+                    
+                    [alert addAction:okButton];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
+                else if ([[[jsonDict objectForKey:@"error"] valueForKey:@"code"] integerValue]==105)
+                {
+                    // NSLog(@"User Does Not Exist");
+                    UIAlertController * alert=   [UIAlertController
+                                                  alertControllerWithTitle:@"Title"
+                                                  message:@"Incorrect Password"
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* okButton = [UIAlertAction
+                                               actionWithTitle:@"OK"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action)
+                                               {
+                                                   //Handel your yes please button action here
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   // to navigate on the register screen
+                                                   RegisterViewController *objR=[[RegisterViewController alloc]initWithNibName:@"RegisterViewController" bundle:nil];
+                                                   [self.navigationController pushViewController:objR animated:YES];
+                                               }];
+                    
+                    [alert addAction:okButton];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    
+                }
+                else
+                {
+                    //on code 110
+                    // show your account has been banned
+                    NSLog(@"Error code 110");
+                    UIAlertController * alert=   [UIAlertController
+                                                  alertControllerWithTitle:@"Title"
+                                                  message:@"Your account has been banned"
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* okButton = [UIAlertAction
+                                               actionWithTitle:@"OK"
+                                               style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action)
+                                               {
+                                                   //Handel your yes please button action here
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   
+                                               }];
+                    
+                    [alert addAction:okButton];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
+                
+            }
+            
+            else
+            {
+                
+                mainDataDict=[jsonDict objectForKey:@"data"];
+                NSLog(@"mainDataDict=%@",mainDataDict);
+                userDict=[mainDataDict objectForKey:@"user"];
+                NSLog(@"userDict=%@",userDict);
+                
+                userAddress=[userDict valueForKey:@"address"];
+                userCityId=[userDict valueForKey:@"city_id"];
+                userContactEmail=[userDict valueForKey:@"contact_email"];
+                userContactPerson=[userDict valueForKey:@"contact_person"];
+                userContactPhone=[userDict valueForKey:@"contact_phone"];
+                userCoverImg=[userDict valueForKey:@"cover"];
+                userCreatedAt=[userDict valueForKey:@"created_at"];
+                userDeleatedAt=[userDict valueForKey:@"deleted_at"];
+                userEmail=[userDict valueForKey:@"email"];
+                userFBId=[userDict valueForKey:@"facebook_id"];
+                userFBPageId=[userDict valueForKey:@"facebook_page_id"];
+                userFollowdataArray=[userDict valueForKey:@"followData"];
+                userGPId=[userDict valueForKey:@"google_id"];
+                userId=[userDict valueForKey:@"id"];
+                userIsActive=[userDict valueForKey:@"is_active"];
+                userLat1=[userDict valueForKey:@"latitude"];
+                userLong1=[userDict valueForKey:@"longitude"];
+                userPartyData=[userDict valueForKey:@"myPartyData"];
+                name=[userDict valueForKey:@"name"];
+                userOTP=[userDict valueForKey:@"otp"];
+                userPassword=[userDict valueForKey:@"password"];
+                userPhone=[userDict valueForKey:@"phone"];
+                userProfilePic=[userDict valueForKey:@"profile_pic"];
+                userProfileType=[userDict valueForKey:@"profile_type"];
+                userRating=[userDict valueForKey:@"rating"];
+                userReportCount=[userDict valueForKey:@"report_count"];
+                userName=[userDict valueForKey:@"username"];
+                userValidEmail=[userDict valueForKey:@"valid_email"];
+                userValidPhone=[userDict valueForKey:@"valid_phone"];
+                userWebSite=[userDict valueForKey:@"website"];
+                
+                webURL=[mainDataDict valueForKey:@"url"];
+                NSLog(@"webURL=%@",webURL);
+                
+                // to save the data in locallly in the app.
+               // [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
+                [[NSUserDefaults standardUserDefaults] setObject:userCityId forKey:@"userCityId"];
+               // [[NSUserDefaults standardUserDefaults] setObject:userContactEmail forKey:@"userContactEmail"];
+                //[[NSUserDefaults standardUserDefaults] setObject:userContactPerson forKey:@"userContactPerson"];
+                //[[NSUserDefaults standardUserDefaults] setObject:userContactPhone forKey:@"userContactPhone"];
+                [[NSUserDefaults standardUserDefaults] setObject:userCoverImg forKey:@"userCoverImg"];
+               // [[NSUserDefaults standardUserDefaults] setObject:userCreatedAt forKey:@"userCreatedAt"];
+               // [[NSUserDefaults standardUserDefaults] setObject:userDeleatedAt forKey:@"userDeleatedAt"];
+                [[NSUserDefaults standardUserDefaults] setObject:userEmail forKey:@"userEmail"];
+               // [[NSUserDefaults standardUserDefaults] setObject:userFBId forKey:@"userFBId"];
+               // [[NSUserDefaults standardUserDefaults] setObject:userFBPageId forKey:@"userFBPageId"];
+                // for array
+                [[NSUserDefaults standardUserDefaults] setObject:userFollowdataArray forKey:@"userFollowdataArray"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                
+              //  [[NSUserDefaults standardUserDefaults] setObject:userGPId forKey:@"userGPId"];
+                [[NSUserDefaults standardUserDefaults] setObject:userId forKey:@"userId"];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:userIsActive] forKey:@"userIsActive"];
+                [[NSUserDefaults standardUserDefaults] setObject:userLat1 forKey:@"userLat1"];
+                [[NSUserDefaults standardUserDefaults] setObject:userLong1 forKey:@"userLong1"];
+                // for array
+                [[NSUserDefaults standardUserDefaults] setObject:userPartyData forKey:@"userPartyData"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
+               // [[NSUserDefaults standardUserDefaults] setObject:userOTP forKey:@"userOTP"];
+                [[NSUserDefaults standardUserDefaults] setObject:userPassword forKey:@"userPassword"];
+                [[NSUserDefaults standardUserDefaults] setObject:userPhone forKey:@"userPhone"];
+                [[NSUserDefaults standardUserDefaults] setObject:userProfilePic forKey:@"userProfilePic"];
+                [[NSUserDefaults standardUserDefaults] setObject:userProfileType forKey:@"userProfileType"];
+                [[NSUserDefaults standardUserDefaults] setObject:userRating forKey:@"userRating"];
+                [[NSUserDefaults standardUserDefaults] setObject:userReportCount forKey:@"userReportCount"];
+                [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"userName"];
+                [[NSUserDefaults standardUserDefaults] setObject:userValidEmail forKey:@"userValidEmail"];
+                [[NSUserDefaults standardUserDefaults] setObject:userValidPhone forKey:@"userValidPhone"];
+               // [[NSUserDefaults standardUserDefaults] setObject:userWebSite forKey:@"userWebSite"];
+                
+                
+                if (userEmail)
+                {
+                    
+                    logged=YES;
+                    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:logged] forKey:@"userLoggedIn"];
+                    
+                    [[NSUserDefaults standardUserDefaults] setObject:webURL forKey:@"webURL"];
+                    
+                    
+                    //webURL=[mainDataDict valueForKey:@"url"];
+                    //////////////////////////////////
+                    // move to the web view for now.
+                    WebViewController *objW=[[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+                    objW.urlStr=webURL;
+                    objW.enteredUserName=nameTextField.text;
+                    objW.enteredUserPassword=passTextField.text;
+                    [self.navigationController pushViewController:objW animated:YES];
+                    //////////////////////////////////
+                    
+                    //            logged=YES;
+                    //            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:logged] forKey:@"userLoggedIn"];
+                    
+                    //            MainViewController *objM=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+                    //            objM.loggedIn=logged;
+                    //            [self.navigationController pushViewController:objM animated:YES];
+                    
+                    [Utils stopActivityIndicatorInView:self.view];
+                    
+                }
+                else
+                {
+                    
+                }
+                
+            }
+ 
         }
+        
         else
         {
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"Title"
+                                          message:@"Please fill all the fields"
+                                          preferredStyle:UIAlertControllerStyleAlert];
             
+            UIAlertAction* okButton = [UIAlertAction
+                                       actionWithTitle:@"OK"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action)
+                                       {
+                                           //Handel your yes please button action here
+                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                           // to navigate on the verification view
+                                           
+                                       }];
+            
+            [alert addAction:okButton];
+            [self presentViewController:alert animated:YES completion:nil];
         }
+        
         
     }
     else
@@ -396,8 +860,141 @@
     json1 = [NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
     
     NSLog(@"json1=%@",json1);
+   
+    NSMutableDictionary *rootDict=[NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+
+    
+    // parsing for facebook user detail
+    mainDataDict=[rootDict objectForKey:@"data"];
+    NSLog(@"mainDataDict=%@",mainDataDict);
+    userDict=[mainDataDict objectForKey:@"user"];
+    NSLog(@"userDict=%@",userDict);
+    
+    userAddress=[userDict valueForKey:@"address"];
+    userCityId=[userDict valueForKey:@"city_id"];
+    userContactEmail=[userDict valueForKey:@"contact_email"];
+    userContactPerson=[userDict valueForKey:@"contact_person"];
+    userContactPhone=[userDict valueForKey:@"contact_phone"];
+    userCoverImg=[userDict valueForKey:@"cover"];
+    userCreatedAt=[userDict valueForKey:@"created_at"];
+    userDeleatedAt=[userDict valueForKey:@"deleted_at"];
+    userEmail=[userDict valueForKey:@"email"];
+    userFBId=[userDict valueForKey:@"facebook_id"];
+    userFBPageId=[userDict valueForKey:@"facebook_page_id"];
+    userFollowdataArray=[userDict valueForKey:@"followData"];
+    userGPId=[userDict valueForKey:@"google_id"];
+    userId=[userDict valueForKey:@"id"];
+    userIsActive=[userDict valueForKey:@"is_active"];
+    userLat1=[userDict valueForKey:@"latitude"];
+    userLong1=[userDict valueForKey:@"longitude"];
+    userPartyData=[userDict valueForKey:@"myPartyData"];
+    name=[userDict valueForKey:@"name"];
+    userOTP=[userDict valueForKey:@"otp"];
+    userPassword=[userDict valueForKey:@"password"];
+    userPhone=[userDict valueForKey:@"phone"];
+    userProfilePic=[userDict valueForKey:@"profile_pic"];
+    userProfileType=[userDict valueForKey:@"profile_type"];
+    userRating=[userDict valueForKey:@"rating"];
+    userReportCount=[userDict valueForKey:@"report_count"];
+    userName=[userDict valueForKey:@"username"];
+    userValidEmail=[userDict valueForKey:@"valid_email"];
+    userValidPhone=[userDict valueForKey:@"valid_phone"];
+    userWebSite=[userDict valueForKey:@"website"];
     
     
+    // to save the data in locallly in the app.
+    [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
+    [[NSUserDefaults standardUserDefaults] setObject:userCityId forKey:@"userCityId"];
+    [[NSUserDefaults standardUserDefaults] setObject:userContactEmail forKey:@"userContactEmail"];
+    [[NSUserDefaults standardUserDefaults] setObject:userContactPerson forKey:@"userContactPerson"];
+    [[NSUserDefaults standardUserDefaults] setObject:userContactPhone forKey:@"userContactPhone"];
+    [[NSUserDefaults standardUserDefaults] setObject:userCoverImg forKey:@"userCoverImg"];
+    [[NSUserDefaults standardUserDefaults] setObject:userCreatedAt forKey:@"userCreatedAt"];
+    [[NSUserDefaults standardUserDefaults] setObject:userDeleatedAt forKey:@"userDeleatedAt"];
+    [[NSUserDefaults standardUserDefaults] setObject:userEmail forKey:@"userEmail"];
+    [[NSUserDefaults standardUserDefaults] setObject:userFBId forKey:@"userFBId"];
+    [[NSUserDefaults standardUserDefaults] setObject:userFBPageId forKey:@"userFBPageId"];
+    // for array
+    [[NSUserDefaults standardUserDefaults] setObject:userFollowdataArray forKey:@"userFollowdataArray"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:userGPId forKey:@"userGPId"];
+    [[NSUserDefaults standardUserDefaults] setObject:userId forKey:@"userId"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:userIsActive] forKey:@"userIsActive"];
+    [[NSUserDefaults standardUserDefaults] setObject:userLat1 forKey:@"userLat1"];
+    [[NSUserDefaults standardUserDefaults] setObject:userLong1 forKey:@"userLong1"];
+    // for array
+    [[NSUserDefaults standardUserDefaults] setObject:userPartyData forKey:@"userPartyData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
+    [[NSUserDefaults standardUserDefaults] setObject:userOTP forKey:@"userOTP"];
+    [[NSUserDefaults standardUserDefaults] setObject:userPassword forKey:@"userPassword"];
+    [[NSUserDefaults standardUserDefaults] setObject:userPhone forKey:@"userPhone"];
+    [[NSUserDefaults standardUserDefaults] setObject:userProfilePic forKey:@"userProfilePic"];
+    [[NSUserDefaults standardUserDefaults] setObject:userProfileType forKey:@"userProfileType"];
+    [[NSUserDefaults standardUserDefaults] setObject:userRating forKey:@"userRating"];
+    [[NSUserDefaults standardUserDefaults] setObject:userReportCount forKey:@"userReportCount"];
+    [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"userName"];
+    [[NSUserDefaults standardUserDefaults] setObject:userValidEmail forKey:@"userValidEmail"];
+    [[NSUserDefaults standardUserDefaults] setObject:userValidPhone forKey:@"userValidPhone"];
+    [[NSUserDefaults standardUserDefaults] setObject:userWebSite forKey:@"userWebSite"];
+
+    if (userFacebookId)
+    {
+        
+        logged=YES;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:logged] forKey:@"userLoggedIn"];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:webURL forKey:@"webURL"];
+        
+        webURL=[mainDataDict valueForKey:@"url"];
+         NSLog(@"webURL=%@",webURL);
+        //////////////////////////////////
+        // move to the web view for now.
+        WebViewController *objW=[[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+        objW.urlStr=webURL;
+        objW.fbId=userFBId;
+        [self.navigationController pushViewController:objW animated:YES];
+        //////////////////////////////////
+        
+        
+        
+//        
+//        MainViewController *objM=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+//        objM.loggedIn=logged;
+//        [self.navigationController pushViewController:objM animated:YES];
+        
+        [Utils stopActivityIndicatorInView:self.view];
+        
+    }
+    else
+    {
+        logged=YES;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:logged] forKey:@"userLoggedIn"];
+        [[NSUserDefaults standardUserDefaults] setObject:webURL forKey:@"webURL"];
+        
+        webURL=[mainDataDict valueForKey:@"url"];
+         NSLog(@"webURL=%@",webURL);
+        //////////////////////////////////
+        // move to the web view for now.
+        WebViewController *objW=[[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+        objW.urlStr=webURL;
+        objW.gpId=userGPId;
+        [self.navigationController pushViewController:objW animated:YES];
+        //////////////////////////////////
+        
+        
+        
+//        MainViewController *objM=[[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+//        objM.loggedIn=logged;
+//        [self.navigationController pushViewController:objM animated:YES];
+        
+        [Utils stopActivityIndicatorInView:self.view];
+ 
+    }
+
     
     
     //    ba.name=[json1 valueForKey:@"name"];
@@ -412,8 +1009,8 @@
 //    categoryArray=[json1 valueForKey:@"category"];
 //    backImgArray=[json1 valueForKey:@"Background image"];
 //    categoryIdArray=[json1 valueForKey:@"category id"];
-//    
-//    
+//
+//
 //    
 //    
 //    rooDict=[NSMutableDictionary dictionaryWithObjectsAndKeys:[json1 valueForKey:@"Nid"],@"Nid",[json1 valueForKey:@"name"],@"name",[json1 valueForKey:@"logo"],@"logo",[json1 valueForKey:@"color"],@"color",[json1 valueForKey:@"category"],@"category",[json1 valueForKey:@"Background image"],@"Background image",[json1 valueForKey:@"category id"],@"category id" ,nil];
@@ -583,7 +1180,26 @@
 //    [locManager stopUpdatingLocation];
 //}
 
-
+-(void)Alert
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Title"
+                                  message:@"Invalid Credentials"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* okButton = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   //Handel your yes please button action here
+                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                   
+                               }];
+    
+    [alert addAction:okButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 
 

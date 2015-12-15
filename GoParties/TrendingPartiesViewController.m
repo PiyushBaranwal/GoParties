@@ -9,6 +9,10 @@
 #import "TrendingPartiesViewController.h"
 #import "PartiesNearYouViewController.h"
 #import "ProfileViewController.h"
+#import "PartyDetailViewController.h"
+
+
+
 
 @interface TrendingPartiesViewController ()
 
@@ -430,6 +434,14 @@
             bannerImg.alpha=0.90;
             [cardView addSubview:bannerImg];
             
+            
+            
+            // to set the viewlayer on the banner
+            UIView *layerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-10, 140)];
+            layerView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.70];
+            [bannerImg addSubview:layerView];
+
+            
             //for bannerClickBtn
             UIButton *bannerClickBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 40, self.view.frame.size.width-10, 140)];//
             bannerClickBtn.backgroundColor=[UIColor clearColor];
@@ -694,6 +706,8 @@
 -(IBAction)bannerBtnClick:(id)sender
 {
     NSLog(@"bannerBtnClick");
+    PartyDetailViewController *objPB=[[PartyDetailViewController alloc]initWithNibName:@"PartyDetailViewController" bundle:nil];
+    [self.navigationController pushViewController:objPB animated:YES];
 }
 
 

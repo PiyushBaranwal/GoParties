@@ -443,16 +443,16 @@
     {
         //        BAMyAccountViewController *frontViewController = [[BAMyAccountViewController alloc] init];
         //        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-        NotificationViewController *frontViewController = [[NotificationViewController alloc] init];
-        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+//        NotificationViewController *frontViewController = [[NotificationViewController alloc] init];
+//        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
     }
     else if (indexPath.row==9)
         
     {
         //        BAMyAccountViewController *frontViewController = [[BAMyAccountViewController alloc] init];
         //        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-        SettingsViewController *frontViewController = [[SettingsViewController alloc] init];
-        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+//        SettingsViewController *frontViewController = [[SettingsViewController alloc] init];
+//        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
     }
     
 
@@ -461,6 +461,12 @@
        // exit(0);
         
         LoginViewController *frontViewController = [[LoginViewController alloc] init];
+        // to set the logged value as NO
+        logged=0;
+       // [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userLoggedIn"];
+        
+       [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:logged] forKey:@"userLoggedIn"];
+        NSLog(@"logged value after logout=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userLoggedIn"]);
         newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
     }
     

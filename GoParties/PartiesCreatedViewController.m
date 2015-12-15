@@ -260,6 +260,13 @@
             
             
             
+
+            
+            
+            
+            
+            
+            
             // for inner circle
             UIView *innercircularView = [[UIView alloc] initWithFrame:CGRectMake(3,3,54,54)];
             //circularView.alpha = 0.5;
@@ -397,26 +404,31 @@
 
 -(IBAction)followBtnClick:(id)sender
 {
+    // add condition to check whether user is logged in or not
     NSLog(@"Follow Btn Clicked");
 }
 
 -(IBAction)addDealBtnClick:(id)sender
 {
+    // add condition to check whether user is logged in or not
     NSLog(@"Add Deal Btn Clicked");
 }
 
 -(IBAction)bookMarkBtnClick:(id)sender
 {
+    // add condition to check whether user is logged in or not
     NSLog(@"book mark Btn Clicked");
 }
 
 -(IBAction)frndInviteBtnClick:(id)sender
 {
+    // add condition to check whether user is logged in or not
     NSLog(@"Frnd Invite Btn Clicked");
 }
 
 -(IBAction)shareBtnClick:(id)sender
 {
+    // add condition to check whether user is logged in or not
     NSLog(@"Share Btn Clicked");
 }
 

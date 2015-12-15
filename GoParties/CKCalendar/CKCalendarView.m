@@ -681,7 +681,7 @@
     CGContextScaleCTM(context, 1.0, -1.0);
 
     CGContextSetBlendMode(context, kCGBlendModeColorBurn);
-    CGRect rect = CGRectMake(0, 0, img.size.width, img.size.height);
+    CGRect rect = CGRectMake(0, 0, img.size.width, img.size.height);//img.size.width, img.size.height
     CGContextDrawImage(context, rect, img.CGImage);
 
     CGContextClipToMask(context, rect, img.CGImage);

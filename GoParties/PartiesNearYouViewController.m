@@ -8,6 +8,11 @@
 
 #import "PartiesNearYouViewController.h"
 #import "ProfileViewController.h"
+#import "Utils.h"
+
+#import "PartyDetailViewController.h"
+
+
 
 @interface PartiesNearYouViewController ()
 
@@ -72,6 +77,7 @@
 //    [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:revealButtonItem, locButton,locListButton, nil]];
     
     [self AddRightBarButtonItems];
+    [self getTheCurrentDate];
     
     
     locationArray=[[NSMutableArray alloc]initWithObjects:@"All of Delhi NCR",@"Popular Locations",@"Mumbai",@"Chandigarh",@"Banglore", nil];
@@ -429,8 +435,17 @@
             bannerImg.alpha=0.90;
             [cardView addSubview:bannerImg];
             
+            
+            
+            // to set the viewlayer on the banner
+           UIView *layerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-10, 140)];
+            layerView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.70];
+            [bannerImg addSubview:layerView];
+            
+            
+            
             //for bannerClickBtn
-            UIButton *bannerClickBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 40, self.view.frame.size.width-10, 140)];//
+            UIButton *bannerClickBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-10, 140)];//
             bannerClickBtn.backgroundColor=[UIColor clearColor];
            // [bannerClickBtn setImage:[UIImage imageNamed:@"bookmark_main.png"] forState:UIControlStateNormal];
            // bannerClickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -500,13 +515,13 @@
             [cardView addSubview:dateLbl];
             
             //for Separator
-            UILabel *sepLbl=[[UILabel alloc]initWithFrame:CGRectMake(170, 128, 2, 15)];//115, 128, 2, 15
+            UILabel *sepLbl=[[UILabel alloc]initWithFrame:CGRectMake(110, 128, 2, 15)];//115, 128, 2, 15
             sepLbl.backgroundColor=[UIColor whiteColor];
             //detailLbl2.font=[UIFont fontWithName:@"Sans" size:12.0];
             [cardView addSubview:sepLbl];
             
             //For time Icon
-            UIImageView *timeImg=[[UIImageView alloc]initWithFrame:CGRectMake(180, 128, 15, 15)];//125, 128, 15, 15
+            UIImageView *timeImg=[[UIImageView alloc]initWithFrame:CGRectMake(120, 128, 15, 15)];//125, 128, 15, 15
             timeImg.image=[UIImage imageNamed:@"clock_main.png"];
             timeImg.backgroundColor=[UIColor clearColor];
             [cardView addSubview:timeImg];
@@ -523,11 +538,11 @@
             
             
             CAShapeLayer *circle=[CAShapeLayer layer];
-            // here set the starting point as zero and ending point as the no of days
-            circle.path=[UIBezierPath bezierPathWithArcCenter:CGPointMake(30, 30) radius:27 startAngle:2*M_PI*0-M_PI_2 endAngle:2*M_PI*1-M_PI_2*100/30 clockwise:NO].CGPath;
+            // here set the starting point as zero and ending point as the no of days//30,30
+            circle.path=[UIBezierPath bezierPathWithArcCenter:CGPointMake(324,140) radius:29 startAngle:2*M_PI*0-M_PI_2 endAngle:2*M_PI*1-M_PI_2*100/30 clockwise:YES].CGPath;
             circle.fillColor=[UIColor clearColor].CGColor;
             circle.strokeColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0].CGColor;
-            circle.lineWidth=4;//4
+            circle.lineWidth=3;//4
             
 //            // to set the animation
 //            CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
@@ -538,8 +553,8 @@
 //            animation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
 //            [circle addAnimation:animation forKey:@"drawCircleAnimation"];
             
-            [circularView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-            [circularView.layer addSublayer:circle];
+           // [circularView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+            [cardView.layer addSublayer:circle];
             
                         
             
@@ -550,9 +565,38 @@
             innercircularView.layer.cornerRadius = 27;
             [circularView addSubview:innercircularView];
             
+            
+           
+            
+            
+            
+            
+//                        ///////////////////
+//                        CAShapeLayer *circleLayer = [CAShapeLayer layer];
+//                        float width = circularView.frame.size.width;
+//                        float height = circularView.frame.size.height;
+//                        [circleLayer setBounds:CGRectMake(2.0f, 2.0f, width-2.0f, height-2.0f)];
+//                        [circleLayer setPosition:CGPointMake(width/2, height/2)];
+//                        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(2.0f, 2.0f, width-2.0f, height-2.0f)];
+//                        [circleLayer setPath:[path CGPath]];
+//                        [circleLayer setFillColor:[UIColor clearColor].CGColor];
+//                        [circleLayer setStrokeColor:[UIColor redColor].CGColor];
+//                        [circleLayer setLineWidth:2.0f];
+//                        [[circularView layer] addSublayer:circleLayer];
+//                        ////////////////////
+            
+            
+            
+            
+            
+            
+            
             // for no of days
             UILabel *noLbl=[[UILabel alloc]initWithFrame:CGRectMake(15, 5, 40, 30)];
             noLbl.backgroundColor=[UIColor clearColor];
+            // to change the string into date
+            //[Utils daysBetweenDate:<#(NSDate *)#> andDate:<#(NSDate *)#>];
+            // using above method find the no of days between two dates
             noLbl.text=@"30";
             noLbl.textColor=[UIColor whiteColor];
             //noLbl.font=[UIFont fontWithName:@"Sans" size:12.0];
@@ -693,6 +737,8 @@
 -(IBAction)bannerBtnClick:(id)sender
 {
   NSLog(@"bannerBtnClick");
+    PartyDetailViewController *objPB=[[PartyDetailViewController alloc]initWithNibName:@"PartyDetailViewController" bundle:nil];
+    [self.navigationController pushViewController:objPB animated:YES];
 }
 
 
@@ -903,7 +949,18 @@
 */
 
 
-
+-(void)getTheCurrentDate
+{
+    
+    //To get the current date
+    NSDate *currDate1 = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    currentDateStr = [dateFormatter stringFromDate:currDate1];
+    NSLog(@"currentDateStr=%@",currentDateStr);
+    
+    
+}
 
 
 

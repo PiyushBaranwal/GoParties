@@ -37,6 +37,10 @@
 
 +(void) startActivityIndicatorInView:(UIView*)aView withMessage:(NSString*)aMessage;
 +(void) stopActivityIndicatorInView:(UIView*)aView;
+
++ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
+
+
 @end
 
 

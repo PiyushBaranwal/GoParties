@@ -9,7 +9,9 @@
 #import "FogetPassViewController.h"
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "ResetViewController.h"
 #import "Singleton.h"
+#import "Defines.h"
 
 
 @interface FogetPassViewController ()
@@ -21,6 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //To change the navigation title bar color
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
+    //    // To add the functionality of left menu bar button
+    
+    // self.title = NSLocalizedString(@"Login", nil);
+    //To set the left BarButton background color
+    self.navigationItem.leftBarButtonItem.tintColor = [ UIColor whiteColor];
+    //to hide the back button on navigation bar
+   // [self.navigationItem setHidesBackButton:YES animated:YES];
+
     
     userTextField.delegate=self;
     mobileTextField.delegate=self;
@@ -44,8 +56,90 @@
 
 - (IBAction)submitBtnClick:(id)sender {
     
+    if ((userTextField.text && userTextField.text.length>0)||(mobileTextField.text && mobileTextField.text.length>0))
+    {
+        NSCharacterSet *numbersOnly = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        NSCharacterSet *characterSetFromTextField = [NSCharacterSet characterSetWithCharactersInString:mobileTextField.text];
+        BOOL stringIsValid = [numbersOnly isSupersetOfSet:characterSetFromTextField];
+        if (stringIsValid)
+        {
+         [self CallingWebServiceforforgot];
+        }
+        else
+        {
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"Title"
+                                          message:@"Please enetr the correct mobile no."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* okButton = [UIAlertAction
+                                       actionWithTitle:@"OK"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action)
+                                       {
+                                           //Handel your yes please button action here
+                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                           // to navigate on the verification view
+                                           
+                                       }];
+            
+            [alert addAction:okButton];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+ 
+    }
+    else
+    {
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Title"
+                                      message:@"Please fill all the field"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* okButton = [UIAlertAction
+                                   actionWithTitle:@"OK"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       //Handel your yes please button action here
+                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                       // to navigate on the verification view
+                                       
+                                   }];
+        
+        [alert addAction:okButton];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
     
-    [self CallingWebServiceforforgot];
+//    if ((userTextField.text && userTextField.text.length>0) ||(mobileTextField.text && mobileTextField.text.length>0))
+//    {
+    
+   // }
+//    else
+//    {
+//        UIAlertController * alert=   [UIAlertController
+//                                      alertControllerWithTitle:@"Title"
+//                                      message:@"Please fill any one of the provided fields"
+//                                      preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        UIAlertAction* okButton = [UIAlertAction
+//                                   actionWithTitle:@"OK"
+//                                   style:UIAlertActionStyleDefault
+//                                   handler:^(UIAlertAction * action)
+//                                   {
+//                                       //Handel your yes please button action here
+//                                       [alert dismissViewControllerAnimated:YES completion:nil];
+//                                       // to navigate on the verification view
+//                                       
+//                                   }];
+//        
+//        [alert addAction:okButton];
+//        [self presentViewController:alert animated:YES completion:nil];
+// 
+//    }
+//    
+    
+   
 }
 
 - (IBAction)loginBtnClick:(id)sender {
@@ -119,28 +213,96 @@
 
 -(void)CallingWebServiceforforgot
 {
+    
+    
+   
+    
     //To check Internet connection
     BOOL checkConn=[Singleton checkinternetconnection];
     if(checkConn)
     {
+       NSString *locUserNameStr= [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+        NSLog(@"locUserNameStr=%@",locUserNameStr);
+        if([locUserNameStr isKindOfClass:[NSString class]])
+        {
+         
+        }
+        else
+        {
+          locUserNameStr=@"";
+        }
+            NSString *post = [NSString stringWithFormat:@"email=%@&username=%@&phone=%@&access_token=%@",userTextField.text,locUserNameStr,mobileTextField.text,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
+            
+            NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+            NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+            //http://192.168.1.9/api.php
+            NSString *urlAsString;
+            urlAsString=[NSString stringWithFormat:@"%@/forgot",BaseURL];
+            
+            //[request setURL:[NSURL URLWithString:@"http://192.168.1.9/api.php/forgot"]];
+            [request setURL:[NSURL URLWithString:urlAsString]];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+            [request setHTTPBody:postData];
+            NSURLResponse *requestResponse;
+            NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
+            
+            NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
+                                                                            options:kNilOptions
+                                                                              error:nil];
+            NSLog(@"jsonDict:%@",jsonDict);
+       
+        NSMutableDictionary *locDict=[jsonDict valueForKey:@"message"];
+        if (locDict)
+        {
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"Title"
+                                          message:[locDict valueForKey:@"message"]
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* okButton = [UIAlertAction
+                                       actionWithTitle:@"OK"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action)
+                                       {
+                                           //Handel your yes please button action here
+                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                           // to navigate on the verification view
+                                           
+                                       }];
+            
+            [alert addAction:okButton];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+        else
+        {
+            //NAVIGATE TO THE RESET VIEW.
+            ResetViewController *objR=[[ResetViewController alloc]initWithNibName:@"ResetViewController" bundle:nil];
+            
+            if (mobileTextField.text  && mobileTextField.text.length > 0)
+            {
+                objR.mobStr=mobileTextField.text;
+            }
+            else
+            {
+                objR.mailStr=userTextField.text;
+            }
+            
+            [self.navigationController pushViewController:objR animated:YES];
+  
+        }
+            
+//            NSString *responseStr=[[jsonDict objectForKey:@"data"] valueForKey:@"code"];
+//            
+//            // check how to comapare a string containing a string
+//            if ([responseStr isEqualToString:@"Password reset code:aNtUpgvwskVQMw=="])
+//            {
+//                
+//            }
         
-        NSString *post = [NSString stringWithFormat:@"email=%@&username=%@&phone=%@&access_token=%@",userTextField.text,userTextField.text,mobileTextField.text,@"133688745fb3253a0b4c3cbb3f67d444cf4b418a" ];
-        
-        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        [request setURL:[NSURL URLWithString:@"http://api.startup-designer.com/forgot"]];
-        [request setHTTPMethod:@"POST"];
-        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        [request setHTTPBody:postData];
-        NSURLResponse *requestResponse;
-        NSData *requestHandler = [NSURLConnection sendSynchronousRequest:request returningResponse:&requestResponse error:nil];
-        
-        NSMutableDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:requestHandler
-                                                                        options:kNilOptions
-                                                                          error:nil];
-        NSLog(@"jsonDict:%@",jsonDict);
-        
+            
         
     }
     else

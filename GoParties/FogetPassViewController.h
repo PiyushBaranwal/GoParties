@@ -13,6 +13,20 @@
     IBOutlet UITextField *userTextField;
     IBOutlet UITextField *mobileTextField;
     
+    //For webservices
+    NSMutableData *responseData;
+    NSURLConnection *conn;
+    NSMutableData *webData;
+    NSString *responseString;
+    
+    NSMutableArray *json1;
+    
+    //fro parsing
+    NSDictionary *json;
+    NSMutableDictionary *mainDataDict;
+    NSMutableDictionary *userDict;
+
+    
 }
 - (IBAction)submitBtnClick:(id)sender;
 - (IBAction)loginBtnClick:(id)sender;

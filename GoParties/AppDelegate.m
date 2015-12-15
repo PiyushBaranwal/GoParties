@@ -9,13 +9,19 @@
 #import "AppDelegate.h"
 #import "MenuViewController.h"
 
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <GoogleSignIn/GoogleSignIn.h>
+
+
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-@synthesize objHome,navigationController;
+@synthesize objHome,navigationController,objMain,objWeb;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -31,34 +37,92 @@
 //    // [locManager startMonitoringSignificantLocationChanges];
 //    [locManager startUpdatingLocation];
     
+    logged=[[NSUserDefaults standardUserDefaults] boolForKey:@"userLoggedIn"];
+    //direct lands on main page as user is alreday logged in
+    if (logged==NO)
+    {
+        self.objHome = [[HomeViewController alloc] init];
+        MenuViewController *rearViewController = [[MenuViewController alloc] init];
+        
+        //To set teh navigation bar color - .106,27,154
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00]];
+        //to set teh navigation bar color
+        // self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        
+        
+        UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:self.objHome];
+        UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
+        
+        SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
+        revealController.delegate = self;
+        self.navigationController.navigationBarHidden = NO;
+        
+        self.viewController = revealController;
+        
+        self.window.rootViewController = self.viewController;
+        [self.window makeKeyAndVisible];
+
+    }
+    else
+    {
+        NSString *webURL=[[NSUserDefaults standardUserDefaults] valueForKey:@"webURL"];
+        self.objWeb=[[WebViewController alloc]init];
+        self.objWeb.urlStr=webURL;
+        MenuViewController *rearViewController = [[MenuViewController alloc] init];
+        
+        //To set teh navigation bar color - .106,27,154
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00]];
+        //to set teh navigation bar color
+        // self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        
+        
+        UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:self.objWeb];
+        UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
+        
+        SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
+        revealController.delegate = self;
+        self.navigationController.navigationBarHidden = NO;
+        
+        self.viewController = revealController;
+        
+        self.window.rootViewController = self.viewController;
+        [self.window makeKeyAndVisible];
+
+    }
     
     
     
     
-    self.objHome = [[HomeViewController alloc] init];
-    MenuViewController *rearViewController = [[MenuViewController alloc] init];
-    
-    //To set teh navigation bar color - .106,27,154
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00]];
-    //to set teh navigation bar color
-   // self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    
-    UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:self.objHome];
-    UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
-    
-    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
-    revealController.delegate = self;
+//    self.objHome = [[HomeViewController alloc] init];
+//    MenuViewController *rearViewController = [[MenuViewController alloc] init];
+//    
+//    //To set teh navigation bar color - .106,27,154
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00]];
+//    //to set teh navigation bar color
+//    // self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    
+//    
+//    UINavigationController *frontNavigationController = [[UINavigationController alloc] initWithRootViewController:self.objHome];
+//    UINavigationController *rearNavigationController = [[UINavigationController alloc] initWithRootViewController:rearViewController];
+//    
+//    SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearNavigationController frontViewController:frontNavigationController];
+//    revealController.delegate = self;
+//    self.navigationController.navigationBarHidden = NO;
+//    
+//    self.viewController = revealController;
+//    
+//    self.window.rootViewController = self.viewController;
+//    [self.window makeKeyAndVisible];
+
     
     //revealController.bounceBackOnOverdraw=NO;
     //revealController.stableDragOnOverdraw=YES;
     
-    self.navigationController.navigationBarHidden = NO;
     
-    self.viewController = revealController;
     
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
+    //for facebook
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
     
@@ -85,11 +149,28 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+     [FBSDKAppEvents activateApp];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                                          openURL:url
+//                                                sourceApplication:sourceApplication
+//                                                       annotation:annotation
+//            ];
+    return ([[FBSDKApplicationDelegate sharedInstance] application:application
+                                                           openURL:url
+                                                 sourceApplication:sourceApplication
+                                                        annotation:annotation]||[[GIDSignIn sharedInstance] handleURL:url
+                                                                                                    sourceApplication:sourceApplication
+                                                                                                           annotation:annotation] );
 }
 
 #pragma mark- delegate method of CLLOcationManager

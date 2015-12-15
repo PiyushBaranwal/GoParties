@@ -493,11 +493,19 @@
 
         FollowersViewController *controller6 = [[FollowersViewController alloc] initWithNibName:@"FollowersViewController" bundle:nil];
         controller6.title = @"Followers";
+        PhotosViewController *controller7 = [[PhotosViewController alloc] initWithNibName:@"PhotosViewController" bundle:nil];
+        controller7.title = @"Photos";
+        VideosViewController *controller8 = [[VideosViewController alloc] initWithNibName:@"VideosViewController" bundle:nil];
+        controller8.title = @"Videos";
+        
+        
+        
+        
+        
+        NSArray *controllerArray = @[controller1, controller2, controller3, controller4,controller5,controller6,controller7,controller8];
 
         
-        
-        
-        NSArray *controllerArray = @[controller1, controller2, controller3, controller4,controller5,controller6];
+    
         NSDictionary *parameters = @{
                                      CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor colorWithRed:106.0/255 green:27.0/255 blue:154.0/255 alpha:1.00],
                                      CAPSPageMenuOptionViewBackgroundColor: [UIColor colorWithRed:20.0/255.0 green:20.0/255.0 blue:20.0/255.0 alpha:1.0],

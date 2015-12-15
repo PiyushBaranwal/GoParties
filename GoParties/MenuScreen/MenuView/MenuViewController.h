@@ -31,6 +31,8 @@
     
     NSMutableArray *indexPathArray;
     
+    BOOL logged;
+    
 }
 
 @property (nonatomic,retain) UIImageView *selectedBackgroundView;

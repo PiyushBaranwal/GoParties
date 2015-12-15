@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import <GoogleSignIn/GoogleSignIn.h>
+
 //#import "MBProgressHUD.h"
 
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate,NSURLConnectionDelegate,CLLocationManagerDelegate>
+@interface LoginViewController : UIViewController<UITextFieldDelegate,NSURLConnectionDelegate,CLLocationManagerDelegate,GIDSignInDelegate,GIDSignInUIDelegate>
 {
     
    
@@ -66,8 +68,31 @@
     NSString *userValidEmail;
     NSString *userValidPhone;
     NSString *userWebSite;
+    NSString *webURL;
    
     BOOL logged;
+    
+    
+    // for facebook
+    NSString *facebookToken;
+    NSString *facebookId;
+    NSString *userFacebookMailId;
+    NSString *userFacebookId;
+    NSString *userFacebookPic;
+    NSString *userFacebookProfileType;
+    NSString *userFacebookName;
+    
+
+    
+    // for google
+    NSString *googleToken;
+    NSString *googleId;
+    NSString *userGoogleMailId;
+    NSString *userGoogleId;
+    NSString *userGooglePic;
+    NSString *userGoogleProfileType;
+    NSString *userGoogleName;
+
     
     
 //    CLLocationManager *locManager;
