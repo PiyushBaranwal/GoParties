@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 
-@interface PartiesNearYouViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
+@interface PartiesNearYouViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate,UIDocumentInteractionControllerDelegate,NSURLConnectionDelegate>
 {
     IBOutlet UITableView *partiesTableView;
+    
+    
+    IBOutlet UIButton *homeBtn;
+    IBOutlet UIButton *myProfBtn;
+    IBOutlet UIButton *myPartiesbtn;
+    IBOutlet UIButton *myDealsBtn;
+    IBOutlet UIButton *accessBtn;
     
     UIButton *bannerBtn;
     
@@ -36,6 +43,36 @@
     NSMutableArray *typeArray;
     
     NSString *currentDateStr;
+    
+    //For webservices
+    NSMutableData *responseData;
+    NSURLConnection *conn;
+    NSMutableData *webData;
+    NSString *responseString;
+    
+    NSMutableArray *json1;
+    
+    //fro parsing
+    NSDictionary *json;
+    NSMutableDictionary *mainDataDict;
+    NSMutableArray *partiesArray;
+    NSMutableDictionary *partyDict;
+    NSMutableArray *bookmarkArray;
+    NSMutableArray *followingArray;
+    NSMutableArray *partyTitleArray;
+    NSMutableArray *partyAddArray;
+    NSMutableArray *partyPlaceLatArray;
+    NSMutableArray *partyPlaceLongArray;
+    NSMutableArray *partyBannerArray;
+    NSMutableArray *partyIdArray;
+    NSMutableArray *partyDescArray;
+
+    
+    
+    
+    
+    NSString *userLatStr;
+    NSString *userLongStr;
 }
 
 @property (nonatomic,retain) UIScrollView *scrollView;
@@ -44,4 +81,7 @@
 @property (nonatomic,retain)IBOutlet UITableView *partiesTableView;
 
 @property (strong, nonatomic) SWRevealViewController *viewController;
+
+@property (retain) UIDocumentInteractionController * documentInteractionController;
+
 @end

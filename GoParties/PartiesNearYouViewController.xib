@@ -7,6 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PartiesNearYouViewController">
             <connections>
+                <outlet property="accessBtn" destination="5wT-Xf-Shi" id="rhO-vB-TuW"/>
+                <outlet property="homeBtn" destination="W1M-lK-ExS" id="j6t-Cg-8mb"/>
+                <outlet property="myDealsBtn" destination="ulL-bf-X6r" id="qWw-2B-CLU"/>
+                <outlet property="myPartiesbtn" destination="iHL-d6-VH3" id="Pr0-6d-HGL"/>
+                <outlet property="myProfBtn" destination="Hvi-uT-Bhi" id="28j-nn-c11"/>
                 <outlet property="partiesTableView" destination="ibw-JK-40Q" id="ffG-kR-STW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,6 +38,30 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulL-bf-X6r">
+                    <rect key="frame" x="282" y="623" width="93" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_deals.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHL-d6-VH3">
+                    <rect key="frame" x="188" y="623" width="94" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_parties.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvi-uT-Bhi">
+                    <rect key="frame" x="94" y="623" width="94" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_profile.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1M-lK-ExS">
+                    <rect key="frame" x="0.0" y="623" width="94" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_home.png"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -41,5 +70,9 @@
     </objects>
     <resources>
         <image name="Footer_singlebtn.png" width="720" height="170"/>
+        <image name="footer_deals.png" width="240" height="132"/>
+        <image name="footer_home.png" width="240" height="132"/>
+        <image name="footer_parties.png" width="240" height="132"/>
+        <image name="footer_profile.png" width="240" height="132"/>
     </resources>
 </document>

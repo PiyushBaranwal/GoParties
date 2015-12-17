@@ -8,13 +8,31 @@
 
 #import "PartiesNearYouViewController.h"
 #import "ProfileViewController.h"
-#import "Utils.h"
 
 #import "PartyDetailViewController.h"
+
+#import "Defines.h"
+#import "Utils.h"
+#import "SBJSON.h"
+#import "Singleton.h"
+
+
+
+#import "WASWhatsAppUtil.h"
+typedef enum{
+    kSendText = 0,
+    kSendImage,
+    kSendTextWithImage,
+    kSendAudio,
+    kSendCancel
+} options;
+
 
 
 
 @interface PartiesNearYouViewController ()
+
+@property (nonatomic, strong) UIActivityViewController *activityViewController;
 
 @end
 
@@ -83,12 +101,23 @@
     locationArray=[[NSMutableArray alloc]initWithObjects:@"All of Delhi NCR",@"Popular Locations",@"Mumbai",@"Chandigarh",@"Banglore", nil];
     categoryArray=[[NSMutableArray alloc]initWithObjects:@"All",@"Parties",@"Events",@"Bands",@"Djs", nil];
     typeArray=[[NSMutableArray alloc]initWithObjects:@"Delhi NCR",@"Mumbai",@"Chandigarh",@"Banglore", nil];
+    
+    
+    // to get the user lat and long from local database
+    userLatStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"UserCurLat"];
+    userLongStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"UserCurLong"];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self callingWebServiceForTrendingParties];
 }
 
 -(void)AddRightBarButtonItems
@@ -773,8 +802,80 @@
 -(IBAction)shareBtnClick:(id)sender
 {
     NSLog(@"Share Btn Clicked");
+    
+    
+    self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[@"GoParties!"] applicationActivities:nil];
+    [self presentViewController:self.activityViewController animated:YES completion:nil];
+    
+    
+//   // NSURL *url = [self fileToURL:self.documentName];
+//    NSArray *objectsToShare = @[@""];
+//    
+//    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
+//    
+//    // Exclude all activities except AirDrop.
+//    NSArray *excludedActivities = @[UIActivityTypePostToTwitter, UIActivityTypePostToFacebook,
+//                                    UIActivityTypePostToWeibo,
+//                                    UIActivityTypeMessage, UIActivityTypeMail,
+//                                    UIActivityTypePrint, UIActivityTypeCopyToPasteboard,
+//                                    UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
+//                                    UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
+//                                    UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
+//    controller.excludedActivityTypes = excludedActivities;
+//    
+//    // Present the controller
+//    [self presentViewController:controller animated:YES completion:nil];
+//    
+//    // for whats App
+//    if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"whatsapp://app"]]){
+//        
+//        UIImage     * iconImage = [UIImage imageNamed:@"YOUR IMAGE"];
+//        NSString    * savePath  = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/whatsAppTmp.wai"];
+//        
+//        [UIImageJPEGRepresentation(iconImage, 1.0) writeToFile:savePath atomically:YES];
+//        
+//        _documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
+//        _documentInteractionController.UTI = @"net.whatsapp.image";
+//        _documentInteractionController.delegate = self;
+//        
+//        [_documentInteractionController presentOpenInMenuFromRect:CGRectMake(0, 0, 0, 0) inView:self.view animated: YES];
+//        
+//        
+//    } else {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"WhatsApp not installed." message:@"Your device has no WhatsApp installed." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//    }
+    
+/////----------------------------------------------------------------------------------------
+//        UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:@"Choose" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Send text",@"Send image",@"Send image with text",@"Send audio", nil];
+//    	[sheet showInView:self.view];
+/////----------------------------------------------------------------------------------------
+
 }
 
+
+
+#pragma mark - UIActionSheet Delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    switch (buttonIndex) {
+        case kSendText:
+            [[WASWhatsAppUtil getInstance] sendText:@"Text"];
+            break;
+        case kSendImage:
+            [[WASWhatsAppUtil getInstance] sendImage:[UIImage imageNamed:@"image.jpg"] inView:self.view];
+            break;
+        case kSendTextWithImage:
+            NSLog(@"Send text with image");
+        case kSendAudio:
+            [[WASWhatsAppUtil getInstance] sendAudioinView:self.view];
+            break;
+        default:
+            NSLog(@"Cancel send");
+            break;
+    }
+    
+}
 
 
 -(void)baseScrollView
@@ -962,6 +1063,105 @@
     
 }
 
+-(void)callingWebServiceForTrendingParties
+{
+    //get userid userlat and userlong here from local database
+    /// NSString *userIDStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"userId"];
+    
+    
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        //offer=YES;
+        NSString *urlAsString;
+        urlAsString=[NSString stringWithFormat:@"%@/partiessearch?access_token=133688745fb3253a0b4c3cbb3f67d444cf4b418a&to=10&from=1&flag=2&latitude=%@&longitude=%@",BaseURL,userLatStr,userLongStr];
+        NSLog(@"%@", urlAsString);
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlAsString]];
+        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if (conn)
+        {
+            // webData=[NSMutableData data];
+            webData=[[NSMutableData alloc]init];
+        }
+    }
+    else
+    {
+        [Singleton connectionErrorMsg];
+    }
+    
+}
+
+
+#pragma -Mark
+#pragma -mark NSURLConnection delegate methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [webData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+    NSString *returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"String is=%@",returnString);
+    if (webData != nil)
+    {
+        [webData appendData:data];
+    }
+    else
+    {
+        webData = [[NSMutableData alloc] initWithData:data];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    //label.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSError *error;
+    json1 = [NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+    
+    NSLog(@"json1=%@",json1);
+    
+    NSMutableDictionary *rootDict=[NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+    
+    
+    // parsing for facebook user detail
+    mainDataDict=[rootDict objectForKey:@"data"];
+    NSLog(@"mainDataDict=%@",mainDataDict);
+    partiesArray=[mainDataDict valueForKey:@"parties"];
+    partyDict=[partiesArray valueForKey:@"party"];
+    bookmarkArray=[partiesArray valueForKey:@"bookmark"];
+    followingArray=[partiesArray valueForKey:@"following"];
+    partyTitleArray=[partyDict valueForKey:@"title"];
+    partyAddArray=[partyDict valueForKey:@"address"];
+    partyPlaceLatArray=[partyDict valueForKey:@"latitude"];
+    partyPlaceLongArray=[partyDict valueForKey:@"longitude"];
+    partyBannerArray=[partyDict valueForKey:@"banner"];
+    partyIdArray=[partyDict valueForKey:@"id"];
+    partyDescArray=[partyDict valueForKey:@"description"];
+    NSLog(@"partiesArray=%@",partiesArray);
+    NSLog(@"bookmarkArray=%@",bookmarkArray);
+    NSLog(@"followingArray=%@",followingArray);
+    NSLog(@"partyTitleArray=%@",partyTitleArray);
+    NSLog(@"partyIdArray=%@",partyIdArray);
+    NSLog(@"partyAddArray=%@",partyAddArray);
+    NSLog(@"partyPlaceLatArray=%@",partyPlaceLatArray);
+    NSLog(@"partyPlaceLongArray=%@",partyPlaceLongArray);
+    NSLog(@"partyBannerArray=%@",partyBannerArray);
+    NSLog(@"partyDescArray=%@",partyDescArray);
+    
+    // to save the data in locallly in the app.
+    // [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
+    
+    
+}
 
 
 

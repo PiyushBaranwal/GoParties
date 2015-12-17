@@ -7,6 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrendingPartiesViewController">
             <connections>
+                <outlet property="accessBtn" destination="b3H-NY-uV3" id="dz9-o7-iOR"/>
+                <outlet property="homeBtn" destination="XKO-Cp-FSN" id="jcM-VI-OcV"/>
+                <outlet property="myDealsBtn" destination="zjx-Tt-3nV" id="lAt-Nq-j3g"/>
+                <outlet property="myPartiesbtn" destination="JxP-p4-AEP" id="NFo-hY-ccC"/>
+                <outlet property="myProfBtn" destination="zFL-vl-qV1" id="pFJ-DG-OkX"/>
                 <outlet property="partiesTableView" destination="r9S-HV-RYR" id="WMh-cA-mRN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,6 +38,30 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjx-Tt-3nV">
+                    <rect key="frame" x="282" y="623" width="93" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_deals.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-p4-AEP">
+                    <rect key="frame" x="188" y="623" width="94" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_parties.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFL-vl-qV1">
+                    <rect key="frame" x="94" y="623" width="94" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_profile.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKO-Cp-FSN">
+                    <rect key="frame" x="0.0" y="623" width="94" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="footer_home.png"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -41,5 +70,9 @@
     </objects>
     <resources>
         <image name="Footer_singlebtn.png" width="720" height="170"/>
+        <image name="footer_deals.png" width="240" height="132"/>
+        <image name="footer_home.png" width="240" height="132"/>
+        <image name="footer_parties.png" width="240" height="132"/>
+        <image name="footer_profile.png" width="240" height="132"/>
     </resources>
 </document>

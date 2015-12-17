@@ -11,11 +11,15 @@
 #import "ProfileViewController.h"
 #import "PartyDetailViewController.h"
 
+#import "Defines.h"
+#import "Utils.h"
+#import "SBJSON.h"
+#import "Singleton.h"
 
 
 
 @interface TrendingPartiesViewController ()
-
+@property (nonatomic, strong) UIActivityViewController *activityViewController;
 @end
 
 @implementation TrendingPartiesViewController
@@ -78,16 +82,39 @@
     
     [self AddRightBarButtonItems];
     
+    partiesArray=[[NSMutableArray alloc]init];
+    bookmarkArray=[[NSMutableArray alloc]init];
+    followingArray=[[NSMutableArray alloc]init];;
+    partyTitleArray=[[NSMutableArray alloc]init];
+    partyAddArray=[[NSMutableArray alloc]init];
+    partyPlaceLatArray=[[NSMutableArray alloc]init];
+    partyPlaceLongArray=[[NSMutableArray alloc]init];
+    partyBannerArray=[[NSMutableArray alloc]init];
+    partyIdArray=[[NSMutableArray alloc]init];
+    
     
     locationArray=[[NSMutableArray alloc]initWithObjects:@"All of Delhi NCR",@"Popular Locations",@"Mumbai",@"Chandigarh",@"Banglore", nil];
     categoryArray=[[NSMutableArray alloc]initWithObjects:@"All",@"Parties",@"Events",@"Bands",@"Djs", nil];
     typeArray=[[NSMutableArray alloc]initWithObjects:@"Delhi NCR",@"Mumbai",@"Chandigarh",@"Banglore", nil];
+    
+    
+    // to get the user lat and long from local database
+    userLatStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"UserCurLat"];
+    userLongStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"UserCurLong"];
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self callingWebServiceForTrendingParties];
 }
 
 -(void)AddRightBarButtonItems
@@ -742,6 +769,8 @@
 -(IBAction)shareBtnClick:(id)sender
 {
     NSLog(@"Share Btn Clicked");
+    self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[@"GoParties!"] applicationActivities:nil];
+    [self presentViewController:self.activityViewController animated:YES completion:nil];
 }
 
 
@@ -916,6 +945,134 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+-(void)callingWebServiceForTrendingParties
+{
+    //get userid userlat and userlong here from local database
+   /// NSString *userIDStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"userId"];
+    
+    
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        //offer=YES;
+        NSString *urlAsString;
+        urlAsString=[NSString stringWithFormat:@"%@/partiessearch?access_token=133688745fb3253a0b4c3cbb3f67d444cf4b418a&userid=1&to=10&from=1&flag=2",BaseURL];
+        NSLog(@"%@", urlAsString);
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlAsString]];
+        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if (conn)
+        {
+            // webData=[NSMutableData data];
+            webData=[[NSMutableData alloc]init];
+        }
+    }
+    else
+    {
+        [Singleton connectionErrorMsg];
+    }
+    
+}
+
+
+#pragma -Mark
+#pragma -mark NSURLConnection delegate methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [webData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+    NSString *returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"String is=%@",returnString);
+    if (webData != nil)
+    {
+        [webData appendData:data];
+    }
+    else
+    {
+        webData = [[NSMutableData alloc] initWithData:data];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    //label.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSError *error;
+    json1 = [NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+    
+    NSLog(@"json1=%@",json1);
+    
+    NSMutableDictionary *rootDict=[NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+    
+    
+    // parsing for facebook user detail
+    mainDataDict=[rootDict objectForKey:@"data"];
+    NSLog(@"mainDataDict=%@",mainDataDict);
+    partiesArray=[mainDataDict valueForKey:@"parties"];
+    partyDict=[partiesArray valueForKey:@"party"];
+    bookmarkArray=[partiesArray valueForKey:@"bookmark"];
+    followingArray=[partiesArray valueForKey:@"following"];
+    partyTitleArray=[partyDict valueForKey:@"title"];
+    partyAddArray=[partyDict valueForKey:@"address"];
+    partyPlaceLatArray=[partyDict valueForKey:@"latitude"];
+    partyPlaceLongArray=[partyDict valueForKey:@"longitude"];
+    partyBannerArray=[partyDict valueForKey:@"banner"];
+    partyIdArray=[partyDict valueForKey:@"id"];
+    partyDescArray=[partyDict valueForKey:@"description"];
+    NSLog(@"partiesArray=%@",partiesArray);
+    NSLog(@"bookmarkArray=%@",bookmarkArray);
+    NSLog(@"followingArray=%@",followingArray);
+    NSLog(@"partyTitleArray=%@",partyTitleArray);
+    NSLog(@"partyIdArray=%@",partyIdArray);
+    NSLog(@"partyAddArray=%@",partyAddArray);
+    NSLog(@"partyPlaceLatArray=%@",partyPlaceLatArray);
+    NSLog(@"partyPlaceLongArray=%@",partyPlaceLongArray);
+    NSLog(@"partyBannerArray=%@",partyBannerArray);
+    NSLog(@"partyDescArray=%@",partyDescArray);
+
+    
+    
+    
+    
+    
+//    NSMutableDictionary *dealDict=[dealsArray valueForKey:@"deal"];
+//    NSLog(@"dealDict=%@",dealDict);
+//    dealsByDict=[dealDict valueForKey:@"deal_by"];
+//    //dealsByArray=[dealsArray valueForKey:@"deal_by"];
+//    NSLog(@"dealsByDict=%@",dealsByDict);
+//    NSMutableArray *profileTypeArray=[dealsByDict valueForKey:@"profile_type"];
+//    NSMutableArray *profilePicArray=[dealsByDict valueForKey:@"profile_pic"];
+//    NSMutableArray *ratingArray=[dealsByDict valueForKey:@"rating"];
+//    NSMutableArray *coverImgArray=[dealsByDict valueForKey:@"cover"];
+//    NSMutableArray *partyCreaterNameArray=[dealsByDict valueForKey:@"name"];
+//    NSMutableArray *dealTitleArray=[dealsByDict valueForKey:@"title"];
+//    NSMutableArray *dealDescArray=[dealsByDict valueForKey:@"description"];
+//    NSLog(@"profileTypeArray=%@",profileTypeArray);
+//    NSLog(@"profilePicArray=%@",profilePicArray);
+//    NSLog(@"ratingArray=%@",ratingArray);
+//    NSLog(@"coverImgArray=%@",coverImgArray);
+//    NSLog(@"partyCreaterNameArray=%@",partyCreaterNameArray);
+//    
+//    
+//    NSLog(@"dealTitleArray=%@",dealTitleArray);
+//    NSLog(@"dealDescArray=%@",dealDescArray);
+    
+    
+    // to save the data in locallly in the app.
+    // [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
+    
+    
+}
 
 
 @end

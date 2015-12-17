@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 
-@interface SpecialDealsViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
+@interface SpecialDealsViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate,NSURLConnectionDelegate>
 {
     IBOutlet UITableView *dealsTableView;
     
@@ -18,6 +18,7 @@
     IBOutlet UIButton *myProfBtn;
     IBOutlet UIButton *myPartiesbtn;
     IBOutlet UIButton *myDealsBtn;
+    IBOutlet UIButton *accessBtn;
     
     
     
@@ -38,6 +39,25 @@
     NSMutableArray *locationArray;
     NSMutableArray *categoryArray;
     NSMutableArray *typeArray;
+    
+    
+    
+    
+    //For webservices
+    NSMutableData *responseData;
+    NSURLConnection *conn;
+    NSMutableData *webData;
+    NSString *responseString;
+    
+    NSMutableArray *json1;
+    
+    //fro parsing
+    NSDictionary *json;
+    NSMutableDictionary *mainDataDict;
+    NSMutableArray *dealsArray;
+    NSMutableArray *dealsByArray;
+    NSMutableDictionary *dealsByDict;
+
 }
 
 @property (nonatomic,retain)IBOutlet UITableView *dealsTableView;

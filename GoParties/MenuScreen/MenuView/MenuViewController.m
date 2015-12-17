@@ -386,22 +386,29 @@
         
         
         SearchPartiesViewController *frontViewController = [[SearchPartiesViewController alloc] init];
+        frontViewController.clickedBtnTagValue=indexPath.row-1;
         newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
 
 
     }
     else if(indexPath.row==2)
     {
-        PartiesNearYouViewController *frontViewController = [[PartiesNearYouViewController alloc] init];
+//        PartiesNearYouViewController *frontViewController = [[PartiesNearYouViewController alloc] init];
+//        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+        
+        SearchPartiesViewController *frontViewController = [[SearchPartiesViewController alloc] init];
+        frontViewController.clickedBtnTagValue=indexPath.row-1;
         newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
     }
     
     else if (indexPath.row==3)
 
     {
-//        BAMyAccountViewController *frontViewController = [[BAMyAccountViewController alloc] init];
+//        TrendingPartiesViewController *frontViewController = [[TrendingPartiesViewController alloc] init];
 //        newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-        TrendingPartiesViewController *frontViewController = [[TrendingPartiesViewController alloc] init];
+        
+        SearchPartiesViewController *frontViewController = [[SearchPartiesViewController alloc] init];
+        frontViewController.clickedBtnTagValue=indexPath.row-1;
         newFrontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
     }
     

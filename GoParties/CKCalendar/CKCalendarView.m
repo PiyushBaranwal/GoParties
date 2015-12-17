@@ -265,7 +265,10 @@
     [super layoutSubviews];
 
     CGFloat containerWidth = self.bounds.size.width - (CALENDAR_MARGIN * 2);
-    self.cellWidth = (floorf(containerWidth / 7.0)) - CELL_BORDER_WIDTH;
+    // previous As default
+     //self.cellWidth = (floorf(containerWidth / 7.0)) - CELL_BORDER_WIDTH;
+    // changed according to the screen width like for iphone 6 added 9 in the width
+    self.cellWidth = (floorf(containerWidth / 7.0)) - CELL_BORDER_WIDTH+2;
 
     NSInteger numberOfWeeksToShow = 6;
     if (self.adaptHeightToNumberOfWeeksInMonth) {
@@ -280,15 +283,18 @@
     self.highlight.frame = CGRectMake(1, 1, self.bounds.size.width - 2, 1);
     self.titleLabel.text = [self.dateFormatter stringFromDate:_monthShowing];
 
-    
+    //Previous as defualt
+    //self.titleLabel.frame = CGRectMake(0, 0, self.bounds.size.width, TOP_HEIGHT);
+    // sets accrding the width size of iphone6
     self.titleLabel.frame = CGRectMake(0, 0, self.bounds.size.width, TOP_HEIGHT);
+    
     self.prevButton.frame = CGRectMake(BUTTON_MARGIN, BUTTON_MARGIN, 48, 38);
     self.nextButton.frame = CGRectMake(self.bounds.size.width - 48 - BUTTON_MARGIN, BUTTON_MARGIN, 48, 38);
 
 //    self.calendarContainer.frame = CGRectMake(CALENDAR_MARGIN, CGRectGetMaxY(self.titleLabel.frame), containerWidth, containerHeight);
     
     self.calendarContainer.frame = CGRectMake(CALENDAR_MARGIN, CGRectGetMaxY(self.titleLabel.frame), 375, 500);
-    self.calendarContainer.backgroundColor=[UIColor clearColor];
+    self.calendarContainer.backgroundColor=[UIColor clearColor];//clearColor
     
     
     
@@ -297,7 +303,10 @@
    // self.daysHeader.backgroundColor=[UIColor clearColor];
     CGRect lastDayFrame = CGRectZero;
     for (UILabel *dayLabel in self.dayOfWeekLabels) {
-        dayLabel.frame = CGRectMake(CGRectGetMaxX(lastDayFrame) + CELL_BORDER_WIDTH, lastDayFrame.origin.y, self.cellWidth, self.daysHeader.frame.size.height);
+        //Previous defualt condition
+       // dayLabel.frame = CGRectMake(CGRectGetMaxX(lastDayFrame) + CELL_BORDER_WIDTH, lastDayFrame.origin.y, self.cellWidth, self.daysHeader.frame.size.height);
+        // changed according to the screen width like for iphone 6 added 9 in the width
+         dayLabel.frame = CGRectMake(CGRectGetMaxX(lastDayFrame) + CELL_BORDER_WIDTH, lastDayFrame.origin.y, self.cellWidth+8, self.daysHeader.frame.size.height);
        
         //////////////
         dayLabel.backgroundColor=[UIColor clearColor];
@@ -366,7 +375,7 @@
     }
     
     if ([self.delegate respondsToSelector:@selector(calendar:didLayoutInRect:)]) {
-        [self.delegate calendar:self didLayoutInRect:self.frame];
+        [self.delegate calendar:self didLayoutInRect:self.frame];//self.frame
     }
 }
 

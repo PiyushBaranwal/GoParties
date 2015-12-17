@@ -20,6 +20,8 @@
 #import "SettingsViewController.h"
 #import "UserProfileViewController.h"
 
+#import "LoginViewController.h"
+
 
 
 @interface MainViewController ()
@@ -298,6 +300,15 @@
 -(void)searchBtnClick
 {
     NSLog(@"Search Button Clicked");
+    SearchPartiesViewController *objSP=[[SearchPartiesViewController alloc]initWithNibName:@"SearchPartiesViewController" bundle:nil];
+    objSP.clickedBtnTagValue=0;
+    [self.navigationController pushViewController:objSP animated:YES];
+    
+    // to show the navigation bar
+    self.navigationController.navigationBarHidden = NO;
+    // to remove the popup view
+    [popUpView removeFromSuperview];
+    
     // before navigation hit service with filled strings on the search popupview
 //    PartiesNearYouViewController *objParties=[[PartiesNearYouViewController alloc]initWithNibName:@"PartiesNearYouViewController" bundle:nil];
 //    [self.navigationController pushViewController:objParties animated:YES];
@@ -639,6 +650,10 @@
 
 -(IBAction)nextBtnClick:(id)sender
 {
+    // to get the info from local data base like either user is logged in or not..
+   NSString *FBIdStr= [[NSUserDefaults standardUserDefaults] valueForKey:@"userFBId"];
+    NSString *GPIdStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"userGPId"];
+    BOOL userLoggdeIn=[[NSUserDefaults standardUserDefaults] boolForKey:@"userLoggedIn"];
     
     btn=(UIButton*)sender;
     NSLog(@"Btn.tag=%d",btn.tag);
@@ -648,28 +663,50 @@
     {
         [self search];
         
-//        SearchPartiesViewController *objHome=[[SearchPartiesViewController alloc]initWithNibName:@"SearchPartiesViewController" bundle:nil];
-//        [self.navigationController pushViewController:objHome animated:YES];
+//        SearchPartiesViewController *objSP=[[SearchPartiesViewController alloc]initWithNibName:@"SearchPartiesViewController" bundle:nil];
+//        objSP.clickedBtnTagValue=btn.tag;
+//        [self.navigationController pushViewController:objSP animated:YES];
     }
     if (btn.tag==1)
     {
-        PartiesNearYouViewController *objHome=[[PartiesNearYouViewController alloc]initWithNibName:@"PartiesNearYouViewController" bundle:nil];
-        [self.navigationController pushViewController:objHome animated:YES];
+//        PartiesNearYouViewController *objPN=[[PartiesNearYouViewController alloc]initWithNibName:@"PartiesNearYouViewController" bundle:nil];
+//        [self.navigationController pushViewController:objPN animated:YES];
+        
+        SearchPartiesViewController *objSP=[[SearchPartiesViewController alloc]initWithNibName:@"SearchPartiesViewController" bundle:nil];
+        objSP.clickedBtnTagValue=btn.tag;
+        [self.navigationController pushViewController:objSP animated:YES];
+
     }
     if (btn.tag==2)
     {
-        TrendingPartiesViewController *objHome=[[TrendingPartiesViewController alloc]initWithNibName:@"TrendingPartiesViewController" bundle:nil];
-        [self.navigationController pushViewController:objHome animated:YES];
+//        TrendingPartiesViewController *objTP=[[TrendingPartiesViewController alloc]initWithNibName:@"TrendingPartiesViewController" bundle:nil];
+//        [self.navigationController pushViewController:objTP animated:YES];
+        
+        SearchPartiesViewController *objSP=[[SearchPartiesViewController alloc]initWithNibName:@"SearchPartiesViewController" bundle:nil];
+        objSP.clickedBtnTagValue=btn.tag;
+        [self.navigationController pushViewController:objSP animated:YES];
     }
     if (btn.tag==3)
     {
-        SpecialDealsViewController *objHome=[[SpecialDealsViewController alloc]initWithNibName:@"SpecialDealsViewController" bundle:nil];
-        [self.navigationController pushViewController:objHome animated:YES];
+//        //[title isKindOfClass:[NSNull class]]
+//        if ((userLoggdeIn) ||([FBIdStr length]!=0) ||([GPIdStr length]!=0)) {
+//            SpecialDealsViewController *objHome=[[SpecialDealsViewController alloc]initWithNibName:@"SpecialDealsViewController" bundle:nil];
+//            [self.navigationController pushViewController:objHome animated:YES];
+//        }
+//        else
+//        {
+//            [self Alert];
+//        }
+        
+        
+        SpecialDealsViewController *objSD=[[SpecialDealsViewController alloc]initWithNibName:@"SpecialDealsViewController" bundle:nil];
+        [self.navigationController pushViewController:objSD animated:YES];
+        
     }
     if (btn.tag==4)
     {
-        PartiesCalendarViewController *objHome=[[PartiesCalendarViewController alloc]initWithNibName:@"PartiesCalendarViewController" bundle:nil];
-        [self.navigationController pushViewController:objHome animated:YES];
+        PartiesCalendarViewController *objPC=[[PartiesCalendarViewController alloc]initWithNibName:@"PartiesCalendarViewController" bundle:nil];
+        [self.navigationController pushViewController:objPC animated:YES];
     }
 
     
@@ -820,4 +857,34 @@
     HomeViewController *objH=[[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
     [self.navigationController pushViewController:objH animated:YES];
 }
+
+
+-(void)Alert
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Go Parties!"
+                                  message:@"Please get signed In, to get proceed next"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* okButton = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   //Handel your yes please button action here
+                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                   // to navigate on the LoginView view
+                                   LoginViewController *objL=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+                                   [self.navigationController pushViewController:objL animated:YES];
+                                   
+                               }];
+    
+    [alert addAction:okButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+
+
+
 @end

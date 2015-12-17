@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FollowingTableViewCell.h"
 
-@interface FollowingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface FollowingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,NSURLConnectionDelegate>
 {
     IBOutlet UITableView *followingTableView;
     IBOutlet FollowingTableViewCell *cell;
@@ -19,6 +19,24 @@
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *placeLbl;
     IBOutlet UIButton *followBtn;
+    
+    //For webservices
+    NSMutableData *responseData;
+    NSURLConnection *conn;
+    NSMutableData *webData;
+    NSString *responseString;
+    
+    NSMutableArray *json1;
+    
+    //fro parsing
+    NSDictionary *json;
+    NSMutableDictionary *mainDataDict;
+    NSMutableArray *followingsArray;
+    NSMutableArray *followingNameArray;
+    NSMutableArray *followingPicArray;
+    NSMutableArray *followingTypeArray;
+    
+    
 }
 
 

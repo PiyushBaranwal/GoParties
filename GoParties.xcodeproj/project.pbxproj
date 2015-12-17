@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC4931E61C21630E002717E0 /* WASWhatsAppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4931E51C21630E002717E0 /* WASWhatsAppUtil.m */; };
 		FC5CAC461C09738F0009489F /* SVGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAC431C09738F0009489F /* SVGeocoder.m */; };
 		FC5CAC471C09738F0009489F /* SVPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5CAC451C09738F0009489F /* SVPlacemark.m */; };
 		FC5CAC491C0979410009489F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5CAC481C0979410009489F /* CoreLocation.framework */; };
@@ -345,6 +346,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC4931E41C21630E002717E0 /* WASWhatsAppUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASWhatsAppUtil.h; sourceTree = "<group>"; };
+		FC4931E51C21630E002717E0 /* WASWhatsAppUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WASWhatsAppUtil.m; sourceTree = "<group>"; };
 		FC5CAC421C09738F0009489F /* SVGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGeocoder.h; sourceTree = "<group>"; };
 		FC5CAC431C09738F0009489F /* SVGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGeocoder.m; sourceTree = "<group>"; };
 		FC5CAC441C09738F0009489F /* SVPlacemark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPlacemark.h; sourceTree = "<group>"; };
@@ -793,6 +796,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC4931E31C21630E002717E0 /* WhatsAppClasses */ = {
+			isa = PBXGroup;
+			children = (
+				FC4931E41C21630E002717E0 /* WASWhatsAppUtil.h */,
+				FC4931E51C21630E002717E0 /* WASWhatsAppUtil.m */,
+			);
+			path = WhatsAppClasses;
+			sourceTree = "<group>";
+		};
 		FC5CAC411C09738F0009489F /* SVGeocoder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1279,6 +1291,7 @@
 		FCB74BA41BFB37830035BE0C /* SearchParties */ = {
 			isa = PBXGroup;
 			children = (
+				FC4931E31C21630E002717E0 /* WhatsAppClasses */,
 				FCB74BA51BFB37AE0035BE0C /* SearchPartiesViewController.h */,
 				FCB74BA61BFB37AE0035BE0C /* SearchPartiesViewController.m */,
 				FCB74BA71BFB37AE0035BE0C /* SearchPartiesViewController.xib */,
@@ -2176,6 +2189,7 @@
 				FCA4E7501C2018F400E50631 /* InviteViewController.m in Sources */,
 				FCFA190E1BF9A23A00FAAD99 /* main.m in Sources */,
 				FCB74BB41BFB382D0035BE0C /* TrendingPartiesViewController.m in Sources */,
+				FC4931E61C21630E002717E0 /* WASWhatsAppUtil.m in Sources */,
 				FC686FF81C11602D00A274EA /* MyFeedViewController.m in Sources */,
 				FCE9F29D1C0EFA4B0009EF8D /* Utils.m in Sources */,
 				FCE9F29C1C0EFA4B0009EF8D /* GSNSDataExtensions.m in Sources */,

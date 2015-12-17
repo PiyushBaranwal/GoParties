@@ -71,11 +71,11 @@
 //@property (nonatomic) NSUInteger numberOfTabs;
 
 
-//- (IBAction)homeBtnClick:(id)sender;
-//- (IBAction)myProfileBtnClick:(id)sender;
-//- (IBAction)myPartiesBtnClick:(id)sender;
-//- (IBAction)myDealsBtnClick:(id)sender;
-//- (IBAction)accessBtnClick:(id)sender;
+- (IBAction)homeBtnClick:(id)sender;
+- (IBAction)myProfileBtnClick:(id)sender;
+- (IBAction)myPartiesBtnClick:(id)sender;
+- (IBAction)myDealsBtnClick:(id)sender;
+- (IBAction)accessBtnClick:(id)sender;
 
 
 @end

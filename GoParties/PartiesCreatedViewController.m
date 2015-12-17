@@ -105,7 +105,7 @@
         
         
         // To set the segmented control.
-        UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Parties",@"Profiles"]];
+        UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Created Parties",@"Saved Parties"]];
         // [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
         segmentControl.frame = CGRectMake(10, 10, self.view.frame.size.width-20, 30);
         [segmentControl addTarget:self action:@selector(segmentedControlValueDidChange1:) forControlEvents:UIControlEventValueChanged];

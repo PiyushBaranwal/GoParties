@@ -11,7 +11,7 @@
 
 
 
-@interface FollowersViewController :UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface FollowersViewController :UIViewController<UITableViewDataSource,UITableViewDelegate,NSURLConnectionDelegate>
 {
     IBOutlet UITableView *followersTableView;
     IBOutlet FollowersTableViewCell *cell;
@@ -21,6 +21,23 @@
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *placeLbl;
     IBOutlet UIButton *followBtn;
+    
+    
+    //For webservices
+    NSMutableData *responseData;
+    NSURLConnection *conn;
+    NSMutableData *webData;
+    NSString *responseString;
+    
+    NSMutableArray *json1;
+    
+    //fro parsing
+    NSDictionary *json;
+    NSMutableDictionary *mainDataDict;
+    NSMutableArray *followersArray;
+    NSMutableArray *followerNameArray;
+    NSMutableArray *followerPicArray;
+    NSMutableArray *followerTypeArray;
 }
 
 

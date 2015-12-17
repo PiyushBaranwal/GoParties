@@ -28,14 +28,14 @@
     // Override point for customization after application launch.
     //return YES;
     
-//    ///to get the current lat and long
-//    locManager = [[CLLocationManager alloc] init];
-//    locManager.delegate=self;
-//    locManager.desiredAccuracy=kCLLocationAccuracyBest;
-//    locManager.distanceFilter=kCLDistanceFilterNone;
-//    // [locManager requestWhenInUseAuthorization];
-//    // [locManager startMonitoringSignificantLocationChanges];
-//    [locManager startUpdatingLocation];
+    ///to get the current lat and long
+    locManager = [[CLLocationManager alloc] init];
+    locManager.delegate=self;
+    locManager.desiredAccuracy=kCLLocationAccuracyBest;
+    locManager.distanceFilter=kCLDistanceFilterNone;
+     [locManager requestWhenInUseAuthorization];
+     [locManager startMonitoringSignificantLocationChanges];
+    [locManager startUpdatingLocation];
     
     logged=[[NSUserDefaults standardUserDefaults] boolForKey:@"userLoggedIn"];
     //direct lands on main page as user is alreday logged in

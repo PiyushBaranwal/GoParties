@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpecialDealsViewController">
             <connections>
+                <outlet property="accessBtn" destination="icS-Cg-Na4" id="jYm-Or-eeZ"/>
                 <outlet property="dealsTableView" destination="ysW-hs-rav" id="ejW-sH-qZY"/>
                 <outlet property="homeBtn" destination="K6i-Im-OQQ" id="ZSd-G7-wuW"/>
                 <outlet property="myDealsBtn" destination="k3N-Gs-izl" id="49n-bb-T9T"/>
