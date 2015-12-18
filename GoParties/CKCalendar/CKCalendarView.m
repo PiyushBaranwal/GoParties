@@ -267,8 +267,9 @@
     CGFloat containerWidth = self.bounds.size.width - (CALENDAR_MARGIN * 2);
     // previous As default
      //self.cellWidth = (floorf(containerWidth / 7.0)) - CELL_BORDER_WIDTH;
-    // changed according to the screen width like for iphone 6 added 9 in the width
-    self.cellWidth = (floorf(containerWidth / 7.0)) - CELL_BORDER_WIDTH+2;
+    // changed according to the screen width like for iphone 6 added 8 in the width
+    //self.cellWidth = (floorf(containerWidth / 7.0)) - CELL_BORDER_WIDTH+2;
+    self.cellWidth = ((floorf(containerWidth / 7.0)) - CELL_BORDER_WIDTH+2);
 
     NSInteger numberOfWeeksToShow = 6;
     if (self.adaptHeightToNumberOfWeeksInMonth) {
@@ -280,7 +281,7 @@
     newFrame.size.height = containerHeight + CALENDAR_MARGIN + TOP_HEIGHT;
     self.frame = newFrame;
 
-    self.highlight.frame = CGRectMake(1, 1, self.bounds.size.width - 2, 1);
+    //self.highlight.frame = CGRectMake(1, 1, self.bounds.size.width - 2, 1);
     self.titleLabel.text = [self.dateFormatter stringFromDate:_monthShowing];
 
     //Previous as defualt
@@ -306,7 +307,7 @@
         //Previous defualt condition
        // dayLabel.frame = CGRectMake(CGRectGetMaxX(lastDayFrame) + CELL_BORDER_WIDTH, lastDayFrame.origin.y, self.cellWidth, self.daysHeader.frame.size.height);
         // changed according to the screen width like for iphone 6 added 9 in the width
-         dayLabel.frame = CGRectMake(CGRectGetMaxX(lastDayFrame) + CELL_BORDER_WIDTH, lastDayFrame.origin.y, self.cellWidth+8, self.daysHeader.frame.size.height);
+         dayLabel.frame = CGRectMake(CGRectGetMaxX(lastDayFrame) + CELL_BORDER_WIDTH, lastDayFrame.origin.y, self.cellWidth, self.daysHeader.frame.size.height);
        
         //////////////
         dayLabel.backgroundColor=[UIColor clearColor];

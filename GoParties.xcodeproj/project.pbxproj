@@ -117,6 +117,8 @@
 		FC7575221C1A9F3C00F06B05 /* NICiphone5.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7575201C1A9F3C00F06B05 /* NICiphone5.png */; };
 		FC7575251C1ABC2500F06B05 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7575241C1ABC2500F06B05 /* Default-667h@2x.png */; };
 		FC7E3FF91C20431D0075FBD5 /* PlacePin.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7E3FF81C20431D0075FBD5 /* PlacePin.m */; };
+		FC7F44521C23D6ED0012B59B /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7F44501C23D6ED0012B59B /* NotificationTableViewCell.m */; };
+		FC7F44531C23D6ED0012B59B /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC7F44511C23D6ED0012B59B /* NotificationTableViewCell.xib */; };
 		FC9029041C1E9630007CAC9A /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9029021C1E9630007CAC9A /* PhotosViewController.m */; };
 		FC9029051C1E9630007CAC9A /* PhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9029031C1E9630007CAC9A /* PhotosViewController.xib */; };
 		FC90290E1C1E9911007CAC9A /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9029081C1E9911007CAC9A /* AsyncImageView.m */; };
@@ -141,6 +143,7 @@
 		FCA6D6DD1BFF1F800097BF9C /* Footer_singlebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA6D6DC1BFF1F800097BF9C /* Footer_singlebtn.png */; };
 		FCA6D6E21BFF22F50097BF9C /* VerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA6D6E01BFF22F50097BF9C /* VerificationViewController.m */; };
 		FCA6D6E31BFF22F50097BF9C /* VerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA6D6E11BFF22F50097BF9C /* VerificationViewController.xib */; };
+		FCAF58E51C241BD90063B2C1 /* bookmark-outline_main.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAF58E41C241BD90063B2C1 /* bookmark-outline_main.png */; };
 		FCB74B941BFB346C0035BE0C /* SlideCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB74B921BFB346C0035BE0C /* SlideCustomCell.m */; };
 		FCB74B951BFB346C0035BE0C /* SlideCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB74B931BFB346C0035BE0C /* SlideCustomCell.xib */; };
 		FCB74B981BFB34920035BE0C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB74B971BFB34920035BE0C /* SWRevealViewController.m */; };
@@ -488,6 +491,9 @@
 		FC7575241C1ABC2500F06B05 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		FC7E3FF71C20431D0075FBD5 /* PlacePin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacePin.h; sourceTree = "<group>"; };
 		FC7E3FF81C20431D0075FBD5 /* PlacePin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacePin.m; sourceTree = "<group>"; };
+		FC7F444F1C23D6ED0012B59B /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
+		FC7F44501C23D6ED0012B59B /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
+		FC7F44511C23D6ED0012B59B /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		FC9029011C1E9630007CAC9A /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
 		FC9029021C1E9630007CAC9A /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
 		FC9029031C1E9630007CAC9A /* PhotosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosViewController.xib; sourceTree = "<group>"; };
@@ -525,6 +531,7 @@
 		FCA6D6DF1BFF22F50097BF9C /* VerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationViewController.h; sourceTree = "<group>"; };
 		FCA6D6E01BFF22F50097BF9C /* VerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationViewController.m; sourceTree = "<group>"; };
 		FCA6D6E11BFF22F50097BF9C /* VerificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerificationViewController.xib; sourceTree = "<group>"; };
+		FCAF58E41C241BD90063B2C1 /* bookmark-outline_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark-outline_main.png"; sourceTree = "<group>"; };
 		FCB74B911BFB346C0035BE0C /* SlideCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideCustomCell.h; path = MenuScreen/SlideCustomCell/SlideCustomCell.h; sourceTree = "<group>"; };
 		FCB74B921BFB346C0035BE0C /* SlideCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideCustomCell.m; path = MenuScreen/SlideCustomCell/SlideCustomCell.m; sourceTree = "<group>"; };
 		FCB74B931BFB346C0035BE0C /* SlideCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SlideCustomCell.xib; path = MenuScreen/SlideCustomCell/SlideCustomCell.xib; sourceTree = "<group>"; };
@@ -1118,6 +1125,16 @@
 			name = AppDelegate;
 			sourceTree = "<group>";
 		};
+		FC7F44541C23D6F60012B59B /* NotificationCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				FC7F44511C23D6ED0012B59B /* NotificationTableViewCell.xib */,
+				FC7F44501C23D6ED0012B59B /* NotificationTableViewCell.m */,
+				FC7F444F1C23D6ED0012B59B /* NotificationTableViewCell.h */,
+			);
+			name = NotificationCustomCell;
+			sourceTree = "<group>";
+		};
 		FC9029001C1E9615007CAC9A /* Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -1362,14 +1379,15 @@
 			name = InviteFreinds;
 			sourceTree = "<group>";
 		};
-		FCB74BCE1BFB39140035BE0C /* NotificationSettings */ = {
+		FCB74BCE1BFB39140035BE0C /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
 				FCB74BCF1BFB393E0035BE0C /* NotificationViewController.h */,
 				FCB74BD01BFB393E0035BE0C /* NotificationViewController.m */,
 				FCB74BD11BFB393E0035BE0C /* NotificationViewController.xib */,
+				FC7F44541C23D6F60012B59B /* NotificationCustomCell */,
 			);
-			name = NotificationSettings;
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		FCB74BD41BFB394D0035BE0C /* Settings */ = {
@@ -1385,6 +1403,7 @@
 		FCC8C2C21BFC62DA006056EA /* App Icons */ = {
 			isa = PBXGroup;
 			children = (
+				FCAF58E41C241BD90063B2C1 /* bookmark-outline_main.png */,
 				FC652BE01C13108900CF9284 /* callPhone_TextField.png */,
 				FC652BBA1C12F41400CF9284 /* call_back.png */,
 				FCE9F2791C0ED8BE0009EF8D /* footericons */,
@@ -1701,7 +1720,7 @@
 				FCB74BB61BFB38390035BE0C /* SpecialDeals */,
 				FCB74BBC1BFB38680035BE0C /* PartiesMasterCalender */,
 				FCB74BC81BFB38DA0035BE0C /* InviteFreinds */,
-				FCB74BCE1BFB39140035BE0C /* NotificationSettings */,
+				FCB74BCE1BFB39140035BE0C /* Notifications */,
 				FCB74BD41BFB394D0035BE0C /* Settings */,
 				FCFA19121BF9A23A00FAAD99 /* ViewController.h */,
 				FCFA19131BF9A23A00FAAD99 /* ViewController.m */,
@@ -1946,6 +1965,7 @@
 				FC73A3AD1C082D5000567306 /* home_setting.png in Resources */,
 				FC73A3BD1C082D5700567306 /* actve_home_create_parties.png in Resources */,
 				FCC8C3501BFC62DB006056EA /* image.png in Resources */,
+				FC7F44531C23D6ED0012B59B /* NotificationTableViewCell.xib in Resources */,
 				FC652BC11C12F6F200CF9284 /* FeedViewController.xib in Resources */,
 				FCC8C3791BFC62DB006056EA /* view.png in Resources */,
 				FCC8C35E1BFC62DB006056EA /* Map-marker.png in Resources */,
@@ -1980,6 +2000,7 @@
 				FCEF432B1BFDF6610013B1E5 /* facebook_circle_color_main.png in Resources */,
 				FCC8C3751BFC62DB006056EA /* Uncheck.png in Resources */,
 				FCC8C37B1BFC62DB006056EA /* Welcome-bg.png in Resources */,
+				FCAF58E51C241BD90063B2C1 /* bookmark-outline_main.png in Resources */,
 				FCC8C3481BFC62DB006056EA /* home_48px.png in Resources */,
 				FC652BDF1C12F78500CF9284 /* FollowersViewController.xib in Resources */,
 				FC7575211C1A9F3C00F06B05 /* iphone5.png in Resources */,
@@ -2187,6 +2208,7 @@
 				FCC8C3C61BFC9E2C006056EA /* MBProgressHUD.m in Sources */,
 				FC73A3E41C08771100567306 /* Reachability.m in Sources */,
 				FCA4E7501C2018F400E50631 /* InviteViewController.m in Sources */,
+				FC7F44521C23D6ED0012B59B /* NotificationTableViewCell.m in Sources */,
 				FCFA190E1BF9A23A00FAAD99 /* main.m in Sources */,
 				FCB74BB41BFB382D0035BE0C /* TrendingPartiesViewController.m in Sources */,
 				FC4931E61C21630E002717E0 /* WASWhatsAppUtil.m in Sources */,

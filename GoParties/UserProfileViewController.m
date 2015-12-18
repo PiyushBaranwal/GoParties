@@ -591,7 +591,7 @@
         PhotosViewController *controller7 = [[PhotosViewController alloc] initWithNibName:@"PhotosViewController" bundle:nil];
         controller7.title = @"Photos";
         VideosViewController *controller8 = [[VideosViewController alloc] initWithNibName:@"VideosViewController" bundle:nil];
-        controller8.title = @"Followers";
+        controller8.title = @"Videos";
         
         
         

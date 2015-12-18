@@ -8,6 +8,14 @@
 
 #import "ReviewsViewController.h"
 
+#import "Defines.h"
+#import "Utils.h"
+#import "SBJSON.h"
+#import "Singleton.h"
+
+
+
+
 @interface ReviewsViewController ()
 
 @end
@@ -19,6 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    //[self callingWebServiceForReviewsList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,6 +37,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    reviewsArray=[[NSMutableArray alloc]init];
+    revByNameArray=[[NSMutableArray alloc]init];
+    revByRatingArray=[[NSMutableArray alloc]init];
+    revByReviewArray=[[NSMutableArray alloc]init];
+    revByProfilePicArray=[[NSMutableArray alloc]init];
+    revByProfileTypeArray=[[NSMutableArray alloc]init];
+    
+    // hitting API
+     [self callingWebServiceForReviewsList];
+}
 /*
  #pragma mark - Navigation
  
@@ -345,6 +369,106 @@
 -(IBAction)strBtnClick:(id)sender
 {
     NSLog(@"strBtnClick");
+}
+
+
+
+-(void)callingWebServiceForReviewsList
+{
+    //get userid userlat and userlong here from local database
+    /// NSString *userIDStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"userId"];
+    
+    
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        //offer=YES;
+        NSString *urlAsString;
+        
+        urlAsString=[NSString stringWithFormat:@"%@/getuserreviews?access_token=133688745fb3253a0b4c3cbb3f67d444cf4b418a&userid=1&from=0&to=13",BaseURL];
+        NSLog(@"%@", urlAsString);
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlAsString]];
+        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if (conn)
+        {
+            // webData=[NSMutableData data];
+            webData=[[NSMutableData alloc]init];
+        }
+    }
+    else
+    {
+        [Singleton connectionErrorMsg];
+    }
+    
+}
+
+
+#pragma -Mark
+#pragma -mark NSURLConnection delegate methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [webData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+    NSString *returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"String is=%@",returnString);
+    if (webData != nil)
+    {
+        [webData appendData:data];
+    }
+    else
+    {
+        webData = [[NSMutableData alloc] initWithData:data];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    //label.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSError *error;
+    json1 = [NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+    
+    NSLog(@"json1=%@",json1);
+    
+    NSMutableDictionary *rootDict=[NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+    
+    
+    // parsing for facebook user detail
+    mainDataDict=[rootDict objectForKey:@"data"];
+    NSLog(@"mainDataDict=%@",mainDataDict);
+    reviewsArray=[mainDataDict objectForKey:@"reviews"];
+    revByRatingArray=[reviewsArray valueForKey:@"rating"];
+    revByReviewArray=[reviewsArray valueForKey:@"review"];
+    reviewByDict=[reviewsArray valueForKey:@"reviewed_by"];
+    revByNameArray=[reviewByDict valueForKey:@"name"];
+    revByProfilePicArray=[reviewByDict valueForKey:@"profile_pic"];
+    revByProfileTypeArray=[reviewByDict valueForKey:@"profile_type"];
+    
+    NSLog(@"reviewsArray=%@",reviewsArray);
+    NSLog(@"revByRatingArray=%@",revByRatingArray);
+    NSLog(@"revByReviewArray=%@",revByReviewArray);
+    //NSLog(@"reviewByDict=%@",reviewByDict);
+    NSLog(@"revByNameArray=%@",revByNameArray);
+    NSLog(@"revByProfilePicArray=%@",revByProfilePicArray);
+    NSLog(@"revByProfileTypeArray=%@",revByProfileTypeArray);
+    
+    
+    //[reviewsTableView reloadData];
+    
+    // to save the data in locallly in the app.
+    // [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
+    
+    
 }
 
 @end

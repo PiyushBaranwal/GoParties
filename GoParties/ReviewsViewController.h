@@ -7,9 +7,32 @@
 //
 #import <UIKit/UIKit.h>
 
-@interface ReviewsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
+@interface ReviewsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,NSURLConnectionDelegate>
 {
     IBOutlet UITableView *reviewsTableView;
+    
+    
+    //For webservices
+    NSMutableData *responseData;
+    NSURLConnection *conn;
+    NSMutableData *webData;
+    NSString *responseString;
+    
+    NSMutableArray *json1;
+    
+    //fro parsing
+    NSDictionary *json;
+    NSMutableDictionary *mainDataDict;
+    NSMutableArray *reviewsArray;
+    NSMutableDictionary *reviewByDict;
+    NSMutableArray *revByNameArray;
+    NSMutableArray *revByRatingArray;
+    NSMutableArray *revByReviewArray;
+    NSMutableArray *revByProfilePicArray;
+    NSMutableArray *revByProfileTypeArray;
+    
+    
+
     
 }
 

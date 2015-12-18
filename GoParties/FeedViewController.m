@@ -40,7 +40,7 @@
     profilePicArray=[[NSMutableArray alloc]init];
     profileTypeArray=[[NSMutableArray alloc]init];
     // Do any additional setup after loading the view from its nib.
-    [self callingWebServiceForPostActivityORFeed];
+//    [self callingWebServiceForPostActivityORFeed];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +48,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self callingWebServiceForPostActivityORFeed];
+}
 /*
 #pragma mark - Navigation
 

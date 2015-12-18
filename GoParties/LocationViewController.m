@@ -146,6 +146,7 @@
         location.longitude =77.100712; //58.494404;// //58.545284  //+ 23.5833453 + "," + 58.4236662
         
         mapPoint = [[PlacePin alloc] initWithLocation:location];
+        
         //mapPoint.nTag = i;
         //[mapPoint setTitle:@"    The Jungle"];
         
@@ -155,6 +156,7 @@
         mapPoint = nil;
         //[myMapView setRegion:region animated:YES];
         [myMapView regionThatFits:region];
+
         [self zoomToFitMapAnnotations:myMapView];
         //To initialize
         locationManager = [[CLLocationManager alloc] init];
@@ -328,8 +330,8 @@
         
         MKCoordinateRegion region;
         MKCoordinateSpan span;
-        span.latitudeDelta=1.30;
-        span.longitudeDelta=1.30;
+        span.latitudeDelta=0.0030;//1.30
+        span.longitudeDelta=0.0030;//1.30
         
         for(PlacePin* annotation in mv.annotations){
             

@@ -10,6 +10,7 @@
 #import "ProfileViewController.h"
 
 #import "PartyDetailViewController.h"
+#import "NotificationViewController.h"
 
 #import "Defines.h"
 #import "Utils.h"
@@ -159,11 +160,17 @@ typedef enum{
     
     UIButton *Button = [[UIButton alloc] initWithFrame:CGRectMake(100, 10, 25, 25)];
     [Button setImage:[UIImage imageNamed:@"Notification_Bell_main.png"] forState:UIControlStateNormal];
-    //[Button addTarget:self action:@selector(bell) forControlEvents:UIControlEventTouchUpInside];
+    [Button addTarget:self action:@selector(notification) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *bellButton= [[UIBarButtonItem alloc]initWithCustomView:Button];
     
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:searchButton, bellButton, nil]];
     
+}
+
+-(void)notification
+{
+    NotificationViewController *objN=[[NotificationViewController alloc]initWithNibName:@"NotificationViewController" bundle:nil];
+    [self.navigationController pushViewController:objN animated:YES];
 }
 
 -(void)search
@@ -463,6 +470,7 @@ typedef enum{
             
             //To create the card view.
             UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 50+a, self.view.frame.size.width-10, 250)];
+            cardView.userInteractionEnabled=YES;
             if(i%2==0)
             {
                 cardView.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];// 255,153,0
@@ -519,7 +527,7 @@ typedef enum{
             
             
             //for the bookMarkButton
-            UIButton *bookMarkBtn=[[UIButton alloc]initWithFrame:CGRectMake(5, 10, 30, 25)];//
+            bookMarkBtn=[[UIButton alloc]initWithFrame:CGRectMake(5, 10, 30, 25)];//
             bookMarkBtn.backgroundColor=[UIColor clearColor];
             [bookMarkBtn setImage:[UIImage imageNamed:@"bookmark_main.png"] forState:UIControlStateNormal];
             bookMarkBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -766,19 +774,26 @@ typedef enum{
 //            [cell1.contentView addSubview:btncond];
             
             
-            
-            
             //for Add DealBtn
-            followBtn=[[UIButton alloc]initWithFrame:CGRectMake(315, 190, 30, 30)];//10,175,280,20//260, 190, 30, 30
+            followBtn=[[UIButton alloc]initWithFrame:CGRectMake(315, 240+a, 30, 30)];//10,175,280,20//260, 190, 30, 30
             followBtn.backgroundColor=[UIColor clearColor];
             [followBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
             //followBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
             followBtn.tag=i;
             [followBtn addTarget:self action:@selector(followBtnClick:)forControlEvents:UIControlEventTouchUpInside];
-            [cardView addSubview:followBtn];
+            [cell1.contentView addSubview:followBtn];
+            
+//            //for Add DealBtn
+//            followBtn=[[UIButton alloc]initWithFrame:CGRectMake(315, 190, 30, 30)];//10,175,280,20//260, 190, 30, 30
+//            followBtn.backgroundColor=[UIColor clearColor];
+//            [followBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
+//            //followBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+//            followBtn.tag=i;
+//            [followBtn addTarget:self action:@selector(followBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+//            [cardView addSubview:followBtn];
             
             //for FOLLOW Label
-            UILabel *followLbl=[[UILabel alloc]initWithFrame:CGRectMake(295, 220, 70, 30)];//240, 220, 70, 30
+            followLbl=[[UILabel alloc]initWithFrame:CGRectMake(295, 220, 70, 30)];//240, 220, 70, 30
             followLbl.backgroundColor=[UIColor clearColor];
             followLbl.font=[placeLbl.font fontWithSize:15];
             followLbl.text=@"FOLLOW";
@@ -825,11 +840,13 @@ typedef enum{
     NSLog(@"Follow Btn Clicked");
     if([followBtn currentImage]==[UIImage imageNamed:@"FOLLOW_main.png"])
     {
-        [followBtn setImage:[UIImage imageNamed:@"FOLLOWED.png"] forState:UIControlStateNormal];
+        [followBtn setImage:[UIImage imageNamed:@"FOLLOWED.png"] forState:UIControlStateSelected];
+        followLbl.text=@"FOLLOWING";
     }
     else
     {
         [followBtn setImage:[UIImage imageNamed: @"FOLLOW_main.png"] forState:UIControlStateNormal];
+        followLbl.text=@"FOLLOWING";
     }
 }
 
@@ -837,6 +854,16 @@ typedef enum{
 -(IBAction)bookMarkBtnClick:(id)sender
 {
     NSLog(@"book mark Btn Clicked");
+    if([bookMarkBtn currentImage]==[UIImage imageNamed:@"bookmark_main.png"])
+    {
+        [bookMarkBtn setImage:[UIImage imageNamed:@"bookmark-outline_main.png"] forState:UIControlStateSelected];
+       
+    }
+    else
+    {
+        [bookMarkBtn setImage:[UIImage imageNamed: @"bookmark_main.png"] forState:UIControlStateNormal];
+        
+    }
 }
 
 -(IBAction)frndInviteBtnClick:(id)sender

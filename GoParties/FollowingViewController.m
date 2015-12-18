@@ -25,13 +25,19 @@
     // Do any additional setup after loading the view from its nib.
     
     
-    [self callingWebServiceForFollowings];
+    //[self callingWebServiceForFollowings];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self callingWebServiceForFollowings];
+}
+
 
 /*
 #pragma mark - Navigation

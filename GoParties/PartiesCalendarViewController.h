@@ -12,6 +12,8 @@
 
 @interface PartiesCalendarViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
+    
+    IBOutlet UITableView *calendarTableView;
     UIView *popUpView;
     UITextField  *locTextField;
     UITextField  *catTextField;
@@ -21,14 +23,22 @@
     UIImageView *catIcon;
     UIImageView *typeIcon;
     
+    UIImageView *bannerImg;
+    UIScrollView *scrollView;
     
+    UIImageView *calBackImg;
+    
+    UIButton *bannerBtn;
+    UIButton *followBtn;
+    UILabel *followLbl;
+    UIButton *bookMarkBtn;
     
     
     IBOutlet UIButton *homeBtn;
     IBOutlet UIButton *myProfBtn;
     IBOutlet UIButton *myPartiesbtn;
     IBOutlet UIButton *myDealsBtn;
-    
+    IBOutlet UIButton *accessBtn;
     
     
     UIButton *clickedBtn;
@@ -39,7 +49,8 @@
     NSMutableArray *typeArray;
 }
 @property (strong, nonatomic) SWRevealViewController *viewController;
-
+@property(nonatomic,retain)IBOutlet UITableView *calendarTableView;
+@property (nonatomic,retain) UIScrollView *scrollView;
 
 
 
@@ -49,7 +60,7 @@
 - (IBAction)myProfileBtnClick:(id)sender;
 - (IBAction)myPartiesBtnClick:(id)sender;
 - (IBAction)myDealsBtnClick:(id)sender;
-//- (IBAction)accessBtnClick:(id)sender;
+- (IBAction)accessBtnClick:(id)sender;
 
 
 

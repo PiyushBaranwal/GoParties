@@ -25,6 +25,9 @@
     
     UIButton *bannerBtn;
     UIButton *followBtn;
+    UILabel *followLbl;
+    UIButton *bookMarkBtn;
+    
     
     UIView *popUpView;
     UITextField  *locTextField;

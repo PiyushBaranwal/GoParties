@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PartiesCalendarViewController">
             <connections>
+                <outlet property="accessBtn" destination="5j7-NU-aeH" id="SO0-Id-agc"/>
+                <outlet property="calendarTableView" destination="hrN-el-5Za" id="h5t-Nc-9i7"/>
                 <outlet property="homeBtn" destination="9Yn-jQ-8ff" id="pMx-8j-qgN"/>
                 <outlet property="myDealsBtn" destination="o17-DE-3pX" id="uED-IC-5Mx"/>
                 <outlet property="myPartiesbtn" destination="jbB-x3-naM" id="LpH-4E-PA4"/>
@@ -19,6 +21,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5j7-NU-aeH">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <color key="backgroundColor" red="0.43921568630000002" green="0.18039215689999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="ACCESS GOPARTIES SOCIAL NETWORK" backgroundImage="Footer_singlebtn.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="accessBtnClick:" destination="-1" eventType="touchUpInside" id="tAL-NM-SCe"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o17-DE-3pX">
                     <rect key="frame" x="282" y="623" width="93" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,10 +67,14 @@
                         <action selector="homeBtnClick:" destination="-1" eventType="touchUpInside" id="1vh-hd-LMZ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-zz-6z2">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hrN-el-5Za">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="tTL-aQ-dQ2"/>
+                        <outlet property="delegate" destination="-1" id="SXJ-of-rYA"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -66,7 +82,7 @@
         </view>
     </objects>
     <resources>
-        <image name="calendar_bg.png" width="640" height="1136"/>
+        <image name="Footer_singlebtn.png" width="720" height="170"/>
         <image name="footer_deals.png" width="240" height="132"/>
         <image name="footer_home.png" width="240" height="132"/>
         <image name="footer_parties.png" width="240" height="132"/>
