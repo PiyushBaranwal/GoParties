@@ -159,6 +159,9 @@
     [calBackImg addSubview:calendar];
     
     self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calendar.frame) + 4, self.view.bounds.size.width, 24)];
+    
+    
+    
     [calBackImg addSubview:self.dateLabel];
     
     calBackImg.backgroundColor = [UIColor whiteColor];
@@ -208,7 +211,7 @@
 
 - (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
     if ([date laterDate:self.minimumDate] == date) {
-        //self.calendar.backgroundColor = [UIColor blueColor];
+       // self.calendar.backgroundColor = [UIColor blueColor];
         return YES;
     } else {
         //self.calendar.backgroundColor = [UIColor redColor];
@@ -491,7 +494,8 @@
 }
 // to set the row background color
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor lightGrayColor];
+    //cell.backgroundColor = [UIColor lightGrayColor];
+    cell.backgroundColor=[UIColor whiteColor];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -519,7 +523,7 @@
         
         
         //to set the calendar background
-        calBackImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 405)];
+        calBackImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 455)];
         calBackImg.image=[UIImage imageNamed:@"calendar_bg.png"];
         calBackImg.userInteractionEnabled=YES;
         [cell1.contentView addSubview:calBackImg];
@@ -527,15 +531,41 @@
         // for calendar
         [self calendar];
         
-        // to set the the no of deals and no of parties on a spcific day
-        UIView *partiesView=[[UIView alloc]initWithFrame:CGRectMake(0, 405, self.view.frame.size.width/2, 70)];
+        // to set the background for  no of parties
+        UIView *partiesView=[[UIView alloc]initWithFrame:CGRectMake(0, 455, self.view.frame.size.width/2, 70)];
         partiesView.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
         [cell1.contentView addSubview:partiesView];
         
-        
-        UIView *dealsView=[[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2, 405, self.view.frame.size.width/2, 70)];
+        //to set the background for deals
+        UIView *dealsView=[[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2, 455, self.view.frame.size.width/2, 70)];
         dealsView.backgroundColor=[UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];
         [cell1.contentView addSubview:dealsView];
+        
+        // to set the no of parties label
+        UILabel *partiesValueLbl=[[UILabel alloc]initWithFrame:CGRectMake(150, 10, 80, 30)];
+        partiesValueLbl.text=@"26";
+        partiesValueLbl.font=[UIFont systemFontOfSize:18];
+        partiesValueLbl.textColor=[UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];
+        [partiesView addSubview:partiesValueLbl];
+        // to set the no of parties values
+        UILabel *partiesLbl=[[UILabel alloc]initWithFrame:CGRectMake(115, 30, 80, 30)];
+        partiesLbl.text=@"Parties";
+        partiesLbl.textColor=[UIColor colorWithRed:106.0f/255 green:27.0f/255 blue:154.0f/255 alpha:1.0];
+        [partiesView addSubview:partiesLbl];
+        
+        // to set the deals label
+        UILabel *dealsValueLbl=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, 80, 30)];
+        dealsValueLbl.text=@"30";
+        dealsValueLbl.font=[UIFont systemFontOfSize:18];
+        dealsValueLbl.textColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
+        [dealsView addSubview:dealsValueLbl];
+        
+        // to set the no of deals value
+        UILabel *dealsLbl=[[UILabel alloc]initWithFrame:CGRectMake(20, 30, 80, 30)];
+        dealsLbl.text=@"Deals";
+        dealsLbl.textColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];
+        [dealsView addSubview:dealsLbl];
+        
         
         
         NSInteger a=0;
@@ -543,7 +573,7 @@
         {
             
             //To create the card view.
-            UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 485+a, self.view.frame.size.width-10, 250)];
+            UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 535+a, self.view.frame.size.width-10, 250)];
             cardView.userInteractionEnabled=YES;
             if(i%2==0)
             {

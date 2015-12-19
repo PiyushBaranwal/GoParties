@@ -7,6 +7,13 @@
 //
 
 #import "MyPartiesViewController.h"
+#import "PartyDetailViewController.h"
+#import "UserProfileViewController.h"
+
+#import "Defines.h"
+#import "Utils.h"
+#import "SBJSON.h"
+#import "Singleton.h"
 
 @interface MyPartiesViewController ()
 
@@ -18,12 +25,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    partyBookmarkArray=[[NSMutableArray alloc]init];
+    partyTitleArray=[[NSMutableArray alloc]init];
+    partyDescArray=[[NSMutableArray alloc]init];
+    partybannerArray=[[NSMutableArray alloc]init];
+    partyAddArray=[[NSMutableArray alloc]init];
+    partyConPhoneArray=[[NSMutableArray alloc]init];
+    partyConEmailArray=[[NSMutableArray alloc]init];
+    partyConPersonArray=[[NSMutableArray alloc]init];
+    
+    
+    createdNameArray=[[NSMutableArray alloc]init];
+    cretaedProfilePicArray=[[NSMutableArray alloc]init];
+    createdProfileTypeArray=[[NSMutableArray alloc]init];
+    createdRatingArray=[[NSMutableArray alloc]init];
+    
+    partiesArray=[[NSMutableArray alloc]init];
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self callingWebServiceForGetMyParties];
+
 }
 
 /*
@@ -107,7 +140,7 @@
         
         
         // To set the segmented control.
-        UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Parties",@"Profiles"]];
+        segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"My Parties",@"Saved Parties"]];
         // [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
         segmentControl.frame = CGRectMake(10, 10, self.view.frame.size.width-20, 30);
         [segmentControl addTarget:self action:@selector(segmentedControlValueDidChange1:) forControlEvents:UIControlEventValueChanged];
@@ -129,6 +162,7 @@
             
             //To create the card view.
             UIView *cardView=[[UIView alloc]initWithFrame:CGRectMake(5, 50+a, self.view.frame.size.width-10, 250)];
+            cardView.userInteractionEnabled=YES;
             if(i%2==0)
             {
                 cardView.backgroundColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];// 255,153,0
@@ -157,6 +191,24 @@
             bannerImg.image=[UIImage imageNamed:@"First1.png"];
             bannerImg.alpha=0.90;
             [cardView addSubview:bannerImg];
+            
+            
+            
+            // to set the viewlayer on the banner
+            UIView *layerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-10, 140)];
+            layerView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.70];
+            [bannerImg addSubview:layerView];
+            
+            
+            
+            //for bannerClickBtn
+            UIButton *bannerClickBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-10, 140)];//
+            bannerClickBtn.backgroundColor=[UIColor clearColor];
+            // [bannerClickBtn setImage:[UIImage imageNamed:@"bookmark_main.png"] forState:UIControlStateNormal];
+            // bannerClickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            bannerClickBtn.tag=i;
+            [bannerClickBtn addTarget:self action:@selector(bannerBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+            [cardView addSubview:bannerClickBtn];
             
             
             
@@ -242,11 +294,11 @@
             
             
             CAShapeLayer *circle=[CAShapeLayer layer];
-            // here set the starting point as zero and ending point as the no of days
-            circle.path=[UIBezierPath bezierPathWithArcCenter:CGPointMake(30, 30) radius:27 startAngle:2*M_PI*0-M_PI_2 endAngle:2*M_PI*1-M_PI_2*100/30 clockwise:NO].CGPath;
+            // here set the starting point as zero and ending point as the no of days//30,30
+            circle.path=[UIBezierPath bezierPathWithArcCenter:CGPointMake(324,140) radius:29 startAngle:2*M_PI*0-M_PI_2 endAngle:2*M_PI*1-M_PI_2*100/30 clockwise:YES].CGPath;
             circle.fillColor=[UIColor clearColor].CGColor;
             circle.strokeColor=[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0].CGColor;
-            circle.lineWidth=4;//4
+            circle.lineWidth=3;//4
             
             //            // to set the animation
             //            CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
@@ -257,8 +309,8 @@
             //            animation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
             //            [circle addAnimation:animation forKey:@"drawCircleAnimation"];
             
-            [circularView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-            [circularView.layer addSublayer:circle];
+            // [circularView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+            [cardView.layer addSublayer:circle];
             
             
             
@@ -353,7 +405,19 @@
                 [cardView addSubview:strImg1];
                 b=b+15;
             }
+           
             
+            
+            // for Party Profile btn
+            UIButton *profileBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 180, 225, 70)];
+            profileBtn.backgroundColor=[UIColor clearColor];
+            //[profileBtn setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+            profileBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            profileBtn.tag=i;
+            [profileBtn addTarget:self action:@selector(profileBtnClick:)forControlEvents:UIControlEventTouchUpInside];
+            [cardView addSubview:profileBtn];
+            
+
             
             // for saperator
             UIImageView *saperatorImg=[[UIImageView alloc]initWithFrame:CGRectMake(275, 180 , 5, 70)];//230, 180 , 5, 70
@@ -396,6 +460,22 @@
     
 }
 
+-(IBAction)bannerBtnClick:(id)sender
+{
+    NSLog(@"bannerBtnClick");
+    PartyDetailViewController *objPB=[[PartyDetailViewController alloc]initWithNibName:@"PartyDetailViewController" bundle:nil];
+    //UserProfileViewController *objU=[[UserProfileViewController alloc]init];
+    [ self.navigationController pushViewController:objPB animated:YES];
+}
+
+
+-(IBAction)profileBtnClick:(id)sender
+{
+    
+    NSLog(@"profileBtnClick");
+    ProfileViewController *objP=[[ProfileViewController alloc]initWithNibName:@"ProfileViewController" bundle:nil];
+    [self.navigationController pushViewController:objP animated:YES];
+}
 
 -(IBAction)followBtnClick:(id)sender
 {
@@ -497,15 +577,210 @@
             
             
             //action for the first button (Current)
+            
+            [self callingWebServiceForGetMyParties];
             // [[segment.selectedSegmentIndex objectAtIndex:0] setTintColor:[UIColor whiteColor]];
             break;
         }
         case 1:{
             //action for the first button (Current)
-            break;}
+            [self callingWebServiceForGetMySavedParties];
+            break;
+        }
     }
 }
 
+//to getbookmarked parties list for the user
+-(void)callingWebServiceForGetMySavedParties
+{
+    //get userid userlat and userlong here from local database
+    /// NSString *userIDStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"userId"];
+    
+    
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        //offer=YES;
+        NSString *urlAsString;
+        urlAsString=[NSString stringWithFormat:@"%@/getbookmarkedparties?access_token=133688745fb3253a0b4c3cbb3f67d444cf4b418a&userid=1&from=0&to=10",BaseURL];
+        NSLog(@"%@", urlAsString);
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlAsString]];
+        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if (conn)
+        {
+            // webData=[NSMutableData data];
+            webData=[[NSMutableData alloc]init];
+        }
+    }
+    else
+    {
+        [Singleton connectionErrorMsg];
+    }
+    
+}
+
+
+-(void)callingWebServiceForGetMyParties
+{
+    //get userid userlat and userlong here from local database
+    /// NSString *userIDStr=[[NSUserDefaults standardUserDefaults]valueForKey:@"userId"];
+    
+    
+    //To check Internet connection
+    BOOL checkConn=[Singleton checkinternetconnection];
+    if(checkConn)
+    {
+        NSString *urlAsString;
+        urlAsString=[NSString stringWithFormat:@"%@/partiessearch?access_token=133688745fb3253a0b4c3cbb3f67d444cf4b418a&userid=1&from=1&to=13&flag=0&userid=1",BaseURL];
+        NSLog(@"%@", urlAsString);
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlAsString]];
+        conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if (conn)
+        {
+            // webData=[NSMutableData data];
+            webData=[[NSMutableData alloc]init];
+        }
+    }
+    else
+    {
+        [Singleton connectionErrorMsg];
+    }
+    
+}
+
+
+#pragma -Mark
+#pragma -mark NSURLConnection delegate methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [webData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+    NSString *returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"String is=%@",returnString);
+    if (webData != nil)
+    {
+        [webData appendData:data];
+    }
+    else
+    {
+        webData = [[NSMutableData alloc] initWithData:data];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    //label.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSError *error;
+    json1 = [NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+    
+    NSLog(@"json1=%@",json1);
+    
+    NSMutableDictionary *rootDict=[NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingMutableContainers  error:&error];
+    
+    
+    
+        mainDataDict=[rootDict objectForKey:@"data"];
+        NSLog(@"mainDataDict=%@",mainDataDict);
+    
+    //UISegmentedControl *seg;
+    
+   // self.segmentedControl.selectedSegmentIndex
+    if(segmentControl.selectedSegmentIndex==0)
+    {
+        partiesArray =[mainDataDict valueForKey:@"parties"];
+        partyTitleArray=[partiesArray valueForKey:@"title"];
+        partyDescArray=[partiesArray valueForKey:@"description"];
+        partybannerArray=[partiesArray valueForKey:@"banner"];
+        partyAddArray=[partiesArray valueForKey:@"address"];
+        partyConPhoneArray=[partiesArray valueForKey:@"contact_phone"];
+        partyConEmailArray=[partiesArray valueForKey:@"contact_email"];
+        partyConPersonArray=[partiesArray valueForKey:@"contact_person"];
+        
+        NSLog(@"partiesArray=%@",partiesArray);
+        NSLog(@"partyTitleArray=%@",partyTitleArray);
+        NSLog(@"partyDescArray=%@",partyDescArray);
+        NSLog(@"partybannerArray=%@",partybannerArray);
+        NSLog(@"partyAddArray=%@",partyAddArray);
+        NSLog(@"partyConPhoneArray=%@",partyConPhoneArray);
+        NSLog(@"partyConEmailArray=%@",partyConEmailArray);
+        NSLog(@"partyConPersonArray=%@",partyConPersonArray);
+        
+        createdByDict=[partiesArray valueForKey:@"created_by"];
+        createdNameArray=[createdByDict valueForKey:@"name"];
+        cretaedProfilePicArray=[createdByDict valueForKey:@"profile_pic"];
+        createdProfileTypeArray=[createdByDict valueForKey:@"profile_type"];
+        createdRatingArray=[createdByDict valueForKey:@"rating"];
+        
+        NSLog(@"createdByDict=%@",createdByDict);
+        NSLog(@"createdNameArray=%@",createdNameArray);
+        NSLog(@"cretaedProfilePicArray=%@",cretaedProfilePicArray);
+        NSLog(@"createdProfileTypeArray=%@",createdProfileTypeArray);
+        NSLog(@"createdRatingArray=%@",createdRatingArray);
+        
+        //[myPartiesTableView reloadData];
+        
+    }
+    
+    else
+    {
+    
+    partyBookmarkArray=[mainDataDict valueForKey:@"partybookmark"];
+    partyTitleArray=[partyBookmarkArray valueForKey:@"title"];
+    partyDescArray=[partyBookmarkArray valueForKey:@"description"];
+    partybannerArray=[partyBookmarkArray valueForKey:@"banner"];
+    partyAddArray=[partyBookmarkArray valueForKey:@"address"];
+    partyConPhoneArray=[partyBookmarkArray valueForKey:@"contact_phone"];
+    partyConEmailArray=[partyBookmarkArray valueForKey:@"contact_email"];
+    partyConPersonArray=[partyBookmarkArray valueForKey:@"contact_person"];
+    
+    
+    
+
+    NSLog(@"partyBookmarkArray=%@",partyBookmarkArray);
+    NSLog(@"partyTitleArray=%@",partyTitleArray);
+    NSLog(@"partyDescArray=%@",partyDescArray);
+    NSLog(@"partybannerArray=%@",partybannerArray);
+    NSLog(@"partyAddArray=%@",partyAddArray);
+    NSLog(@"partyConPhoneArray=%@",partyConPhoneArray);
+    NSLog(@"partyConEmailArray=%@",partyConEmailArray);
+    NSLog(@"partyConPersonArray=%@",partyConPersonArray);
+    
+    createdByDict=[partyBookmarkArray valueForKey:@"created_by"];
+    createdNameArray=[createdByDict valueForKey:@"name"];
+    cretaedProfilePicArray=[createdByDict valueForKey:@"profile_pic"];
+    createdProfileTypeArray=[createdByDict valueForKey:@"profile_type"];
+    createdRatingArray=[createdByDict valueForKey:@"rating"];
+    
+    NSLog(@"createdByDict=%@",createdByDict);
+    NSLog(@"createdNameArray=%@",createdNameArray);
+    NSLog(@"cretaedProfilePicArray=%@",cretaedProfilePicArray);
+    NSLog(@"createdProfileTypeArray=%@",createdProfileTypeArray);
+    NSLog(@"createdRatingArray=%@",createdRatingArray);
+        
+       // [myPartiesTableView reloadData];
+
+    }
+    
+    
+    
+        // to save the data in locallly in the app.
+        // [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
+        
+   // }
+}
 
 
 @end

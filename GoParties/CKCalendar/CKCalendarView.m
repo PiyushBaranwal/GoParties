@@ -95,7 +95,7 @@
     if (self) {
         self.backgroundColor =[UIColor clearColor]; //UIColorFromRGB(0xF2F2F2);// //
         // to set the clicked button backgrounf color
-        self.selectedBackgroundColor =[UIColor grayColor]; //UIColorFromRGB(0x88B6DB);
+        self.selectedBackgroundColor =[UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0]; //UIColorFromRGB(0x88B6DB);
         self.textColor =[UIColor whiteColor];// UIColorFromRGB(0x393B40);
         self.selectedTextColor =[UIColor whiteColor]; //UIColorFromRGB(0xF2F2F2);
     }
@@ -350,9 +350,9 @@
         CKDateItem *item = [[CKDateItem alloc] init];
         if ([self _dateIsToday:dateButton.date]) {
             item.textColor = UIColorFromRGB(0xF2F2F2);
-            item.backgroundColor = [UIColor lightGrayColor];//lightGrayColor
+            item.backgroundColor = [UIColor colorWithRed:255.0f/255 green:153.0f/255 blue:0.0f/255 alpha:1.0];//lightGrayColor
         } else if (!self.onlyShowCurrentMonth && [self _compareByMonth:date toDate:self.monthShowing] != NSOrderedSame) {
-            item.textColor = [UIColor lightGrayColor];
+            item.textColor = [UIColor lightGrayColor];//lightGrayColor
         }
 
         if (self.delegate && [self.delegate respondsToSelector:@selector(calendar:configureDateItem:forDate:)]) {

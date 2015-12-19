@@ -492,6 +492,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell1.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell1.userInteractionEnabled=YES;
     // [cell1 setBackgroundColor:[UIColor lightGrayColor]];
     //    [cell1 setBackgroundColor:[UIColor lightGrayColor]];
     //    [self.view setBackgroundColor:[UIColor lightGrayColor]];
@@ -610,6 +611,7 @@
                                      };
         
         _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(-0.0, 160.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
+        _pageMenu.delegate=self;
         [userTableView addSubview:_pageMenu.view];
         ///////////////////////////////////////////////////
 
@@ -636,6 +638,17 @@
     
 }
 
+
+#pragma mark- Delaget methods of CAPSPageMenu
+// Optional delegate
+- (void)willMoveToPage:(UIViewController *)controller index:(NSInteger)index
+{
+    
+}
+
+- (void)didMoveToPage:(UIViewController *)controller index:(NSInteger)index {
+    
+}
 
 
 -(void)baseScrollView

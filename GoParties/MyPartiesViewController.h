@@ -8,12 +8,45 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyPartiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MyPartiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,NSURLConnectionDelegate>
 {
     IBOutlet UITableView *myPartiesTableView;
     
+    UISegmentedControl *segmentControl;
+    
     UIImageView *bannerImg;
      UIScrollView *scrollView;
+    
+    //For webservices
+    NSMutableData *responseData;
+    NSURLConnection *conn;
+    NSMutableData *webData;
+    NSString *responseString;
+    
+    NSMutableArray *json1;
+    
+    //fro parsing
+    NSDictionary *json;
+    NSMutableDictionary *mainDataDict;
+    NSMutableArray *partyBookmarkArray;
+    NSMutableArray *partyTitleArray;
+    NSMutableArray *partyDescArray;
+    NSMutableArray *partybannerArray;
+    NSMutableArray *partyAddArray;
+    NSMutableArray *partyConPhoneArray;
+    NSMutableArray *partyConEmailArray;
+    NSMutableArray *partyConPersonArray;
+    
+    
+    NSMutableDictionary *createdByDict;
+    NSMutableArray *createdNameArray;
+    NSMutableArray *cretaedProfilePicArray;
+    NSMutableArray *createdProfileTypeArray;
+    NSMutableArray *createdRatingArray;
+    
+    NSMutableArray *partiesArray;
+    
+    
 }
 
 

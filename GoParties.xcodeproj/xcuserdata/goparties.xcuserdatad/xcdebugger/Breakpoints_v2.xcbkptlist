@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoParties/UserProfileViewController.m"
-            timestampString = "471864439.615423"
+            timestampString = "472220922.956787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "840"
-            endingLineNumber = "840"
+            startingLineNumber = "852"
+            endingLineNumber = "852"
             landmarkName = "-myDealsBtnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoParties/PartiesCalendarViewController.m"
-            timestampString = "472132659.942626"
+            timestampString = "472199789.94276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "-calendar:willChangeToMonth:"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoParties/PartiesCalendarViewController.m"
-            timestampString = "472132659.942626"
+            timestampString = "472199789.94276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-calendar:didSelectDate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoParties/PartiesCalendarViewController.m"
-            timestampString = "472132659.942626"
+            timestampString = "472199789.94276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "-calendar:configureDateItem:forDate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoParties/PartiesCalendarViewController.m"
-            timestampString = "472132659.942626"
+            timestampString = "472199789.94276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoParties/PartiesCalendarViewController.m"
-            timestampString = "472132659.942626"
+            timestampString = "472199789.94276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "-localeDidChange"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoParties/PartiesCalendarViewController.m"
-            timestampString = "472132659.942626"
+            timestampString = "472199789.94276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-dateIsDisabled:"
             landmarkType = "5">
             <Locations>
@@ -378,11 +378,11 @@
                   moduleName = "GoParties"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/goparties/Desktop/Piyush/GoPartiesNativeApp/GoParties/GoParties/PartiesCalendarViewController.m"
-                  timestampString = "472130694.091346"
+                  timestampString = "472220941.068799"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
                   offsetFromSymbolStart = "100">
                </Location>
                <Location
@@ -393,11 +393,11 @@
                   moduleName = "GoParties"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/goparties/Desktop/Piyush/GoPartiesNativeApp/GoParties/GoParties/PartiesCalendarViewController.m"
-                  timestampString = "472130694.091607"
+                  timestampString = "472220941.068957"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
                   offsetFromSymbolStart = "116">
                </Location>
             </Locations>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoParties/PartiesCalendarViewController.m"
-            timestampString = "472132659.942626"
+            timestampString = "472199789.94276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "-calendar:didLayoutInRect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1422,6 +1422,134 @@
             startingLineNumber = "856"
             endingLineNumber = "856"
             landmarkName = "-bookMarkBtnClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoParties/MyPartiesViewController.m"
+            timestampString = "472218214.360255"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "594"
+            endingLineNumber = "594"
+            landmarkName = "-callingWebServiceForGetMySavedParties"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoParties/MyPartiesViewController.m"
+            timestampString = "472218214.360255"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "628"
+            endingLineNumber = "628"
+            landmarkName = "-callingWebServiceForGetMyParties"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoParties/MyPartiesViewController.m"
+            timestampString = "472218214.360255"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "703"
+            endingLineNumber = "703"
+            landmarkName = "-connectionDidFinishLoading:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoParties/MyPartiesViewController.m"
+            timestampString = "472218214.360255"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoParties/MyPartiesViewController.m"
+            timestampString = "472218214.360255"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoParties/MyPartiesViewController.m"
+            timestampString = "472218214.360255"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
+            landmarkName = "-bannerBtnClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoParties/UserProfileViewController.m"
+            timestampString = "472220922.956787"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "645"
+            endingLineNumber = "645"
+            landmarkName = "-willMoveToPage:index:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoParties/UserProfileViewController.m"
+            timestampString = "472220922.956787"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
+            landmarkName = "-didMoveToPage:index:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

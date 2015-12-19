@@ -1119,6 +1119,7 @@
 		FC7575231C1AA88900F06B05 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				FC5CAC411C09738F0009489F /* SVGeocoder */,
 				FCFA190F1BF9A23A00FAAD99 /* AppDelegate.h */,
 				FCFA19101BF9A23A00FAAD99 /* AppDelegate.m */,
 			);
@@ -1613,7 +1614,6 @@
 			isa = PBXGroup;
 			children = (
 				FC7575191C1A9DA100F06B05 /* WebView */,
-				FC5CAC411C09738F0009489F /* SVGeocoder */,
 				FCC8C3E31BFCA3BA006056EA /* LoginViewController.h */,
 				FCC8C3E41BFCA3BA006056EA /* LoginViewController.m */,
 				FCC8C3E51BFCA3BA006056EA /* LoginViewController.xib */,

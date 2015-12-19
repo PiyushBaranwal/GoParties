@@ -23,7 +23,7 @@
 #import "VideosViewController.h"
 #import "PhotosViewController.h"
 
-@interface UserProfileViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate>
+@interface UserProfileViewController : UIViewController<SWRevealViewControllerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDataSource,UITableViewDelegate,CAPSPageMenuDelegate>
 {
     IBOutlet UITableView *userTableView;
     
