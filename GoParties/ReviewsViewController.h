@@ -24,6 +24,9 @@
     NSDictionary *json;
     NSMutableDictionary *mainDataDict;
     NSMutableArray *reviewsArray;
+    NSMutableArray *reviewsCreatedAtArray;
+    NSMutableArray *revDateArray;
+    
     NSMutableDictionary *reviewByDict;
     NSMutableArray *revByNameArray;
     NSMutableArray *revByRatingArray;

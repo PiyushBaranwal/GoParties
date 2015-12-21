@@ -10,11 +10,12 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import <GoogleSignIn/GoogleSignIn.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 //#import "MBProgressHUD.h"
 
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate,NSURLConnectionDelegate,CLLocationManagerDelegate,GIDSignInDelegate,GIDSignInUIDelegate>
+@interface LoginViewController : UIViewController<UITextFieldDelegate,NSURLConnectionDelegate,CLLocationManagerDelegate,GIDSignInDelegate,GIDSignInUIDelegate,FBSDKSharingDelegate>
 {
     
    

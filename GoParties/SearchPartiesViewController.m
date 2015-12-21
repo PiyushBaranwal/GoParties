@@ -124,6 +124,11 @@ typedef enum{
     // Do any additional setup after loading the view from its nib.
     
     followBtnClicked=NO;
+    
+    
+    partyDateArray=[[NSMutableArray alloc]init];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,6 +169,36 @@ typedef enum{
     UIBarButtonItem *bellButton= [[UIBarButtonItem alloc]initWithCustomView:Button];
     
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:searchButton, bellButton, nil]];
+    
+    
+    //To add num of count label fro messages
+    UILabel *messgaeCountLbl = [[UILabel alloc]init];
+    messgaeCountLbl.backgroundColor=[UIColor redColor];
+    messgaeCountLbl.textColor=[UIColor whiteColor];
+    
+//    // getting an NSInteger and sets the value
+//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+//    NSInteger myInt = [prefs integerForKey:@"NumberOfOffers"];
+//    
+//    if (myInt ==0)
+//    {
+//        
+//    }
+//    else
+//    {
+//        messgaeCountLbl.text=[NSString stringWithFormat:@"%d",myInt];
+    messgaeCountLbl.text=@"4";
+        messgaeCountLbl.font = [UIFont systemFontOfSize:14.0];
+        messgaeCountLbl.textAlignment=NSTextAlignmentCenter;
+        messgaeCountLbl.frame = CGRectMake(12.0, -3.0, 15.0, 15.0);
+        //To make round
+        messgaeCountLbl.layer.cornerRadius = messgaeCountLbl.frame.size.width / 2;
+        messgaeCountLbl.layer.borderWidth = 0.0f;
+        //messgaeCountLbl.layer.borderColor=[UIColor colorWithRed:205.0/255.0 green:205.0/255.0 blue:205.0/255.0 alpha:1.0].CGColor;
+        messgaeCountLbl.clipsToBounds = YES;
+        [Button addSubview:messgaeCountLbl];
+   // }
+
     
 }
 
@@ -437,7 +472,7 @@ typedef enum{
     {
         
         cell1.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell1.contentView.userInteractionEnabled=YES;
         
         // To set the segmented control.
         UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Parties",@"Profiles"]];
@@ -775,11 +810,23 @@ typedef enum{
             
             
             //for Add DealBtn
-            followBtn=[[UIButton alloc]initWithFrame:CGRectMake(315, 240+a, 30, 30)];//10,175,280,20//260, 190, 30, 30
+            followBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+            if ([followBtn currentImage]==[UIImage imageNamed:@"FOLLOW_main.png"])
+            {
+                
+            }
+            
+            else
+            {
+                [followBtn setImage:[UIImage imageNamed: @"FOLLOW_main.png"] forState:UIControlStateNormal];
+            }
+            followBtn.frame=CGRectMake(315, 240+a, 30, 30);
+            //followBtn=[[UIButton alloc]initWithFrame:CGRectMake(315, 240+a, 30, 30)];//10,175,280,20//260, 190, 30, 30
             followBtn.backgroundColor=[UIColor clearColor];
-            [followBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
+            
+            //[followBtn setImage:[UIImage imageNamed:@"FOLLOW_main.png"] forState:UIControlStateNormal];
             //followBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-            followBtn.tag=i;
+            followBtn.tag=i;           
             [followBtn addTarget:self action:@selector(followBtnClick:)forControlEvents:UIControlEventTouchUpInside];
             [cell1.contentView addSubview:followBtn];
             
@@ -840,13 +887,14 @@ typedef enum{
     NSLog(@"Follow Btn Clicked");
     if([followBtn currentImage]==[UIImage imageNamed:@"FOLLOW_main.png"])
     {
-        [followBtn setImage:[UIImage imageNamed:@"FOLLOWED.png"] forState:UIControlStateSelected];
+        [followBtn setImage:[UIImage imageNamed:@"FOLLOWED.png"] forState:UIControlStateNormal];
+        
         followLbl.text=@"FOLLOWING";
     }
     else
     {
         [followBtn setImage:[UIImage imageNamed: @"FOLLOW_main.png"] forState:UIControlStateNormal];
-        followLbl.text=@"FOLLOWING";
+        followLbl.text=@"FOLLOW";
     }
 }
 
@@ -1331,6 +1379,9 @@ typedef enum{
     partyBannerArray=[partiesArray valueForKey:@"banner"];
     partyIdArray=[partiesArray valueForKey:@"id"];
     partyDescArray=[partiesArray valueForKey:@"description"];
+    partyTimeStampArray=[partiesArray valueForKey:@"d_day"];
+        
+        
     NSLog(@"partiesArray=%@",partiesArray);
     NSLog(@"bookmarkArray=%@",bookmarkArray);
     NSLog(@"followingArray=%@",followingArray);
@@ -1341,13 +1392,31 @@ typedef enum{
     NSLog(@"partyPlaceLongArray=%@",partyPlaceLongArray);
     NSLog(@"partyBannerArray=%@",partyBannerArray);
     NSLog(@"partyDescArray=%@",partyDescArray);
-    
+    NSLog(@"partyTimeStampArray=%@",partyTimeStampArray);
+        
+        [self timeStampToDate];
+        
     // to save the data in locallly in the app.
     // [[NSUserDefaults standardUserDefaults] setObject:userAddress forKey:@"userAddress"];
     
     }
 }
 
+-(void)timeStampToDate
+{
+    // to convert the time stamp into date
+    for (int j=0; j<partyTimeStampArray.count; j++)
+    {
+        NSTimeInterval _interval=[[partyTimeStampArray objectAtIndex:j] doubleValue];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:_interval];
+        NSDateFormatter *_formatter=[[NSDateFormatter alloc]init];
+        [_formatter setDateFormat:@"dd.MM.yyyy"];
+        NSString *_date=[_formatter stringFromDate:date];
+        [partyDateArray addObject:_date];
+        
+    }
+    NSLog(@"partyDateArray=%@",partyDateArray);
+}
 
 - (IBAction)homeBtnClick:(id)sender {
     

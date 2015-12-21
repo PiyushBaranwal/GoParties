@@ -13,6 +13,7 @@
 		FC5CAC491C0979410009489F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5CAC481C0979410009489F /* CoreLocation.framework */; };
 		FC60D44F1C11A51E00545EB4 /* radio_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = FC60D44D1C11A51E00545EB4 /* radio_checked.png */; };
 		FC60D4501C11A51E00545EB4 /* radio1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC60D44E1C11A51E00545EB4 /* radio1.png */; };
+		FC60E56F1C27CC0B009938D2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC60E56E1C27CC0B009938D2 /* FBSDKShareKit.framework */; };
 		FC6337B11C194C9500E0F23C /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6337B01C194C9500E0F23C /* GoogleSignIn.framework */; };
 		FC6337B31C194C9A00E0F23C /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC6337B21C194C9A00E0F23C /* GoogleSignIn.bundle */; };
 		FC6337B51C1951AA00E0F23C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6337B41C1951AA00E0F23C /* StoreKit.framework */; };
@@ -358,6 +359,7 @@
 		FC5CAC481C0979410009489F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FC60D44D1C11A51E00545EB4 /* radio_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_checked.png; sourceTree = "<group>"; };
 		FC60D44E1C11A51E00545EB4 /* radio1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio1.png; sourceTree = "<group>"; };
+		FC60E56E1C27CC0B009938D2 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = GoogleSignIn.bundle/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		FC6337B01C194C9500E0F23C /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 		FC6337B21C194C9A00E0F23C /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		FC6337B41C1951AA00E0F23C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -776,6 +778,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC60E56F1C27CC0B009938D2 /* FBSDKShareKit.framework in Frameworks */,
 				FC6337B71C196C4E00E0F23C /* AddressBook.framework in Frameworks */,
 				FC6337B51C1951AA00E0F23C /* StoreKit.framework in Frameworks */,
 				FC5CAC491C0979410009489F /* CoreLocation.framework in Frameworks */,
@@ -1670,12 +1673,13 @@
 		FCFA19001BF9A23900FAAD99 = {
 			isa = PBXGroup;
 			children = (
+				FC60E56E1C27CC0B009938D2 /* FBSDKShareKit.framework */,
+				FC6B697C1C17F09000F0B494 /* FBSDKLoginKit.framework */,
+				FC6B697E1C17F09C00F0B494 /* FBSDKCoreKit.framework */,
 				FC6337B61C196C4E00E0F23C /* AddressBook.framework */,
 				FC6337B41C1951AA00E0F23C /* StoreKit.framework */,
 				FC6337B21C194C9A00E0F23C /* GoogleSignIn.bundle */,
 				FC6337B01C194C9500E0F23C /* GoogleSignIn.framework */,
-				FC6B697E1C17F09C00F0B494 /* FBSDKCoreKit.framework */,
-				FC6B697C1C17F09000F0B494 /* FBSDKLoginKit.framework */,
 				FC5CAC481C0979410009489F /* CoreLocation.framework */,
 				FC73A3E61C08805E00567306 /* CFNetwork.framework */,
 				FCFA190B1BF9A23A00FAAD99 /* GoParties */,
@@ -2373,6 +2377,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/GoogleSignIn.bundle",
 				);
 				INFOPLIST_FILE = GoParties/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -2396,6 +2401,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/GoogleSignIn.bundle",
 				);
 				INFOPLIST_FILE = GoParties/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

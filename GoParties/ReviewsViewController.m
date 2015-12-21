@@ -41,6 +41,8 @@
 {
     
     reviewsArray=[[NSMutableArray alloc]init];
+    reviewsCreatedAtArray=[[NSMutableArray alloc]init];
+    revDateArray=[[NSMutableArray alloc]init];
     revByNameArray=[[NSMutableArray alloc]init];
     revByRatingArray=[[NSMutableArray alloc]init];
     revByReviewArray=[[NSMutableArray alloc]init];
@@ -449,6 +451,7 @@
     reviewsArray=[mainDataDict objectForKey:@"reviews"];
     revByRatingArray=[reviewsArray valueForKey:@"rating"];
     revByReviewArray=[reviewsArray valueForKey:@"review"];
+    reviewsCreatedAtArray=[reviewsArray valueForKey:@"created_at"];
     reviewByDict=[reviewsArray valueForKey:@"reviewed_by"];
     revByNameArray=[reviewByDict valueForKey:@"name"];
     revByProfilePicArray=[reviewByDict valueForKey:@"profile_pic"];
@@ -457,12 +460,13 @@
     NSLog(@"reviewsArray=%@",reviewsArray);
     NSLog(@"revByRatingArray=%@",revByRatingArray);
     NSLog(@"revByReviewArray=%@",revByReviewArray);
+    NSLog(@"reviewsCreatedAtArray=%@",reviewsCreatedAtArray);
     //NSLog(@"reviewByDict=%@",reviewByDict);
     NSLog(@"revByNameArray=%@",revByNameArray);
     NSLog(@"revByProfilePicArray=%@",revByProfilePicArray);
     NSLog(@"revByProfileTypeArray=%@",revByProfileTypeArray);
     
-    
+    [self timeStampToDate];
     //[reviewsTableView reloadData];
     
     // to save the data in locallly in the app.
@@ -470,5 +474,22 @@
     
     
 }
+
+-(void)timeStampToDate
+{
+    // to convert the time stamp into date
+    for (int j=0; j<reviewsCreatedAtArray.count; j++)
+    {
+        NSTimeInterval _interval=[[reviewsCreatedAtArray objectAtIndex:j] doubleValue];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:_interval];
+        NSDateFormatter *_formatter=[[NSDateFormatter alloc]init];
+        [_formatter setDateFormat:@"dd.MM.yyyy"];
+        NSString *_date=[_formatter stringFromDate:date];
+        [revDateArray addObject:_date];
+        
+    }
+    NSLog(@"revDateArray=%@",revDateArray);
+}
+
 
 @end

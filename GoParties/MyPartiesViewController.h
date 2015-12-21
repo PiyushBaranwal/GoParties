@@ -33,6 +33,8 @@
     NSMutableArray *partyDescArray;
     NSMutableArray *partybannerArray;
     NSMutableArray *partyAddArray;
+    NSMutableArray *partyDDayArray;
+    NSMutableArray *partyDateArray;
     NSMutableArray *partyConPhoneArray;
     NSMutableArray *partyConEmailArray;
     NSMutableArray *partyConPersonArray;

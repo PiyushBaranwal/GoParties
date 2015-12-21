@@ -32,6 +32,10 @@
     partyDescArray=[[NSMutableArray alloc]init];
     partybannerArray=[[NSMutableArray alloc]init];
     partyAddArray=[[NSMutableArray alloc]init];
+    
+    partyDDayArray=[[NSMutableArray alloc]init];
+    partyDateArray=[[NSMutableArray alloc]init];
+    
     partyConPhoneArray=[[NSMutableArray alloc]init];
     partyConEmailArray=[[NSMutableArray alloc]init];
     partyConPersonArray=[[NSMutableArray alloc]init];
@@ -464,7 +468,17 @@
 {
     NSLog(@"bannerBtnClick");
     PartyDetailViewController *objPB=[[PartyDetailViewController alloc]initWithNibName:@"PartyDetailViewController" bundle:nil];
-    //UserProfileViewController *objU=[[UserProfileViewController alloc]init];
+   // [self presentViewController:objPB animated:YES completion:nil];
+    
+//    UINavigationController *navigationController =
+//    [[UINavigationController alloc] initWithRootViewController:objPB];
+//    //now present this navigation controller modally
+//    [self presentViewController:navigationController
+//                       animated:YES
+//                     completion:^{
+//                         
+//                     }];
+    
     [ self.navigationController pushViewController:objPB animated:YES];
 }
 
@@ -705,6 +719,7 @@
         partyDescArray=[partiesArray valueForKey:@"description"];
         partybannerArray=[partiesArray valueForKey:@"banner"];
         partyAddArray=[partiesArray valueForKey:@"address"];
+        partyDDayArray=[partiesArray valueForKey:@"d_day"];
         partyConPhoneArray=[partiesArray valueForKey:@"contact_phone"];
         partyConEmailArray=[partiesArray valueForKey:@"contact_email"];
         partyConPersonArray=[partiesArray valueForKey:@"contact_person"];
@@ -714,6 +729,7 @@
         NSLog(@"partyDescArray=%@",partyDescArray);
         NSLog(@"partybannerArray=%@",partybannerArray);
         NSLog(@"partyAddArray=%@",partyAddArray);
+        NSLog(@"partyDDayArray=%@",partyDDayArray);
         NSLog(@"partyConPhoneArray=%@",partyConPhoneArray);
         NSLog(@"partyConEmailArray=%@",partyConEmailArray);
         NSLog(@"partyConPersonArray=%@",partyConPersonArray);
@@ -730,6 +746,7 @@
         NSLog(@"createdProfileTypeArray=%@",createdProfileTypeArray);
         NSLog(@"createdRatingArray=%@",createdRatingArray);
         
+        [self timeStampToDate];
         //[myPartiesTableView reloadData];
         
     }
@@ -742,6 +759,7 @@
     partyDescArray=[partyBookmarkArray valueForKey:@"description"];
     partybannerArray=[partyBookmarkArray valueForKey:@"banner"];
     partyAddArray=[partyBookmarkArray valueForKey:@"address"];
+    partyDDayArray=[partyBookmarkArray valueForKey:@"d_day"];
     partyConPhoneArray=[partyBookmarkArray valueForKey:@"contact_phone"];
     partyConEmailArray=[partyBookmarkArray valueForKey:@"contact_email"];
     partyConPersonArray=[partyBookmarkArray valueForKey:@"contact_person"];
@@ -754,6 +772,7 @@
     NSLog(@"partyDescArray=%@",partyDescArray);
     NSLog(@"partybannerArray=%@",partybannerArray);
     NSLog(@"partyAddArray=%@",partyAddArray);
+        NSLog(@"partyDDayArray=%@",partyDDayArray);
     NSLog(@"partyConPhoneArray=%@",partyConPhoneArray);
     NSLog(@"partyConEmailArray=%@",partyConEmailArray);
     NSLog(@"partyConPersonArray=%@",partyConPersonArray);
@@ -769,7 +788,7 @@
     NSLog(@"cretaedProfilePicArray=%@",cretaedProfilePicArray);
     NSLog(@"createdProfileTypeArray=%@",createdProfileTypeArray);
     NSLog(@"createdRatingArray=%@",createdRatingArray);
-        
+    [self timeStampToDate];
        // [myPartiesTableView reloadData];
 
     }
@@ -781,6 +800,23 @@
         
    // }
 }
+
+-(void)timeStampToDate
+{
+    // to convert the time stamp into date
+    for (int j=0; j<partyDDayArray.count; j++)
+    {
+        NSTimeInterval _interval=[[partyDDayArray objectAtIndex:j] doubleValue];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:_interval];
+        NSDateFormatter *_formatter=[[NSDateFormatter alloc]init];
+        [_formatter setDateFormat:@"dd.MM.yyyy"];
+        NSString *_date=[_formatter stringFromDate:date];
+        [partyDateArray addObject:_date];
+        
+    }
+    NSLog(@"partyDateArray=%@",partyDateArray);
+}
+
 
 
 @end

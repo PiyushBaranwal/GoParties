@@ -35,6 +35,7 @@
     postPhotoArray=[[NSMutableArray alloc]init];
     postVideoArray=[[NSMutableArray alloc]init];
     postedAtArray=[[NSMutableArray alloc]init];
+    postDateArray=[[NSMutableArray alloc]init];
     profileNameArray=[[NSMutableArray alloc]init];
     profileIdArray=[[NSMutableArray alloc]init];
     profilePicArray=[[NSMutableArray alloc]init];
@@ -433,7 +434,7 @@
     NSLog(@"profileTypeArray=%@",profileTypeArray);
 
     
-
+    [self timeStampToDate];
     
     
     // to save the data in locallly in the app.
@@ -442,7 +443,21 @@
     
 }
 
-
+-(void)timeStampToDate
+{
+    // to convert the time stamp into date
+    for (int j=0; j<postedAtArray.count; j++)
+    {
+        NSTimeInterval _interval=[[postedAtArray objectAtIndex:j] doubleValue];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:_interval];
+        NSDateFormatter *_formatter=[[NSDateFormatter alloc]init];
+        [_formatter setDateFormat:@"dd.MM.yyyy"];
+        NSString *_date=[_formatter stringFromDate:date];
+        [postDateArray addObject:_date];
+        
+    }
+    NSLog(@"postDateArray=%@",postDateArray);
+}
 
 
 @end

@@ -73,6 +73,8 @@
     NSMutableArray *partyBannerArray;
     NSMutableArray *partyIdArray;
     NSMutableArray *partyDescArray;
+    NSMutableArray *partyTimeStampArray;
+    NSMutableArray *partyDateArray;
     
     
     

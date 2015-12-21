@@ -36,6 +36,7 @@
     NSMutableArray *postPhotoArray;
     NSMutableArray *postVideoArray;
     NSMutableArray *postedAtArray;
+    NSMutableArray *postDateArray;
     NSMutableArray *profileIdArray;
     NSMutableArray *profileNameArray;
     NSMutableArray *profilePicArray;

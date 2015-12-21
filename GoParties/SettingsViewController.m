@@ -101,6 +101,35 @@
     
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:searchButton, bellButton, nil]];
     
+    
+    //To add num of count label fro messages
+    UILabel *messgaeCountLbl = [[UILabel alloc]init];
+    messgaeCountLbl.backgroundColor=[UIColor redColor];
+    messgaeCountLbl.textColor=[UIColor whiteColor];
+    
+    //    // getting an NSInteger and sets the value
+    //    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    //    NSInteger myInt = [prefs integerForKey:@"NumberOfOffers"];
+    //
+    //    if (myInt ==0)
+    //    {
+    //
+    //    }
+    //    else
+    //    {
+    //        messgaeCountLbl.text=[NSString stringWithFormat:@"%d",myInt];
+    messgaeCountLbl.text=@"4";
+    messgaeCountLbl.font = [UIFont systemFontOfSize:14.0];
+    messgaeCountLbl.textAlignment=NSTextAlignmentCenter;
+    messgaeCountLbl.frame = CGRectMake(12.0, -3.0, 15.0, 15.0);
+    //To make round
+    messgaeCountLbl.layer.cornerRadius = messgaeCountLbl.frame.size.width / 2;
+    messgaeCountLbl.layer.borderWidth = 0.0f;
+    //messgaeCountLbl.layer.borderColor=[UIColor colorWithRed:205.0/255.0 green:205.0/255.0 blue:205.0/255.0 alpha:1.0].CGColor;
+    messgaeCountLbl.clipsToBounds = YES;
+    [Button addSubview:messgaeCountLbl];
+    // }
+
 }
 
 

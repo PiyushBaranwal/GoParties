@@ -210,14 +210,28 @@ static NSString * const kClientId =@"586870525561-pds5h05mgck2gegqkd4av7kgs6tk6b
 - (IBAction)fbBtnClick:(id)sender {
     
     
+    
+//    /////////////////////////////////    
+//    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+//    content.contentURL = [NSURL
+//                          URLWithString:@"https://www.facebook.com/FacebookDevelopers"];
+//    FBSDKShareButton *shareButton = [[FBSDKShareButton alloc] init];
+//    shareButton.shareContent = content;
+//    shareButton.center = self.view.center;
+//    [self.view addSubview:shareButton];
+//    //////////////////////////////////
+    
+    
+    
+    
     FBSDKLoginManager *login=[[FBSDKLoginManager alloc]init];
     [login logOut];   //ESSENTIAL LINE OF CODE
     
     [login logInWithReadPermissions:@[@"email",@"public_profile"]
                  fromViewController:self
-                            handler:^(FBSDKLoginManagerLoginResult *result25, NSError *error)
+                            handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
      {
-         NSLog(@"result %@", result25);
+         NSLog(@"result %@", result);
          if (error)
          {
             // dispatch_async(dispatch_get_main_queue(), ^{
@@ -226,7 +240,7 @@ static NSString * const kClientId =@"586870525561-pds5h05mgck2gegqkd4av7kgs6tk6b
                  
             // });
          }
-         else if (result25.isCancelled)
+         else if (result.isCancelled)
          {
             // dispatch_async(dispatch_get_main_queue(), ^{
                  
@@ -238,7 +252,7 @@ static NSString * const kClientId =@"586870525561-pds5h05mgck2gegqkd4av7kgs6tk6b
          }
          else
          {
-             if ([result25.grantedPermissions containsObject:@"email"])
+             if ([result.grantedPermissions containsObject:@"email"])
              {
                  
                  FBSDKProfile *profile=[FBSDKProfile currentProfile];
@@ -284,9 +298,10 @@ static NSString * const kClientId =@"586870525561-pds5h05mgck2gegqkd4av7kgs6tk6b
                               NSLog(@"Facebook User Pic Url:%@", userFacebookPic);
                               
                               [self CallingWebServiceForFacebook];
+                              
+                              
+                              
                              // NSLog(@"Facebook User Email:%@", facebookId);
-                              
-                              
                              // [self checkEmailFacebookId];
                           }
                       }];
@@ -351,7 +366,7 @@ static NSString * const kClientId =@"586870525561-pds5h05mgck2gegqkd4av7kgs6tk6b
 
     
     
-    [Utils startActivityIndicatorInView:self.view withMessage:@"Loading..."];
+   // [Utils startActivityIndicatorInView:self.view withMessage:@"Loading..."];
     [[GIDSignIn sharedInstance]signIn];
 
     
@@ -1199,6 +1214,30 @@ didDisconnectWithUser:(GIDGoogleUser *)user
     
     [alert addAction:okButton];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+
+#pragma mark - FBSDKSharingDelegate
+
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results
+{
+    NSLog(@"completed share:%@", results);
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error
+{
+    NSLog(@"sharing error:%@", error);
+    NSString *message = error.userInfo[FBSDKErrorLocalizedDescriptionKey] ?:
+    @"There was a problem sharing, please try again later.";
+    NSString *title = error.userInfo[FBSDKErrorLocalizedTitleKey] ?: @"Oops!";
+    
+    [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+}
+
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer
+{
+    NSLog(@"share cancelled");
 }
 
 
