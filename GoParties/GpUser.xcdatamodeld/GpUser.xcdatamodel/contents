@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
+    <entity name="GpCity" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpComment" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="GpCountry" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flag_url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="GpData" syncable="YES">
+        <attribute name="val_b" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="val_i" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="val_s" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="GpFollowUser" syncable="YES">
+        <attribute name="followed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="follower_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpLikePost" syncable="YES">
+        <attribute name="like_at" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="liked_by" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="post_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpParty" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artist_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="artist_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attendee_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="band_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="banner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="contact_designation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact_email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact_person" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contact_phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_by" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="d_day" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="deal_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dj_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="entry_terms" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="genre_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="report_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="theme_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="venue_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="view_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpPartyBookmark" syncable="YES">
+        <attribute name="bookemarked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="party_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpPartyComment" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commented_by" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="deletaed_at" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="party_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpPartyInvite" syncable="YES">
+        <attribute name="invite_email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="invite_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="invited_by" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="invited_on" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="party_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpPost" syncable="YES">
+        <attribute name="comment_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="deleted_at" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="edited_at" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="like_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="party_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="post_photo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post_text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post_video" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posted_at" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="posted_by" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="share_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpPostComment" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commented_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commented_by" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="deleted_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpReview" syncable="YES">
+        <attribute name="createdat" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="deletedat" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="isactive" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="review" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reviewedby" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="userid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GpUser" syncable="YES">
+        <attribute name="city_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cover" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facebook_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facebook_page_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="google_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="is_active" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile_pic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="report_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valid_email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valid_phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GpUser" positionX="-54" positionY="-9" width="128" height="315"/>
+        <element name="GpReview" positionX="-36" positionY="9" width="128" height="150"/>
+        <element name="GpPost" positionX="-18" positionY="27" width="128" height="225"/>
+        <element name="GpPostComment" positionX="0" positionY="45" width="128" height="120"/>
+        <element name="GpPartyComment" positionX="18" positionY="63" width="128" height="120"/>
+        <element name="GpPartyInvite" positionX="36" positionY="81" width="128" height="120"/>
+        <element name="GpCity" positionX="-9" positionY="36" width="128" height="75"/>
+        <element name="GpComment" positionX="0" positionY="45" width="128" height="60"/>
+        <element name="GpFollowUser" positionX="9" positionY="54" width="128" height="90"/>
+        <element name="GpLikePost" positionX="18" positionY="63" width="128" height="90"/>
+        <element name="GpParty" positionX="27" positionY="72" width="128" height="450"/>
+        <element name="GpPartyBookmark" positionX="36" positionY="81" width="128" height="90"/>
+        <element name="GpCountry" positionX="45" positionY="90" width="128" height="75"/>
+        <element name="GpData" positionX="0" positionY="45" width="128" height="90"/>
+    </elements>
+</model>

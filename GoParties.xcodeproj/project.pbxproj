@@ -120,6 +120,9 @@
 		FC7E3FF91C20431D0075FBD5 /* PlacePin.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7E3FF81C20431D0075FBD5 /* PlacePin.m */; };
 		FC7F44521C23D6ED0012B59B /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7F44501C23D6ED0012B59B /* NotificationTableViewCell.m */; };
 		FC7F44531C23D6ED0012B59B /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC7F44511C23D6ED0012B59B /* NotificationTableViewCell.xib */; };
+		FC8BCDAE1C29634D0012EA70 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8BCDAD1C29634D0012EA70 /* CoreData.framework */; };
+		FC8BCDB11C2963FB0012EA70 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8BCDB01C2963FB0012EA70 /* CoreDataHelper.m */; };
+		FC8BCDB41C2965A60012EA70 /* GpUser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC8BCDB21C2965A60012EA70 /* GpUser.xcdatamodeld */; };
 		FC9029041C1E9630007CAC9A /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9029021C1E9630007CAC9A /* PhotosViewController.m */; };
 		FC9029051C1E9630007CAC9A /* PhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9029031C1E9630007CAC9A /* PhotosViewController.xib */; };
 		FC90290E1C1E9911007CAC9A /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9029081C1E9911007CAC9A /* AsyncImageView.m */; };
@@ -496,6 +499,10 @@
 		FC7F444F1C23D6ED0012B59B /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
 		FC7F44501C23D6ED0012B59B /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
 		FC7F44511C23D6ED0012B59B /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		FC8BCDAD1C29634D0012EA70 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FC8BCDAF1C2963FB0012EA70 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		FC8BCDB01C2963FB0012EA70 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		FC8BCDB31C2965A60012EA70 /* GpUser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GpUser.xcdatamodel; sourceTree = "<group>"; };
 		FC9029011C1E9630007CAC9A /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
 		FC9029021C1E9630007CAC9A /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
 		FC9029031C1E9630007CAC9A /* PhotosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosViewController.xib; sourceTree = "<group>"; };
@@ -778,6 +785,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC8BCDAE1C29634D0012EA70 /* CoreData.framework in Frameworks */,
 				FC60E56F1C27CC0B009938D2 /* FBSDKShareKit.framework in Frameworks */,
 				FC6337B71C196C4E00E0F23C /* AddressBook.framework in Frameworks */,
 				FC6337B51C1951AA00E0F23C /* StoreKit.framework in Frameworks */,
@@ -1125,6 +1133,9 @@
 				FC5CAC411C09738F0009489F /* SVGeocoder */,
 				FCFA190F1BF9A23A00FAAD99 /* AppDelegate.h */,
 				FCFA19101BF9A23A00FAAD99 /* AppDelegate.m */,
+				FC8BCDAF1C2963FB0012EA70 /* CoreDataHelper.h */,
+				FC8BCDB21C2965A60012EA70 /* GpUser.xcdatamodeld */,
+				FC8BCDB01C2963FB0012EA70 /* CoreDataHelper.m */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -1673,6 +1684,7 @@
 		FCFA19001BF9A23900FAAD99 = {
 			isa = PBXGroup;
 			children = (
+				FC8BCDAD1C29634D0012EA70 /* CoreData.framework */,
 				FC60E56E1C27CC0B009938D2 /* FBSDKShareKit.framework */,
 				FC6B697C1C17F09000F0B494 /* FBSDKLoginKit.framework */,
 				FC6B697E1C17F09C00F0B494 /* FBSDKCoreKit.framework */,
@@ -2172,6 +2184,7 @@
 				FCA6D6E21BFF22F50097BF9C /* VerificationViewController.m in Sources */,
 				FC7E3FF91C20431D0075FBD5 /* PlacePin.m in Sources */,
 				FC75510D1C1019A5009A976A /* CKCalendarView.m in Sources */,
+				FC8BCDB41C2965A60012EA70 /* GpUser.xcdatamodeld in Sources */,
 				FCC8C3E61BFCA3BA006056EA /* LoginViewController.m in Sources */,
 				FCC8C3D81BFC9E2C006056EA /* UIView+WebCacheOperation.m in Sources */,
 				FC6B698A1C17FD0D00F0B494 /* CDataScanner.m in Sources */,
@@ -2185,6 +2198,7 @@
 				FC636B7F1C15942B00C9DC57 /* FollowingTableViewCell.m in Sources */,
 				FCC8C3CD1BFC9E2C006056EA /* SDWebImageDecoder.m in Sources */,
 				FCA4E73E1C20188E00E50631 /* LocationViewController.m in Sources */,
+				FC8BCDB11C2963FB0012EA70 /* CoreDataHelper.m in Sources */,
 				FC9029101C1E9911007CAC9A /* UIImage+FX.m in Sources */,
 				FCC8C3CA1BFC9E2C006056EA /* NSData+ImageContentType.m in Sources */,
 				FCEF431A1BFDAB980013B1E5 /* MainViewController.m in Sources */,
@@ -2502,6 +2516,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FC8BCDB21C2965A60012EA70 /* GpUser.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FC8BCDB31C2965A60012EA70 /* GpUser.xcdatamodel */,
+			);
+			currentVersion = FC8BCDB31C2965A60012EA70 /* GpUser.xcdatamodel */;
+			path = GpUser.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FCFA19011BF9A23900FAAD99 /* Project object */;
 }

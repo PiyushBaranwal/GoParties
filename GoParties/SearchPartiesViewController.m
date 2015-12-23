@@ -1330,6 +1330,7 @@ typedef enum{
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     //label.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+    NSLog(@"Connection failed=%@",[error description]);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -1380,6 +1381,8 @@ typedef enum{
     partyIdArray=[partiesArray valueForKey:@"id"];
     partyDescArray=[partiesArray valueForKey:@"description"];
     partyTimeStampArray=[partiesArray valueForKey:@"d_day"];
+        
+    
         
         
     NSLog(@"partiesArray=%@",partiesArray);

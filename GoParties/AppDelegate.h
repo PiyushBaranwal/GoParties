@@ -26,8 +26,9 @@
     float curLong;
     
     BOOL logged;
-
+    
 }
+
 
 @property (strong, nonatomic) UIWindow *window;
 
